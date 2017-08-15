@@ -34,11 +34,10 @@ TO USE / INSTALL
 * Toggle with C
 
 * Attempts to automatically craft food recipes if required items exist
-
-* Priority:
-***** Cake
-***** Cookies
-***** Cooked Fish
-***** Cooked Meat
-***** Bread
-***** Sandwich
+  * **Priority:**
+  * Cake
+  * Cookies
+  * Cooked Fish
+  * Cooked Meat
+  * Bread
+  * Sandwich
