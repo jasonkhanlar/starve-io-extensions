@@ -36,9 +36,9 @@ TO USE / INSTALL
 * Attempts to automatically craft food recipes if required items exist
 
 * Priority:
-** Cake
-** Cookies
-** Cooked Fish
-** Cooked Meat
-** Bread
-** Sandwich
+***** Cake
+***** Cookies
+***** Cooked Fish
+***** Cooked Meat
+***** Bread
+***** Sandwich
