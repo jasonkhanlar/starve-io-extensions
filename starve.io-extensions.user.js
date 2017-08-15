@@ -34,7 +34,7 @@ window.tmx2={};
 
     var unique_index_counter = 500;
     function find_unique_index() {
-        while(sprite[unique_index_counter] != null) {
+        while(sprite[unique_index_counter] !== null) {
             unique_index_counter++;
         }
         return unique_index_counter;
@@ -92,7 +92,7 @@ window.tmx2={};
         temp_canv.width = total_width;
         temp_canv.height = total_height;
 
-        temp_ctx.globalAlpha = .5;
+        temp_ctx.globalAlpha = 0.5;
         round_rect(temp_ctx, 0, 0, temp_canv.width, temp_canv.height, 10);
         fill_path(temp_ctx, "#000");
 
@@ -105,21 +105,21 @@ window.tmx2={};
 
         temp_ctx.textAlign = 'left';
         var y = top_edge_padding_y + title_font_height + title_padding_extra_y;
-        for (var i = 0; i < help_messages.length; i++) {
+        for (i = 0; i < help_messages.length; i++) {
           y += line_padding_y;
 
           var x = edge_padding_x;
           temp_ctx.font = letter_font;
-          temp_ctx.fillText(help_messages[i][0], x, y + letter_font_height / 2)
+          temp_ctx.fillText(help_messages[i][0], x, y + letter_font_height / 2);
           x += longest_letter + letter_msg_padding;
 
           temp_ctx.font = msg_font;
           temp_ctx.fillText(help_messages[i][1], x, y + msg_font_height / 2);
-          y += Math.max(letter_font_height, msg_font_height)
+          y += Math.max(letter_font_height, msg_font_height);
         }
 
-        return temp_canv
-    }
+        return temp_canv;
+    };
 
     function draw_ext_auto_book() {
         if (user.auto_book.enabled) { ctx.drawImage(sprite[SPRITE.AUTO_BOOK], user.auto_book.translate.x, user.auto_book.translate.y); }
@@ -130,7 +130,7 @@ window.tmx2={};
     }
 
     function draw_ext_help() {
-        if(user.ext_help.enabled) { ctx.drawImage(sprite[SPRITE.EXT_HELP], user.ext_help.translate.x, user.ext_help.translate.y); }
+        if (user.ext_help.enabled) { ctx.drawImage(sprite[SPRITE.EXT_HELP], user.ext_help.translate.x, user.ext_help.translate.y); }
     }
 
     // Required before game is fully loaded
@@ -183,13 +183,13 @@ window.tmx2={};
         window.WORLD_FAST_UNITS_ARR_NAME = 'Lapa3322Mauve'; // '0x4f6'
         // END DEOBFUSCATION
 
-        SPRITE['AUTO_BOOK'] = find_unique_index();
+        SPRITE.AUTO_BOOK = find_unique_index();
         sprite[SPRITE.AUTO_BOOK] = create_text(1, "Auto-Book", 25, "#FFF", void 0, void 0, "#000", 5, 140);
-        SPRITE['AUTO_COOK'] = find_unique_index();
+        SPRITE.AUTO_COOK = find_unique_index();
         sprite[SPRITE.AUTO_COOK] = create_text(1, "Auto-Cook", 25, "#FFF", void 0, void 0, "#000", 5, 140);
-        SPRITE["EXT_HELP"] = find_unique_index();
+        SPRITE.EXT_HELP = find_unique_index();
         sprite[SPRITE.EXT_HELP] = CTI(create_help());
-        SPRITE['SLOT_NUMBERS_MAPPED'] = find_unique_index();
+        SPRITE.SLOT_NUMBERS_MAPPED = find_unique_index();
         sprite[SPRITE.SLOT_NUMBERS_MAPPED] = {};
         sprite[SPRITE.SLOT_NUMBERS_MAPPED][9] = create_text(1, '0', 12, "#FFF");
         sprite[SPRITE.SLOT_NUMBERS_MAPPED][10] = create_text(1, 'P', 12, "#FFF");
@@ -239,9 +239,9 @@ window.tmx2={};
             var recipe = RECIPES[recipeID];
             this.id = recipeID;
             this.crafting = true;
-            if ((user.auto_book.enabled && user.inv.n[INV.BOOK])
-            || world[WORLD_FAST_UNITS_ARR_NAME][user.uid].right == INV.BOOK) {
-              this.timeout.max_speed = recipe.time * 3;
+            if ((user.auto_book.enabled && user.inv.n[INV.BOOK]) ||
+            world[WORLD_FAST_UNITS_ARR_NAME][user.uid].right == INV.BOOK) {
+                this.timeout.max_speed = recipe.time * 3;
             } else {
                 this.timeout.max_speed = recipe.time;
             }
@@ -250,7 +250,7 @@ window.tmx2={};
                 var resource = recipe.r[counter];
                 user.inv.decrease(resource[0], resource[1], user.inv.find_item(resource[0]));
             }
-            game[UPDATE_INV_BUTTONS_FN_NAME]()
+            game[UPDATE_INV_BUTTONS_FN_NAME]();
         };
         window.old_user_craft_update = user.craft.update;
         user.craft.update = function() {
@@ -258,7 +258,7 @@ window.tmx2={};
             user.auto_cook.cook();
         };
         user.ext_help = { enabled: false, translate: { x: 0, y: 0 } };
-        user.keycodes_to_mapped_keycodes = {} // contains things like: { 68: 96 }
+        user.keycodes_to_mapped_keycodes = {}; // contains things like: { 68: 96 }
 
         window.old_game_drawUI = game[GAME_DRAW_UI_FN_NAME];
         game[GAME_DRAW_UI_FN_NAME] = function() {
@@ -297,10 +297,11 @@ window.tmx2={};
 
         window.old_select_craft = client[SELECT_CRAFT_FN_NAME];
         client[SELECT_CRAFT_FN_NAME] = function() {
-            if (user.weapon.timeout.v != 0 && user.inv.n[INV.BOOK]) {
-              var alertMsg = "You can't equip your book right now."
-              user.alert.text ? user.alert.list.push(alertMsg) : user.alert.text = alertMsg;
-              return;
+            if (user.weapon.timeout.v !== 0 && user.inv.n[INV.BOOK]) {
+                var alertMsg = "You can't equip your book right now.";
+                if (user.alert.text) user.alert.list.push(alertMsg);
+                else user.alert.text = alertMsg;
+                return;
             }
             user.auto_book.equip_book();
             old_select_craft.apply(this, arguments);
