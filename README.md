@@ -2,6 +2,9 @@
 Starve.io extensions
 
 [YouTube Video](https://youtu.be/IpvEiCeQVAs)
+* Help @ 1m20s
+* On screen chat buffer @ 1m50s
+* Auto-cook @ 9m:20s
 
 TO USE / INSTALL
 ----------------
