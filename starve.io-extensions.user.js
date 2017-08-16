@@ -34,7 +34,7 @@ window.tmx2={};
 
     var unique_index_counter = 500;
     function find_unique_index() {
-        while(sprite[unique_index_counter] !== null) {
+        while(typeof sprite[unique_index_counter] !== 'undefined') {
             unique_index_counter++;
         }
         return unique_index_counter;
