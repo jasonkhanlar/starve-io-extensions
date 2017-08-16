@@ -14,7 +14,7 @@ TO USE / INSTALL
 
 (1) On screen chat buffer
 -------------------------
-* Toggle with ` (TILDE)
+* Toggle with ` (BACKTICK)
 
 * In addition to existing in-game chat visibility,
 * displays a permanent buffer of chat messages
