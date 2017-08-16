@@ -14,7 +14,7 @@ TO USE / INSTALL
 
 (1) On screen chat buffer
 -------------------------
-* Toggle with ` (BACKTICK)
+* Toggle with ` ([BACKTICK](https://en.wikipedia.org/wiki/Grave_accent#Use_in_programming))
 
 * In addition to existing in-game chat visibility,
 * displays a permanent buffer of chat messages
