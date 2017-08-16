@@ -6,6 +6,8 @@ Starve.io extensions
 * On screen chat buffer @ 1m50s
 * Auto-cook @ 9m:20s
 
+[YouTube Video](https://youtu.be/LveuRqidKhY) by [AskingTheNeos](https://www.youtube.com/channel/UCDjgEaRWYbqowT8E3U9R_7Q)
+
 TO USE / INSTALL
 ----------------
 * Load starve.io-extensions.user.js with Greasemonkey, Tampermonkey, or similar depending on web browser
