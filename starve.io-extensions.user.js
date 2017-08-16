@@ -8,16 +8,6 @@
 // @grant        none
 // ==/UserScript==
 
-window.eA=undefined;
-window.eD=undefined;
-window.eX=undefined;
-window.eY=undefined;
-window.li=undefined;
-window.items=[];
-window.players=[];
-window.tmx={};
-window.tmx2={};
-
 (function() {
     'use strict';
 
