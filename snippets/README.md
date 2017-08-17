@@ -8,6 +8,7 @@ TO USE / INSTALL
 * Manage Webhooks permission on a Discord server is required to make use of this script
   * Create a Webhook on a Discord server and provide the full Webhook URL when prompted upon loading http://starve.io
   * Webhook URL looks like "https://discordapp.com/api/webhooks/012345678901234567/A-aBbC0cDdE1eF-fGg2HhIi3JjKkL4lMm_N5nOoPp6Qq_Rr7SsTtU8uVv-W9wXxY_yZz"
+  * CORRECTION: Sharing an existing Discord webhook with trusted persons is sufficient, thereby eliminating the need for everyone to have the Manage Webhooks permission
 * Load starve.io-discord-webhook-top10.user.js with Greasemonkey, Tampermonkey, or similar userscript manager depending on web browser
 
 (1) Display Top Scores to Discord Server
