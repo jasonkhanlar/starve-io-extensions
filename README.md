@@ -10,7 +10,7 @@ Starve.io extensions
 
 TO USE / INSTALL
 ----------------
-* Load starve.io-extensions.user.js with Greasemonkey, Tampermonkey, or similar depending on web browser
+* Load starve.io-extensions.user.js with Greasemonkey, Tampermonkey, or similar userscript manager depending on web browser
 
 (1) On screen chat buffer
 -------------------------
