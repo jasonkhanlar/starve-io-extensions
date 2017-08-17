@@ -167,7 +167,7 @@
         window.CLIENT_GET_TIME_FN_NAME = 'Lapa3258Mauve'; // '0x60f'
         window.CLIENT_MAKE_RECIPE_FN_NAME = 'Lapa3272Mauve'; // '0x626'
         window.CLIENT_SELECT_INV_FN_NAME = 'Lapa3273Mauve'; // '0x631'
-        window.CLIENT_SERVER_LIST = client.Lapa3432Mauve; // '0x5cf'
+        window.CLIENT_SERVER_LIST_VAR_NAME = 'Lapa3432Mauve'; // '0x5cf'
         window.CLIENT_SOCKET_VAR_NAME = 'Lapa3229Mauve'; // '0x5cd'
         window.CURRENT_FRAME_RATE_VAR_NAME = 'Lapa3348Mauve';
         window.DRAW_UI_INVENTORY_FN_NAME = 'Lapa3236Mauve';
@@ -194,6 +194,7 @@
         window.world = Lapa3360Mauve;
         window.WORLD = Lapa3241Mauve;
         window.WORLD_FAST_UNITS_ARR_NAME = 'Lapa3322Mauve'; // '0x4f6'
+        window.WORLD_PLAYER_LIST_VAR_NAME = 'Lapa3324Mauve'; // '0x531'
         // END DEOBFUSCATION
 
         SPRITE.AUTO_BOOK = find_unique_index();
