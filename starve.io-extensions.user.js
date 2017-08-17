@@ -12,15 +12,38 @@
     'use strict';
 
     var chat_log = document.createElement('div');
+    var chat_log_table = document.createElement('table');
+    var chat_log_tbody = document.createElement('tbody');
     var chat_log_last = {};
     chat_log.id = 'chat_log';
-    chat_log.style.color = '#FFFFFF';
-    chat_log.style.maxHeight = '500px';
+    chat_log.style.marginLeft= '1em';
+    //chat_log.style.maxWidth = (can.width / 2 - sprite[SPRITE.BODY][0].width * 0.6 * 2) + 'px';
+    chat_log.style.maxWidth = (can.width / 2 - 88) + 'px';
     chat_log.style.opacity = 0.5;
     chat_log.style.overflowY = 'hidden';
     chat_log.style.position = 'fixed';
-    chat_log.style.top = '500px';
+    chat_log.style.top = '100px';
+    chat_log_table.style.borderSpacing = '0';
+    chat_log_table.style.color = '#FFFFFF';
+    chat_log_table.style.textShadow = '#000000 1px 1px 1px';
+    chat_log_table.appendChild(chat_log_tbody);
+    chat_log.appendChild(chat_log_table);
     document.body.appendChild(chat_log);
+    setInterval(function() {
+        //temp1[0].info.img[0]
+        if (typeof user !== 'undefined' && typeof user.craft !== 'undefined') {
+            var _top = 0;
+            if (user.craft.can_craft.length === 1) _top = user.craft.can_craft[0].info.translate.y + user.craft.can_craft[0].info.img[0].height;
+            else if (user.craft.can_craft.length === 2) _top = user.craft.can_craft[1].info.translate.y + user.craft.can_craft[1].info.img[0].height;
+            else if (user.craft.can_craft.length === 3) _top = user.craft.can_craft[2].info.translate.y + user.craft.can_craft[2].info.img[0].height;
+            else if (user.craft.can_craft.length >= 4) _top = user.craft.can_craft[3].info.translate.y + user.craft.can_craft[3].info.img[0].height;
+
+            if (_top < 100) _top = 100;
+            chat_log.style.top = _top + 'px';
+            chat_log.style.maxHeight = (can.height - _top - 100) +'px';
+
+        }
+    }, 100);
 
     var unique_index_counter = 500;
     function find_unique_index() {
@@ -303,26 +326,24 @@
             // Show only unique chat messages per player, even if someone repeats themselves
             if (this.text && (!chat_log_last.hasOwnProperty(this.player.nickname) || chat_log_last[this.player.nickname] !== this.text) && this.text !== this.player.nickname) {
                 chat_log_last[this.player.nickname] = this.text;
-                var chat_block = document.createElement('div');
-                var chat_msg = document.createElement('span');
-                var chat_nick = document.createElement('span');
-                chat_nick.style.display = 'inline-block';
-                chat_nick.style.fontFamily = 'Baloo Paaji';
-                chat_nick.style.fontSize = '0.9em';
-                chat_nick.style.fontWeight = 'bold';
-                chat_nick.style.paddingRight = '8px';
-                chat_nick.style.textAlign = 'right';
-                chat_nick.style.verticalAlign = 'top';
-                chat_nick.style.width = '280px';
-                chat_nick.innerHTML = (this.clothe === SPRITE.HOOD ? '' : this.player.nickname) + ':';
-                chat_msg.innerHTML = this.text;
-                chat_msg.style.display = 'inline-block';
-                chat_msg.style.fontFamily = 'sans-serif';
-                chat_msg.style.lineHeight = '1.5em';
-                chat_msg.style.maxWidth = '520px';
-                chat_block.append(chat_nick);
-                chat_block.append(chat_msg);
-                document.getElementById('chat_log').prepend(chat_block);
+                var chat_log_tr = document.createElement('tr');
+                var chat_log_msg = document.createElement('td');
+                var chat_log_nick = document.createElement('td');
+                chat_log_nick.style.fontFamily = 'Baloo Paaji';
+                chat_log_nick.style.fontSize = '0.9em';
+                chat_log_nick.style.fontWeight = 'bold';
+                chat_log_nick.style.lineHeight= '1.5em';
+                chat_log_nick.style.paddingRight = '8px';
+                chat_log_nick.style.textAlign = 'right';
+                chat_log_nick.style.verticalAlign = 'top';
+                chat_log_nick.style.whiteSpace = 'nowrap';
+                chat_log_nick.innerHTML = this.player.nickname + ':';
+                chat_log_msg.innerHTML = this.text;
+                chat_log_msg.style.fontFamily = 'sans-serif';
+                chat_log_msg.style.lineHeight = '1em';
+                chat_log_tr.append(chat_log_nick);
+                chat_log_tr.append(chat_log_msg);
+                chat_log_tbody.prepend(chat_log_tr);
             }
         };
     };
