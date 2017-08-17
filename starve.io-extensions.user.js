@@ -43,7 +43,7 @@
             chat_log.style.maxHeight = (can.height - _top - 100) +'px';
 
         }
-    }, 100);
+    }, 50);
 
     var unique_index_counter = 500;
     function find_unique_index() {
