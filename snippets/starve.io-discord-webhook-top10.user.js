@@ -13,7 +13,7 @@
 
     var webhook = document.cookie.replace(/(?:(?:^|.*;\s*)discord_webhook_top10\s*\=\s*([^;]*).*$)|^.*$/, '$1');
     if (webhook === '') {
-        var webhook_prompt = 'DISCORD WEBHOOK URL\n\nPaste the full URL here\n\nLooks like "https://discordapp.com/api/webhooks/012345678901234567/A-aBbC0cDdE1eF-fGg2HhIi3JjKkL4lMm_N5nOoPp6Qq_Rr7SsTtU8uVv-W9wXxY_yZz"\n\nYou must have the Manage Webhooks permission on your Discord server to create or have access to this\n\nReminder: If you wish to change this later, first delete the cookie.\n\nBy filling this out, you consent to cookies, but cookies may or may not consent to you. See https://www.cookielaw.org/the-cookie-law/';
+        var webhook_prompt = 'DISCORD WEBHOOK URL\n\nPaste the full URL here\n\nLooks like "https://discordapp.com/api/webhooks/012345678901234567/A-aBbC0cDdE1eF-fGg2HhIi3JjKkL4lMm_N5nOoPp6Qq_Rr7SsTtU8uVv-W9wXxY_yZz"\n\nYou must either have the Manage Webhooks permission on your Discord server to know what this is or the corresponding Webhook URL must be shared with you to input it in this prompt\n\nReminder: If you wish to change this later, first delete the cookie.\n\nBy filling this out, you consent to cookies, but cookies may or may not consent to you. See https://www.cookielaw.org/the-cookie-law/';
         webhook = prompt(webhook_prompt);
         if (!webhook.match(/https:\/\/discordapp.com\/api\/webhooks\/[0-9]+\/[A-Za-z0-9_-]+/)) {
             var webhook_error = 'That is an invalid Webhook URL.\n\nSupport is available in #extension-support at Discord Server https://discord.gg/eRV8hfJ\n\nRefresh the page to try again.';
