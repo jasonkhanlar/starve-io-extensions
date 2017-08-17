@@ -1,5 +1,5 @@
 # starve-io-extensions
-starve.io-discord-webhook-top10.user.js
+## snippets / starve.io-discord-webhook-top10.user.js
 
 * Initial proof of concept: Share Starve.io Top 10 scores to a Discord Server
 
