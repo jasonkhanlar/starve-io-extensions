@@ -18,7 +18,7 @@
     chat_log.id = 'chat_log';
     chat_log.style.marginLeft= '1em';
     //chat_log.style.maxWidth = (can.width / 2 - sprite[SPRITE.BODY][0].width * 0.6 * 2) + 'px';
-    chat_log.style.maxWidth = (can.width / 2 - 88) + 'px';
+    chat_log.style.maxWidth = 'calc(50% - 88px)';
     chat_log.style.opacity = 0.5;
     chat_log.style.overflowY = 'hidden';
     chat_log.style.position = 'fixed';
