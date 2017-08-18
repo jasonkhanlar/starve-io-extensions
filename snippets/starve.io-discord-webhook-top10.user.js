@@ -13,7 +13,7 @@
 
     var webhook = document.cookie.replace(/(?:(?:^|.*;\s*)discord_webhook_top10\s*\=\s*([^;]*).*$)|^.*$/, '$1');
     if (webhook === '') {
-        var webhook_prompt = 'DISCORD WEBHOOK URL\n\nPaste the full URL here\n\nLooks like "https://discordapp.com/api/webhooks/012345678901234567/A-aBbC0cDdE1eF-fGg2HhIi3JjKkL4lMm_N5nOoPp6Qq_Rr7SsTtU8uVv-W9wXxY_yZz"\n\nYou must either have the Manage Webhooks permission on your Discord server to know what this is or the corresponding Webhook URL must be shared with you to input it in this prompt\n\nReminder: If you wish to change this later, first delete the cookie.\n\nBy filling this out, you consent to cookies, but cookies may or may not consent to you. See https://www.cookielaw.org/the-cookie-law/';
+        var webhook_prompt = 'DISCORD WEBHOOK URL\n\nPaste the full URL here\n\nLooks like "https://discordapp.com/api/webhooks/012345678901234567/A-aBbC0cDdE1eF-fGg2HhIi3JjKkL4lMm_N5nOoPp6Qq_Rr7SsTtU8uVv-W9wXxY_yZz"\n\nYou must have the Manage Webhooks permission on your Discord server to create or have access to this\n\nReminder: If you wish to change this later, first delete the cookie.\n\nBy filling this out, you consent to cookies, but cookies may or may not consent to you. See https://www.cookielaw.org/the-cookie-law/';
         webhook = prompt(webhook_prompt);
         if (!webhook.match(/https:\/\/discordapp.com\/api\/webhooks\/[0-9]+\/[A-Za-z0-9_-]+/)) {
             var webhook_error = 'That is an invalid Webhook URL.\n\nSupport is available in #extension-support at Discord Server https://discord.gg/eRV8hfJ\n\nRefresh the page to try again.';
@@ -97,16 +97,18 @@
                     }
                 }
 
-                var output = '', scores=[], scores_pos=1, scores_text='';
+                var output = '', scores=[], scores_text='';
                 for (var x = 0; x < world[WORLD_PLAYER_LIST_VAR_NAME].length; x++) {
                     if (world[WORLD_PLAYER_LIST_VAR_NAME][x].alive && world[WORLD_PLAYER_LIST_VAR_NAME][x].score > 0) {
-                        scores[world[WORLD_PLAYER_LIST_VAR_NAME][x].score]=world[WORLD_PLAYER_LIST_VAR_NAME][x].nickname;
+                        scores.push([world[WORLD_PLAYER_LIST_VAR_NAME][x].nickname, world[WORLD_PLAYER_LIST_VAR_NAME][x].score]);
                     }
                 }
-                for (var x = scores.length - 1; x>=0; x--) {
-                    if (typeof scores[x] !== 'undefined') {
-                        scores_text += ('  ' + scores_pos++).slice(-3) + ') ' + ('          ' + x).slice(-7) + ' ' + scores[x] + '\n';
-                    }
+
+                // Sort: Top scores first, alphabetical order if same scores
+                scores.sort(function(a, b) {return a[1] > b[1] ? -1 : (a[1] < b[1] ? 1 : (a[0] > b[0] ? 1 : -1)); })
+
+                for (var x = 0; x < scores.length; x++) {
+                    scores_text += ('  ' + (x + 1)).slice(-3) + ') ' + ('          ' + scores[x][1]).slice(-7) + ' ' + scores[x][0] + '\n';
                 }
                 output = '**Top Scores @ ' + server_name + '**\n```\n' + scores_text.trimRight() + '```';
 
