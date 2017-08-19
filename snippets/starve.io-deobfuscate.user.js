@@ -13,9 +13,6 @@
 (function() {
     'use strict';
 
-    // Required before game is fully loaded
-    //window.ctx = Lapa3343Mauve; // '0x537'
-
     window.checkLoaded = function() {
         if (typeof game !== 'undefined' && typeof ui !== 'undefined' && typeof user !== 'undefined') {
             deobfuscate();
