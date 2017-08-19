@@ -234,6 +234,8 @@
         window.game.update_inv_buttons = game.Lapa3337Mauve; // '0x5f7'
         window.game.update_scene = game.Lapa3340Mauve; // '0x817'
 
+        window.INV.PLANT_SEED = INV.Lapa3464Mauve; // '0x59b'
+
         window.ITEMS = Lapa3240Mauve;
         window.ITEMS.SEED = ITEMS.Lapa3464Mauve; // '0x59b'
         window.ITEMS.WHEAT_SEED = ITEMS.WHEAT_Lapa3464Mauve; // '0x1dd'
