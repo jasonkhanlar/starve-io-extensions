@@ -14,7 +14,7 @@
     'use strict';
 
     // Required before game is fully loaded
-    window.ctx = Lapa3343Mauve; // '0x537'
+    //window.ctx = Lapa3343Mauve; // '0x537'
 
     window.checkLoaded = function() {
         if (typeof game !== 'undefined' && typeof ui !== 'undefined' && typeof user !== 'undefined') {
@@ -128,6 +128,8 @@
         window.create_gauges_mobile = create_gauges_Lapa3450Mauve;
         window.create_leaderboard_mobile = create_leaderboard_Lapa3450Mauve;
         window.create_old_gauges = create_Lapa3455Mauve_gauges;
+
+        window.ctx = Lapa3343Mauve; // '0x537'
 
         window.delta = Lapa3348Mauve;
 
