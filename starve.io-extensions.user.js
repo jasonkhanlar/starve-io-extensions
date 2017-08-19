@@ -29,8 +29,8 @@
     chat_log_table.appendChild(chat_log_tbody);
     chat_log.appendChild(chat_log_table);
     document.body.appendChild(chat_log);
+
     setInterval(function() {
-        //temp1[0].info.img[0]
         if (typeof user !== 'undefined' && typeof user.craft !== 'undefined') {
             var _top = 0;
             if (user.craft.can_craft.length === 1) _top = user.craft.can_craft[0].info.translate.y + user.craft.can_craft[0].info.img[0].height;
@@ -170,6 +170,7 @@
         window.CLIENT_SERVER_LIST_VAR_NAME = 'Lapa3432Mauve'; // '0x5cf'
         window.CLIENT_SOCKET_VAR_NAME = 'Lapa3229Mauve'; // '0x5cd'
         window.CURRENT_FRAME_RATE_VAR_NAME = 'Lapa3348Mauve';
+        window.DRAW_TOP_SCORES = Lapa3394Mauve;
         window.DRAW_UI_INVENTORY_FN_NAME = 'Lapa3236Mauve';
         window.GAME_DRAW_UI_FN_NAME = 'Lapa3345Mauve'; // '0x816'
         window.GAME_TRIGGER_KEYUP_FN_NAME = 'Lapa3328Mauve'; // '0x81d'
