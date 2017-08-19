@@ -24,6 +24,10 @@
         }
     };
 
+    window.deobcomplete = function() {
+        // All code depending on deobfuscated names may begin from here
+    };
+    
     window.deobfuscate_client = function() {
         window.client = Lapa3279Mauve;
         window.client.accept_build = client.Lapa3242Mauve; // '0x62f'
@@ -323,7 +327,8 @@
         }, 1000);
 
         // END DEOBFUSCATION
-    };
+        deobcomplete();
+   };
 
     checkLoaded();
 })();
