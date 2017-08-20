@@ -103,7 +103,7 @@
                  * client.Lapa3268Mauve // '0x602'
                 *     I think this is the function that sets client side all scores to 0 if not in top 10
                 */
-                if (loggeddata.length < 2) {
+                if (loggeddata.length < 1) {
                     setTimeout(check_scores, 6000);
                 }
             } else {
