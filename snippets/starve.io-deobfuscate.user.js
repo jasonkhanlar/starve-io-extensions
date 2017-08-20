@@ -31,20 +31,20 @@
         window.canw2 = 'Lapa3310Mauve';
 
         window.CLIENT = Lapa3297Mauve;
-        window.CLIENT.ATTACK = 'Lapa3306Mauve'; // '0x580'
-        window.CLIENT.CAM_DELAY = 'Lapa3303Mauve'; // '0x644'
-        window.CLIENT.LAG_DISTANCE = 'Lapa3307Mauve';
-        window.CLIENT.MOVE_SPEED_MOD_ATTACK = 'Lapa3201Mauve'; // '0x682'
-        window.CLIENT.MUTE_DELAY = 'Lapa3304Mauve';
-        window.CLIENT.ROTATE = 'Lapa3305Mauve'; // '0x686'
-        window.CLIENT.TEAM_FULL = 'Lapa3444Mauve'; // '0x516'
-        window.CLIENT.TEAM_JOIN = 'Lapa3446Mauve'; // '0x515'
-        window.CLIENT.TEAM_LEAVE = 'Lapa3451Mauve'; // '0x513'
-        window.CLIENT.TEAM_MANAGE = 'Lapa3445Mauve'; // '0x7f5'
-        window.CLIENT.TEAM_SHOW = 'Lapa3447Mauve'; // '0x514'
-        window.CLIENT.TOKEN_LEN = 'Lapa3308Mauve'; // '0x722'
-        window.CLIENT.VERSION_NUMBER = 'Lapa3302Mauve'; // '0x679'
-        window.CLIENT.WAITING_FOR_SERVER = 'Lapa3309Mauve';
+        window./*CLIENT_*/ATTACK = 'Lapa3306Mauve'; // '0x580'
+        window./*CLIENT_*/CAM_DELAY = 'Lapa3303Mauve'; // '0x644'
+        window./*CLIENT_*/LAG_DISTANCE = 'Lapa3307Mauve';
+        window./*CLIENT_*/MOVE_SPEED_MOD_ATTACK = 'Lapa3201Mauve'; // '0x682'
+        window./*CLIENT_*/MUTE_DELAY = 'Lapa3304Mauve';
+        window./*CLIENT_*/ROTATE = 'Lapa3305Mauve'; // '0x686'
+        window./*CLIENT_*/TEAM_FULL = 'Lapa3444Mauve'; // '0x516'
+        window./*CLIENT_*/TEAM_JOIN = 'Lapa3446Mauve'; // '0x515'
+        window./*CLIENT_*/TEAM_LEAVE = 'Lapa3451Mauve'; // '0x513'
+        window./*CLIENT_*/TEAM_MANAGE = 'Lapa3445Mauve'; // '0x7f5'
+        window./*CLIENT_*/TEAM_SHOW = 'Lapa3447Mauve'; // '0x514'
+        window./*CLIENT_*/TOKEN_LEN = 'Lapa3308Mauve'; // '0x722'
+        window./*CLIENT_*/VERSION_NUMBER = 'Lapa3302Mauve'; // '0x679'
+        window./*CLIENT_*/WAITING_FOR_SERVER = 'Lapa3309Mauve';
 
         window.Client = 'Lapa3357Mauve';
 
@@ -303,12 +303,12 @@
         window.WORLD = Lapa3241Mauve;
 
         window.world = Lapa3360Mauve;
-        window.world.delete_all_units = 'Lapa3320Mauve'; // '0x623'
-        window.world.delete_units = 'Lapa3321Mauve'; // '0x683'
-        window.world.fast_units = 'Lapa3322Mauve'; // '0x4f6'
-        window.world.max_units = 'Lapa3323Mauve'; // '0x624'
-        window.world.move_units = 'Lapa3267Mauve'; // '0x63e'
-        window.world.players = 'Lapa3324Mauve'; // '0x531'
+        window./*world_*/delete_all_units = 'Lapa3320Mauve'; // '0x623'
+        window./*world_*/delete_units = 'Lapa3321Mauve'; // '0x683'
+        window./*world_*/fast_units = 'Lapa3322Mauve'; // '0x4f6'
+        window./*world_*/max_units = 'Lapa3323Mauve'; // '0x624'
+        window./*world_*/move_units = 'Lapa3267Mauve'; // '0x63e'
+        window./*world_*/players = 'Lapa3324Mauve'; // '0x531'
 
         // END DEOBFUSCATION
         window.deobcomplete = true;
