@@ -156,7 +156,7 @@
         if (user.ext_help.enabled) { ctx.drawImage(sprite[SPRITE.EXT_HELP], user.ext_help.translate.x, user.ext_help.translate.y); }
     }
 
-    window.checkDependencies = function() {
+    function checkDependencies() {
         if (typeof deobcomplete === 'undefined' || deobcomplete !== true) {
             // 'Starve.io Deobfuscated' is required as a dependency
             setTimeout(checkDependencies, 50);

@@ -13,7 +13,7 @@
 (function() {
     'use strict';
 
-    window.checkDependencies = function() {
+    function checkDependencies() {
         if (typeof game !== 'undefined' && typeof ui !== 'undefined' && typeof user !== 'undefined') {
             deobfuscate();
         } else {
@@ -133,7 +133,7 @@
         window.draw_auto_feed = 'Lapa3371Mauve';
         window.draw_bg_transition = 'Lapa3373Mauve';
         window.draw_bigmap = 'Lapa3374Mauve';
-        window.draw_bread = 'draw_Lapa3202Mauve';
+        window.draw_breadoven = 'draw_Lapa3202Mauve';
         window.draw_breadoven_inventory = 'draw_Lapa3202Mauve_inventory';
         window.draw_breadoven_smog = 'draw_Lapa3202Mauve_smog';
         window.draw_breath = 'Lapa3375Mauve';

@@ -34,7 +34,7 @@
         xhr.send(data);
     }
 
-    window.checkDependencies = function() {
+    function checkDependencies() {
         if (typeof deobcomplete === 'undefined' || deobcomplete !== true) {
             // 'Starve.io Deobfuscated' is required as a dependency
             setTimeout(checkDependencies, 50);
