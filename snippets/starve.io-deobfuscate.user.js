@@ -24,7 +24,7 @@
     window.deobcomplete = function() {
         // All code depending on deobfuscated names may begin from here
     };
-    
+
     window.deobfuscate = function() {
         window.OBFUSCATED_ARR = _0xbf9d;
         window.OBFUSCATOR_FN = _0xdbf9;
