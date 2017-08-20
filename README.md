@@ -8,10 +8,8 @@ TO USE / INSTALL
 ----------------
 * Load starve.io-deobfuscate.js with Greasemonkey, Tampermonkey, or similar userscript manager depending on web browser
 
-
-
-
-
+ &nbsp;
+ &nbsp;
 
 ## starve.io-extensions.user.js
 
