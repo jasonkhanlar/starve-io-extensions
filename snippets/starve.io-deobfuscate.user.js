@@ -13,11 +13,11 @@
 (function() {
     'use strict';
 
-    window.checkLoaded = function() {
+    window.checkDependencies = function() {
         if (typeof game !== 'undefined' && typeof ui !== 'undefined' && typeof user !== 'undefined') {
             deobfuscate();
         } else {
-            setTimeout(checkLoaded, 50);
+            setTimeout(checkDependencies, 50);
         }
     };
 
@@ -314,5 +314,5 @@
         window.deobcomplete = true;
    };
 
-    checkLoaded();
+    checkDependencies();
 })();
