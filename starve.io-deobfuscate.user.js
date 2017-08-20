@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io Deobfuscated
 // @namespace    http://tampermonkey.net/
-// @version      0.02
+// @version      0.03
 // @description  Framework for deobfuscated code base
 // @author       Jason Khanlar
 // @match        http://starve.io/
