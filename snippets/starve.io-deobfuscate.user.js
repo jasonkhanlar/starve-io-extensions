@@ -25,189 +25,185 @@
         // All code depending on deobfuscated names may begin from here
     };
     
-    window.deobfuscate_client = function() {
-        window.client = Lapa3279Mauve;
-        window.client.accept_build = client.Lapa3242Mauve; // '0x62f'
-        window.client.build_ok = client.Lapa3243Mauve; // '0x5f9'
-        window.client.build_stop = client.Lapa3244Mauve; // '0x5f6'
-        window.client.cam_delay = client.Lapa3245Mauve; // '0x641'
-        window.client.cancel_craft = client.Lapa3314Mauve; // '0x676'
-        window.client.cancel_crafting = client.Lapa3246Mauve; // '0x7a8'
-        window.client.change_ground = client.Lapa3247Mauve; // '0x610'
-        window.client.check_pong = client.Lapa3248Mauve; // '0x81c'
-        window.client.check_state = client.Lapa3249Mauve; // '0x81b'
-        window.client.connect_timeout = client.Lapa3250Mauve; // '0x5e9'
-        window.client.connect_timer = client.Lapa3251Mauve; // '0x5e0'
-        window.client.decrease_item = client.Lapa3252Mauve; // '0x62d'
-        window.client.delete_inv = client.Lapa3253Mauve; // '0x639'
-        window.client.dont_harvest = client.Lapa3254Mauve; // '0x62a'
-        window.client.empty_res = client.Lapa3255Mauve; // '0x604'
-        window.client.fail_restore = client.Lapa3256Mauve; // '0x5fe'
-        window.client.gauge_hunger = client.Lapa3416Mauve; // '0x60e'
-        window.client.gauge_life = client.Lapa3456Mauve; // '0x60c'
-        window.client.gauge_thirst = client.Lapa3420Mauve; // '0x60d'
-        window.client.get_focus = client.Lapa3318Mauve; // '0x603'
-        window.client.get_time = client.Lapa3258Mauve; // '0x60f'
-        window.client.give_breadoven = client.give_Lapa3202Mauve; // '0x619'
-        window.client.give_item = client.Lapa3260Mauve; // '0x61c'
-        window.client.give_wood = client.Lapa3259Mauve; // '0x61b'
-        window.client.handshake = client.Lapa3257Mauve; // '0x65f'
-        window.client.hitten_other = client.Lapa3261Mauve; // '0x617'
-        window.client.inv_full = client.Lapa3263Mauve; // '0x606'
-        window.client.join_team = client.Lapa3230Mauve; // '0x64a'
-        window.client.joined_team = client.Lapa3439Mauve; // '0x64c'
-        window.client.kill_player = client.Lapa3264Mauve; // '0x612'
-        window.client.last_cam = client.Lapa3265Mauve; // '0x642'
-        window.client.left_team = client.Lapa3438Mauve; // '0x651'
-        window.client.lock_chest = client.Lapa3266Mauve; // '0x61f'
-        window.client.move_units = client.Lapa3267Mauve; // '0x63e'
-        window.client.new_player = client.Lapa3268Mauve; // '0x602'
-        window.client.old_version = client.Lapa3270Mauve;
-        window.client.ping_delay = client.Lapa3269Mauve; // '0x645'
-        window.client.quest_update = client.Lapa3198Mauve;
-        window.client.recover_focus = client.Lapa3271Mauve; // '0x616'
-        window.client.resurrection = client.Lapa3465Mauve; // '0x618'
-        window.client.select_craft = client.Lapa3272Mauve; // '0x626' // make recipe
-        window.client.select_inv = client.Lapa3273Mauve; // '0x631'
-        window.client.send_angle = client.Lapa3274Mauve; // '0x63d'
-        window.client.send_attack = client.Lapa3276Mauve; // '0x63c'
-        window.client.send_build = client.Lapa3277Mauve; // '0x630'
-        window.client.send_chat = client.Lapa3278Mauve; // '0x73d'
-        window.client.send_move = client.Lapa3280Mauve;
-        window.client.send_survivalkit = client.Lapa3441Mauve; // '0x825'
-        window.client.server_list = client.Lapa3432Mauve; // '0x5cf'
-        window.client.set_cam = client.Lapa3319Mauve; // '0x614'
-        window.client.socket = client.Lapa3229Mauve; // '0x5cd' // new
-        window.client.steal_token = client.Lapa3291Mauve; // '0x653'
-        window.client.stop_attack = client.Lapa3292Mauve; // '0x63b'
-        window.client.store_server_list = client.Lapa3281Mauve; // '0x5d6'
-        window.client.survival_kit = client.Lapa3437Mauve; // '0x608'
-        window.client.take_chest = client.Lapa3284Mauve; // '0x61d'
-        window.client.take_flour = client.Lapa3466Mauve; // '0x820'
-        window.client.team_destroyed = client.Lapa3440Mauve; // '0x64e'
-        window.client.try_ping = client.Lapa3285Mauve; // '0x646'
-        window.client.unlock_chest = client.unLapa3266Mauve; // '0x61e'
-        window.client.update_cam = client.Lapa3287Mauve; // '0x643'
-        window.client.update_server_list = client.Lapa3283Mauve; // '0x5d8'
-        window.client._current_id = client.Lapa3339Mauve; // '0x5ce'
-    };
-
     window.deobfuscate = function() {
         window.OBFUSCATED_ARR = _0xbf9d;
         window.OBFUSCATOR_FN = _0xdbf9;
         window.OBFUSCATOR_FN_INV = function(n) { for (var x=0; x<OBFUSCATED_ARR.length; x++) { if (OBFUSCATOR_FN(x) === n) return '0x'+x.toString(16); } };
 
         // DEOBFUSCATION
-        window.canh2 = Lapa3313Mauve;
-        window.canw2 = Lapa3310Mauve;
+        window.canh2 = 'Lapa3313Mauve';
+        window.canw2 = 'Lapa3310Mauve';
 
         window.CLIENT = Lapa3297Mauve;
-        window.CLIENT.ATTACK = CLIENT.Lapa3306Mauve; // '0x580'
-        window.CLIENT.CAM_DELAY = CLIENT.Lapa3303Mauve; // '0x644'
-        window.CLIENT.LAG_DISTANCE = CLIENT.Lapa3307Mauve;
-        window.CLIENT.MOVE_SPEED_MOD_ATTACK = CLIENT.Lapa3201Mauve; // '0x682'
-        window.CLIENT.MUTE_DELAY = CLIENT.Lapa3304Mauve;
-        window.CLIENT.ROTATE = CLIENT.Lapa3305Mauve; // '0x686'
-        window.CLIENT.TEAM_FULL = CLIENT.Lapa3444Mauve; // '0x516'
-        window.CLIENT.TEAM_JOIN = CLIENT.Lapa3446Mauve; // '0x515'
-        window.CLIENT.TEAM_LEAVE = CLIENT.Lapa3451Mauve; // '0x513'
-        window.CLIENT.TEAM_MANAGE = CLIENT.Lapa3445Mauve; // '0x7f5'
-        window.CLIENT.TEAM_SHOW = CLIENT.Lapa3447Mauve; // '0x514'
-        window.CLIENT.TOKEN_LEN = CLIENT.Lapa3308Mauve; // '0x722'
-        window.CLIENT.VERSION_NUMBER = CLIENT.Lapa3302Mauve; // '0x679'
-        window.CLIENT.WAITING_FOR_SERVER = CLIENT.Lapa3309Mauve;
+        window.CLIENT.ATTACK = 'Lapa3306Mauve'; // '0x580'
+        window.CLIENT.CAM_DELAY = 'Lapa3303Mauve'; // '0x644'
+        window.CLIENT.LAG_DISTANCE = 'Lapa3307Mauve';
+        window.CLIENT.MOVE_SPEED_MOD_ATTACK = 'Lapa3201Mauve'; // '0x682'
+        window.CLIENT.MUTE_DELAY = 'Lapa3304Mauve';
+        window.CLIENT.ROTATE = 'Lapa3305Mauve'; // '0x686'
+        window.CLIENT.TEAM_FULL = 'Lapa3444Mauve'; // '0x516'
+        window.CLIENT.TEAM_JOIN = 'Lapa3446Mauve'; // '0x515'
+        window.CLIENT.TEAM_LEAVE = 'Lapa3451Mauve'; // '0x513'
+        window.CLIENT.TEAM_MANAGE = 'Lapa3445Mauve'; // '0x7f5'
+        window.CLIENT.TEAM_SHOW = 'Lapa3447Mauve'; // '0x514'
+        window.CLIENT.TOKEN_LEN = 'Lapa3308Mauve'; // '0x722'
+        window.CLIENT.VERSION_NUMBER = 'Lapa3302Mauve'; // '0x679'
+        window.CLIENT.WAITING_FOR_SERVER = 'Lapa3309Mauve';
 
-        window.Client = Lapa3357Mauve;
+        window.Client = 'Lapa3357Mauve';
 
-        deobfuscate_client();
+        window.client = 'Lapa3279Mauve';
+        window./*client_*/accept_build = 'Lapa3242Mauve'; // '0x62f'
+        window./*client_*/build_ok = 'Lapa3243Mauve'; // '0x5f9'
+        window./*client_*/build_stop = 'Lapa3244Mauve'; // '0x5f6'
+        window./*client_*/cam_delay = 'Lapa3245Mauve'; // '0x641'
+        window./*client_*/cancel_craft = 'Lapa3314Mauve'; // '0x676'
+        window./*client_*/cancel_crafting = 'Lapa3246Mauve'; // '0x7a8'
+        window./*client_*/change_ground = 'Lapa3247Mauve'; // '0x610'
+        window./*client_*/check_pong = 'Lapa3248Mauve'; // '0x81c'
+        window./*client_*/check_state = 'Lapa3249Mauve'; // '0x81b'
+        window./*client_*/connect_timeout = 'Lapa3250Mauve'; // '0x5e9'
+        window./*client_*/connect_timer = 'Lapa3251Mauve'; // '0x5e0'
+        window./*client_*/decrease_item = 'Lapa3252Mauve'; // '0x62d'
+        window./*client_*/delete_inv = 'Lapa3253Mauve'; // '0x639'
+        window./*client_*/dont_harvest = 'Lapa3254Mauve'; // '0x62a'
+        window./*client_*/empty_res = 'Lapa3255Mauve'; // '0x604'
+        window./*client_*/fail_restore = 'Lapa3256Mauve'; // '0x5fe'
+        window./*client_*/gauge_hunger = 'Lapa3416Mauve'; // '0x60e'
+        window./*client_*/gauge_life = 'Lapa3456Mauve'; // '0x60c'
+        window./*client_*/gauge_thirst = 'Lapa3420Mauve'; // '0x60d'
+        window./*client_*/get_focus = 'Lapa3318Mauve'; // '0x603'
+        window./*client_*/get_time = 'Lapa3258Mauve'; // '0x60f'
+        window./*client_*/give_breadoven = 'give_Lapa3202Mauve'; // '0x619'
+        window./*client_*/give_item = 'Lapa3260Mauve'; // '0x61c'
+        window./*client_*/give_wood = 'Lapa3259Mauve'; // '0x61b'
+        window./*client_*/handshake = 'Lapa3257Mauve'; // '0x65f'
+        window./*client_*/hitten_other = 'Lapa3261Mauve'; // '0x617'
+        window./*client_*/inv_full = 'Lapa3263Mauve'; // '0x606'
+        window./*client_*/join_team = 'Lapa3230Mauve'; // '0x64a'
+        window./*client_*/joined_team = 'Lapa3439Mauve'; // '0x64c'
+        window./*client_*/kill_player = 'Lapa3264Mauve'; // '0x612'
+        window./*client_*/last_cam = 'Lapa3265Mauve'; // '0x642'
+        window./*client_*/left_team = 'Lapa3438Mauve'; // '0x651'
+        window./*client_*/lock_chest = 'Lapa3266Mauve'; // '0x61f'
+        window./*client_*/move_units = 'Lapa3267Mauve'; // '0x63e'
+        window./*client_*/new_player = 'Lapa3268Mauve'; // '0x602'
+        window./*client_*/old_version = 'Lapa3270Mauve';
+        window./*client_*/ping_delay = 'Lapa3269Mauve'; // '0x645'
+        window./*client_*/quest_update = 'Lapa3198Mauve';
+        window./*client_*/recover_focus = 'Lapa3271Mauve'; // '0x616'
+        window./*client_*/resurrection = 'Lapa3465Mauve'; // '0x618'
+        window./*client_*/select_craft = 'Lapa3272Mauve'; // '0x626' // make recipe
+        window./*client_*/select_inv = 'Lapa3273Mauve'; // '0x631'
+        window./*client_*/send_angle = 'Lapa3274Mauve'; // '0x63d'
+        window./*client_*/send_attack = 'Lapa3276Mauve'; // '0x63c'
+        window./*client_*/send_build = 'Lapa3277Mauve'; // '0x630'
+        window./*client_*/send_chat = 'Lapa3278Mauve'; // '0x73d'
+        window./*client_*/send_move = 'Lapa3280Mauve';
+        window./*client_*/send_survivalkit = 'Lapa3441Mauve'; // '0x825'
+        window./*client_*/server_list = 'Lapa3432Mauve'; // '0x5cf'
+        window./*client_*/set_cam = 'Lapa3319Mauve'; // '0x614'
+        window./*client_*/socket = 'Lapa3229Mauve'; // '0x5cd' // new
+        window./*client_*/steal_token = 'Lapa3291Mauve'; // '0x653'
+        window./*client_*/stop_attack = 'Lapa3292Mauve'; // '0x63b'
+        window./*client_*/store_server_list = 'Lapa3281Mauve'; // '0x5d6'
+        window./*client_*/survival_kit = 'Lapa3437Mauve'; // '0x608'
+        window./*client_*/take_chest = 'Lapa3284Mauve'; // '0x61d'
+        window./*client_*/take_flour = 'Lapa3466Mauve'; // '0x820'
+        window./*client_*/team_destroyed = 'Lapa3440Mauve'; // '0x64e'
+        window./*client_*/try_ping = 'Lapa3285Mauve'; // '0x646'
+        window./*client_*/unlock_chest = 'unLapa3266Mauve'; // '0x61e'
+        window./*client_*/update_cam = 'Lapa3287Mauve'; // '0x643'
+        window./*client_*/update_server_list = 'Lapa3283Mauve'; // '0x5d8'
+        window./*client_*/_current_id = 'Lapa3339Mauve'; // '0x5ce'
 
-        window.COUNTER = Lapa3203Mauve;
+        window.COUNTER = 'Lapa3203Mauve';
 
-        window.create_breadoven = create_Lapa3202Mauve;
-        window.create_breadoven_off = create_Lapa3202Mauve_off;
-        window.create_breadoven_ui = create_Lapa3202Mauve_ui;
-        window.create_gauges_mobile = create_gauges_Lapa3450Mauve;
-        window.create_leaderboard_mobile = create_leaderboard_Lapa3450Mauve;
-        window.create_old_gauges = create_Lapa3455Mauve_gauges;
+        window.create_breadoven = 'create_Lapa3202Mauve';
+        window.create_breadoven_off = 'create_Lapa3202Mauve_off';
+        window.create_breadoven_ui = 'create_Lapa3202Mauve_ui';
+        window.create_gauges_mobile = 'create_gauges_Lapa3450Mauve';
+        window.create_leaderboard_mobile = 'create_leaderboard_Lapa3450Mauve';
+        window.create_old_gauges = 'create_Lapa3455Mauve_gauges';
 
         window.ctx = Lapa3343Mauve; // '0x537'
 
-        window.delta = Lapa3348Mauve;
+        window.delta = 'Lapa3348Mauve';
 
-        window.draw_alert = Lapa3369Mauve;
-        window.draw_alert_ghost = Lapa3366Mauve;
-        window.draw_auto_feed = Lapa3371Mauve;
-        window.draw_bg_transition = Lapa3373Mauve;
-        window.draw_bigmap = Lapa3374Mauve;
-        window.draw_bread = draw_Lapa3202Mauve;
-        window.draw_breadoven_inventory = draw_Lapa3202Mauve_inventory;
-        window.draw_breadoven_smog = draw_Lapa3202Mauve_smog;
-        window.draw_breath = Lapa3375Mauve;
-        window.draw_chat = Lapa3376Mauve;
-        window.draw_chest = Lapa3378Mauve;
-        window.draw_chest_inventory = Lapa3377Mauve;
-        window.draw_door = Lapa3379Mauve;
-        window.draw_dragon = Lapa3380Mauve;
-        window.draw_fake_world = Lapa3356Mauve;
-        window.draw_fg_transition = Lapa3381Mauve;
-        window.draw_fire_ground = Lapa3382Mauve;
-        window.draw_fire_halo = Lapa3383Mauve;
-        window.draw_foot = Lapa3384Mauve;
-        window.draw_furnace = Lapa3388Mauve;
-        window.draw_furnace_ground = Lapa3385Mauve;
-        window.draw_furnace_halo = Lapa3386Mauve;
-        window.draw_furnace_inventory = Lapa3387Mauve;
-        window.draw_gauges = Lapa3389Mauve;
-        window.draw_ground = Lapa3390Mauve;
-        window.draw_image_transition = Lapa3391Mauve;
-        window.draw_imgs_transition = Lapa3393Mauve;
-        window.draw_leaderboard = Lapa3394Mauve;
-        window.draw_map_object = Lapa3396Mauve;
-        window.draw_map_objects = Lapa3375Mauve_objects;
-        window.draw_map_objects_breathless = Lapa3395Mauve;
-        window.draw_map_transition = Lapa3397Mauve;
-        window.draw_minimap = Lapa3398Mauve;
-        window.draw_plant = Lapa3400Mauve;
-        window.draw_player = Lapa3403Mauve;
-        window.draw_player_clothe = Lapa3401Mauve;
-        window.draw_player_effect = Lapa3403Mauve_effect;
-        window.draw_player_right_stuff = Lapa3402Mauve;
-        window.draw_reconnect = Lapa3404Mauve;
-        window.draw_resurrection = Lapa3239Mauve;
-        window.draw_resurrection_halo = Lapa3216Mauve;
-        window.draw_resurrection_inventory = Lapa3220Mauve;
-        window.draw_seed = Lapa3221Mauve;
-        window.draw_show_spectators = Lapa3226Mauve;
-        window.draw_shop_timer = Lapa3443Mauve;
-        window.draw_simple_item = Lapa3228Mauve;
-        window.draw_simple_mobs = Lapa3231Mauve;
-        window.draw_simple_mobs_2 = Lapa3231Mauve_2;
-        window.draw_team_delay = Lapa3442Mauve;
-        window.draw_transition = Lapa3233Mauve;
-        window.draw_ui_crafting = Lapa3234Mauve;
-        window.draw_ui_inventory = Lapa3236Mauve;
-        window.draw_ui_slot_item = Lapa3232Mauve;
-        window.draw_ui_slot_item_count = Lapa3370Mauve;
-        window.draw_weapon_switch_delay = Lapa3237Mauve;
-        window.draw_winter = Lapa3238Mauve;
-        window.draw_world = Lapa3359Mauve;
-        window.draw_world_with_effect = Lapa3355Mauve;
+        window.draw_alert = 'Lapa3369Mauve';
+        window.draw_alert_ghost = 'Lapa3366Mauve';
+        window.draw_auto_feed = 'Lapa3371Mauve';
+        window.draw_bg_transition = 'Lapa3373Mauve';
+        window.draw_bigmap = 'Lapa3374Mauve';
+        window.draw_bread = 'draw_Lapa3202Mauve';
+        window.draw_breadoven_inventory = 'draw_Lapa3202Mauve_inventory';
+        window.draw_breadoven_smog = 'draw_Lapa3202Mauve_smog';
+        window.draw_breath = 'Lapa3375Mauve';
+        window.draw_chat = 'Lapa3376Mauve';
+        window.draw_chest = 'Lapa3378Mauve';
+        window.draw_chest_inventory = 'Lapa3377Mauve';
+        window.draw_door = 'Lapa3379Mauve';
+        window.draw_dragon = 'Lapa3380Mauve';
+        window.draw_fake_world = 'Lapa3356Mauve';
+        window.draw_fg_transition = 'Lapa3381Mauve';
+        window.draw_fire_ground = 'Lapa3382Mauve';
+        window.draw_fire_halo = 'Lapa3383Mauve';
+        window.draw_foot = 'Lapa3384Mauve';
+        window.draw_furnace = 'Lapa3388Mauve';
+        window.draw_furnace_ground = 'Lapa3385Mauve';
+        window.draw_furnace_halo = 'Lapa3386Mauve';
+        window.draw_furnace_inventory = 'Lapa3387Mauve';
+        window.draw_gauges = 'Lapa3389Mauve';
+        window.draw_ground = 'Lapa3390Mauve';
+        window.draw_image_transition = 'Lapa3391Mauve';
+        window.draw_imgs_transition = 'Lapa3393Mauve';
+        window.draw_leaderboard = 'Lapa3394Mauve';
+        window.draw_map_object = 'Lapa3396Mauve';
+        window.draw_map_objects = 'Lapa3375Mauve_objects';
+        window.draw_map_objects_breathless = 'Lapa3395Mauve';
+        window.draw_map_transition = 'Lapa3397Mauve';
+        window.draw_minimap = 'Lapa3398Mauve';
+        window.draw_plant = 'Lapa3400Mauve';
+        window.draw_player = 'Lapa3403Mauve';
+        window.draw_player_clothe = 'Lapa3401Mauve';
+        window.draw_player_effect = 'Lapa3403Mauve_effect';
+        window.draw_player_right_stuff = 'Lapa3402Mauve';
+        window.draw_reconnect = 'Lapa3404Mauve';
+        window.draw_resurrection = 'Lapa3239Mauve';
+        window.draw_resurrection_halo = 'Lapa3216Mauve';
+        window.draw_resurrection_inventory = 'Lapa3220Mauve';
+        window.draw_seed = 'Lapa3221Mauve';
+        window.draw_show_spectators = 'Lapa3226Mauve';
+        window.draw_shop_timer = 'Lapa3443Mauve';
+        window.draw_simple_item = 'Lapa3228Mauve';
+        window.draw_simple_mobs = 'Lapa3231Mauve';
+        window.draw_simple_mobs_2 = 'Lapa3231Mauve_2';
+        window.draw_team_delay = 'Lapa3442Mauve';
+        window.draw_transition = 'Lapa3233Mauve';
+        window.draw_ui_crafting = 'Lapa3234Mauve';
+        window.draw_ui_inventory = 'Lapa3236Mauve';
+        window.draw_ui_slot_item = 'Lapa3232Mauve';
+        window.draw_ui_slot_item_count = 'Lapa3370Mauve';
+        window.draw_weapon_switch_delay = 'Lapa3237Mauve';
+        window.draw_winter = 'Lapa3238Mauve';
+        window.draw_world = 'Lapa3359Mauve';
+        window.draw_world_with_effect = 'Lapa3355Mauve';
 
-        window.fake_world = Lapa3358Mauve;
+        window.fake_world = 'Lapa3358Mauve';
 
-        window.get_mouse_pos = Lapa3412Mauve;
+        window.get_mouse_pos = 'Lapa3412Mauve';
 
-        window.init_fake_world = Lapa3354Mauve;
+        window.init_fake_world = 'Lapa3354Mauve';
 
-        window.INV_INFO = Lapa3206Mauve;
+        window.INV_INFO = 'Lapa3206Mauve';
 
-        window.mobile = Lapa3450Mauve;
+        window.mobile = 'Lapa3450Mauve';
 
-        window.MOUSE_MOVE = Lapa3411Mauve;
-        window.MOUSE_DOWN = Lapa3410Mauve;
-        window.MOUSE_UP = Lapa3406Mauve;
+        window.MOUSE_MOVE = 'Lapa3411Mauve';
+        window.MOUSE_DOWN = 'Lapa3410Mauve';
+        window.MOUSE_UP = 'Lapa3406Mauve';
 
-        window.old_timestamp = Lapa3347Mauve;
+        window.old_timestamp = 'Lapa3347Mauve';
 
         window.game.add_event_listener = game.Lapa3344Mauve; // '0x785'
         window.game.ctx = game.Lapa3343Mauve; // '0x537'
@@ -311,19 +307,12 @@
         window.WORLD = Lapa3241Mauve;
 
         window.world = Lapa3360Mauve;
-        window.world.delete_all_units = world.Lapa3320Mauve; // '0x623'
-        window.world.delete_units = world.Lapa3321Mauve; // '0x683'
-        window.world.fast_units = world.Lapa3322Mauve; // '0x4f6'
-        window.world.max_units = world.Lapa3323Mauve; // '0x624'
-        window.world.move_units = world.Lapa3267Mauve; // '0x63e'
-        window.world.players = world.Lapa3324Mauve; // '0x531'
-
-        // Replace this to update client variable when connecting
-        setInterval(function() {
-            if (client.socket !== window.Lapa3279Mauve.Lapa3229Mauve) {
-                deobfuscate_client();
-            }
-        }, 1000);
+        window.world.delete_all_units = 'Lapa3320Mauve'; // '0x623'
+        window.world.delete_units = 'Lapa3321Mauve'; // '0x683'
+        window.world.fast_units = 'Lapa3322Mauve'; // '0x4f6'
+        window.world.max_units = 'Lapa3323Mauve'; // '0x624'
+        window.world.move_units = 'Lapa3267Mauve'; // '0x63e'
+        window.world.players = 'Lapa3324Mauve'; // '0x531'
 
         // END DEOBFUSCATION
         deobcomplete();
