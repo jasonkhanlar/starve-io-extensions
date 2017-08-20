@@ -1,4 +1,13 @@
 # starve-io-extensions
+## starve.io-deobfuscate.user.js
+
+* Provides deobfuscated code to better understand the client side framework
+* This is now **REQUIRED** for starve.io-extensions.user.js and other scripts to work
+
+TO USE / INSTALL
+----------------
+* Load starve.io-deobfuscate.js with Greasemonkey, Tampermonkey, or similar userscript manager depending on web browser
+
 ## starve.io-extensions.user.js
 
 [YouTube Video](https://youtu.be/IpvEiCeQVAs)
@@ -11,6 +20,7 @@
 TO USE / INSTALL
 ----------------
 * Load starve.io-extensions.user.js with Greasemonkey, Tampermonkey, or similar userscript manager depending on web browser
+* starve.io-deobfuscate.user.js is required for this script to work
 
 (1) On screen chat buffer
 -------------------------

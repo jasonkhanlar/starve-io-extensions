@@ -1,15 +1,6 @@
-# starve-io-extensions
+# snippets
 
-**These scripts are standalone and will likely break if using two or more at a time.**
-**Do not use these to compliment scripts in the root directory of this repository. Things will break.**
-
-## snippets / starve.io-deobfuscate.user.js
-
-* Provides deobfuscated code to better understand the client side framework
-
-TO USE / INSTALL
-----------------
-* Load starve.io-deobfuscate.js with Greasemonkey, Tampermonkey, or similar userscript manager depending on web browser
+**All scripts depend on and require starve.io-deobfuscate.user.js to function and should be compatible with one another, but results may vary**
 
 ## snippets / starve.io-discord-webhook-top10.user.js
 
