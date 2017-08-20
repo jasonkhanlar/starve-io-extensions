@@ -115,6 +115,8 @@
 
         window.COUNTER = 'Lapa3203Mauve';
 
+        window.CRAFT.PLANT_SEED = CRAFT.Lapa3464Mauve; // '0x59b'
+
         window.create_breadoven = 'create_Lapa3202Mauve';
         window.create_breadoven_off = 'create_Lapa3202Mauve_off';
         window.create_breadoven_ui = 'create_Lapa3202Mauve_ui';
@@ -187,20 +189,6 @@
 
         window.fake_world = 'Lapa3358Mauve';
 
-        window.get_mouse_pos = 'Lapa3412Mauve';
-
-        window.init_fake_world = 'Lapa3354Mauve';
-
-        window.INV_INFO = 'Lapa3206Mauve';
-
-        window.mobile = 'Lapa3450Mauve';
-
-        window.MOUSE_MOVE = 'Lapa3411Mauve';
-        window.MOUSE_DOWN = 'Lapa3410Mauve';
-        window.MOUSE_UP = 'Lapa3406Mauve';
-
-        window.old_timestamp = 'Lapa3347Mauve';
-
         window.game.add_event_listener = game.Lapa3344Mauve; // '0x785'
         window.game.ctx = game.Lapa3343Mauve; // '0x537'
         window.game.breadoven_bread_button = game.Lapa3202Mauve_bread_button; // '0x501'
@@ -226,11 +214,25 @@
         window.game.update_inv_buttons = game.Lapa3337Mauve; // '0x5f7'
         window.game.update_scene = game.Lapa3340Mauve; // '0x817'
 
+        window.get_mouse_pos = 'Lapa3412Mauve';
+
+        window.init_fake_world = 'Lapa3354Mauve';
+
         window.INV.PLANT_SEED = INV.Lapa3464Mauve; // '0x59b'
+
+        window.INV_INFO = 'Lapa3206Mauve';
 
         window.ITEMS = Lapa3240Mauve;
         window.ITEMS.SEED = ITEMS.Lapa3464Mauve; // '0x59b'
         window.ITEMS.WHEAT_SEED = ITEMS.WHEAT_Lapa3464Mauve; // '0x1dd'
+
+        window.mobile = 'Lapa3450Mauve';
+
+        window.MOUSE_MOVE = 'Lapa3411Mauve';
+        window.MOUSE_DOWN = 'Lapa3410Mauve';
+        window.MOUSE_UP = 'Lapa3406Mauve';
+
+        window.old_timestamp = 'Lapa3347Mauve';
 
         window.RANDOM_NUMS = Lapa3459Mauve;
 
