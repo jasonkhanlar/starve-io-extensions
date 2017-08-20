@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Discord Webhook for Starve.io Top 10 Leaderboard
 // @namespace    http://tampermonkey.net/
-// @version      0.01
+// @version      0.02
 // @description  Pushes real-time top 10 scores on connected server to a Discord server
 // @author       Jason Khanlar
 // @match        http://starve.io/
