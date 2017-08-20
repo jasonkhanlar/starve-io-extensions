@@ -56,7 +56,7 @@
 
     // rearrange inventory
     function reset_inventory_indexes() {
-        user.inventory_index_to_mapped_index = []
+        user.inventory_index_to_mapped_index = [];
         for(var index = 0; index < 15; index++) {
             user.inventory_index_to_mapped_index[index] = index;
         }
