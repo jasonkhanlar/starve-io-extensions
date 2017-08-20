@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Discord Webhook for Starve.io Top 10 Leaderboard
+// @name         Discord Webhook for Starve.io - All scores once
 // @namespace    http://tampermonkey.net/
 // @version      0.03
-// @description  Pushes real-time top 10 scores on connected server to a Discord server
+// @description  Shares Starve.io server scores with a Discord server
 // @author       Jason Khanlar
 // @match        http://starve.io/
 // @grant        none
@@ -47,6 +47,15 @@
     function main() {
         var server_name = '', server_url = '', server_url_ip = '', server_url_port = 0;
 
+        window.old_user_ldb_init = user.ldb.init;
+        user.ldb.init = function (c) {
+            if (loggeddata.length < 1) check_scores();
+            //var old_scores=[];
+            //for (var f = Lapa3360Mauve.Lapa3324Mauve, d = 0; d < f.length; d++) old_scores[d] = f[d].score;
+            old_user_ldb_init.apply(this, arguments);
+            //for (var f = Lapa3360Mauve.Lapa3324Mauve, d = 0; d < f.length; d++) { if (f[d].score === 0) f[d].score = old_scores[d]; }
+        }
+
         var check_scores = function() {
             if (world[players].length > 0) {
                 server_url = window[client][socket].url;
@@ -60,19 +69,6 @@
                 }
 
                 loggeddata.push(world.players);
-                for (var xx=0; xx< world[players].length; xx++) {
-                    /*
-                    console.log([
-                        xx,
-                        world[players][xx].nickname,
-                        world[players][xx].alive,
-                        world[players][xx].label,
-                        world[players][xx].label_winter,
-                        world[players][xx].ldb_label,
-                        world[players][xx].score
-                    ]);
-                    */
-                }
                 var output = '', scores=[], scores_text='';
                 for (var x = 0; x < world[players].length; x++) {
                     if (world[players][x].alive && world[players][x].score > 0) {
@@ -88,30 +84,9 @@
                 }
                 output = '**Top Scores @ ' + server_name + '**\n```\n' + scores_text.trimRight() + '```';
 
-                post(
-                    webhook,
-                    {
-                        "username": world[fast_units][user.uid].player.nickname,
-                        "text": output
-                    }
-                );
-
-                /*
-                 * For now, as a proof of concept, do not run this every 5 minutes
-                 * Note: First instance only, this shows all scores, not only top 10
-                 * Consecutive calls to this function only shows top 10 scores
-                 * client.Lapa3268Mauve // '0x602'
-                *     I think this is the function that sets client side all scores to 0 if not in top 10
-                */
-                if (loggeddata.length < 1) {
-                    setTimeout(check_scores, 6000);
-                }
-            } else {
-                    setTimeout(check_scores, 1000);
-                }
+                post(webhook, { "username": world[fast_units][user.uid].player.nickname, "text": output });
+            }
         }
-
-        setTimeout(check_scores, 1000);
     }
 
     window.loggeddata=[];
