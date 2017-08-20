@@ -115,7 +115,7 @@
 
         window.COUNTER = 'Lapa3203Mauve';
 
-        window.CRAFT.PLANT_SEED = CRAFT.Lapa3464Mauve; // '0x59b'
+        window.CRAFT.SEED = CRAFT.Lapa3464Mauve; // '0x59b'
 
         window.create_breadoven = 'create_Lapa3202Mauve';
         window.create_breadoven_off = 'create_Lapa3202Mauve_off';
@@ -218,13 +218,22 @@
 
         window.init_fake_world = 'Lapa3354Mauve';
 
-        window.INV.PLANT_SEED = INV.Lapa3464Mauve; // '0x59b'
+        window.INV.SEED = INV.Lapa3464Mauve; // '0x59b'
 
         window.INV_INFO = 'Lapa3206Mauve';
 
         window.ITEMS = Lapa3240Mauve;
         window.ITEMS.SEED = ITEMS.Lapa3464Mauve; // '0x59b'
         window.ITEMS.WHEAT_SEED = ITEMS.WHEAT_Lapa3464Mauve; // '0x1dd'
+
+        window.keyboard.set_azerty = keyboard.Lapa3424Mauve;
+        window.keyboard.set_qwerty = keyboard.Lapa3425Mauve;
+        window.keyboard.clear_directionnal = keyboard.Lapa3428Mauve;
+        window.keyboard.ARROW_LEFT = keyboard.Lapa3429Mauve; // '0x61'
+        window.keyboard.ARROW_RIGHT = keyboard.Lapa3430Mauve; // '0x6d'
+        window.keyboard.ARROW_TOP = keyboard.Lapa3431Mauve; // '0x62'
+
+        window.loader.ctx = loader.Lapa3343Mauve; // '0x537'
 
         window.mobile = 'Lapa3450Mauve';
 
@@ -246,6 +255,8 @@
 
         window.RECIPES = Lapa3294Mauve;
 
+        window.scoreboard.ctx = scoreboard.Lapa3343Mauve; // '0x537'
+
         window.SPRITE = Lapa3295Mauve;
         window.SPRITE.COUNTER = SPRITE.Lapa3203Mauve;
         window.SPRITE.CHEST_SEED = SPRITE.CHEST_Lapa3464Mauve;
@@ -259,7 +270,7 @@
         window.SPRITE.KRAKEN_MIN_X = SPRITE.Lapa3467Mauve;
         window.SPRITE.PLANT_SEED = SPRITE.PLANT_Lapa3464Mauve;
         window.SPRITE.RESURRECTION_ROTATE = SPRITE.RESURRECTION_Lapa3305Mauve;
-        window.SPRITE.SEED = SPRITE.Lapa3464Mauve;
+        window.SPRITE.SEED = SPRITE.Lapa3464Mauve; // '0x59b'
         window.SPRITE.SPECIAL_ITEMS = SPRITE.SPECIAL_Lapa3240Mauve;
         window.SPRITE.UNKNOWN_MINorMAX_XorY = SPRITE.Lapa3468Mauve;
         window.SPRITE.UNKNOWN2_MINorMAX_XorY = SPRITE.Lapa3479Mauve;
@@ -268,7 +279,7 @@
         window.SPRITE.WINDMILL_WHEAT_SEED = SPRITE.WINDMILL_WHEAT_Lapa3464Mauve;
 
         window.STATE = Lapa3296Mauve;
-        window.STATE.ATTACK = STATE.Lapa3306Mauve;
+        window.STATE.ATTACK = STATE.Lapa3306Mauve; // '0x580'
 
         window.ui.add_event_listener = ui.Lapa3344Mauve; // '0x785'
         window.ui.ctx = ui.Lapa3343Mauve; // '0x537'
@@ -303,6 +314,24 @@
         window.Utils.translate_vector = Utils.Lapa3353Mauve;
 
         window.WORLD = Lapa3241Mauve;
+        //window./*WORLD_*/L? = 'LLapa3471Mauve'; // '0x5ba'
+        //window./*WORLD_*/L? = 'LLapa3474Mauve'; // '0x74c'
+        //window./*WORLD_*/? = 'Lapa3213Mauve'; // '0x45b'
+        //window./*WORLD_*/? = 'Lapa3214Mauve'; // '0x660'
+        window./*WORLD_*/ROTATE = 'Lapa3305Mauve'; // '0x686'
+        //window./*WORLD_*/? = 'Lapa3448Mauve'; // '0x510'
+        //window./*WORLD_*/? = 'Lapa3462Mauve'; // '0x741'
+        //window./*WORLD_*/? = 'Lapa3463Mauve'; // '0x742'
+        window./*WORLD_*/SEED = 'Lapa3464Mauve'; // '0x59b'
+        //window./*WORLD_*/? = 'Lapa3471Mauve'; // '0x5bb'
+        //window./*WORLD_*/? = 'Lapa3473Mauve'; // '0x751'
+        //window./*WORLD_*/? = 'Lapa3474Mauve'; // '0x752'
+        //window./*WORLD_*/? = 'Lapa3476Mauve'; // '0x753'
+        //window./*WORLD_*/? = 'Lapa3477Mauve'; // '0x74e'
+        //window./*WORLD_*/? = 'Lapa3478Mauve'; // '0x5bc'
+        //window./*WORLD_*/? = 'Lapa3480Mauve';
+        //window./*WORLD_*/? = 'Lapa3481Mauve'; // '0x696'
+        window./*WORLD_*/SPEED_ATTACK = 'SPEED_Lapa3306Mauve'; // '0x691'
 
         window.world = Lapa3360Mauve;
         window./*world_*/delete_all_units = 'Lapa3320Mauve'; // '0x623'
