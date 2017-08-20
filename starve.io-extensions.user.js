@@ -319,6 +319,6 @@
             }
         };
     };
-    
+
     checkDependencies();
 })();
