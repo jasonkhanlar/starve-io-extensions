@@ -1,6 +1,8 @@
 # snippets
 
-**All scripts depend on and require starve.io-deobfuscate.user.js to function and should be compatible with one another, but results may vary**
+All scripts depend on and require starve.io-deobfuscate.user.js to function and should be compatible with one another, but results may vary
+
+Scripts here are for proof of concept and working examples
 
 ## snippets / starve.io-discord-webhook-top10.user.js
 
