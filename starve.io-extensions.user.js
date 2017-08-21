@@ -237,7 +237,7 @@
                 var resource = recipe.r[counter];
                 user.inv.decrease(resource[0], resource[1], user.inv.find_item(resource[0]));
             }
-            game.update_inv_buttons();
+            game[update_inv_buttons]();
         };
         window.old_user_craft_update = user.craft.update;
         user.craft.update = function() {
