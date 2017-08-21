@@ -158,7 +158,8 @@
     }
 
     function checkDependencies() {
-        if (typeof deobcomplete === 'undefined' || deobcomplete !== true) {
+        if ((typeof deobcomplete === 'undefined' || deobcomplete !== true) &&
+            (typeof deobmicro === 'undefined' || deobmicro !== true)) {
             // 'Starve.io Deobfuscated' is required as a dependency
             setTimeout(checkDependencies, 50);
         } else {
@@ -246,8 +247,8 @@
         user.ext_help = { enabled: false, translate: { x: 0, y: 0 } };
         user.keycodes_to_mapped_keycodes = {}; // contains things like: { 68: 96 }
 
-        window.old_game_draw_UI = game.draw_UI;
-        game.Lapa3345Mauve = function() {
+        window.old_game_draw_UI = game[draw_UI];
+        game[draw_UI] = function() {
             old_game_draw_UI.apply(this, arguments);
             draw_ext_auto_book();
             draw_ext_auto_cook();
