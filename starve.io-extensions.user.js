@@ -14,6 +14,18 @@
 (function() {
     'use strict';
 
+    // Server select menu looks ugly, fix it
+    var style = document.createElement('style');
+    style.appendChild(document.createTextNode(''));
+    document.head.appendChild(style);
+    var sheet = style.sheet;
+    sheet.insertRule('.md-select ul[role=listbox] { background: #be7c24; }');
+    sheet.insertRule('.md-select ul[role=listbox] li { white-space: nowrap; }');
+    sheet.insertRule('.md-select ul[role=listbox] li:hover { background: #68e0d1; }');
+    sheet.insertRule('.md-select ul[role=listbox] li.active { background: #38BDB1; }');
+    sheet.insertRule('#selectDisabled { background-color: #38BDB1; color: #133A2B; }');
+    sheet.insertRule('.md-select.active ul { background: #be7c24; }');
+
     var chat_log = document.createElement('div');
     var chat_log_table = document.createElement('table');
     var chat_log_tbody = document.createElement('tbody');
@@ -189,7 +201,7 @@
                     if (user.inv.n[INV.BOOK]) {
                         var thePlayer = world.fast_units[user.uid];
                         if (thePlayer.right != INV.BOOK) {
-                            client.select_inv(INV.BOOK, user.inv.find_item(INV.BOOK));
+                            window[client][select_inv](INV.BOOK, user.inv.find_item(INV.BOOK));
                         }
                     }
                 }
@@ -202,22 +214,22 @@
                 if (this.enabled) {
                     if (user.craft.fire && user.inv.n[INV.PLANT] >= 2 && user.inv.n[INV.FLOUR] >= 5 && user.inv.n[INV.ICE] >= 2) {
                         // Cake recipe (id 35) :: 2 berries (id 4), 5 flour (id 77), 2 ice (id 91)
-                        client.select_craft(35);
+                        window[client][select_craft](35);
                     } else if (user.craft.fire && user.inv.n[INV.PLANT] >= 1 && user.inv.n[INV.FLOUR] >= 3) {
                         // Cookies recipe (id 34) :: 1 berry (id 4), 3 flour (id 77)
-                        client.select_craft(34);
+                        window[client][select_craft](34);
                     } else if (user.craft.fire && user.inv.n[INV.FOODFISH] >= 1) {
                         // Cooked Fish recipe (id 32) :: 1 fish (id 86)
-                        client.select_craft(32);
+                        window[client][select_craft](32);
                     } else if (user.craft.fire && user.inv.n[INV.MEAT] >= 1) {
                         // Cooked Meat recipe (id 31) :: 1 meat (id 18)
-                        client.select_craft(31);
+                        window[client][select_craft](31);
                     } else if (user.craft.fire && user.inv.n[INV.FLOUR] >= 3) {
                         // Bread recipe (id 33) :: 3 flour (id 77)
-                        client.select_craft(33);
+                        window[client][select_craft](33);
                     } else if (user.inv.n[INV.BREAD] >= 1 && user.inv.n[INV.COOKED_MEAT] >= 1) {
                         // Sandwich recipe (id 78) :: 1 bread (id 92), 1 cooked meat (id 19)
-                        client.select_craft(78);
+                        window[client][select_craft](78);
                     }
                 }
             }
@@ -330,7 +342,7 @@
                 user.shop.new_time = user.shop.time;
                 user.shop.time_label = create_text(scale, 60 - user.shop.time + 's', 40, '#FFF', null, null, null, null, null, '#000', 6);
             }
-            window[ctx].drawImage(user.shop.time_label, f - user.shop.time_label.width / 2 * scale, g);
+            ctx.drawImage(user.shop.time_label, f - user.shop.time_label.width / 2 * scale, g);
         }
 
         window.old_user_shop_draw = user.shop.draw;

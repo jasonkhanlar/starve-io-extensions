@@ -13,20 +13,6 @@
 (function() {
     'use strict';
 
-    // Server select menu looks ugly, fix it
-    var style = document.createElement('style');
-    style.appendChild(document.createTextNode(''));
-    document.head.appendChild(style);
-    var sheet = style.sheet;
-    sheet.addRule
-
-    sheet.insertRule('.md-select ul[role=listbox] { background: #be7c24; }');
-    sheet.insertRule('.md-select ul[role=listbox] li { white-space: nowrap; }');
-    sheet.insertRule('.md-select ul[role=listbox] li:hover { background: #68e0d1; }');
-    sheet.insertRule('.md-select ul[role=listbox] li.active { background: #38BDB1; }');
-    sheet.insertRule('#selectDisabled { background-color: #38BDB1; color: #133A2B; }');
-    sheet.insertRule('.md-select.active ul { background: #be7c24; }');
-
     function checkDependencies() {
         if (typeof game !== 'undefined' && typeof ui !== 'undefined' && typeof user !== 'undefined') {
             deobfuscate();
