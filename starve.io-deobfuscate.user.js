@@ -1,17 +1,31 @@
 // ==UserScript==
 // @name         Starve.io Deobfuscated
 // @namespace    http://tampermonkey.net/
-// @version      0.03
+// @version      0.15.01
 // @description  Framework for deobfuscated code base
 // @author       Jason Khanlar
 // @match        http://starve.io/
 // @grant        none
 // ==/UserScript==
 
-// Compatible with version 14 of Starve.io client
+// Compatible with version 15 of Starve.io client
 
 (function() {
     'use strict';
+
+    // Server select menu looks ugly, fix it
+    var style = document.createElement('style');
+    style.appendChild(document.createTextNode(''));
+    document.head.appendChild(style);
+    var sheet = style.sheet;
+    sheet.addRule
+
+    sheet.insertRule('.md-select ul[role=listbox] { background: #be7c24; }');
+    sheet.insertRule('.md-select ul[role=listbox] li { white-space: nowrap; }');
+    sheet.insertRule('.md-select ul[role=listbox] li:hover { background: #68e0d1; }');
+    sheet.insertRule('.md-select ul[role=listbox] li.active { background: #38BDB1; }');
+    sheet.insertRule('#selectDisabled { background-color: #38BDB1; color: #133A2B; }');
+    sheet.insertRule('.md-select.active ul { background: #be7c24; }');
 
     function checkDependencies() {
         if (typeof game !== 'undefined' && typeof ui !== 'undefined' && typeof user !== 'undefined') {
@@ -19,327 +33,346 @@
         } else {
             setTimeout(checkDependencies, 50);
         }
-    };
+    }
 
     window.deobfuscate = function() {
-        window.OBFUSCATED_ARR = _0xbf9d;
-        window.OBFUSCATOR_FN = _0xdbf9;
+        window.OBFUSCATED_ARR = _0x1d4d;
+        window.OBFUSCATOR_FN = _0xd1d4;
         window.OBFUSCATOR_FN_INV = function(n) { for (var x=0; x<OBFUSCATED_ARR.length; x++) { if (OBFUSCATOR_FN(x) === n) return '0x'+x.toString(16); } };
 
         // DEOBFUSCATION
-        window.canh2 = 'Lapa3313Mauve';
-        window.canw2 = 'Lapa3310Mauve';
+        window.canh2 = 'O_O153300_0';
+        window.canw2 = 'O_O153270_0';
 
-        window.CLIENT = Lapa3297Mauve;
-        window./*CLIENT_*/ATTACK = 'Lapa3306Mauve'; // '0x580'
-        window./*CLIENT_*/CAM_DELAY = 'Lapa3303Mauve'; // '0x644'
-        window./*CLIENT_*/LAG_DISTANCE = 'Lapa3307Mauve';
-        window./*CLIENT_*/MOVE_SPEED_MOD_ATTACK = 'Lapa3201Mauve'; // '0x682'
-        window./*CLIENT_*/MUTE_DELAY = 'Lapa3304Mauve';
-        window./*CLIENT_*/ROTATE = 'Lapa3305Mauve'; // '0x686'
-        window./*CLIENT_*/TEAM_FULL = 'Lapa3444Mauve'; // '0x516'
-        window./*CLIENT_*/TEAM_JOIN = 'Lapa3446Mauve'; // '0x515'
-        window./*CLIENT_*/TEAM_LEAVE = 'Lapa3451Mauve'; // '0x513'
-        window./*CLIENT_*/TEAM_MANAGE = 'Lapa3445Mauve'; // '0x7f5'
-        window./*CLIENT_*/TEAM_SHOW = 'Lapa3447Mauve'; // '0x514'
-        window./*CLIENT_*/TOKEN_LEN = 'Lapa3308Mauve'; // '0x722'
-        window./*CLIENT_*/VERSION_NUMBER = 'Lapa3302Mauve'; // '0x679'
-        window./*CLIENT_*/WAITING_FOR_SERVER = 'Lapa3309Mauve';
+        window.CLIENT = O_O153140_0;
+        window./*CLIENT_*/ATTACK = 'O_O153230_0'; // '0x5a6'
+        window./*CLIENT_*/CAM_DELAY = 'O_O153200_0'; // '0x679'
+        window./*CLIENT_*/LAG_DISTANCE = 'O_O153240_0'; // '0x658'
+        window./*CLIENT_*/MOVE_SPEED_MOD_ATTACK = 'O_O152030_0';
+        window./*CLIENT_*/MUTE_DELAY = 'O_O153210_0';
+        window./*CLIENT_*/ROTATE = 'O_O153220_0'; // '0x6c2'
+        window./*CLIENT_*/TEAM_FULL = 'O_O154610_0'; // '0x863'
+        window./*CLIENT_*/TEAM_JOIN = 'O_O154630_0'; // '0x53b'
+        window./*CLIENT_*/TEAM_LEAVE = 'O_O154680_0'; // '0x53a'
+        window./*CLIENT_*/TEAM_MANAGE = 'O_O154620_0'; // '0x53c'
+        window./*CLIENT_*/TEAM_SHOW = 'O_O154640_0'; // '0x862'
+        window./*CLIENT_*/TOKEN_LEN = 'O_O153250_0'; // '0x764'
+        window./*CLIENT_*/VERSION_NUMBER = 'O_O153190_0'; // '0x6b5'
+        window./*CLIENT_*/WAITING_FOR_SERVER = 'O_O153260_0';
+        //window./*CLIENT_*/? = 'O_O151970_0'; // '0x7cd' // skin up/down related
 
-        window.Client = 'Lapa3357Mauve';
+        window.Client = 'O_O153740_0';
 
-        window.client = 'Lapa3279Mauve';
-        window./*client_*/accept_build = 'Lapa3242Mauve'; // '0x62f'
-        window./*client_*/build_ok = 'Lapa3243Mauve'; // '0x5f9'
-        window./*client_*/build_stop = 'Lapa3244Mauve'; // '0x5f6'
-        window./*client_*/cam_delay = 'Lapa3245Mauve'; // '0x641'
-        window./*client_*/cancel_craft = 'Lapa3314Mauve'; // '0x676'
-        window./*client_*/cancel_crafting = 'Lapa3246Mauve'; // '0x7a8'
-        window./*client_*/change_ground = 'Lapa3247Mauve'; // '0x610'
-        window./*client_*/check_pong = 'Lapa3248Mauve'; // '0x81c'
-        window./*client_*/check_state = 'Lapa3249Mauve'; // '0x81b'
-        window./*client_*/connect_timeout = 'Lapa3250Mauve'; // '0x5e9'
-        window./*client_*/connect_timer = 'Lapa3251Mauve'; // '0x5e0'
-        window./*client_*/decrease_item = 'Lapa3252Mauve'; // '0x62d'
-        window./*client_*/delete_inv = 'Lapa3253Mauve'; // '0x639'
-        window./*client_*/dont_harvest = 'Lapa3254Mauve'; // '0x62a'
-        window./*client_*/empty_res = 'Lapa3255Mauve'; // '0x604'
-        window./*client_*/fail_restore = 'Lapa3256Mauve'; // '0x5fe'
-        window./*client_*/gauge_hunger = 'Lapa3416Mauve'; // '0x60e'
-        window./*client_*/gauge_life = 'Lapa3456Mauve'; // '0x60c'
-        window./*client_*/gauge_thirst = 'Lapa3420Mauve'; // '0x60d'
-        window./*client_*/get_focus = 'Lapa3318Mauve'; // '0x603'
-        window./*client_*/get_time = 'Lapa3258Mauve'; // '0x60f'
-        window./*client_*/give_breadoven = 'give_Lapa3202Mauve'; // '0x619'
-        window./*client_*/give_item = 'Lapa3260Mauve'; // '0x61c'
-        window./*client_*/give_wood = 'Lapa3259Mauve'; // '0x61b'
-        window./*client_*/handshake = 'Lapa3257Mauve'; // '0x65f'
-        window./*client_*/hitten_other = 'Lapa3261Mauve'; // '0x617'
-        window./*client_*/inv_full = 'Lapa3263Mauve'; // '0x606'
-        window./*client_*/join_team = 'Lapa3230Mauve'; // '0x64a'
-        window./*client_*/joined_team = 'Lapa3439Mauve'; // '0x64c'
-        window./*client_*/kill_player = 'Lapa3264Mauve'; // '0x612'
-        window./*client_*/last_cam = 'Lapa3265Mauve'; // '0x642'
-        window./*client_*/left_team = 'Lapa3438Mauve'; // '0x651'
-        window./*client_*/lock_chest = 'Lapa3266Mauve'; // '0x61f'
-        window./*client_*/move_units = 'Lapa3267Mauve'; // '0x63e'
-        window./*client_*/new_player = 'Lapa3268Mauve'; // '0x602'
-        window./*client_*/old_version = 'Lapa3270Mauve';
-        window./*client_*/ping_delay = 'Lapa3269Mauve'; // '0x645'
-        window./*client_*/quest_update = 'Lapa3198Mauve';
-        window./*client_*/recover_focus = 'Lapa3271Mauve'; // '0x616'
-        window./*client_*/resurrection = 'Lapa3465Mauve'; // '0x618'
-        window./*client_*/select_craft = 'Lapa3272Mauve'; // '0x626' // make recipe
-        window./*client_*/select_inv = 'Lapa3273Mauve'; // '0x631'
-        window./*client_*/send_angle = 'Lapa3274Mauve'; // '0x63d'
-        window./*client_*/send_attack = 'Lapa3276Mauve'; // '0x63c'
-        window./*client_*/send_build = 'Lapa3277Mauve'; // '0x630'
-        window./*client_*/send_chat = 'Lapa3278Mauve'; // '0x73d'
-        window./*client_*/send_move = 'Lapa3280Mauve';
-        window./*client_*/send_survivalkit = 'Lapa3441Mauve'; // '0x825'
-        window./*client_*/server_list = 'Lapa3432Mauve'; // '0x5cf'
-        window./*client_*/set_cam = 'Lapa3319Mauve'; // '0x614'
-        window./*client_*/socket = 'Lapa3229Mauve'; // '0x5cd' // new
-        window./*client_*/steal_token = 'Lapa3291Mauve'; // '0x653'
-        window./*client_*/stop_attack = 'Lapa3292Mauve'; // '0x63b'
-        window./*client_*/store_server_list = 'Lapa3281Mauve'; // '0x5d6'
-        window./*client_*/survival_kit = 'Lapa3437Mauve'; // '0x608'
-        window./*client_*/take_chest = 'Lapa3284Mauve'; // '0x61d'
-        window./*client_*/take_flour = 'Lapa3466Mauve'; // '0x820'
-        window./*client_*/team_destroyed = 'Lapa3440Mauve'; // '0x64e'
-        window./*client_*/try_ping = 'Lapa3285Mauve'; // '0x646'
-        window./*client_*/unlock_chest = 'unLapa3266Mauve'; // '0x61e'
-        window./*client_*/update_cam = 'Lapa3287Mauve'; // '0x643'
-        window./*client_*/update_server_list = 'Lapa3283Mauve'; // '0x5d8'
-        window./*client_*/_current_id = 'Lapa3339Mauve'; // '0x5ce'
+        window.client = 'O_O152960_0';
+        window./*client_*/accept_build = 'O_O152530_0'; // '0x6b2'
+        window./*client_*/build_ok = 'O_O152540_0'; // '0x625'
+        window./*client_*/build_stop = ''; // '0x620'
+        window./*client_*/cam_delay = 'O_O152560_0'; // '0x67a'
+        window./*client_*/cancel_craft = 'O_O153310_0'; // '0x6b0'
+        window./*client_*/cancel_crafting = 'O_O152570_0'; // '0x665'
+        window./*client_*/change_ground = 'O_O152580_0'; // '0x88b'
+        window./*client_*/check_pong = 'O_O152590_0'; // '0x697'
+        window./*client_*/check_state = 'O_O152600_0';
+        window./*client_*/connect_timeout = 'O_O152670_0'; // '0x614'
+        window./*client_*/connect_timer = 'O_O152680_0'; // '0x60b'
+        window./*client_*/decrease_item = 'O_O152690_0'; // '0x663'
+        window./*client_*/delete_inv = 'O_O152700_0'; // '0x670'
+        window./*client_*/dont_harvest = 'O_O152710_0'; // '0x660'
+        window./*client_*/empty_res = 'O_O152720_0'; // '0x631'
+        window./*client_*/fail_restore = 'O_O152730_0'; // '0x629'
+        window./*client_*/gauge_hunger = 'O_O154330_0'; // '0x60f'
+        window./*client_*/gauge_life = 'O_O154730_0'; // '0x63d'
+        window./*client_*/gauge_thirst = 'O_O154370_0'; // '0x63e'
+        window./*client_*/get_focus = 'O_O153350_0'; // '0x630'
+        window./*client_*/get_time = 'O_O152750_0'; // '0x640'
+        window./*client_*/give_breadoven = 'give_O_O152040_0'; // '0x64c'
+        window./*client_*/give_item = 'O_O152770_0'; // '0x650'
+        window./*client_*/give_wood = 'O_O152760_0'; // '0x64f'
+        window./*client_*/handshake = 'O_O152740_0'; // '0x6af'
+        window./*client_*/hitten_other = 'O_O152780_0'; // '0x6b1'
+        window./*client_*/inv_full = 'O_O152800_0'; // '0x633'
+        window./*client_*/join_team = 'O_O152320_0'; // '0x681'
+        window./*client_*/joined_team = 'O_O154560_0'; // '0x683'
+        window./*client_*/kill_player = 'O_O152810_0'; // '0x643'
+        window./*client_*/last_cam = 'O_O152820_0'; // '0x678'
+        window./*client_*/left_team = 'O_O154550_0'; // '0x688'
+        window./*client_*/lock_chest = 'O_O152830_0'; // '0x653'
+        window./*client_*/move_units = 'O_O152840_0'; // '0x675'
+        window./*client_*/new_player = 'O_O152850_0'; // '0x62e'
+        window./*client_*/old_version = 'O_O152870_0'; // '0x61d'
+        window./*client_*/ping_delay = 'O_O152860_0'; // '0x67c'
+        window./*client_*/quest_update = 'O_O152000_0'; // '0x63b'
+        window./*client_*/recover_focus = 'O_O152880_0'; // '0x647'
+        window./*client_*/resurrection2 = 'O_O154820_0'; // '0x64b'
+        window./*client_*/select_craft = 'O_O152890_0'; // '0x65c'
+        window./*client_*/select_inv = 'O_O152900_0'; // '0x667'
+        window./*client_*/send_angle = 'O_O152910_0'; // '0x674'
+        window./*client_*/send_attack = 'O_O152930_0'; // '0x673'
+        window./*client_*/send_build = 'O_O152940_0'; // '0x666'
+        window./*client_*/send_chat = 'O_O152950_0'; // '0x77c'
+        window./*client_*/send_move = 'O_O152970_0'; // '0x76b'
+        window./*client_*/send_survivalkit = 'O_O154580_0'; // '0x80d'
+        window./*client_*/server_list = 'O_O154490_0'; // '0x5fa'
+        window./*client_*/set_cam = 'O_O153360_0'; // '0x614'
+        window./*client_*/socket = 'O_O152310_0'; // '0x5ef'
+        window./*client_*/steal_token = 'O_O153080_0'; // '0x68b'
+        window./*client_*/stop_attack = 'O_O153090_0'; // '0x672'
+        window./*client_*/store_server_list = 'O_O152980_0'; // '0x5f9'
+        window./*client_*/succeed_quest = 'O_O151990_0'; // '0x638'
+        window./*client_*/survival_kit = 'O_O154540_0'; // '0x636'
+        window./*client_*/take_chest = 'O_O153010_0'; // '0x652'
+        window./*client_*/take_flour = 'O_O154830_0'; // '0x651'
+        window./*client_*/team_destroyed = 'O_O154570_0'; // '0x685'
+        window./*client_*/try_ping = 'O_O153020_0'; // '0x67b'
+        window./*client_*/unlock_chest = 'unO_O152830_0';
+        window./*client_*/update_cam = 'O_O153040_0';
+        window./*client_*/update_server_list = 'O_O153000_0'; // '05fc'
+        window./*client_*/_current_id = 'O_O153560_0'; // '0x5f0'
+        //window./*client_*/? = 'O_O152350_0'; // '0x64d' // take_well? put_well?
+        //window./*client_*/? = 'O_O152530_0'; // '0x6b2'
 
-        window.COUNTER = 'Lapa3203Mauve';
+        window.COUNTER = 'O_O152050_0'; // '0x517'
 
-        window.CRAFT.SEED = CRAFT.Lapa3464Mauve; // '0x59b'
+        window.CRAFT.HOOD = CRAFT.O_O151980_0; // '0x318'
+        window.CRAFT.SEED = CRAFT.O_O154810_0; // '0x5c0'
+        window.CRAFT.WINTER_HOOD = CRAFT.O_O151950_0; // '0x31c'
 
-        window.create_breadoven = 'create_Lapa3202Mauve';
-        window.create_breadoven_off = 'create_Lapa3202Mauve_off';
-        window.create_breadoven_ui = 'create_Lapa3202Mauve_ui';
-        window.create_gauges_mobile = 'create_gauges_Lapa3450Mauve';
-        window.create_leaderboard_mobile = 'create_leaderboard_Lapa3450Mauve';
-        window.create_old_gauges = 'create_Lapa3455Mauve_gauges';
+        window.create_breadoven = 'create_O_O152040_0';
+        window.create_breadoven_off = 'create_O_O152040_0_off';
+        window.create_breadoven_ui = 'create_O_O152040_0_ui';
+        window.create_gauges_mobile = 'create_gauges_O_O154670_0';
+        window.create_leaderboard_mobile = 'create_leaderboard_O_O154670_0';
+        window.create_old_gauges = 'create_O_O154720_0_gauges';
 
-        window.ctx = Lapa3343Mauve; // '0x537'
+        window.ctx = O_O153600_0; // '0x55a'
 
-        window.delta = 'Lapa3348Mauve';
+        window.delta = 'O_O153650_0';
 
-        window.draw_alert = 'Lapa3369Mauve';
-        window.draw_alert_ghost = 'Lapa3366Mauve';
-        window.draw_auto_feed = 'Lapa3371Mauve';
-        window.draw_bg_transition = 'Lapa3373Mauve';
-        window.draw_bigmap = 'Lapa3374Mauve';
-        window.draw_breadoven = 'draw_Lapa3202Mauve';
-        window.draw_breadoven_inventory = 'draw_Lapa3202Mauve_inventory';
-        window.draw_breadoven_smog = 'draw_Lapa3202Mauve_smog';
-        window.draw_breath = 'Lapa3375Mauve';
-        window.draw_chat = 'Lapa3376Mauve';
-        window.draw_chest = 'Lapa3378Mauve';
-        window.draw_chest_inventory = 'Lapa3377Mauve';
-        window.draw_door = 'Lapa3379Mauve';
-        window.draw_dragon = 'Lapa3380Mauve';
-        window.draw_fake_world = 'Lapa3356Mauve';
-        window.draw_fg_transition = 'Lapa3381Mauve';
-        window.draw_fire_ground = 'Lapa3382Mauve';
-        window.draw_fire_halo = 'Lapa3383Mauve';
-        window.draw_foot = 'Lapa3384Mauve';
-        window.draw_furnace = 'Lapa3388Mauve';
-        window.draw_furnace_ground = 'Lapa3385Mauve';
-        window.draw_furnace_halo = 'Lapa3386Mauve';
-        window.draw_furnace_inventory = 'Lapa3387Mauve';
-        window.draw_gauges = 'Lapa3389Mauve';
-        window.draw_ground = 'Lapa3390Mauve';
-        window.draw_image_transition = 'Lapa3391Mauve';
-        window.draw_imgs_transition = 'Lapa3393Mauve';
-        window.draw_leaderboard = 'Lapa3394Mauve';
-        window.draw_map_object = 'Lapa3396Mauve';
-        window.draw_map_objects = 'Lapa3375Mauve_objects';
-        window.draw_map_objects_breathless = 'Lapa3395Mauve';
-        window.draw_map_transition = 'Lapa3397Mauve';
-        window.draw_minimap = 'Lapa3398Mauve';
-        window.draw_plant = 'Lapa3400Mauve';
-        window.draw_player = 'Lapa3403Mauve';
-        window.draw_player_clothe = 'Lapa3401Mauve';
-        window.draw_player_effect = 'Lapa3403Mauve_effect';
-        window.draw_player_right_stuff = 'Lapa3402Mauve';
-        window.draw_reconnect = 'Lapa3404Mauve';
-        window.draw_resurrection = 'Lapa3239Mauve';
-        window.draw_resurrection_halo = 'Lapa3216Mauve';
-        window.draw_resurrection_inventory = 'Lapa3220Mauve';
-        window.draw_seed = 'Lapa3221Mauve';
-        window.draw_show_spectators = 'Lapa3226Mauve';
-        window.draw_shop_timer = 'Lapa3443Mauve';
-        window.draw_simple_item = 'Lapa3228Mauve';
-        window.draw_simple_mobs = 'Lapa3231Mauve';
-        window.draw_simple_mobs_2 = 'Lapa3231Mauve_2';
-        window.draw_team_delay = 'Lapa3442Mauve';
-        window.draw_transition = 'Lapa3233Mauve';
-        window.draw_ui_crafting = 'Lapa3234Mauve';
-        window.draw_ui_inventory = 'Lapa3236Mauve';
-        window.draw_ui_slot_item = 'Lapa3232Mauve';
-        window.draw_ui_slot_item_count = 'Lapa3370Mauve';
-        window.draw_weapon_switch_delay = 'Lapa3237Mauve';
-        window.draw_winter = 'Lapa3238Mauve';
-        window.draw_world = 'Lapa3359Mauve';
-        window.draw_world_with_effect = 'Lapa3355Mauve';
+        window.draw_alert = 'O_O153860_0';
+        window.draw_alert_ghost = 'O_O153830_0';
+        window.draw_auto_feed = 'O_O153880_0';
+        window.draw_bg_transition = 'O_O153900_0';
+        window.draw_bigmap = 'O_O153910_0';
+        window.draw_breadoven = 'draw_O_O152040_0';
+        window.draw_breadoven_inventory = 'draw_O_O152040_0_inventory';
+        window.draw_breadoven_smog = 'draw_O_O152040_0_smog';
+        window.draw_breath = 'O_O153920_0';
+        window.draw_chat = 'O_O153930_0';
+        window.draw_chest = 'O_O153950_0';
+        window.draw_chest_inventory = 'O_O153940_0';
+        window.draw_door = 'O_O153960_0';
+        window.draw_dragon = 'O_O153970_0';
+        window.draw_fake_world = 'O_O153730_0';
+        window.draw_fg_transition = 'O_O153980_0';
+        window.draw_fire_ground = 'O_O153990_0';
+        window.draw_fire_halo = 'O_O154000_0';
+        window.draw_foot = 'O_O154010_0';
+        window.draw_furnace = 'O_O154050_0';
+        window.draw_furnace_ground = 'O_O154020_0';
+        window.draw_furnace_halo = 'O_O154030_0';
+        window.draw_furnace_inventory = 'O_O154040_0';
+        window.draw_gauges = 'O_O154060_0';
+        window.draw_ground = 'O_O154070_0';
+        window.draw_image_transition = 'O_O154080_0';
+        window.draw_imgs_transition = 'O_O154100_0';
+        window.draw_leaderboard = 'O_O154110_0';
+        window.draw_map_object = 'O_O154130_0';
+        window.draw_map_objects = 'O_O153920_0_objects';
+        window.draw_map_objects_breathless = 'O_O154120_0';
+        window.draw_map_transition = 'O_O154140_0';
+        window.draw_minimap = 'O_O154150_0';
+        window.draw_plant = 'O_O154170_0';
+        window.draw_player = 'O_O154200_0';
+        window.draw_player_clothe = 'O_O154180_0';
+        window.draw_player_effect = 'O_O154200_0_effect';
+        window.draw_player_right_stuff = 'O_O154190_0';
+        window.draw_reconnect = 'O_O154210_0';
+        window.draw_resurrection = 'O_O152500_0';
+        window.draw_resurrection_halo = 'O_O152180_0';
+        window.draw_resurrection_inventory = 'O_O152220_0';
+        window.draw_seed = 'O_O152230_0';
+        window.draw_show_spectators = 'O_O152280_0';
+        window.draw_shop_timer = ''; // deprecated
+        window.draw_simple_item = 'O_O152300_0';
+        window.draw_simple_mobs = 'O_O152330_0';
+        window.draw_simple_mobs_2 = 'O_O152330_0_2';
+        window.draw_team_delay = 'O_O154590_0';
+        window.draw_transition = 'O_O152360_0';
+        window.draw_ui_crafting = 'O_O152370_0';
+        window.draw_ui_inventory = 'O_O152390_0';
+        window.draw_ui_slot_item = 'O_O152340_0';
+        window.draw_ui_slot_item_count = 'O_O153870_0';
+        window.draw_weapon_switch_delay = 'O_O152400_0';
+        window.draw_winter = 'O_O152490_0';
+        window.draw_world = 'O_O153760_0';
+        window.draw_world_with_effect = 'O_O153720_0';
 
-        window.fake_world = 'Lapa3358Mauve';
+        window.fake_world = 'O_O153750_0';
 
-        window.game.add_event_listener = game.Lapa3344Mauve; // '0x785'
-        window.game.ctx = game.Lapa3343Mauve; // '0x537'
-        window.game.breadoven_bread_button = game.Lapa3202Mauve_bread_button; // '0x501'
-        window.game.breadoven_flour_button = game.Lapa3202Mauve_flour_button; // '0x503'
-        window.game.breadoven_wood_button = game.Lapa3202Mauve_wood_button; // '0x500'
-        window.game.draw_scene = game.Lapa3346Mauve; // '0x819'
-        window.game.draw_UI = game.Lapa3345Mauve; // '0x816'
-        window.game.recipes = game.Lapa3204Mauve; // '0x663'
-        window.game.remove_event_listener = game.Lapa3342Mauve; // '0x786'
-        window.game.safe_delete = game.Lapa3199Mauve; // '0x799'
-        window.game.team_id = game.Lapa3449Mauve; // '0x511'
-        window.game.text_alert_queue_is_empty = game.Lapa3196Mauve; // '0x73a'
-        window.game.trigger_keydown = game.Lapa3325Mauve; // '0x81e'
-        window.game.trigger_keyup = game.Lapa3328Mauve; // '0x81d'
-        window.game.trigger_mousedown = game.Lapa3329Mauve; // '0x789'
-        window.game.trigger_mousemove = game.Lapa3330Mauve; // '0x78e'
-        window.game.trigger_mouseup = game.Lapa3331Mauve; // '0x78d'
-        window.game.update_breadoven_button = game.update_Lapa3202Mauve_button; // '0x734'
-        window.game.update_chest_buttons = game.Lapa3332Mauve_buttons; // '0x732'
-        window.game.update_connection = game.Lapa3333Mauve; // '0x81a'
-        window.game.update_craft_buttons = game.Lapa3335Mauve; // '0x731'
-        window.game.update_furnace_button = game.Lapa3336Mauve;
-        window.game.update_inv_buttons = game.Lapa3337Mauve; // '0x5f7'
-        window.game.update_scene = game.Lapa3340Mauve; // '0x817'
+        window./*game_*/add_event_listener = 'O_O153610_0'; // '0x7e4'
+        window./*game_*/ctx = O_O153600_0; // '0x55a'
+        window./*game_*/breadoven_bread_button = 'O_O152040_0_bread_button'; // '0x528'
+        window./*game_*/breadoven_flour_button = 'O_O152040_0_flour_button'; // '0x529'
+        window./*game_*/breadoven_wood_button = 'O_O152040_0_wood_button'; // '0x88a'
+        window./*game_*/draw_scene = 'O_O153630_0'; // '0x891'
+        window./*game_*/draw_UI = 'O_O153620_0'; // '0x88e'
+        window./*game_*/recipes = 'O_O152060_0'; // '0x82d'
+        window./*game_*/remove_event_listener = 'O_O153590_0'; // '0x7d9'
+        window./*game_*/safe_delete = 'O_O152010_0'; // '0x7ee'
+        window./*game_*/team_id = 'O_O154660_0'; // '0x538'
+        window./*game_*/text_alert_queue_is_empty = 'O_O151940_0'; // '0x779'
+        window./*game_*/trigger_keydown = 'O_O153420_0'; // '0x893'
+        window./*game_*/trigger_keyup = 'O_O153450_0'; // '0x89f'
+        window./*game_*/trigger_mousedown = 'O_O153460_0'; // '0x7df'
+        window./*game_*/trigger_mousemove = 'O_O153470_0'; // '0x7e2'
+        window./*game_*/trigger_mouseup = 'O_O153480_0'; // '0x7e1'
+        window./*game_*/update_breadoven_button = 'update_O_O152040_0_button'; // '0x774'
+        window./*game_*/update_chest_buttons = 'O_O153490_0_buttons'; // '0x771'
+        window./*game_*/update_connection = 'O_O153500_0'; // '0x892'
+        window./*game_*/update_craft_buttons = 'O_O153520_0'; // '0x770'
+        window./*game_*/update_furnace_button = 'O_O153530_0'; // '0x772'
+        window./*game_*/update_inv_buttons = 'O_O153540_0'; // '0x621'
+        window./*game_*/update_scene = 'O_O153570_0'; // '0x88f'
 
-        window.get_mouse_pos = 'Lapa3412Mauve';
+        window.get_mouse_pos = 'O_O154290_0';
 
-        window.init_fake_world = 'Lapa3354Mauve';
+        window.init_fake_world = 'O_O153710_0';
 
-        window.INV.SEED = INV.Lapa3464Mauve; // '0x59b'
+        window.INV.HOOD = INV.O_O151980_0; // '0x318'
+        window.INV.SEED = INV.O_O154810_0; // '0x5c0'
+        window.INV.WINTER_HOOD = INV.O_O151950_0; // '0x31c'
 
-        window.INV_INFO = 'Lapa3206Mauve';
+        window.INV_INFO = 'O_O152080_0';
 
-        window.ITEMS = Lapa3240Mauve;
-        window.ITEMS.SEED = ITEMS.Lapa3464Mauve; // '0x59b'
-        window.ITEMS.WHEAT_SEED = ITEMS.WHEAT_Lapa3464Mauve; // '0x1dd'
+        window.ITEMS = O_O152510_0; // '0x988'
+        window.ITEMS.SEED = ITEMS.O_O154810_0; // '0x5c0'
+        window.ITEMS.WHEAT_SEED = ITEMS.WHEAT_O_O154810_0; // '0x1e0'
 
-        window.keyboard.set_azerty = keyboard.Lapa3424Mauve;
-        window.keyboard.set_qwerty = keyboard.Lapa3425Mauve;
-        window.keyboard.clear_directionnal = keyboard.Lapa3428Mauve;
-        window.keyboard.ARROW_LEFT = keyboard.Lapa3429Mauve; // '0x61'
-        window.keyboard.ARROW_RIGHT = keyboard.Lapa3430Mauve; // '0x6d'
-        window.keyboard.ARROW_TOP = keyboard.Lapa3431Mauve; // '0x62'
+        //window.? = 'O_O151960_0';
 
-        window.loader.ctx = loader.Lapa3343Mauve; // '0x537'
+        window.keyboard.set_azerty = keyboard.O_O154410_0; // '0x58'
+        window.keyboard.set_qwerty = keyboard.O_O154420_0; // '0x5c'
+        window.keyboard.clear_directionnal = keyboard.O_O154450_0; // '0x6b'
+        window.keyboard.ARROW_LEFT = keyboard.O_O154460_0; // '0x5f'
+        window.keyboard.ARROW_RIGHT = keyboard.O_O154470_0; // '0x60'
+        window.keyboard.ARROW_TOP = keyboard.O_O154480_0; // '0x66'
 
-        window.mobile = 'Lapa3450Mauve';
+        window.loader.ctx = loader.O_O153600_0; // '0x55a'
 
-        window.MOUSE_MOVE = 'Lapa3411Mauve';
-        window.MOUSE_DOWN = 'Lapa3410Mauve';
-        window.MOUSE_UP = 'Lapa3406Mauve';
+        window.mobile = 'O_O154670_0';
 
-        window.old_timestamp = 'Lapa3347Mauve';
+        window.MOUSE_MOVE = 'O_O154280_0';
+        window.MOUSE_DOWN = 'O_O154270_0';
+        window.MOUSE_UP = 'O_O154230_0';
 
-        window.RANDOM_NUMS = Lapa3459Mauve;
+        window.old_timestamp = 'O_O153640_0';
 
-        window.RECIPE_CATEGORIES = Lapa3207Mauve;
-        window.RECIPE_CATEGORIES.CONSTRUCTION = RECIPE_CATEGORIES.Lapa3211Mauve; // '0x71c'
-        window.RECIPE_CATEGORIES.FOOD = RECIPE_CATEGORIES.Lapa3209Mauve; // '0x71b'
-        window.RECIPE_CATEGORIES.HAT = RECIPE_CATEGORIES.Lapa3212Mauve; // '0x71d'
-        window.RECIPE_CATEGORIES.PLACEABLE = RECIPE_CATEGORIES.Lapa3215Mauve; // '0x718'
-        window.RECIPE_CATEGORIES.TOOL = RECIPE_CATEGORIES.Lapa3208Mauve; // '0x719'
-        window.RECIPE_CATEGORIES.WEAPON = RECIPE_CATEGORIES.Lapa3210Mauve; // '0x71a'
+        window.RANDOM_NUMS = O_O154760_0;
 
-        window.RECIPES = Lapa3294Mauve;
+        window.RECIPE_CATEGORIES = O_O152090_0;
+        window.RECIPE_CATEGORIES.CONSTRUCTION = RECIPE_CATEGORIES.O_O152130_0; // '0x75d'
+        window.RECIPE_CATEGORIES.FOOD = RECIPE_CATEGORIES.O_O152110_0; // '0x75c'
+        window.RECIPE_CATEGORIES.HAT = RECIPE_CATEGORIES.O_O152140_0; // '0x75e'
+        window.RECIPE_CATEGORIES.PLACEABLE = RECIPE_CATEGORIES.O_O152170_0; // '0x758'
+        window.RECIPE_CATEGORIES.TOOL = RECIPE_CATEGORIES.O_O152100_0; // '0x759'
+        window.RECIPE_CATEGORIES.WEAPON = RECIPE_CATEGORIES.O_O152120_0; // '0x75b'
 
-        window.scoreboard.ctx = scoreboard.Lapa3343Mauve; // '0x537'
+        window.RECIPES = O_O153110_0;
 
-        window.SPRITE = Lapa3295Mauve;
-        window.SPRITE.COUNTER = SPRITE.Lapa3203Mauve;
-        window.SPRITE.CHEST_SEED = SPRITE.CHEST_Lapa3464Mauve;
-        window.SPRITE.CHEST_WHEAT_SEED = SPRITE.CHEST_WHEAT_Lapa3464Mauve;
-        window.SPRITE.COUNTER = SPRITE.Lapa3203Mauve;
-        window.SPRITE.CRAFT_SEED = SPRITE.CRAFT_Lapa3464Mauve;
-        window.SPRITE.CRAFT_WHEAT_SEED = SPRITE.CRAFT_WHEAT_Lapa3464Mauve;
-        window.SPRITE.GAUGE = SPRITE.Lapa3457Mauve;
-        window.SPRITE.INV_SEED = SPRITE.INV_Lapa3464Mauve;
-        window.SPRITE.INV_WHEAT_SEED = SPRITE.INV_WHEAT_Lapa3464Mauve;
-        window.SPRITE.KRAKEN_MIN_X = SPRITE.Lapa3467Mauve;
-        window.SPRITE.PLANT_SEED = SPRITE.PLANT_Lapa3464Mauve;
-        window.SPRITE.RESURRECTION_ROTATE = SPRITE.RESURRECTION_Lapa3305Mauve;
-        window.SPRITE.SEED = SPRITE.Lapa3464Mauve; // '0x59b'
-        window.SPRITE.SPECIAL_ITEMS = SPRITE.SPECIAL_Lapa3240Mauve;
-        window.SPRITE.UNKNOWN_MINorMAX_XorY = SPRITE.Lapa3468Mauve;
-        window.SPRITE.UNKNOWN2_MINorMAX_XorY = SPRITE.Lapa3479Mauve;
-        window.SPRITE.WHEAT_SEED = SPRITE.WHEAT_Lapa3464Mauve;
-        window.SPRITE.WHEAT_SEED_DRIED = SPRITE.WHEAT_Lapa3464Mauve_DRIED;
-        window.SPRITE.WINDMILL_WHEAT_SEED = SPRITE.WINDMILL_WHEAT_Lapa3464Mauve;
+        window.scoreboard.ctx = scoreboard.O_O153600_0; // '0x55a'
 
-        window.STATE = Lapa3296Mauve;
-        window.STATE.ATTACK = STATE.Lapa3306Mauve; // '0x580'
+        window.SPRITE = O_O153120_0;
+        window.SPRITE.COUNTER = SPRITE.O_O152050_0; // '0x517'
+        window.SPRITE.CHEST_HOOD = SPRITE.CHEST_O_O151980_0;
+        window.SPRITE.CHEST_SEED = SPRITE.CHEST_O_O154810_0; // '0x4a9'
+        window.SPRITE.CHEST_WHEAT_SEED = SPRITE.CHEST_WHEAT_O_O154810_0; // '0x4aa'
+        window.SPRITE.CHEST_WINTER_HOOD = SPRITE.CHEST_O_O151950_0;
+        window.SPRITE.COUNTER = SPRITE.O_O152050_0; // '0x517'
+        window.SPRITE.CRAFT_HOOD = SPRITE.CRAFT_O_O151980_0; // '0x323'
+        window.SPRITE.CRAFT_SEED = SPRITE.CRAFT_O_O154810_0; // '0x1bd'
+        window.SPRITE.CRAFT_WHEAT_SEED = SPRITE.CRAFT_WHEAT_O_O154810_0; // '0x1b6'
+        window.SPRITE.CRAFT_WINTER_HOOD = SPRITE.CRAFT_O_O151950_0; // '0x321'
+        window.SPRITE.GAUGE = SPRITE.O_O154740_0; // '0x48a'
+        window.SPRITE.GLOVES_HOOD = SPRITE.GLOVES_O_O151980_0; // '0x13f'
+        window.SPRITE.HOOD = SPRITE.O_O151980_0; // '0x318'
+        window.SPRITE.INV_HOOD = SPRITE.INV_O_O151980_0; // '0x322'
+        window.SPRITE.INV_SEED = SPRITE.INV_O_O154810_0; // '0x1bb'
+        window.SPRITE.INV_WHEAT_SEED = SPRITE.INV_WHEAT_O_O154810_0; // '0x1b5'
+        window.SPRITE.INV_WINTER_HOOD = SPRITE.INV_O_O151950_0; // '0x320'
+        window.SPRITE.KRAKEN_MIN_X = SPRITE.O_O154840_0; // '0x6cc'
+        window.SPRITE.PLANT_SEED = SPRITE.PLANT_O_O154810_0; // '0x1dd'
+        window.SPRITE.RESURRECTION_ROTATE = SPRITE.RESURRECTION_O_O153220_0; // '0x2eb'
+        window.SPRITE.SEED = SPRITE.O_O154810_0; // '0x5c0'
+        window.SPRITE.SPECIAL_ITEMS = SPRITE.SPECIAL_O_O152510_0;
+        window.SPRITE.UNKNOWN_MINorMAX_XorY = SPRITE.O_O154850_0; // '0x6cb'
+        window.SPRITE.UNKNOWN2_MINorMAX_XorY = SPRITE.O_O154960_0; // '0x6c9'
+        window.SPRITE.WHEAT_SEED = SPRITE.WHEAT_O_O154810_0; // '0x1e0'
+        window.SPRITE.WHEAT_SEED_DRIED = SPRITE.WHEAT_O_O154810_0_DRIED; // '0x1e2'
+        window.SPRITE.WINDMILL_WHEAT_SEED = SPRITE.WINDMILL_WHEAT_O_O154810_0; // '0x866'
+        window.SPRITE.WINTER_HOOD = SPRITE.O_O151950_0; // '0x31c'
 
-        window.ui.add_event_listener = ui.Lapa3344Mauve; // '0x785'
-        window.ui.ctx = ui.Lapa3343Mauve; // '0x537'
-        window.ui.remove_event_listener = ui.Lapa3342Mauve; // '0x786'
-        window.ui.server_list = ui.Lapa3432Mauve; // '0x5cf'
-        window.ui.set_azerty = ui.Lapa3424Mauve; // '0x5a'
-        window.ui.set_qwerty = ui.Lapa3425Mauve; // '0x5d'
-        window.ui.trigger_mousedown = ui.Lapa3329Mauve; // '0x789'
-        window.ui.trigger_mousemove = ui.Lapa3330Mauve; // '0x78e'
-        window.ui.trigger_mouseup = ui.Lapa3331Mauve; // '0x78d'
+        window.STATE = O_O153130_0;
+        window.STATE.ATTACK = STATE.O_O153230_0; // '0x5a6'
 
-        window.user.breadoven = user.Lapa3202Mauve; // '0x4f5'
-        window.user.gauges.old = user.gauges.Lapa3455Mauve; // '0x566'
-        window.user.gauges.thirst = user.gauges.Lapa3454Mauve; // '0x563'
-        window.user.gauges.warn_old = user.gauges.Lapa3453Mauve;
-        window.user.gauges.warn_thirst = user.gauges.Lapa3452Mauve; // '0x565'
-        window.user.spectators = user.Lapa3413Mauve; // '0x533'
+        window.ui.add_event_listener = ui.O_O153610_0; // '0x7e4'
+        window.ui.ctx = ui.O_O153600_0; // '0x55a'
+        window.ui.remove_event_listener = ui.O_O153590_0; // '0x7d9'
+        window.ui.server_list = ui.O_O154490_0; // '0x5fa'
+        window.ui.set_azerty = ui.O_O154410_0; // '0x58'
+        window.ui.set_qwerty = ui.O_O154420_0; // '0x5c'
+        window.ui.trigger_mousedown = ui.O_O153460_0; // '0x7df'
+        window.ui.trigger_mousemove = ui.O_O153470_0; // '0x7e2'
+        window.ui.trigger_mouseup = ui.O_O153480_0; // '0x7e1'
 
-        window.Utils = Lapa3349Mauve;
-        window.Utils.cross_product= Utils.Lapa3423Mauve; // '0x10'
-        window.Utils.ease_out_quad = Utils.Lapa3364Mauve; // '0x725'
-        window.Utils.get_angle = Utils.Lapa3352Mauve; // '0x11'
-        window.Utils.get_std_angle = Utils.Lapa3351Mauve; // '0x687'
-        window.Utils.get_vector = Utils.Lapa3421Mauve; // '0x12'
-        window.Utils.LinearAnimation = Utils.Lapa3350Mauve; // '0x662'
-        window.Utils.open_in_new_tab = Utils.Lapa3405Mauve;
-        window.Utils.rand_sign = Utils.Lapa3422Mauve; // '0x15'
-        window.Utils.rand_string = Utils.Lapa3365Mauve;
-        window.Utils.restore_number = Utils.Lapa3362Mauve; // '0x666'
-        window.Utils.scalar_product = Utils.Lapa3419Mauve; // '0xd'
-        window.Utils.simplify_number = Utils.Lapa3363Mauve; // '0x53d'
-        window.Utils.translate_vector = Utils.Lapa3353Mauve;
+        window.user.breadoven = user.O_O152040_0; // '0x51b'
+        window.user.gauges.old = user.gauges.O_O154720_0; // '0x58b'
+        window.user.gauges.thirst = user.gauges.O_O154710_0; // '0x588'
+        window.user.gauges.warn_old = user.gauges.O_O154700_0; // '0x58d'
+        window.user.gauges.warn_thirst = user.gauges.O_O154690_0; // '0x58a'
+        window.user.spectators = user.O_O154300_0; // '0x558'
 
-        window.WORLD = Lapa3241Mauve;
-        //window./*WORLD_*/L? = 'LLapa3471Mauve'; // '0x5ba'
-        //window./*WORLD_*/L? = 'LLapa3474Mauve'; // '0x74c'
-        //window./*WORLD_*/? = 'Lapa3213Mauve'; // '0x45b'
-        //window./*WORLD_*/? = 'Lapa3214Mauve'; // '0x660'
-        window./*WORLD_*/ROTATE = 'Lapa3305Mauve'; // '0x686'
-        //window./*WORLD_*/? = 'Lapa3448Mauve'; // '0x510'
-        //window./*WORLD_*/? = 'Lapa3462Mauve'; // '0x741'
-        //window./*WORLD_*/? = 'Lapa3463Mauve'; // '0x742'
-        window./*WORLD_*/SEED = 'Lapa3464Mauve'; // '0x59b'
-        //window./*WORLD_*/? = 'Lapa3471Mauve'; // '0x5bb'
-        //window./*WORLD_*/? = 'Lapa3473Mauve'; // '0x751'
-        //window./*WORLD_*/? = 'Lapa3474Mauve'; // '0x752'
-        //window./*WORLD_*/? = 'Lapa3476Mauve'; // '0x753'
-        //window./*WORLD_*/? = 'Lapa3477Mauve'; // '0x74e'
-        //window./*WORLD_*/? = 'Lapa3478Mauve'; // '0x5bc'
-        //window./*WORLD_*/? = 'Lapa3480Mauve';
-        //window./*WORLD_*/? = 'Lapa3481Mauve'; // '0x696'
-        window./*WORLD_*/SPEED_ATTACK = 'SPEED_Lapa3306Mauve'; // '0x691'
+        window.Utils = O_O153660_0;
+        window.Utils.cross_product= Utils.O_O154400_0; // '0x11'
+        window.Utils.ease_out_quad = Utils.O_O153810_0; // '0x767'
+        window.Utils.get_angle = Utils.O_O153690_0; // '0x12'
+        window.Utils.get_std_angle = Utils.O_O153680_0; // '0x6c4'
+        window.Utils.get_vector = Utils.O_O154380_0;
+        window.Utils.LinearAnimation = Utils.O_O153670_0; // '0x69b'
+        window.Utils.open_in_new_tab = Utils.O_O154220_0;
+        window.Utils.rand_sign = Utils.O_O154390_0; // '0x16'
+        window.Utils.rand_string = Utils.O_O153820_0;
+        window.Utils.restore_number = Utils.O_O153790_0; // '0x69f'
+        window.Utils.scalar_product = Utils.O_O154360_0; // '0xe'
+        window.Utils.simplify_number = Utils.O_O153800_0; // '0x563'
+        window.Utils.translate_vector = Utils.O_O153700_0;
 
-        window.world = Lapa3360Mauve;
-        window./*world_*/delete_all_units = 'Lapa3320Mauve'; // '0x623'
-        window./*world_*/delete_units = 'Lapa3321Mauve'; // '0x683'
-        window./*world_*/fast_units = 'Lapa3322Mauve'; // '0x4f6'
-        window./*world_*/max_units = 'Lapa3323Mauve'; // '0x624'
-        window./*world_*/move_units = 'Lapa3267Mauve'; // '0x63e'
-        window./*world_*/players = 'Lapa3324Mauve'; // '0x531'
+        window.WORLD = O_O152520_0;
+        //window./*WORLD_*/L? = 'LO_O154880_0'; // '0x789'
+        //window./*WORLD_*/L? = 'LO_O154910_0'; // '0x5dc'
+        //window./*WORLD_*/? = 'O_O152150_0'; // '0x48d'
+        //window./*WORLD_*/? = 'O_O152160_0'; // '0x699'
+        window./*WORLD_*/ROTATE = 'O_O153220_0'; // '0x6c2'
+        //window./*WORLD_*/? = 'O_O154650_0'; // '0x537'
+        //window./*WORLD_*/? = 'O_O154790_0'; // '0x77f'
+        //window./*WORLD_*/? = 'O_O154800_0'; // '0x780'
+        window./*WORLD_*/SEED = 'O_O154810_0'; // '0x5c0'
+        //window./*WORLD_*/? = 'O_O154880_0'; // '0x78f'
+        //window./*WORLD_*/? = 'O_O154900_0'; // '0x78a'
+        //window./*WORLD_*/? = 'O_O154910_0'; // '0x790'
+        //window./*WORLD_*/? = 'O_O154930_0'; // '0x753'
+        //window./*WORLD_*/? = 'O_O154940_0'; // '0x74e'
+        //window./*WORLD_*/? = 'O_O154950_0'; // '0x5bc'
+        //window./*WORLD_*/? = 'O_O154970_0'; // '0x6d4'
+        //window./*WORLD_*/? = 'O_O154980_0'; // '0x6d3'
+        window./*WORLD_*/SPEED_ATTACK = 'SPEED_O_O153230_0'; // '0x6ce'
+
+        window.world = O_O153770_0;
+        window./*world_*/delete_all_units = 'O_O153370_0'; // '0x655'
+        window./*world_*/delete_units = 'O_O153380_0'; // '0x657'
+        window./*world_*/fast_units = 'O_O153390_0'; // '0x523'
+        window./*world_*/max_units = 'O_O153400_0'; // '0x648'
+        window./*world_*/move_units = 'O_O152840_0'; // '0x675'
+        window./*world_*/players = 'O_O153410_0'; // '0x551'
 
         // END DEOBFUSCATION
         window.deobcomplete = true;

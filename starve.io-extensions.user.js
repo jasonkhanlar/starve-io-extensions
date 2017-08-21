@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io extensions
 // @namespace    http://tampermonkey.net/
-// @version      0.03
+// @version      0.15.01
 // @description  (1) On screen chat buffer (2) On screen help (3) Auto-book (4) Auto-cook
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -9,6 +9,7 @@
 // ==/UserScript==
 
 // This script requires 'Starve.io Deobfuscated' script as a dependency
+// Compatible with version 15 of Starve.io client
 
 (function() {
     'use strict';
@@ -317,6 +318,24 @@
                 chat_log_tr.append(chat_log_msg);
                 chat_log_tbody.prepend(chat_log_tr);
             }
+        };
+
+        function draw_shop_timer() {
+            var c = 800 * scale,
+            g = 120 * scale,
+            f = window[canw2],
+            d = window[canh2] - g / 2;
+            if (user.shop.new_time != user.shop.time) {
+                user.shop.new_time = user.shop.time;
+                user.shop.time_label = create_text(scale, 60 - user.shop.time + 's', 40, '#FFF', null, null, null, null, null, '#000', 6);
+            }
+            window[ctx].drawImage(user.shop.time_label, f - user.shop.time_label.width / 2 * scale, g);
+        }
+
+        window.old_user_shop_draw = user.shop.draw;
+        user.shop.draw = function() {
+            old_user_shop_draw.apply(this);
+            if (60 > this.time) draw_shop_timer();
         };
     };
 
