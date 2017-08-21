@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io extensions
 // @namespace    http://tampermonkey.net/
-// @version      0.15.01
+// @version      0.15.02
 // @description  (1) On screen chat buffer (2) On screen help (3) Auto-book (4) Auto-cook
 // @author       Jason Khanlar
 // @match        http://starve.io/
