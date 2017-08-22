@@ -1,7 +1,14 @@
 # starve-io-extensions
-## starve.io-deobfuscate.user.js
 
-* Provides deobfuscated code to better understand the client side framework
+![Logo](http://i.imgur.com/7QRIFun.png)
+
+[Discord Community](https://discord.gg/xeRgqUr9)
+
+## starve.io-deobfuscate.user.js
+## starve.io-deobmicro.user.js
+
+* Provides deobfuscated code as a library to other scripts
+* micro version is easier to maintain and keep up-to-date
 * This is now **REQUIRED** for starve.io-extensions.user.js and other scripts to work
 
 TO USE / INSTALL
