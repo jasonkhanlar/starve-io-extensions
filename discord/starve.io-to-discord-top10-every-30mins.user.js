@@ -91,7 +91,7 @@
                 }
                 output = '**Top 10 Scores @ ' + server_name + '**\n```\n' + scores_text.trimRight() + '```';
 
-                post(webhook, { "username": world[fast_units][user.uid].player.nickname, "text": output });
+                post(webhook, { 'username': world[fast_units][user.uid].player.nickname, 'text': output });
             }
         };
     }

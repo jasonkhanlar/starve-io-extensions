@@ -67,7 +67,7 @@
                 }
             }
             var output = '[' + server_name + '] **' + u + '**: ' + m;
-            post(webhook, { "username": world[fast_units][user.uid].player.nickname, "text": output });
+            post(webhook, { 'username': world[fast_units][user.uid].player.nickname, 'text': output });
         }
 
         // Received messages

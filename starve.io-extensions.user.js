@@ -78,9 +78,9 @@
 
     var create_help = function() {
         var title = 'HELP MENU';
-        var title_font = "bold 40px Baloo Paaji";
-        var letter_font = "bold 35px Baloo Paaji";
-        var msg_font = "30px Baloo Paaji";
+        var title_font = 'bold 40px Baloo Paaji';
+        var letter_font = 'bold 35px Baloo Paaji';
+        var msg_font = '30px Baloo Paaji';
 
         var title_font_height = 40 * 1.1;
         var letter_font_height = 35 * 1.1;
@@ -103,8 +103,8 @@
         var line_padding_y = 3;
         var letter_msg_padding = 3;
 
-        var temp_canv = document.createElement("canvas");
-        var temp_ctx = temp_canv.getContext("2d");
+        var temp_canv = document.createElement('canvas');
+        var temp_ctx = temp_canv.getContext('2d');
 
         var longest_letter = 0;
         var longest_msg = 0;
@@ -130,7 +130,7 @@
 
         temp_ctx.globalAlpha = 0.5;
         round_rect(temp_ctx, 0, 0, temp_canv.width, temp_canv.height, 10);
-        fill_path(temp_ctx, "#000");
+        fill_path(temp_ctx, '#000');
 
         temp_ctx.globalAlpha = 1.0;
 
@@ -183,15 +183,15 @@
     function main() {
         // All code depending on deobfuscated names may begin from here
         SPRITE.AUTO_BOOK = find_unique_index();
-        sprite[SPRITE.AUTO_BOOK] = create_text(1, "Auto-Book", 25, "#FFF", void 0, void 0, "#000", 5, 140);
+        sprite[SPRITE.AUTO_BOOK] = create_text(1, 'Auto-Book', 25, '#FFF', void 0, void 0, '#000', 5, 140);
         SPRITE.AUTO_COOK = find_unique_index();
-        sprite[SPRITE.AUTO_COOK] = create_text(1, "Auto-Cook", 25, "#FFF", void 0, void 0, "#000", 5, 140);
+        sprite[SPRITE.AUTO_COOK] = create_text(1, 'Auto-Cook', 25, '#FFF', void 0, void 0, '#000', 5, 140);
         SPRITE.EXT_HELP = find_unique_index();
         sprite[SPRITE.EXT_HELP] = CTI(create_help());
         SPRITE.SLOT_NUMBERS_MAPPED = find_unique_index();
         sprite[SPRITE.SLOT_NUMBERS_MAPPED] = {};
-        sprite[SPRITE.SLOT_NUMBERS_MAPPED][9] = create_text(1, '0', 12, "#FFF");
-        sprite[SPRITE.SLOT_NUMBERS_MAPPED][10] = create_text(1, 'P', 12, "#FFF");
+        sprite[SPRITE.SLOT_NUMBERS_MAPPED][9] = create_text(1, '0', 12, '#FFF');
+        sprite[SPRITE.SLOT_NUMBERS_MAPPED][10] = create_text(1, 'P', 12, '#FFF');
 
         user.auto_book = {
             enabled: false,
@@ -292,12 +292,12 @@
             }
         };
 
-        window.addEventListener("keyup", my_trigger_key_up, false);
+        window.addEventListener('keyup', my_trigger_key_up, false);
 
         window.old_client_select_craft = window[client][select_craft];
         window[client][select_craft] = function(c) {
             if (user.weapon.timeout.v !== 0 && user.inv.n[INV.BOOK]) {
-                var alertMsg = "You can't equip your book right now.";
+                var alertMsg = 'You can't equip your book right now.';
                 if (user.alert.text) user.alert.list.push(alertMsg);
                 else user.alert.text = alertMsg;
                 return;
