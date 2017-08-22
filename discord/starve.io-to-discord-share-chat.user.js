@@ -55,7 +55,6 @@
         var server_name = '', server_url = '', server_url_ip = '', server_url_port = 0;
 
         function chat(u, m) {
-            console.log([1, window[client][socket].url, server_url, server_name]);
             if (server_url === '') {
                 server_url = window[client][socket].url;
                 server_url_ip = server_url.match(/ws:\/\/([^:]*):([^/]*)\//)[1];
