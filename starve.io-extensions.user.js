@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io extensions
 // @namespace    http://tampermonkey.net/
-// @version      0.15.02
+// @version      0.15.04
 // @description  (1) On screen chat buffer (2) On screen help (3) Auto-book (4) Auto-cook
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -336,7 +336,7 @@
         function draw_shop_timer() {
             ctx.save();
             var c = 800 * scale,
-            g = 120 * scale,
+            g = (70 + game.shop.button.info.translate.y) * scale,
             f = window[canw2],
             d = window[canh2] - g / 2;
             if (user.shop.new_time != user.shop.time) {

@@ -12,6 +12,10 @@ Scripts here are for proof of concept and working examples
 
 * Shares Starve.io chat with a Discord server including both your messages and messages from others
 
+## discord / starve.io-to-discord-share-screenshot.user.js
+
+* Share Starve.io screenshots with a Discord server by pushing P (Also PRINT SCREEN works even if in-game chat input is enabled)
+
 ## discord / starve.io-to-discord-top10-every-30mins.user.js
 
 * Shares Starve.io server top10 scores with a Discord server once immediately upon connection and every 30 minutes after
