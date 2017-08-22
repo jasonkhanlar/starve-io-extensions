@@ -8,13 +8,13 @@ Scripts here are for proof of concept and working examples
 
 * Shares Starve.io server scores with a Discord server once immediately upon connection
 
-## discord / starve.io-to-discord-top10-every-30mins.user.js
-
-* Shares Starve.io server top10 scores with a Discord server once immediately upon connection and every 30 minutes after
-
 ## discord / starve.io-to-discord-share-chat.user.js
 
 * Shares Starve.io chat with a Discord server including both your messages and messages from others
+
+## discord / starve.io-to-discord-top10-every-30mins.user.js
+
+* Shares Starve.io server top10 scores with a Discord server once immediately upon connection and every 30 minutes after
 
 TO USE / INSTALL
 ----------------
