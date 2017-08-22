@@ -178,7 +178,7 @@
             // Dependency satisfied
             main();
         }
-    };
+    }
 
     function main() {
         // All code depending on deobfuscated names may begin from here
@@ -199,7 +199,7 @@
             equip_book: function() {
                 if (this.enabled) {
                     if (user.inv.n[INV.BOOK]) {
-                        var thePlayer = world.fast_units[user.uid];
+                        var thePlayer = world[fast_units][user.uid];
                         if (thePlayer.right != INV.BOOK) {
                             window[client][select_inv](INV.BOOK, user.inv.find_item(INV.BOOK));
                         }
@@ -239,7 +239,7 @@
             this.id = recipeID;
             this.crafting = true;
             if ((user.auto_book.enabled && user.inv.n[INV.BOOK]) ||
-            world.fast_units[user.uid].right == INV.BOOK) {
+            world[fast_units][user.uid].right == INV.BOOK) {
                 this.timeout.max_speed = recipe.time * 3;
             } else {
                 this.timeout.max_speed = recipe.time;
@@ -297,7 +297,7 @@
         window.old_client_select_craft = window[client][select_craft];
         window[client][select_craft] = function(c) {
             if (user.weapon.timeout.v !== 0 && user.inv.n[INV.BOOK]) {
-                var alertMsg = 'You can't equip your book right now.';
+                var alertMsg = 'You can\'t equip your book right now.';
                 if (user.alert.text) user.alert.list.push(alertMsg);
                 else user.alert.text = alertMsg;
                 return;
@@ -334,6 +334,7 @@
         };
 
         function draw_shop_timer() {
+            ctx.save();
             var c = 800 * scale,
             g = 120 * scale,
             f = window[canw2],
@@ -343,6 +344,7 @@
                 user.shop.time_label = create_text(scale, 60 - user.shop.time + 's', 40, '#FFF', null, null, null, null, null, '#000', 6);
             }
             ctx.drawImage(user.shop.time_label, f - user.shop.time_label.width / 2 * scale, g);
+            ctx.restore();
         }
 
         window.old_user_shop_draw = user.shop.draw;
@@ -350,7 +352,7 @@
             old_user_shop_draw.apply(this);
             if (60 > this.time) draw_shop_timer();
         };
-    };
+    }
 
     checkDependencies();
 })();

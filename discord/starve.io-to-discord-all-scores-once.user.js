@@ -75,7 +75,7 @@
                     }
                 }
 
-                loggeddata.push(world.players);
+                loggeddata.push(world[players]);
                 var output = '', scores=[], scores_text='';
                 for (x = 0; x < world[players].length; x++) {
                     if (world[players][x].alive && world[players][x].score > 0) {
