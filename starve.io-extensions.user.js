@@ -8,7 +8,7 @@
 // @grant        none
 // ==/UserScript==
 
-// This script requires 'Starve.io Deobfuscated' script as a dependency
+// This script requires a 'Starve.io Deobfuscate' script as a dependency
 // Compatible with version 15 of Starve.io client
 
 (function() {

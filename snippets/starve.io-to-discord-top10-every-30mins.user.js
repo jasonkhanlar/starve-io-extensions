@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         Starve.io to Discord : Top 10 every 30 minutes
 // @namespace    http://tampermonkey.net/
-// @version      0.03
+// @version      0.15.02
 // @description  Shares Starve.io server scores with a Discord server
 // @author       Jason Khanlar
 // @match        http://starve.io/
 // @grant        none
 // ==/UserScript==
 
-// This script requires 'Starve.io Deobfuscated' script as a dependency
+// This script requires a 'Starve.io Deobfuscate' script as a dependency
 
 (function() {
     'use strict';
@@ -44,8 +44,11 @@
                     var webhook_error = 'That is an invalid Webhook URL.\n\nSupport is available in #extension-support at Discord Server https://discord.gg/eRV8hfJ\n\nRefresh the page to try again.';
                     alert(webhook_error);
                 } else {
+                    // Expire every 24 hours
+                    var date = new Date();
+                    date.setTime(date.getTime()+(24*60*60*1000));
                     webhook += '/slack';
-                    document.cookie = 'dwht10e30m='+webhook;
+                    document.cookie = 'dwht10e30m='+webhook+'; expires='+date.toGMTString();
                 }
             }
         }
