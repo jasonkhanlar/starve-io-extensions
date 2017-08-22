@@ -1,5 +1,3 @@
-# starve-io-extensions
-
 ![Logo](http://i.imgur.com/7QRIFun.png)
 
 [Discord Community](https://discord.gg/xeRgqUr9)
