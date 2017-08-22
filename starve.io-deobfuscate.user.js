@@ -21,7 +21,7 @@
         }
     }
 
-    window.deobfuscate = function() {
+    function deobfuscate() {
         window.OBFUSCATED_ARR = _0x1d4d;
         window.OBFUSCATOR_FN = _0xd1d4;
         window.OBFUSCATOR_FN_INV = function(n) { for (var x=0; x<OBFUSCATED_ARR.length; x++) { if (OBFUSCATOR_FN(x) === n) return '0x'+x.toString(16); } };
@@ -362,7 +362,7 @@
 
         // END DEOBFUSCATION
         window.deobcomplete = true;
-   };
+   }
 
     checkDependencies();
 })();
