@@ -33,6 +33,7 @@
         window.client = 'O_O116600_0';
         window./*client_*/select_craft = 'O_O116530_0'; // '0x89a'
         window./*client_*/select_inv = 'O_O116540_0'; // '0x660'
+        window./*client_*/send_chat = 'O_O116590_0'; // '0x66d'
         window./*client_*/server_list = 'O_O118130_0'; // '0x5e8'
         window./*client_*/socket = 'O_O115950_0'; // '0x5e6'
 

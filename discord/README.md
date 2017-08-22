@@ -1,16 +1,20 @@
-# snippets
+# Discord Webhooks
 
-All scripts depend on and require starve.io-deobfuscate.user.js to function and should be compatible with one another, but results may vary
+All scripts depend on and require a deobfuscate userscript to function
 
 Scripts here are for proof of concept and working examples
 
-## snippets / starve.io-to-discord-all-scores-once.user.js
+## discord / starve.io-to-discord-all-scores-once.user.js
 
 * Shares Starve.io server scores with a Discord server once immediately upon connection
 
-## snippets / starve.io-to-discord-top10-every-30mins.user.js
+## discord / starve.io-to-discord-top10-every-30mins.user.js
 
 * Shares Starve.io server top10 scores with a Discord server once immediately upon connection and every 30 minutes after
+
+## discord / starve.io-to-discord-share-chat.user.js
+
+* Shares Starve.io chat with a Discord server including both your messages and messages from others
 
 TO USE / INSTALL
 ----------------

@@ -30,7 +30,7 @@ TO USE / INSTALL
 TO USE / INSTALL
 ----------------
 * Load starve.io-extensions.user.js with Greasemonkey, Tampermonkey, or similar userscript manager depending on web browser
-* starve.io-deobfuscate.user.js is **REQUIRED** for this script to work
+* A deobfuscate library (see above) is **REQUIRED** for this script to work
 
 (1) On screen chat buffer
 -------------------------
