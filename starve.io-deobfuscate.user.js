@@ -13,6 +13,9 @@
 (function() {
     'use strict';
 
+    // Restore console.{debug,error,info,log,trace,warn}
+    setTimeout(function() { window.console = console; }, 10);
+
     function checkDependencies() {
         if (typeof game !== 'undefined' && typeof ui !== 'undefined' && typeof user !== 'undefined') {
             deobfuscate();
