@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io to Discord : Share screenshot
 // @namespace    http://tampermonkey.net/
-// @version      0.15.03
+// @version      0.15.1
 // @description  Shares Starve.io screenshot with a Discord server
 // @author       Jason Khanlar
 // @match        http://starve.io/

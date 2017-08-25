@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io to Discord : All scores once
 // @namespace    http://tampermonkey.net/
-// @version      0.15.03
+// @version      0.15.1
 // @description  Shares Starve.io server scores with a Discord server
 // @author       Jason Khanlar
 // @match        http://starve.io/
