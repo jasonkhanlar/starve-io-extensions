@@ -1,6 +1,6 @@
 ![Logo](http://i.imgur.com/7QRIFun.png)
 
-[Discord Community](https://discord.gg/xeRgqUr9)
+[Discord Community](https://discord.gg/xeRgqUr)
 
 ## starve.io-deobfuscate.user.js
 
