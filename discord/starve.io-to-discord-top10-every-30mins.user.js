@@ -22,7 +22,8 @@
     }
 
     function checkDependencies() {
-        if ((typeof deobcomplete === 'undefined' || deobcomplete !== true) &&
+        if ((typeof deobauto === 'undefined' || deobauto !== true) &&
+            (typeof deobcomplete === 'undefined' || deobcomplete !== true) &&
             (typeof deobmicro === 'undefined' || deobmicro !== true)) {
             // 'Starve.io Deobfuscated' is required as a dependency
             setTimeout(checkDependencies, 50);
@@ -55,16 +56,16 @@
 
         var server_name = '', server_url = '', server_url_ip = '', server_url_port = 0;
 
-        window.old_user_ldb_init = user.ldb.init;
+        var old_user_ldb_init = user.ldb.init;
         user.ldb.init = function (c) {
             old_user_ldb_init.apply(this, arguments);
             if ((new Date().getTime() / 1000 - 60 * 30) > webhook_lastused) {
                 webhook_lastused = new Date().getTime() / 1000;
-                check_scores();
+                check_top10();
             }
         };
 
-        var check_scores = function() {
+        var check_top10 = function() {
             if (world[players].length > 0) {
                 server_url = window[client][socket].url;
                 server_url_ip = server_url.match(/ws:\/\/([^:]*):([^/]*)\//)[1];

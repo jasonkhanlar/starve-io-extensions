@@ -45,7 +45,8 @@
     }
 
     function checkDependencies() {
-        if ((typeof deobcomplete === 'undefined' || deobcomplete !== true) &&
+        if ((typeof deobauto === 'undefined' || deobauto !== true) &&
+            (typeof deobcomplete === 'undefined' || deobcomplete !== true) &&
             (typeof deobmicro === 'undefined' || deobmicro !== true)) {
             // 'Starve.io Deobfuscated' is required as a dependency
             setTimeout(checkDependencies, 50);

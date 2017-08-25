@@ -170,7 +170,8 @@
     }
 
     function checkDependencies() {
-        if ((typeof deobcomplete === 'undefined' || deobcomplete !== true) &&
+        if ((typeof deobauto === 'undefined' || deobauto !== true) &&
+            (typeof deobcomplete === 'undefined' || deobcomplete !== true) &&
             (typeof deobmicro === 'undefined' || deobmicro !== true)) {
             // 'Starve.io Deobfuscated' is required as a dependency
             setTimeout(checkDependencies, 50);
@@ -271,7 +272,7 @@
         game.update = function() {
             old_game_update.apply(this);
             user.auto_book.translate.x = game.leaderboard.translate.x - sprite[SPRITE.AUTO_BOOK].width - 10;
-            user.auto_book.translate.y = user.spectators.translate.y + sprite[SPRITE.SHOW_SPECTATORS].height + 5;
+            user.auto_book.translate.y = user[spectators].translate.y + sprite[SPRITE.SHOW_SPECTATORS].height + 5;
             user.auto_cook.translate.x = game.leaderboard.translate.x - sprite[SPRITE.AUTO_COOK].width - 10;
             user.auto_cook.translate.y = user.auto_book.translate.y + sprite[SPRITE.AUTO_BOOK].height + 5;
             user.ext_help.translate.x = can.width / 2 - sprite[SPRITE.EXT_HELP].width / 2;

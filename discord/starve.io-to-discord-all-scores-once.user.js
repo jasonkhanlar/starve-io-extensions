@@ -22,7 +22,8 @@
     }
 
     function checkDependencies() {
-        if ((typeof deobcomplete === 'undefined' || deobcomplete !== true) &&
+        if ((typeof deobauto === 'undefined' || deobauto !== true) &&
+            (typeof deobcomplete === 'undefined' || deobcomplete !== true) &&
             (typeof deobmicro === 'undefined' || deobmicro !== true)) {
             // 'Starve.io Deobfuscated' is required as a dependency
             setTimeout(checkDependencies, 50);
@@ -54,16 +55,17 @@
 
         var server_name = '', server_url = '', server_url_ip = '', server_url_port = 0;
 
-        window.old_user_ldb_init = user.ldb.init;
+        var discord_allscores=[];
+        var old_user_ldb_init = user.ldb.init;
         user.ldb.init = function (c) {
-            if (loggeddata.length < 1) check_scores();
+            if (discord_allscores.length < 1) check_allscores();
             //var old_scores=[];
             //for (var f = Lapa3360Mauve.Lapa3324Mauve, d = 0; d < f.length; d++) old_scores[d] = f[d].score;
             old_user_ldb_init.apply(this, arguments);
             //for (var f = Lapa3360Mauve.Lapa3324Mauve, d = 0; d < f.length; d++) { if (f[d].score === 0) f[d].score = old_scores[d]; }
         };
 
-        var check_scores = function() {
+        var check_allscores = function() {
             if (world[players].length > 0) {
                 server_url = window[client][socket].url;
                 server_url_ip = server_url.match(/ws:\/\/([^:]*):([^/]*)\//)[1];
@@ -75,7 +77,7 @@
                     }
                 }
 
-                loggeddata.push(world[players]);
+                discord_allscores.push(world[players]);
                 var output = '', scores=[], scores_text='';
                 for (x = 0; x < world[players].length; x++) {
                     if (world[players][x].alive && world[players][x].score > 0) {
@@ -95,8 +97,6 @@
             }
         };
     }
-
-    window.loggeddata=[];
 
     checkDependencies();
 })();
