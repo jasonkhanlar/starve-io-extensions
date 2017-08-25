@@ -16,7 +16,7 @@
 
     // Restore console.{debug,error,info,log,trace,warn}
     window.console = console;
-    var deoblist = [];
+    window.deoblist = [];
 
     // Performance tests
     // https://jsperf.com/isarray-two
