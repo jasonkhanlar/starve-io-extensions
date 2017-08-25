@@ -1,6 +1,6 @@
 # Discord Webhooks
 
-All scripts depend on and require a deobfuscate userscript to function
+All scripts depend on and require the deobfuscate userscript to function
 
 Scripts here are for proof of concept and working examples
 

@@ -2,18 +2,14 @@
 
 [Discord Community](https://discord.gg/xeRgqUr9)
 
-## starve.io-deobauto.user.js
-## starve.io-deobfuscate.user.js.deprecated (no longer maintained)
-## starve.io-deobmicro.user.js.deprecated (no longer maintained)
+## starve.io-deobfuscate.user.js
 
-* Provides deobfuscated code as a library to other scripts
-* auto version is maintained and up-to-date
+* Provides deobfuscated code as a library for other scripts to use
 * This is **REQUIRED** for starve.io-extensions.user.js and other scripts to work
 
 TO USE / INSTALL
 ----------------
-* Load starve.io-automicro.js with Greasemonkey, Tampermonkey, or similar userscript manager depending on web browser
-* Note: starve.io-deobfuscate.js is broken until further notice
+* Load starve.io-deobfuscate.js with Greasemonkey, Tampermonkey, or similar userscript manager depending on web browser
 
  &nbsp;
  &nbsp;
@@ -31,7 +27,7 @@ TO USE / INSTALL
 TO USE / INSTALL
 ----------------
 * Load starve.io-extensions.user.js with Greasemonkey, Tampermonkey, or similar userscript manager depending on web browser
-* A deobfuscate library (see above) is **REQUIRED** for this script to work
+* Deobfuscate userscript (see above) is **REQUIRED** for this script to work
 
 (1) On screen chat buffer
 -------------------------
