@@ -1016,6 +1016,9 @@
                             } else if (deobfunc.abbr.match(/{game\.quests\.modify\([a-z],2\)}$/)) {
                                 window.succeed_quest = s;
                                 deobmatch('succeed_quest', s);
+                            } else if (deobfunc.abbr.match(/{game\.quests\.modify\([a-z],0\)}$/)) {
+                                window.quest_update = s;
+                                deobmatch('quest_update', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
