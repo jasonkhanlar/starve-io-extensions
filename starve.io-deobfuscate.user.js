@@ -2,7 +2,7 @@
 // ==UserScript==
 // @name         Starve.io Deobfuscated Auto
 // @namespace    http://tampermonkey.net/
-// @version      0.15.1
+// @version      0.15.11
 // @description  Auto deobfuscation includes at least bare minimum for scripts to function normally
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -1326,6 +1326,13 @@
             if (typeof STATE === 'object') {
                 for (var s in window.STATE) {
                     if (typeof window.STATE[s] === 'number') {
+                        if (window.STATE[s] === 16) {
+                            STATE.ATTACK = STATE[s];
+                            deobmatch('ATTACK', s);
+                            // Also fill in for CLIENT.ATTACK and WORLD.SPEED_ATTACK
+                            CLIENT.ATTACK = CLIENT[s];
+                            WORLD.SPEED_ATTACK = WORLD['SPEED_'+s];
+                        }
                     }
                 }
             }
