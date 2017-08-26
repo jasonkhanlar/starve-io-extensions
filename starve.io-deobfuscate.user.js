@@ -993,6 +993,9 @@
                             } else if (deobfunc.abbr.match(/IFWBGC/)) {
                                 window.change_ground = s;
                                 deobmatch('change_ground', s);
+                            } else if (deobfunc.abbr.match(/^function \(\){user\.craft\.restart\(\)}$/)) {
+                                window.cancel_craft = s;
+                                deobmatch('cancel_craft', s);
                             }
                         } else if (window[client][s].length === 1) {
                             if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
