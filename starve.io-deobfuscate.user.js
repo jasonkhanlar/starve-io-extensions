@@ -1066,7 +1066,7 @@
                             } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[22,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
                                 window.resurrection2 = s;
                                 deobmatch('resurrection2', s);
-                            } else if (deobfunc.abbr.replace(/\n/g, match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[12,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
+                            } else if (deobfunc.abbr.replace(/\n/g, '').match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[12,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
                                 window.give_wood = s;
                                 deobmatch('give_wood', s);
                             }
@@ -1074,7 +1074,7 @@
                             if (deobfunc.abbr.match(/\.stringify\(\[25,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\);/)) {
                                 window.give_breadoven = s;
                                 deobmatch('give_breadoven', s);
-                            else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[8,[a-z],[a-z],[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
+                            } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[8,[a-z],[a-z],[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
                                 window.give_item = s;
                                 deobmatch('give_item', s);
                             }
