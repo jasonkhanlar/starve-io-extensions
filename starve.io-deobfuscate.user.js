@@ -1087,6 +1087,9 @@
                             } else if (deobfunc.abbr.replace(/\n/g, '').match(/user\.inv\.decrease\([a-z],[a-z],user\.inv\.find_item\([a-z]\)\);user\.craft\.update\(\)/)) {
                                 window.decrease_item = s;
                                 deobmatch('decrease_item', s);
+                            } else if (deobfunc.abbr.match(/user\.inv\.delete_item\([a-z],[a-z]\)/)) {
+                                window.delete_inv = s;
+                                deobmatch('delete_inv', s);
                             }
                         } else if (window[client][s].length === 3) {
                             if (deobfunc.abbr.match(/\.stringify\(\[25,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\);/)) {
