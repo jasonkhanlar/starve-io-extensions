@@ -1028,6 +1028,9 @@
                             } else if (deobfunc.abbr.match(/^function \([a-z]\){user\.gauges\.h=[a-z]\/100}$/)) {
                                 window.gauge_hunger = s;
                                 deobmatch('gauge_hunger', s);
+                            } else if (deobfunc.abbr.match(/{@\.time=[a-z];@\.transition=!0;audio\.transition=1}/)) {
+                                window.get_time = s;
+                                deobmatch('get_time', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
