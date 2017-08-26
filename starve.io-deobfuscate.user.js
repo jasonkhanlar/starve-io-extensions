@@ -1034,6 +1034,9 @@
                             } else if (deobfunc.abbr.match(/{@\.time=[a-z];@\.transition=!0;audio\.transition=1}/)) {
                                 window.get_time = s;
                                 deobmatch('get_time', s);
+                            } else if (deobfunc.abbr.match(/@\.mode==@\.MODE_HUNGER_GAMES&&'spectator'!==@\.@\[[a-z]\]\.nickname/)) {
+                                window.kill_player = s;
+                                deobmatch('kill_player', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
