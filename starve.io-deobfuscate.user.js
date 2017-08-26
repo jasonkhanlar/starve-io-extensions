@@ -1010,6 +1010,9 @@
                             } else if (deobfunc.abbr.match(/this\.@\[@\]\(@\[@\]\.stringify\(\[21,[a-z]\]\)\);user\.shop\.open/)) {
                                 window.send_survivalkit = s;
                                 deobmatch('send_survivalkit', s);
+                            } else if (deobfunc.abbr.match(/user\.inv\.max>user\.inv\.can_select\.length;[a-z]\+\+/)) {
+                                window.survival_kit = s;
+                                deobmatch('survival_kit', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
