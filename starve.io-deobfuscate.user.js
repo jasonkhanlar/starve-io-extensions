@@ -987,6 +987,9 @@
                             } else if (deobfunc.abbr.match(/Resource is empty/)) {
                                 window.empty_res = s;
                                 deobmatch('empty_res', s);
+                            } else if (deobfunc.abbr.match(/Inventory is full/)) {
+                                window.inv_full = s;
+                                deobmatch('inv_full', s);
                             }
                         } else if (window[client][s].length === 1) {
                             if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
