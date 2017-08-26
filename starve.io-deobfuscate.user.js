@@ -988,6 +988,16 @@
                         } else {
                         }
                     } else if (typeof window[client][s] === 'number') {
+                        if (window[client][s] === 0) {
+                            if ((typeof window[client].lost !== 'undefined' && deobfuscate_func(window[client].lost.toString()).orig.toString().indexOf('user.reconnect.enabled=!0;this.' + s + '==this.') > -1) ||
+                                (typeof window[client].kick !== 'undefined' && deobfuscate_func(window[client].kick.toString()).orig.toString().indexOf('this.' + s + '==this.') > -1) ||
+                                (typeof window[client].kick !== 'undefined' && deobfuscate_func(window[client].lost.toString()).orig.toString().indexOf('this.' + s + '==this.') > -1) ||
+                                (typeof window[client].kick !== 'undefined' && deobfuscate_func(window[client].killed.toString()).orig.toString().indexOf('this.' + s + '==this.') > -1)
+                                ) {
+                                window._current_id = s;
+                                deobmatch('_current_id', s);
+                            }
+                        }
                     } else if (typeof window[client][s] === 'object') {
                         if (window[client][s] === null) {
                             var deobfunc = deobfuscate_func(window[Client].toString());
