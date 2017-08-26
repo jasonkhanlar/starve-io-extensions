@@ -1043,6 +1043,9 @@
                             } else if (deobfunc.abbr.match(/new Uint16Array\([a-z]\);user\.cam\.change/)) {
                                 window.recover_focus = s;
                                 deobmatch('recover_focus', s);
+                            } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[23,[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
+                                window.take_flour = s;
+                                deobmatch('take_flour', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
