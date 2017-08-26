@@ -25,7 +25,7 @@
 
     function autodetect(stage) {
         if (stage === 0) {
-            // First detect OBFUSCATOR_ARR and OBFUSCATOR_FN to use in next stage
+            // First detect OBFUSCATOR_ARR and OBFUSCATOR_FN to reference in next stage
             for (var s in window) {
                 if (s === 'webkitStorageInfo') continue; // deprecated
                 if (typeof window[s] === 'function') {
@@ -47,7 +47,7 @@
                 }
             }
         } else if (stage === 1) {
-            // Then detect all global variables
+            // Then detect all global variables, constants and functions
             for (var s in window) { // v15 680-690 matches
                 if (s === 'webkitStorageInfo') continue; // deprecated
                 if (typeof window[s] === 'boolean') { // v15 6 matches
@@ -954,7 +954,7 @@
                 }
             }
         } else if (stage === 2) {
-            // Then detect all properties of global variables
+            // Then detect most properties of global variables to reference in next stage
 
             if (typeof CLIENT === 'object') {
                 for (var s in window.CLIENT) {
@@ -1391,6 +1391,8 @@
                     }
                 }
             }
+        } else if (stage === 3) {
+            // Then detect remaining properties of global variables
         }
     }
 
@@ -1403,12 +1405,14 @@
     }
 
     function deobfuscate() {
-        // First detect OBFUSCATOR_ARR and OBFUSCATOR_FN to use in next stage
+        // First detect OBFUSCATOR_ARR and OBFUSCATOR_FN to reference in next stage
         autodetect(0);
         // Then detect all global variables, constants and functions
         autodetect(1);
-        // Then detect all properties of global variables
+        // Then detect most properties of global variables to reference in next stage
         autodetect(2);
+        // Then detect remaining properties of global variables
+        autodetect(3);
 
         window.OBFUSCATOR_FN_INV = function(n) { for (var x=0; x<OBFUSCATED_ARR.length; x++) { if (OBFUSCATOR_FN(x) === n) return '0x'+x.toString(16); } };
 
