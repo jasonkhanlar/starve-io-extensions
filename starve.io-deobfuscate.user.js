@@ -1118,6 +1118,10 @@
                             } else if (deobfunc.abbr.match(/function \([a-z]\){___adsvid\+\+;clearTimeout\(this\.@\);/)) {
                                 window.handshake = s;
                                 deobmatch('handshake', s);
+                            } else if (deobfunc.abbr.match(/\.stringify\(\[27,[a-z]\]\)\)/)) {
+                                // What is this for?
+                                window.unknown = s;
+                                deobmatch('unknown', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
