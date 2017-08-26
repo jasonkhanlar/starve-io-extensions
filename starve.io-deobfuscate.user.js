@@ -986,6 +986,9 @@
                             } else if (deobfunc.abbr.match(/^function \([a-z]\){@\.@\[user\.uid\]\.text=[a-z];this\.@\[@\]\(@\[@\]\.stringify\(\[0,[a-z]\]\)\)}$/)) {
                                 window.send_chat = s;
                                 deobmatch('send_chat', s);
+                            } else if (deobfunc.abbr.match(/function \([a-z]\){[a-z]==INV\.BAG\?/)) {
+                                window.build_stop = s;
+                                deobmatch('build_stop', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
