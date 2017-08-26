@@ -996,6 +996,9 @@
                             } else if (deobfunc.abbr.match(/^function \(\){user\.craft\.restart\(\)}$/)) {
                                 window.cancel_craft = s;
                                 deobmatch('cancel_craft', s);
+                            } else if (deobfunc.abbr.match(/\.stringify\(\[10\]\)\)}$/)) {
+                                window.cancel_crafting = s;
+                                deobmatch('cancel_crafting', s);
                             }
                         } else if (window[client][s].length === 1) {
                             if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
