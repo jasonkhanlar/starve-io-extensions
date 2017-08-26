@@ -1062,6 +1062,9 @@
                             if (deobfunc.abbr.match(/\.stringify\(\[25,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\);/)) {
                                 window.give_breadoven = s;
                                 deobmatch('give_breadoven', s);
+                            else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[8,[a-z],[a-z],[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
+                                window.give_item = s;
+                                deobmatch('give_item', s);
                             }
                         } else if (window[client][s].length === 4) {
                         } else if (window[client][s].length === 5) {
