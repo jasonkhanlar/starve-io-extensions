@@ -1396,6 +1396,19 @@
             }
         } else if (stage === 3) {
             // Then detect remaining properties of global variables
+
+            if (typeof client === 'string' && typeof window[client] === 'object') {
+                for (var s in window[client]) {
+                    if (typeof window[client][s] === 'number') {
+                        if (window[client][s] === 0) {
+                            if ((typeof window.update_cam !== 'undefined' && deobfuscate_func(window[client][update_cam].toString()).orig.toString().indexOf(s) > -1)) {
+                                window.cam_delay = s;
+                                deobmatch('cam_delay', s);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
