@@ -1014,6 +1014,9 @@
                             } else if (deobfunc.abbr.match(/Your team was destroyed/)) {
                                 window.team_destroyed = s;
                                 deobmatch('team_destroyed', s);
+                            } else if (deobfunc.abbr.match(/^function \(\){3==this\.@\.readyState&&\(this\.timeout_server-=@\.TIMEOUT_SERVER\)}$/)) {
+                                window.check_state = s;
+                                deobmatch('check_state', s);
                             }
                         } else if (window[client][s].length === 1) {
                             if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
