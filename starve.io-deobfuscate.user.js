@@ -1002,6 +1002,9 @@
                             } else if (deobfunc.abbr.replace(/\n/g, '').match(/\.stringify\(\[5,user\.craft\.preview\]\)\)}$/)) {
                                 window.send_build = s;
                                 deobmatch('send_build', s);
+                            } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[14\]\)\)}/)) {
+                                window.stop_attack = s;
+                                deobmatch('stop_attack', s);
                             }
                         } else if (window[client][s].length === 1) {
                             if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
