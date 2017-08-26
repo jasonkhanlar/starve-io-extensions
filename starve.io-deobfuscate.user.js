@@ -1091,6 +1091,9 @@
                             } else if (deobfunc.abbr.match(/function \([a-z]\){var [a-z]=player\.select\.units;if\(0!=[a-z]\.length\){var [a-z]=\[2\],[a-z]=\[\];/)) {
                                 window.move_units = s;
                                 deobmatch('move_units', s);
+                            } else if (deobfunc.abbr.match(/You joined a team/)) {
+                                window.join_team = s;
+                                deobmatch('join_team', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
