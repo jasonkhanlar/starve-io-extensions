@@ -1013,6 +1013,9 @@
                             } else if (deobfunc.abbr.match(/user\.inv\.max>user\.inv\.can_select\.length;[a-z]\+\+/)) {
                                 window.survival_kit = s;
                                 deobmatch('survival_kit', s);
+                            } else if (deobfunc.abbr.match(/{game\.quests\.modify\([a-z],2\)}$/)) {
+                                window.succeed_quest = s;
+                                deobmatch('succeed_quest', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
