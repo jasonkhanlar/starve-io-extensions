@@ -1040,6 +1040,9 @@
                             } else if (deobfunc.abbr.replace(/\n/, '').match(/function \([a-z]\){[a-z]=new Uint16Array\([a-z]\);player\.cam\.change/)) {
                                 window.set_cam = s;
                                 deobmatch('set_cam', s);
+                            } else if (deobfunc.abbr.match(/new Uint16Array\([a-z]\);user\.cam\.change/)) {
+                                window.recover_focus = s;
+                                deobmatch('recover_focus', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
