@@ -1019,6 +1019,9 @@
                             } else if (deobfunc.abbr.match(/{game\.quests\.modify\([a-z],0\)}$/)) {
                                 window.quest_update = s;
                                 deobmatch('quest_update', s);
+                            } else if (deobfunc.abbr.match(/^function \([a-z]\){user\.gauges\.l=[a-z]\/100}$/)) {
+                                window.gauge_life = s;
+                                deobmatch('gauge_life', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
