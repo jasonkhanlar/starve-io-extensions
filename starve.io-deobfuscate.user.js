@@ -1007,6 +1007,9 @@
                             } else if (deobfunc.abbr.match(/{var [a-z]=[a-z]\[1\],[a-z]=@\.@;[a-z]\[[a-z]\]\.nickname=[a-z]\[2\];/)) {
                                 window.new_player = s;
                                 deobmatch('new_player', s);
+                            } else if (deobfunc.abbr.match(/this\.@\[@\]\(@\[@\]\.stringify\(\[21,[a-z]\]\)\);user\.shop\.open/)) {
+                                window.send_survivalkit = s;
+                                deobmatch('send_survivalkit', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
