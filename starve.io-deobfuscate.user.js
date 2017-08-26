@@ -990,6 +990,9 @@
                             } else if (deobfunc.abbr.match(/Inventory is full/)) {
                                 window.inv_full = s;
                                 deobmatch('inv_full', s);
+                            } else if (deobfunc.abbr.match(/IFWBGC/)) {
+                                window.change_ground = s;
+                                deobmatch('change_ground', s);
                             }
                         } else if (window[client][s].length === 1) {
                             if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
