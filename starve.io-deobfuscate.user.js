@@ -969,6 +969,10 @@
                     } else if (typeof window[client][s] === 'function') {
                         var deobfunc = deobfuscate_func(window[client][s].toString());
                         if (window[client][s].length === 0) {
+                            if (deobfunc.abbr.match(/this\.@=JSON\.parse\(this\.xhttp\.responseText\)/)) {
+                                window[client][store_server_list] = s;
+                                deobmatch('store_server_list', s);
+                            }
                         } else if (window[client][s].length === 1) {
                             if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
                                 window.select_craft = s;
