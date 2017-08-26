@@ -1011,6 +1011,9 @@
                             if (deobfunc.orig.split(s).length > 50) {
                                 window.socket = s;
                                 deobmatch('socket', s);
+                            } else if (deobfunc.orig.split(new RegExp('clearTimeout\\([^.]*\.' + s + '\\);')).length >= 8) {
+                                window.connect_timer = s;
+                                deobmatch('connect_timer', s);
                             }
                         } else if (Array.isArray(window[client][s])) {
                                 window.server_list = s;
