@@ -1037,6 +1037,9 @@
                             } else if (deobfunc.abbr.match(/@\.mode==@\.MODE_HUNGER_GAMES&&'spectator'!==@\.@\[[a-z]\]\.nickname/)) {
                                 window.kill_player = s;
                                 deobmatch('kill_player', s);
+                            } else if (deobfunc.abbr.replace(/\n/, '').match(/function \([a-z]\){[a-z]=new Uint16Array\([a-z]\);player\.cam\.change/)) {
+                                window.set_cam = s;
+                                deobmatch('set_cam', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
