@@ -1056,6 +1056,10 @@
                                 deobmatch('resurrection2', s);
                             }
                         } else if (window[client][s].length === 3) {
+                            if (deobfunc.abbr.match(/\.stringify\(\[25,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\);/)) {
+                                window.give_breadoven = s;
+                                deobmatch('give_breadoven', s);
+                            }
                         } else if (window[client][s].length === 4) {
                         } else if (window[client][s].length === 5) {
                         } else {
