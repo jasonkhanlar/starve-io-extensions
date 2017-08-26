@@ -970,8 +970,11 @@
                         var deobfunc = deobfuscate_func(window[client][s].toString());
                         if (window[client][s].length === 0) {
                             if (deobfunc.abbr.match(/this\.@=JSON\.parse\(this\.xhttp\.responseText\)/)) {
-                                window[client][store_server_list] = s;
+                                window.store_server_list = s;
                                 deobmatch('store_server_list', s);
+                            } else if (deobfunc.abbr.match(/function \(\){for\(var [a-z]=0,[a-z]=0;[a-z]<@\.@\.length;[a-z]\+\+\)[a-z]\+=@\.@\[[a-z]\]\.nu;/)) {
+                                window.update_server_list = s;
+                                deobmatch('update_server_list', s);
                             }
                         } else if (window[client][s].length === 1) {
                             if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
