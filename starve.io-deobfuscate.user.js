@@ -1146,6 +1146,10 @@
                                 window.server_list = s;
                                 deobmatch('server_list', s);
                         } else if (typeof window[client][s].hasOwnProperty !== 'undefined') {
+                            if (window[client][s].hasOwnProperty('i') && window[client][s].hasOwnProperty('j')) {
+                                window.last_cam = s;
+                                deobmatch('last_cam', s);
+                            }
                         }
                     } else if (typeof window[client][s] === 'string') {
                     } else if (typeof window[client][s] === 'undefined') {
