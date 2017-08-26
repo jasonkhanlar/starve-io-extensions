@@ -1079,6 +1079,9 @@
                             } else if (deobfunc.abbr.match(/this\.@\[@\]\(@\[@\]\.stringify\(\[3,Math\.floor/)) {
                                 window.send_angle = s;
                                 deobmatch('send_angle', s);
+                            } else if (deobfunc.abbr.match(/this\.@\[@\]\(@\[@\]\.stringify\(\[2,[a-z]\]\)\)}$/)) {
+                                window.send_move = s;
+                                deobmatch('send_move', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
