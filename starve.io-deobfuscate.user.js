@@ -1061,6 +1061,9 @@
                             } else if (deobfunc.abbr.match(/This is not the right tool/)) {
                                 window.dont_harvest = s;
                                 deobmatch('dont_harvest', s);
+                            } else if (deobfunc.abbr.match(/^function \([a-z]\){user\.craft\.preview=-1;/)) {
+                                window.accept_build = s;
+                                deobmatch('accept_build', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
