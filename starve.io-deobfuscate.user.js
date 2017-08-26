@@ -942,16 +942,6 @@
                 } else if (typeof window[s] === 'string') { // v15 41 matches
                 } else if (typeof window[s] === 'undefined') { // v15 4 matches
                 }
-                if (s.match(/.*O_O[0-9]{3,4}0_0.*/) && !deoblist.hasOwnProperty(s)) {
-                    if (window[s] === window) {} // ignore
-                    else if (window[s] === 10000) {} // ignore
-                    else if (typeof window[s] === 'string' && window[s].match(/^[0-9a-zA-Z_-]*$/)) { } // ignore
-                    else {
-                        // Useful for seeing what's missing
-                        // Still missing functions, will add later
-                        //console.log(['missing',s,window[s]]);
-                    }
-                }
             }
         } else if (stage === 2) {
             // Then detect most properties of global variables to reference in next stage
@@ -1450,6 +1440,21 @@
                     }
                 }
             }
+        } else if (stage === 4) {
+            // Then check if anything was missed
+
+            for (var s in window) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.hasOwnProperty(s)) {
+                    if (window[s] === window) {} // ignore
+                    else if (window[s] === 10000) {} // ignore
+                    else if (typeof window[s] === 'string' && window[s].match(/^[0-9a-zA-Z_-]*$/)) { } // ignore
+                    else {
+                        // Useful for seeing what's missing
+                        // Still missing variables, will add later
+                        //console.log(['missing',s,window[s]]);
+                    }
+                }
+            }
         }
     }
 
@@ -1470,6 +1475,8 @@
         autodetect(2);
         // Then detect remaining properties of global variables
         autodetect(3);
+        // Then check if anything was missed
+        autodetect(4);
 
         window.OBFUSCATOR_FN_INV = function(n) { for (var x=0; x<OBFUSCATED_ARR.length; x++) { if (OBFUSCATOR_FN(x) === n) return '0x'+x.toString(16); } };
 
