@@ -1411,6 +1411,9 @@
                             if ((typeof window.update_cam !== 'undefined' && deobfuscate_func(window[client][update_cam].toString()).orig.toString().indexOf(s) > -1)) {
                                 window.cam_delay = s;
                                 deobmatch('cam_delay', s);
+                            } else if ((typeof window.try_ping !== 'undefined' && deobfuscate_func(window[client][try_ping].toString()).orig.toString().indexOf(s) > -1)) {
+                                window.ping_delay = s;
+                                deobmatch('ping_delay', s);
                             }
                         }
                     }
