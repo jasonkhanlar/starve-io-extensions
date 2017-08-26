@@ -1020,6 +1020,9 @@
                             } else if (deobfunc.abbr.replace(/\n/g, '').match(/@-this\.timeout_server>@\.TIMEOUT_SERVER&&\(this\.timeout_server=@,this\.lost\(\)\)}$/)) {
                                 window.check_pong = s;
                                 deobmatch('check_pong', s);
+                            } else if (deobfunc.abbr.replace(/\n/g, '').match(/^function \(\){var [a-z]=ui\.@\.id\.selectedIndex/)) {
+                                window.connect_timeout = s;
+                                deobmatch('connect_timeout', s);
                             }
                         } else if (window[client][s].length === 1) {
                             if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
