@@ -989,6 +989,9 @@
                             } else if (deobfunc.abbr.match(/function \([a-z]\){[a-z]==INV\.BAG\?/)) {
                                 window.build_stop = s;
                                 deobmatch('build_stop', s);
+                            } else if (deobfunc.abbr.match(/user\.craft\.do_craft\([a-z]\)/)) {
+                                window.build_ok = s;
+                                deobmatch('build_ok', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
