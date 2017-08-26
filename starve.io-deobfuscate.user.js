@@ -1011,6 +1011,9 @@
                             } else if (deobfunc.abbr.match(/^function \(\){@-this\.@>@\.PING_DELAY&&\(this\.@=@,this\.ping\(\)\)}$/)) {
                                 window.try_ping = s;
                                 deobmatch('try_ping', s);
+                            } else if (deobfunc.abbr.match(/Your team was destroyed/)) {
+                                window.team_destroyed = s;
+                                deobmatch('team_destroyed', s);
                             }
                         } else if (window[client][s].length === 1) {
                             if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
