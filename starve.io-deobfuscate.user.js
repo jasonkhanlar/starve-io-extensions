@@ -1049,6 +1049,9 @@
                             } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[9,[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
                                 window.take_chest = s;
                                 deobmatch('take_chest', s);
+                            } else if (deobfunc.abbr.replace(/\n/g, '').match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[15,[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
+                                window.unlock_chest= s;
+                                deobmatch('unlock_chest', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
