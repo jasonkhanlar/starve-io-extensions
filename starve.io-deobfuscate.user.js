@@ -1100,6 +1100,9 @@
                             } else if (deobfunc.abbr.match(/ joined the team/)) {
                                 window.joined_team = s;
                                 deobmatch('joined_team', s);
+                            } else if (deobfunc.abbr.match(/You left the team/)) {
+                                window.left_team = s;
+                                deobmatch('left_team', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
