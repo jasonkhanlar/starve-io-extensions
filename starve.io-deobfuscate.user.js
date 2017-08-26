@@ -1075,6 +1075,9 @@
                             } else if (deobfunc.abbr.replace(/\n/g, '').match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[12,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
                                 window.give_wood = s;
                                 deobmatch('give_wood', s);
+                            } else if (deobfunc.abbr.replace(/\n/g, '').match(/user\.inv\.decrease\([a-z],[a-z],user\.inv\.find_item\([a-z]\)\);user\.craft\.update\(\)/)) {
+                                window.decrease_item = s;
+                                deobmatch('decrease_item', s);
                             }
                         } else if (window[client][s].length === 3) {
                             if (deobfunc.abbr.match(/\.stringify\(\[25,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\);/)) {
