@@ -1112,6 +1112,9 @@
                             } else if (deobfunc.abbr.match(/Someone stole your token/)) {
                                 window.steal_token = s;
                                 deobmatch('steal_token', s);
+                            } else if (deobfunc.abbr.match(/function \([a-z]\){___adsvid\+\+;clearTimeout\(this\.@\);/)) {
+                                window.handshake = s;
+                                deobmatch('handshake', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
