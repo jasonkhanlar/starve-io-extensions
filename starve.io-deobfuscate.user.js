@@ -1005,6 +1005,9 @@
                             } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[14\]\)\)}/)) {
                                 window.stop_attack = s;
                                 deobmatch('stop_attack', s);
+                            } else if (deobfunc.abbr.match(/^function \(\){if\(@-this\.@>@\.@\){this\.@=@;var [a-z]=user\.cam,[a-z]=Math.floor\([a-z]\.x\/100\),[a-z]=Math\.floor\([a-z]\.y\/100\);/)) {
+                                window.update_cam = s;
+                                deobmatch('update_cam', s);
                             }
                         } else if (window[client][s].length === 1) {
                             if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
