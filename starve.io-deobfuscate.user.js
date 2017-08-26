@@ -1055,6 +1055,9 @@
                             } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[16,[a-z]\.iid\]\)\)}/)) {
                                 window.lock_chest= s;
                                 deobmatch('lock_chest', s);
+                            } else if (deobfunc.abbr.match(/This is not the right tool/)) {
+                                window.dont_harvest = s;
+                                deobmatch('dont_harvest', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
