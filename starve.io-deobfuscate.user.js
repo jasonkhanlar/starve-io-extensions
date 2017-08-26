@@ -1103,6 +1103,9 @@
                             } else if (deobfunc.abbr.match(/You left the team/)) {
                                 window.left_team = s;
                                 deobmatch('left_team', s);
+                            } else if (deobfunc.abbr.match(/Someone stole your token/)) {
+                                window.steal_token = s;
+                                deobmatch('steal_token', s);
                             }
                         } else if (window[client][s].length === 2) {
                             if (deobfunc.abbr.split('case INV').length > 80) {
