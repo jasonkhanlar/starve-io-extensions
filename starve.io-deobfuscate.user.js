@@ -984,6 +984,9 @@
                             } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[11\]\)\)}/)) {
                                 window.get_focus = s;
                                 deobmatch('get_focus', s);
+                            } else if (deobfunc.abbr.match(/Resource is empty/)) {
+                                window.empty_res = s;
+                                deobmatch('empty_res', s);
                             }
                         } else if (window[client][s].length === 1) {
                             if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
