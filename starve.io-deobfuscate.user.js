@@ -975,6 +975,9 @@
                             } else if (deobfunc.abbr.match(/function \(\){for\(var [a-z]=0,[a-z]=0;[a-z]<@\.@\.length;[a-z]\+\+\)[a-z]\+=@\.@\[[a-z]\]\.nu;/)) {
                                 window.update_server_list = s;
                                 deobmatch('update_server_list', s);
+                            } else if (deobfunc.abbr.match(/You have an old version/)) {
+                                window.old_version = s;
+                                deobmatch('old_version', s);
                             }
                         } else if (window[client][s].length === 1) {
                             if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
