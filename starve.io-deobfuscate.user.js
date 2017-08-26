@@ -981,6 +981,9 @@
                             } else if (deobfunc.abbr.match(/user\.reconnect\.enabled=!1;user\.alive=!1;/)) {
                                 window.fail_restore = s;
                                 deobmatch('fail_restore', s);
+                            } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[11\]\)\)}/)) {
+                                window.get_focus = s;
+                                deobmatch('get_focus', s);
                             }
                         } else if (window[client][s].length === 1) {
                             if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
