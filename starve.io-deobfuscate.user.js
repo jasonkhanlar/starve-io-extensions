@@ -270,7 +270,7 @@
                             typeof window[s].textAlign === 'string' &&
                             typeof window[s].textBaseline === 'string'
                             ) {
-                            window.ctx = window[s];
+                                window.ctx = window[s];
                                 deobmatch('ctx', s);
                         } else if (window[s].hasOwnProperty('ARROW_CLOCK') || // v15 1 match
                             window[s].hasOwnProperty('AUTO_FEED') || // v15 1 match
