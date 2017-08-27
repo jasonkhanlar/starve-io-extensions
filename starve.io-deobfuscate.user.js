@@ -1436,6 +1436,11 @@
             if (typeof Utils === 'object') {
                 for (var s in window.Utils) {
                     if (typeof window.Utils[s] === 'function') {
+                        var deobfunc = deobfuscate_func(window.Utils[s].toString());
+                        if (deobfunc.abbr.match(/^function \([a-z]\){window\.open\([a-z],'_blank'\)\.focus\(\)}$/)) {
+                            window.Utils.open_in_new_tab = Utils[s];
+                            deobmatch('open_in_new_tab', s);
+                        }
                     }
                 }
             }
