@@ -366,9 +366,6 @@
                             window[s].hasOwnProperty('CHEST_LOCKPICK') || // v15 1 match
                             window[s].hasOwnProperty('CHEST_LOCK') || // v15 1 match
                             window[s].hasOwnProperty('CHEST_MEAT') || // v15 1 match
-                            window[s].hasOwnProperty('CHEST_O_O115590_0') || // v15 1 match
-                            window[s].hasOwnProperty('CHEST_O_O115620_0') || // v15 1 match
-                            window[s].hasOwnProperty('CHEST_O_O118450_0') || // v15 1 match
                             window[s].hasOwnProperty('CHEST_PAPER') || // v15 1 match
                             window[s].hasOwnProperty('CHEST_PEASANT') || // v15 1 match
                             window[s].hasOwnProperty('CHEST_PICK_AMETHYST') || // v15 1 match
@@ -408,7 +405,6 @@
                             window[s].hasOwnProperty('CHEST_WATERING_CAN_FULL') || // v15 1 match
                             window[s].hasOwnProperty('CHEST_WATERING_CAN') || // v15 1 match
                             window[s].hasOwnProperty('CHEST_WELL') || // v15 1 match
-                            window[s].hasOwnProperty('CHEST_WHEAT_O_O118450_0') || // v15 1 match
                             window[s].hasOwnProperty('CHEST_WILD_WHEAT') || // v15 1 match
                             window[s].hasOwnProperty('CHEST_WINDMILL') || // v15 1 match
                             window[s].hasOwnProperty('CHEST_WINTER_PEASANT') || // v15 1 match
@@ -471,9 +467,6 @@
                             window[s].hasOwnProperty('CRAFT_LOADING') || // v15 1 match
                             window[s].hasOwnProperty('CRAFT_LOCKPICK') || // v15 1 match
                             window[s].hasOwnProperty('CRAFT_LOCK') || // v15 1 match
-                            window[s].hasOwnProperty('CRAFT_O_O115590_0') || // v15 1 match
-                            window[s].hasOwnProperty('CRAFT_O_O115620_0') || // v15 1 match
-                            window[s].hasOwnProperty('CRAFT_O_O118450_0') || // v15 1 match
                             window[s].hasOwnProperty('CRAFT_PAPER') || // v15 1 match
                             window[s].hasOwnProperty('CRAFT_PEASANT') || // v15 1 match
                             window[s].hasOwnProperty('CRAFT_PICK_AMETHYST') || // v15 1 match
@@ -505,7 +498,6 @@
                             window[s].hasOwnProperty('CRAFT_WATERING_CAN_FULL') || // v15 1 match
                             window[s].hasOwnProperty('CRAFT_WATERING_CAN') || // v15 1 match
                             window[s].hasOwnProperty('CRAFT_WELL') || // v15 1 match
-                            window[s].hasOwnProperty('CRAFT_WHEAT_O_O118450_0') || // v15 1 match
                             window[s].hasOwnProperty('CRAFT_WINDMILL') || // v15 1 match
                             window[s].hasOwnProperty('CRAFT_WINTER_PEASANT') || // v15 1 match
                             window[s].hasOwnProperty('CRAFT_WORK') || // v15 1 match
@@ -551,7 +543,6 @@
                             window[s].hasOwnProperty('GEAR2') || // v15 1 match
                             window[s].hasOwnProperty('GEAR') || // v15 1 match
                             window[s].hasOwnProperty('GHOST_BUBBLES') || // v15 1 match
-                            window[s].hasOwnProperty('GLOVES_O_O115620_0') || // v15 1 match
                             window[s].hasOwnProperty('GOLD_WINTER') || // v15 1 match
                             window[s].hasOwnProperty('GRD_SHOVEL_CO') || // v15 1 match
                             window[s].hasOwnProperty('GROUND_FIRE') || // v15 1 match
@@ -649,9 +640,6 @@
                             window[s].hasOwnProperty('INV_LOCKPICK') || // v15 1 match
                             window[s].hasOwnProperty('INV_LOCK') || // v15 1 match
                             window[s].hasOwnProperty('INV_MEAT') || // v15 1 match
-                            window[s].hasOwnProperty('INV_O_O115590_0') || // v15 1 match
-                            window[s].hasOwnProperty('INV_O_O115620_0') || // v15 1 match
-                            window[s].hasOwnProperty('INV_O_O118450_0') || // v15 1 match
                             window[s].hasOwnProperty('INV_PAPER') || // v15 1 match
                             window[s].hasOwnProperty('INV_PEASANT') || // v15 1 match
                             window[s].hasOwnProperty('INV_PICK_AMETHYST') || // v15 1 match
@@ -689,7 +677,6 @@
                             window[s].hasOwnProperty('INV_WATERING_CAN_FULL') || // v15 1 match
                             window[s].hasOwnProperty('INV_WATERING_CAN') || // v15 1 match
                             window[s].hasOwnProperty('INV_WELL') || // v15 1 match
-                            window[s].hasOwnProperty('INV_WHEAT_O_O118450_0') || // v15 1 match
                             window[s].hasOwnProperty('INV_WILD_WHEAT') || // v15 1 match
                             window[s].hasOwnProperty('INV_WINDMILL') || // v15 1 match
                             window[s].hasOwnProperty('INV_WINTER_PEASANT') || // v15 1 match
@@ -713,24 +700,17 @@
                             window[s].hasOwnProperty('MINIMAP') || // v15 1 match
                             window[s].hasOwnProperty('NIGHT') || // v15 1 match
                             window[s].hasOwnProperty('OCEAN') || // v15 1 match
-                            window[s].hasOwnProperty('O_O115690_0') || // v15 1 match
-                            window[s].hasOwnProperty('O_O118380_0') || // v15 1 match
-                            window[s].hasOwnProperty('O_O118480_0') || // v15 1 match
-                            window[s].hasOwnProperty('O_O118490_0') || // v15 1 match
-                            window[s].hasOwnProperty('O_O118600_0') || // v15 1 match
                             window[s].hasOwnProperty('OPTION_BUTTON') || // v15 1 match
                             window[s].hasOwnProperty('PADLOCK_ON_CHEST') || // v15 1 match
                             window[s].hasOwnProperty('PADLOCK') || // v15 1 match
                             window[s].hasOwnProperty('PALM') || // v15 1 match
                             window[s].hasOwnProperty('PLANT_MINI') || // v15 1 match
-                            window[s].hasOwnProperty('PLANT_O_O118450_0') || // v15 1 match
                             window[s].hasOwnProperty('POINTS') || // v15 1 match
                             window[s].hasOwnProperty('QUEST_BUTTON') || // v15 1 match
                             window[s].hasOwnProperty('RECIPE_BUTTON') || // v15 1 match
                             window[s].hasOwnProperty('RECONNECT') || // v15 1 match
                             window[s].hasOwnProperty('RESURRECTION_GROUND') || // v15 1 match
                             window[s].hasOwnProperty('RESURRECTION_HOLE') || // v15 1 match
-                            window[s].hasOwnProperty('RESURRECTION_O_O116860_0') || // v15 1 match
                             window[s].hasOwnProperty('SAND_BORDER') || // v15 1 match
                             window[s].hasOwnProperty('SAND_COLOR') || // v15 1 match
                             window[s].hasOwnProperty('SAND_MAX_X') || // v15 1 match
@@ -757,7 +737,6 @@
                             window[s].hasOwnProperty('SNOW_STEP') || // v15 1 match
                             window[s].hasOwnProperty('SOUND_BUTTON_OFF') || // v15 1 match
                             window[s].hasOwnProperty('SOUND_BUTTON_ON') || // v15 1 match
-                            window[s].hasOwnProperty('SPECIAL_O_O116150_0') || // v15 1 match
                             window[s].hasOwnProperty('STEP_SPACE') || // v15 1 match
                             window[s].hasOwnProperty('STONES') || // v15 1 match
                             window[s].hasOwnProperty('STONES_WINTER') || // v15 1 match
@@ -776,11 +755,9 @@
                             window[s].hasOwnProperty('WEAPON_LOADING') || // v15 1 match
                             window[s].hasOwnProperty('WELL_EMPTY') || // v15 1 match
                             window[s].hasOwnProperty('WELL_FULL') || // v15 1 match
-                            window[s].hasOwnProperty('WHEAT_O_O118450_0_DRIED') || // v15 1 match
                             window[s].hasOwnProperty('WINDMILL_CASES') || // v15 1 match
                             window[s].hasOwnProperty('WINDMILL_FLOUR') || // v15 1 match
                             window[s].hasOwnProperty('WINDMILL_HEAD') || // v15 1 match
-                            window[s].hasOwnProperty('WINDMILL_WHEAT_O_O118450_0') || // v15 1 match
                             window[s].hasOwnProperty('WINDMILL_WINGS') || // v15 1 match
                             window[s].hasOwnProperty('WING_LEFT') || // v15 1 match
                             window[s].hasOwnProperty('WING_RIGHT') || // v15 1 match
