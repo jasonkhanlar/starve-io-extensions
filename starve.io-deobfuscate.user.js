@@ -272,6 +272,12 @@
                             ) {
                                 window.ctx = window[s];
                                 deobmatch('ctx', s);
+                                // Populate duplicates
+                                game.ctx = game[s];
+                                loader.ctx = loader[s];
+                                scoreboard.ctx = scoreboard[s];
+                                user.ldb.ctx = user.ldb[s];
+                                ui.ctx = ui[s];
                         } else if (window[s].hasOwnProperty('ARROW_CLOCK') || // v15 1 match
                             window[s].hasOwnProperty('AUTO_FEED') || // v15 1 match
                             window[s].hasOwnProperty('BEACH_WINTER_MIN_X') || // v15 1 match
