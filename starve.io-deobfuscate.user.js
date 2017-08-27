@@ -1553,8 +1553,11 @@
     }
 
     window.deobfuscate_func = function(deobfunc) {
+        // https://mathiasbynens.be/demo/javascript-identifier-regex
         deobfunc = deobfunc.replace(/(\[?)_0x[0-9a-fA-F]{4}\("(0x[0-9a-fA-F]+)"\)(\]?)/g, function() {
             return (arguments[1] === '[' ? '.' : '\'') + OBFUSCATOR_FN(arguments[2]) + (arguments[3] === ']' ? '' : '\'');
+        }).replace(/(?:[A-Za-z$_][A-Za-z0-9$_]*)*O_O[0-9]{3,6}0_0[A-Za-z0-9$_]*/g, function() {
+            return deoblist.d2o.hasOwnProperty(arguments[0]) ? deoblist.d2o[arguments[0]] : arguments[0];
         });
         return {
             orig: deobfunc,
