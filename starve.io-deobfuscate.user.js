@@ -1458,6 +1458,9 @@
                         } else if (deobfunc.abbr.match(/^function \([a-z],[a-z],[a-z]\){[a-z]\.x\+=[a-z];[a-z]\.y\+=[a-z]}$/)) {
                             window.Utils.translate_vector = Utils[s];
                             deobmatch('translate_vector', s);
+                        } else if (deobfunc.abbr.match(/^function \(\){return\.5<Math\.random\(\)\?1:-1}$/)) {
+                            window.Utils.rand_sign = Utils[s];
+                            deobmatch('rand_sign', s);
                         }
                     }
                 }
