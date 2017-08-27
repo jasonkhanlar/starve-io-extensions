@@ -2,7 +2,7 @@
 // @name         Starve.io extensions
 // @namespace    http://tampermonkey.net/
 // @version      0.15.1
-// @description  (1) On screen chat buffer (2) On screen help (3) Auto-book (4) Auto-cook
+// @description  (1) On screen chat buffer (2) On screen help (3) Auto attack (4) Auto book (5) Auto cook
 // @author       Jason Khanlar
 // @match        http://starve.io/
 // @grant        none
@@ -89,10 +89,11 @@
         var help_messages = [
          [ 'H', 'Open Help - open this help menu' ],
          [ 'Y', 'Open Map - open the larger map' ],
-         [ 'R', 'Auto-Feed - auto-consume food/drink when low' ],
-         [ 'T', 'Auto-Book - auto-equip book on craft' ],
+         [ 'R', 'Auto Feed - auto consume food/drink when low' ],
+         [ 'T', 'Auto Book - auto equip book on craft' ],
          [ 'P', 'Show Spectators - only in hunger games' ],
-         [ 'C', 'Auto-Cook - auto-cook meals when possible' ],
+         [ 'C', 'Auto Cook - auto cook meals when possible' ],
+         [ 'E', 'Auto Attack - auto attack' ],
          [ '`', 'Chat Buffer - hide/show chat messages' ]
         ];
 
@@ -157,6 +158,13 @@
         return temp_canv;
     };
 
+    function alert_ext_auto_attack() {
+        var msg = ' Auto Attack: ' + (user.auto_attack.enabled ? 'ON' : 'OFF');
+        if (!user.alert.text) { user.alert.text = msg; }
+        else if (user.alert.text.match(/Auto Attack:/)) { user.alert.text = msg; user.alert.timeout.v = 1; user.alert.label = null; }
+        else { user.alert.list.push(msg); }
+    }
+
     function draw_ext_auto_book() {
         if (user.auto_book.enabled) { ctx.drawImage(sprite[SPRITE.AUTO_BOOK], user.auto_book.translate.x, user.auto_book.translate.y); }
     }
@@ -207,6 +215,10 @@
                     }
                 }
             }
+        };
+        user.auto_attack = {
+            enabled: false,
+            last_attack: 0
         };
         user.auto_cook = {
             enabled: false,
@@ -287,6 +299,7 @@
 
             if (!user.chat.open)  {
                 if (keycode == 84) { user.auto_book.enabled = !user.auto_book.enabled; }
+                else if (keycode == 69) { user.auto_attack.enabled = !user.auto_attack.enabled; alert_ext_auto_attack(); }
                 else if (keycode == 72) { user.ext_help.enabled = !user.ext_help.enabled; }
                 else if (keycode == 67) { user.auto_cook.enabled = !user.auto_cook.enabled; user.auto_cook.cook(); }
                 else if (keycode == 192) { document.getElementById('chat_log').style.display = document.getElementById('chat_log').style.display == 'none' ? '' : 'none'; }
@@ -352,6 +365,24 @@
         user.shop.draw = function() {
             old_user_shop_draw.apply(this);
             if (60 > this.time) draw_shop_timer();
+        };
+
+        window.old_user_control_update = user.control.update;
+        user.control.update = function() {
+            old_user_control_update.apply(this);
+            var elapsed_time = ((new Date()).getTime() - world.clock.init) / 1000;
+            if (mouse.state !== 0 && elapsed_time >= user.auto_attack.last_attack + CLIENT[deoblist.o2d.ATTACK] * 2.5) {
+                if (user.auto_attack.enabled) {
+                    user.auto_attack.last_attack = elapsed_time;
+                    this.attack = 1;
+                    var c = world[fast_units][user.uid];
+                    var g = Utils.get_std_angle(mouse.pos, c ? {x: user.cam.x + c.x, y: user.cam.y + c.y} : canm);
+                    window[client][send_attack](g);
+                } else {
+                    this.attack = 0;
+                    window[client][stop_attack]();
+                }
+            }
         };
     }
 

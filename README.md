@@ -20,7 +20,7 @@ TO USE / INSTALL
 [YouTube Video](https://youtu.be/IpvEiCeQVAs)
 * Help @ 1m20s
 * On screen chat buffer @ 1m50s
-* Auto-cook @ 9m:20s
+* Auto cook @ 9m:20s
 
 [YouTube Video](https://youtu.be/LveuRqidKhY) by [AskingTheNeos](https://www.youtube.com/channel/UCDjgEaRWYbqowT8E3U9R_7Q)
 
@@ -42,13 +42,17 @@ TO USE / INSTALL
 
 * Duplication of TimothyM's (Tjstretchalot's) [implementation](https://github.com/Tjstretchalot/starve-io-extensions)
 
-(3) Auto-book
+(3) Auto attack
+---------------
+* Toggle with E
+
+(4) Auto book
 -------------
 * Toggle with T
 
 * Duplication of TimothyM's (Tjstretchalot's) [implementation](https://github.com/Tjstretchalot/starve-io-extensions)
 
-(4) Auto-cook
+(5) Auto cook
 -------------
 * Toggle with C
 
