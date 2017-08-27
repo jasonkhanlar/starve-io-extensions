@@ -1449,6 +1449,9 @@
                         } else if (deobfunc.abbr.match(/^function \([a-z],[a-z]\){return [a-z]\.x\*[a-z]\.y-[a-z]\.y\*[a-z]\.x}$/)) {
                             window.Utils.cross_product = Utils[s];
                             deobmatch('cross_product', s);
+                        } else if (deobfunc.abbr.match(/^function \([a-z],[a-z]\){return Math\.acos/)) {
+                            window.Utils.get_angle = Utils[s];
+                            deobmatch('get_angle', s);
                         }
                     }
                 }
