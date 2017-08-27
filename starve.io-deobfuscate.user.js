@@ -1473,6 +1473,9 @@
                         } else if (deobfunc.abbr.match(/^function \([a-z],[a-z],[a-z],[a-z],[a-z],[a-z]\){this\.o=/)) {
                             window.Utils.LinearAnimation= Utils[s];
                             deobmatch('LinearAnimation', s);
+                        } else if (deobfunc.abbr.match(/fromCharCode/)) {
+                            window.Utils.rand_string = Utils[s];
+                            deobmatch('rand_string', s);
                         }
                     }
                 }
