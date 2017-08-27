@@ -1467,6 +1467,9 @@
                         } else if (deobfunc.abbr.match(/^function \([a-z]\){if\(1E4<=/)) {
                             window.Utils.simplify_number= Utils[s];
                             deobmatch('simplify number', s);
+                        } else if (deobfunc.abbr.match(/^function \([a-z]\){return [a-z]\*\(2-[a-z]\)}$/)) {
+                            window.Utils.ease_out_quad= Utils[s];
+                            deobmatch('ease_out_quad', s);
                         }
                     }
                 }
