@@ -1358,19 +1358,29 @@
                             if (deobfuscate_func(window.UI.toString().replace(/\n/g, '')).orig.split(new RegExp('EventListener\\(\'mousedown\',this\.' + s)).length > 1) {
                                 window.ui.trigger_mousedown = ui[s];
                                 deobmatch('trigger_mousedown', s);
+                                // Populate duplicates
+                                game.trigger_mousedown = game[s];
                             } else if (deobfuscate_func(window.UI.toString().replace(/\n/g, '')).orig.split(new RegExp('EventListener\\(\'mouseup\',this\.' + s)).length > 1) {
                                 window.ui.trigger_mouseup = ui[s];
                                 deobmatch('trigger_mouseup', s);
+                                // Populate duplicates
+                                game.trigger_mouseup = game[s];
                             }
                         } else if (deobfunc.abbr.match(/^function \([a-z]\){@\(this\.can,[a-z]\);[a-z]\.style\.cursor=.auto.}$/)) {
                                 window.ui.trigger_mousemove = ui[s];
                                 deobmatch('trigger_mousemove', s);
+                                // Populate duplicates
+                                game.trigger_mousemove = game[s];
                         } else if (deobfunc.abbr.match(/window\.addEventListener/)) {
                                 window.ui.add_event_listener = ui[s];
                                 deobmatch('add_event_listener', s);
+                                // Populate duplicates
+                                game.add_event_listener = game[s];
                         } else if (deobfunc.abbr.match(/window\.removeEventListener/)) {
                                 window.ui.remove_event_listener = ui[s];
                                 deobmatch('remove_event_listener', s);
+                                // Populate duplicates
+                                game.remove_event_listener = game[s];
                         }
                     } else if (typeof window.ui[s] === 'number') {
                     } else if (typeof window.ui[s] === 'object') {
