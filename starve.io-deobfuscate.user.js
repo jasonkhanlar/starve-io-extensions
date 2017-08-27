@@ -1461,6 +1461,9 @@
                         } else if (deobfunc.abbr.match(/^function \(\){return\.5<Math\.random\(\)\?1:-1}$/)) {
                             window.Utils.rand_sign = Utils[s];
                             deobmatch('rand_sign', s);
+                        } else if (deobfunc.abbr.match(/2E4/)) {
+                            window.Utils.restore_number = Utils[s];
+                            deobmatch('restore_number', s);
                         }
                     }
                 }
