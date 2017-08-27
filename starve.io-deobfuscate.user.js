@@ -1452,6 +1452,9 @@
                         } else if (deobfunc.abbr.match(/^function \([a-z],[a-z]\){return Math\.acos/)) {
                             window.Utils.get_angle = Utils[s];
                             deobmatch('get_angle', s);
+                        } else if (deobfunc.abbr.match(/^function \([a-z],[a-z]\){return this\.@\({x:1,y:0\},this\.@\([a-z],[a-z]\)\)}$/)) {
+                            window.Utils.get_std_angle = Utils[s];
+                            deobmatch('get_std_angle', s);
                         }
                     }
                 }
