@@ -52,6 +52,7 @@
                 if (s === 'webkitStorageInfo') continue; // deprecated
                 if (typeof window[s] === 'boolean') { // v15 6 matches
                 } else if (typeof window[s] === 'function') { // v15 376 matches
+                    if ((/\{\s*\[native code\]\s*\}/).test('' + window[s])) { continue; } // ignore native functions
                     var deobfunc = deobfuscate_func(window[s].toString());
                     if (window[s].length === 0) { // v15 83 matches
                         if (window[s].toString().match(/new XMLHttpRequest/)) { // v15 1 match
@@ -940,6 +941,7 @@
                 for (var s in window[client]) {
                     if (typeof window[client][s] === 'boolean') {
                     } else if (typeof window[client][s] === 'function') {
+                        if ((/\{\s*\[native code\]\s*\}/).test('' + window[client][s])) { continue; } // ignore native functions
                         var deobfunc = deobfuscate_func(window[client][s].toString());
                         if (window[client][s].length === 0) {
                             if (deobfunc.abbr.match(/this\.@=JSON\.parse\(this\.xhttp\.responseText\)/)) {
@@ -1175,6 +1177,7 @@
                 for (var s in window.game) {
                     if (typeof window.game[s] === 'boolean') {
                     } else if (typeof window.game[s] === 'function') {
+                        if ((/\{\s*\[native code\]\s*\}/).test('' + window.game[s])) { continue; } // ignore native functions
                         var deobfunc = deobfuscate_func(window.game[s].toString());
                         if (deobfunc.abbr.match(/draw_ui_gear/)) {
                             window.draw_UI = s;
@@ -1324,6 +1327,7 @@
                 for (var s in window.ui) {
                     if (typeof window.ui[s] === 'boolean') {
                     } else if (typeof window.ui[s] === 'function') {
+                        if ((/\{\s*\[native code\]\s*\}/).test('' + window.ui[s])) { continue; } // ignore native functions
                         var deobfunc = deobfuscate_func(window.ui[s].toString());
                         if (deobfunc.abbr.match(/Cookies\.set\(.starve_mapping.,.azerty.\)/)) {
                             window.ui.set_azerty = ui[s];
@@ -1413,6 +1417,7 @@
             if (typeof Utils === 'object') {
                 for (var s in window.Utils) {
                     if (typeof window.Utils[s] === 'function') {
+                        if ((/\{\s*\[native code\]\s*\}/).test('' + window.Utils[s])) { continue; } // ignore native functions
                         var deobfunc = deobfuscate_func(window.Utils[s].toString());
                         if (deobfunc.abbr.match(/^function \([a-z]\){window\.open\([a-z],'_blank'\)\.focus\(\)}$/)) {
                             window.Utils.open_in_new_tab = Utils[s];
@@ -1556,9 +1561,12 @@
         // https://mathiasbynens.be/demo/javascript-identifier-regex
         deobfunc = deobfunc.replace(/(\[?)_0x[0-9a-fA-F]{4}\("(0x[0-9a-fA-F]+)"\)(\]?)/g, function() {
             return (arguments[1] === '[' ? '.' : '\'') + OBFUSCATOR_FN(arguments[2]) + (arguments[3] === ']' ? '' : '\'');
-        }).replace(/(?:[A-Za-z$_][A-Za-z0-9$_]*)*O_O[0-9]{3,6}0_0[A-Za-z0-9$_]*/g, function() {
-            return deoblist.d2o.hasOwnProperty(arguments[0]) ? deoblist.d2o[arguments[0]] : arguments[0];
         });
+        if (typeof deobauto !== 'undefined') { // Slow, only use manually
+            deobfunc = deobfunc.replace(/(?:[A-Za-z$_][A-Za-z0-9$_]*)*O_O[0-9]{3,6}0_0[A-Za-z0-9$_]*/g, function() {
+                return deoblist.d2o.hasOwnProperty(arguments[0]) ? deoblist.d2o[arguments[0]] : arguments[0];
+            });
+        }
         return {
             orig: deobfunc,
             abbr: deobfunc
