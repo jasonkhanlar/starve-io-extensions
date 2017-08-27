@@ -16,7 +16,7 @@
 
     // Restore console.{debug,error,info,log,trace,warn}
     window.console = console;
-    window.deoblist = { ob2deob: [], deob2ob: [] };
+    window.deoblist = { o2d: [], d2o: [] };
 
     // Performance tests
     // https://jsperf.com/isarray-two
@@ -1536,7 +1536,7 @@
             // Then check if anything was missed
 
             for (var s in window) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.deob2ob.hasOwnProperty(s)) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     if (window[s] === window) {} // ignore
                     else if (window[s] === 10000) {} // ignore
                     else if (typeof window[s] === 'string' && window[s].match(/^[0-9a-zA-Z_-]*$/)) { } // ignore
@@ -1595,12 +1595,12 @@
     }
 
     function deobmatch(name, deob) {
-        if (deoblist.ob2deob.hasOwnProperty(deob)) {
+        if (deoblist.o2d.hasOwnProperty(deob)) {
             console.log(['duplicate', name, deob, window[deob]]);
             return true;
         } else {
-            deoblist.deob2ob[deob] = name;
-            deoblist.ob2deob[name] = deob;
+            deoblist.d2o[deob] = name;
+            deoblist.o2d[name] = deob;
             return false;
         }
     }
