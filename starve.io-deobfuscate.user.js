@@ -1464,6 +1464,9 @@
                         } else if (deobfunc.abbr.match(/2E4/)) {
                             window.Utils.restore_number = Utils[s];
                             deobmatch('restore_number', s);
+                        } else if (deobfunc.abbr.match(/^function \([a-z]\){if\(1E4<=/)) {
+                            window.Utils.simplify_number= Utils[s];
+                            deobmatch('simplify number', s);
                         }
                     }
                 }
