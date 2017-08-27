@@ -1358,6 +1358,9 @@
                             if (deobfuscate_func(window.UI.toString().replace(/\n/g, '')).orig.split(new RegExp('EventListener\\(\'mousedown\',this\.' + s)).length > 1) {
                                 window.ui.trigger_mousedown = ui[s];
                                 deobmatch('trigger_mousedown', s);
+                            } else if (deobfuscate_func(window.UI.toString().replace(/\n/g, '')).orig.split(new RegExp('EventListener\\(\'mouseup\',this\.' + s)).length > 1) {
+                                window.ui.trigger_mouseup = ui[s];
+                                deobmatch('trigger_mouseup', s);
                             }
                         }
                     } else if (typeof window.ui[s] === 'number') {
