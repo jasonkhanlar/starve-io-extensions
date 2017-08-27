@@ -1365,6 +1365,9 @@
                         } else if (deobfunc.abbr.match(/^function \([a-z]\){@\(this\.can,[a-z]\);[a-z]\.style\.cursor=.auto.}$/)) {
                                 window.ui.trigger_mousemove = ui[s];
                                 deobmatch('trigger_mousemove', s);
+                        } else if (deobfunc.abbr.match(/window\.addEventListener/)) {
+                                window.ui.add_event_listener = ui[s];
+                                deobmatch('add_event_listener', s);
                         }
                     } else if (typeof window.ui[s] === 'number') {
                     } else if (typeof window.ui[s] === 'object') {
