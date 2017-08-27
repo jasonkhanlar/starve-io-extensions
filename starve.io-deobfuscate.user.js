@@ -1440,6 +1440,9 @@
                         if (deobfunc.abbr.match(/^function \([a-z]\){window\.open\([a-z],'_blank'\)\.focus\(\)}$/)) {
                             window.Utils.open_in_new_tab = Utils[s];
                             deobmatch('open_in_new_tab', s);
+                        } else if (deobfunc.abbr.match(/^function \([a-z],[a-z]\){return{x:[a-z]\.x-[a-z]\.x,y:[a-z]\.y-[a-z]\.y}}$/)) {
+                            window.Utils.get_vector = Utils[s];
+                            deobmatch('get_vector', s);
                         }
                     }
                 }
