@@ -1563,10 +1563,12 @@
             return (arguments[1] === '[' ? '.' : '\'') + OBFUSCATOR_FN(arguments[2]) + (arguments[3] === ']' ? '' : '\'');
         });
         if (typeof deobauto !== 'undefined') { // Slow, only use manually
-            deobfunc = deobfunc.replace(/(?:[A-Za-z$_][A-Za-z0-9$_]*)*O_O[0-9]{3,6}0_0[A-Za-z0-9$_]*/g, function() {
-                return window.hasOwnProperty(arguments[0]) && typeof window[arguments[0]] === 'string' ?
-                window[arguments[0]] : (
-                    deoblist.d2o.hasOwnProperty(arguments[0]) ? deoblist.d2o[arguments[0]] : arguments[0]
+            deobfunc = deobfunc.replace(/(\[?)((?:[A-Za-z$_][A-Za-z0-9$_]*)*O_O[0-9]{3,6}0_0[A-Za-z0-9$_]*)(\]?)/g, function() {
+                return window.hasOwnProperty(arguments[2]) && typeof window[arguments[2]] === 'string' ?
+                (
+                    '.' + window[arguments[2]]
+                ) : (
+                    deoblist.d2o.hasOwnProperty(arguments[2]) ? arguments[1] + deoblist.d2o[arguments[2]] + arguments[3] : arguments[0]
                 );
             });
         }
