@@ -1368,6 +1368,9 @@
                         } else if (deobfunc.abbr.match(/window\.addEventListener/)) {
                                 window.ui.add_event_listener = ui[s];
                                 deobmatch('add_event_listener', s);
+                        } else if (deobfunc.abbr.match(/window\.removeEventListener/)) {
+                                window.ui.remove_event_listener = ui[s];
+                                deobmatch('remove_event_listener', s);
                         }
                     } else if (typeof window.ui[s] === 'number') {
                     } else if (typeof window.ui[s] === 'object') {
