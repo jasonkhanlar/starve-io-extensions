@@ -1443,6 +1443,9 @@
                         } else if (deobfunc.abbr.match(/^function \([a-z],[a-z]\){return{x:[a-z]\.x-[a-z]\.x,y:[a-z]\.y-[a-z]\.y}}$/)) {
                             window.Utils.get_vector = Utils[s];
                             deobmatch('get_vector', s);
+                        } else if (deobfunc.abbr.match(/^function \([a-z],[a-z]\){return [a-z]\.x\*[a-z]\.x\+[a-z]\.y\*[a-z]\.y}$/)) {
+                            window.Utils.scalar_product = Utils[s];
+                            deobmatch('scalar_product', s);
                         }
                     }
                 }
