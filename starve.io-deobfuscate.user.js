@@ -1351,6 +1351,9 @@
                         if (deobfunc.abbr.match(/Cookies\.set\(.starve_mapping.,.azerty.\)/)) {
                             window.ui.set_azerty = ui[s];
                             deobmatch('set_azerty', s);
+                        } else if (deobfunc.abbr.match(/Cookies\.set\(.starve_mapping.,.qwerty.\)/)) {
+                            window.ui.set_qwerty = ui[s];
+                            deobmatch('set_qwerty', s);
                         }
                     } else if (typeof window.ui[s] === 'number') {
                     } else if (typeof window.ui[s] === 'object') {
