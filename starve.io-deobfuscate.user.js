@@ -1354,6 +1354,11 @@
                         } else if (deobfunc.abbr.match(/Cookies\.set\(.starve_mapping.,.qwerty.\)/)) {
                             window.ui.set_qwerty = ui[s];
                             deobmatch('set_qwerty', s);
+                        } else if (deobfunc.abbr.match(/^function \([a-z]\){@\(this\.can,[a-z]\)}$/)) { // v15 2 matches
+                            if (deobfuscate_func(window.UI.toString().replace(/\n/g, '')).orig.split(new RegExp('EventListener\\(\'mousedown\',this\.' + s)).length > 1) {
+                                window.ui.trigger_mousedown = ui[s];
+                                deobmatch('trigger_mousedown', s);
+                            }
                         }
                     } else if (typeof window.ui[s] === 'number') {
                     } else if (typeof window.ui[s] === 'object') {
