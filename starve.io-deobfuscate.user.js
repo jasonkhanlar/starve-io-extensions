@@ -1476,6 +1476,9 @@
                         } else if (deobfunc.abbr.match(/fromCharCode/)) {
                             window.Utils.rand_string = Utils[s];
                             deobmatch('rand_string', s);
+                        } else if (deobfunc.abbr.match(/^function \([a-z],[a-z]\){return [a-z]\.x>=[a-z]\.x&&[a-z]\.x<=[a-z]\.x\+[a-z]\.w/)) {
+                            window.Utils.contains = Utils[s];
+                            deobmatch('contains', s);
                         }
                     }
                 }
