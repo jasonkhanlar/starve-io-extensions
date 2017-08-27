@@ -1347,6 +1347,11 @@
                 for (var s in window.ui) {
                     if (typeof window.ui[s] === 'boolean') {
                     } else if (typeof window.ui[s] === 'function') {
+                        var deobfunc = deobfuscate_func(window.ui[s].toString());
+                        if (deobfunc.abbr.match(/Cookies\.set\(.starve_mapping.,.azerty.\)/)) {
+                            window.ui.set_azerty = ui[s];
+                            deobmatch('set_azerty', s);
+                        }
                     } else if (typeof window.ui[s] === 'number') {
                     } else if (typeof window.ui[s] === 'object') {
                         if (window.ui[s] === null) {
