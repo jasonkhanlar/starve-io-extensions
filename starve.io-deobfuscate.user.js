@@ -22,6 +22,7 @@
     // https://jsperf.com/isarray-two
     // https://jsperf.com/count-the-number-of-characters-in-a-string
     // https://jsperf.com/string-ocurrence-split-vs-match/2
+    // https://jsperf.com/exec-vs-match-vs-test-vs-search/10
 
     function autodetect(stage) {
         if (stage === 0) {
