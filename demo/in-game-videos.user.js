@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Starve.io to Demo: YouTube videos in game world
+// @name         Starve.io Demo: YouTube videos in game world
 // @namespace    http://tampermonkey.net/
 // @version      0.15.1
 // @description  Demo showing how YouTube videos can appear in Starve.io game world.  This demo replaces dead boxes with videos. The more players that die, the more videos.
