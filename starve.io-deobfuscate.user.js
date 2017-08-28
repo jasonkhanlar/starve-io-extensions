@@ -141,11 +141,9 @@
                             ) {
                                 window.mobile = s;
                                 deobmatch('mobile', s);
-                        }
-
-                        if ((typeof window.gui_create_button === 'function' && window.gui_create_button.toString().indexOf('==' + s + '&&') > -1) || // v15 1 match
+                        } else if ((typeof window.gui_create_button === 'function' && window.gui_create_button.toString().indexOf('==' + s + '&&') > -1) || // v15 1 match
                             (typeof window.Game === 'function' && window.Game.toString().indexOf(',' + s + ')&&game') > -1) // v15 1 match
-                        ) {
+                            ) {
                             window.MOUSE_MOVE = s;
                             deobmatch('MOUSE_MOVE', s);
                         }
