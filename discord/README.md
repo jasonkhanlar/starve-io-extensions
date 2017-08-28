@@ -14,7 +14,7 @@ Scripts here are for proof of concept and working examples
 
 ## discord / starve.io-to-discord-share-screenshot.user.js
 
-* Share Starve.io screenshots with a Discord server by pushing P (Also PRINT SCREEN works even if in-game chat input is enabled)
+* Share Starve.io screenshots with a Discord server by pushing I (Also PRINT SCREEN works even if in-game chat input is enabled)
 
 ## discord / starve.io-to-discord-top10-every-30mins.user.js
 
