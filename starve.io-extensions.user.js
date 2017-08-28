@@ -94,6 +94,7 @@
          [ 'P', 'Show Spectators - only in hunger games' ],
          [ 'C', 'Auto Cook - auto cook meals when possible' ],
          [ 'E', 'Auto Attack - auto attack' ],
+         [ 'L', 'Show Server Info - shows server name' ],
          [ '`', 'Chat Buffer - hide/show chat messages' ]
         ];
 
@@ -177,6 +178,45 @@
         if (user.ext_help.enabled) { ctx.drawImage(sprite[SPRITE.EXT_HELP], user.ext_help.translate.x, user.ext_help.translate.y); }
     }
 
+    function draw_ext_server_info() {
+        if (typeof user.server_info.server_name === 'undefined') {
+            user.server_info.server_url = window[client][socket].url;
+            user.server_info.server_ip = user.server_info.server_url.match(/ws:\/\/([^:]*):([^/]*)\//)[1];
+            user.server_info.server_port = user.server_info.server_url.match(/ws:\/\/([^:]*):([^/]*)\//)[2];
+
+            for (var x = 0; x < window[client][server_list].length; x++) {
+                if (window[client][server_list][x].i === user.server_info.server_ip && window[client][server_list][x].p === parseInt(user.server_info.server_port)) {
+                    user.server_info.server_name = window[client][server_list][x].a;
+                }
+            }
+        }
+
+        if (user.server_info.enabled) {
+            if (user.cam.y * -1 + window[canh2] < 9750) {
+                if (!user.server_info.label_winter) {
+                    user.server_info.label_winter = create_text(scale, user.server_info.server_name, 22, "#187484", '#000', 2, null, null, sprite[SPRITE.MINIMAP][0].width * scale);
+                }
+                user.server_info.label_active = user.server_info.label_winter;
+            }
+            else {
+                if (!user.server_info.label) {
+                    user.server_info.label = create_text(scale, user.server_info.server_name, 22, "#FFF", "#000", 2, null, null, sprite[SPRITE.MINIMAP][0].width * scale);
+                }
+                user.server_info.label_active = user.server_info.label;
+            }
+            if (world.day == SPRITE.NIGHT) ctx.globalAlpha = 0.5;
+            if (user.server_info.label_active.width <= sprite[SPRITE.MINIMAP][0].width) {
+                user.server_info.translate.x = canw - sprite[SPRITE.MINIMAP][0].width / 2 - user.server_info.label_active.width / 2;
+            } else {
+                user.server_info.translate.x = canw - user.server_info.label_active.width;
+            }
+            if (user.inv.can_select.length > 0) user.server_info.translate.y = game.minimap.translate.y - user.server_info.label_active.height - 110;
+            else user.server_info.translate.y = game.minimap.translate.y - user.server_info.label_active.height - 40;
+            ctx.drawImage(user.server_info.label_active, user.server_info.translate.x, user.server_info.translate.y);
+            ctx.globalAlpha = 1;
+        }
+    }
+
     function checkDependencies() {
         if ((typeof deobauto === 'undefined' || deobauto !== true) &&
             (typeof deobcomplete === 'undefined' || deobcomplete !== true) &&
@@ -247,6 +287,10 @@
                 }
             }
         };
+        user.server_info = {
+            enabled: true,
+            translate: { x: 0, y: 0 }
+        };
         user.craft.do_craft = function(recipeID) {
             var recipe = RECIPES[recipeID];
             this.id = recipeID;
@@ -278,6 +322,7 @@
             draw_ext_auto_book();
             draw_ext_auto_cook();
             draw_ext_help();
+            draw_ext_server_info();
         };
 
         window.old_game_update = game.update;
@@ -301,6 +346,7 @@
                 if (keycode == 84) { user.auto_book.enabled = !user.auto_book.enabled; }
                 else if (keycode == 69) { user.auto_attack.enabled = !user.auto_attack.enabled; alert_ext_auto_attack(); }
                 else if (keycode == 72) { user.ext_help.enabled = !user.ext_help.enabled; }
+                else if (keycode == 76) { user.server_info.enabled = !user.server_info.enabled; }
                 else if (keycode == 67) { user.auto_cook.enabled = !user.auto_cook.enabled; user.auto_cook.cook(); }
                 else if (keycode == 192) { document.getElementById('chat_log').style.display = document.getElementById('chat_log').style.display == 'none' ? '' : 'none'; }
             }
