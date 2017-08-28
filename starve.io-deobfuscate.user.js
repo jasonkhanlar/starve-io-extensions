@@ -168,11 +168,13 @@
                         }
                     }
                     // variable value
-                    if ((typeof window.draw === 'function' && window.draw.toString().indexOf('-' + s + ')/1E3;') > -1 ) || // v15 1 match
-                        (typeof window.draw === 'function' && window.draw.toString().indexOf(')/1E3;' + s + '=') > -1 ) // v15 1 match
-                        ) {
-                            window.old_timestamp = s;
-                            deobmatch('old_timestamp', s);
+                    if (typeof window.draw === 'function') {
+                        if (window.draw.toString().indexOf('-' + s + ')/1E3;') > -1 || // v15 1 match
+                            window.draw.toString().indexOf(')/1E3;' + s + '=') > -1 // v15 1 match
+                            ) {
+                                window.old_timestamp = s;
+                                deobmatch('old_timestamp', s);
+                        }
                     }
                 } else if (typeof window[s] === 'object') { // v15 206-208 matches
                     if (window[s] === window) { } // ignore
