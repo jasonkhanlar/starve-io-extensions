@@ -179,18 +179,6 @@
     }
 
     function draw_ext_server_info() {
-        if (typeof user.server_info.server_name === 'undefined') {
-            user.server_info.server_url = window[client][socket].url;
-            user.server_info.server_ip = user.server_info.server_url.match(/ws:\/\/([^:]*):([^/]*)\//)[1];
-            user.server_info.server_port = user.server_info.server_url.match(/ws:\/\/([^:]*):([^/]*)\//)[2];
-
-            for (var x = 0; x < window[client][server_list].length; x++) {
-                if (window[client][server_list][x].i === user.server_info.server_ip && window[client][server_list][x].p === parseInt(user.server_info.server_port)) {
-                    user.server_info.server_name = window[client][server_list][x].a;
-                }
-            }
-        }
-
         if (user.server_info.enabled) {
             if (user.cam.y * -1 + window[canh2] < 9750) {
                 if (!user.server_info.label_winter) {
@@ -214,6 +202,20 @@
             else user.server_info.translate.y = game.minimap.translate.y - user.server_info.label_active.height - 40;
             ctx.drawImage(user.server_info.label_active, user.server_info.translate.x, user.server_info.translate.y);
             ctx.globalAlpha = 1;
+        }
+    }
+
+    function get_ext_server_name() {
+        if (typeof user.server_info.server_name === 'undefined') {
+            user.server_info.server_url = window[client][socket].url;
+            user.server_info.server_ip = user.server_info.server_url.match(/ws:\/\/([^:]*):([^/]*)\//)[1];
+            user.server_info.server_port = user.server_info.server_url.match(/ws:\/\/([^:]*):([^/]*)\//)[2];
+
+            for (var x = 0; x < window[client][server_list].length; x++) {
+                if (window[client][server_list][x].i === user.server_info.server_ip && window[client][server_list][x].p === parseInt(user.server_info.server_port)) {
+                    user.server_info.server_name = window[client][server_list][x].a;
+                }
+            }
         }
     }
 
@@ -353,6 +355,12 @@
         };
 
         window.addEventListener('keyup', my_trigger_key_up, false);
+
+        window.old_client_connect = window[client].connect;
+        window[client].connect = function() {
+            old_client_connect.apply(this);
+            get_ext_server_name();
+        }
 
         window.old_client_select_craft = window[client][select_craft];
         window[client][select_craft] = function(c) {
