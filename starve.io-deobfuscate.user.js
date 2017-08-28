@@ -156,7 +156,6 @@
                             window.MOUSE_DOWN = s;
                             deobmatch('MOUSE_DOWN', s);
                         }
-
                     } else if (window[s] === 2) {
                         if ((typeof window.Game === 'function' && window.Game.toString().indexOf(',' + s + ')?1!=') > -1) || // v15 1 match
                             (typeof window.Game === 'function' && window.Game.toString().indexOf(',mouse.pos,' + s + ')&&0>user') > -1) || // v15 1 match
