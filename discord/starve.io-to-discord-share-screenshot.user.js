@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io to Discord : Share screenshot
 // @namespace    http://tampermonkey.net/
-// @version      0.15.1
+// @version      0.15.20
 // @description  Shares Starve.io screenshot with a Discord server
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -98,9 +98,9 @@
         }
 
         var my_trigger_key_up = function(c) {
-            // Push Print Screen (can be used when chat dialog is opened) or P
+            // Push Print Screen (can be used when chat dialog is opened) or I
             // (See http://keycode.info/)
-            if (c.keyCode === 42 || (!user.chat.open && c.keyCode === 80)) { screenshot(); }
+            if (c.keyCode === 42 || (!user.chat.open && c.keyCode === 73)) { screenshot(); }
         };
 
         window.addEventListener('keyup', my_trigger_key_up, false);
