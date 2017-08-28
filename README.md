@@ -64,3 +64,7 @@ TO USE / INSTALL
   * Cooked Meat
   * Bread
   * Sandwich
+
+(6) Server name
+---------------
+* Toggle with L
