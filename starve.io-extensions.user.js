@@ -328,9 +328,9 @@
         window.old_game_update = game.update;
         game.update = function() {
             old_game_update.apply(this);
-            user.auto_book.translate.x = game.leaderboard.translate.x - sprite[SPRITE.AUTO_BOOK].width - 10;
+            user.auto_book.translate.x = user.auto_feed.translate.x;
             user.auto_book.translate.y = user[spectators].translate.y + sprite[SPRITE.SHOW_SPECTATORS].height + 5;
-            user.auto_cook.translate.x = game.leaderboard.translate.x - sprite[SPRITE.AUTO_COOK].width - 10;
+            user.auto_cook.translate.x = user.auto_feed.translate.x;
             user.auto_cook.translate.y = user.auto_book.translate.y + sprite[SPRITE.AUTO_BOOK].height + 5;
             user.ext_help.translate.x = can.width / 2 - sprite[SPRITE.EXT_HELP].width / 2;
             user.ext_help.translate.y = can.height / 2 - sprite[SPRITE.EXT_HELP].height / 2;
