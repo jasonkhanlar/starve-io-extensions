@@ -68,6 +68,9 @@
                         } else if (deobfunc.abbr.match(/IFWBGC/) && deobfunc.abbr.match(/@\.items\.push/)) { // v15 1 match
                             window.init_fake_world = s;
                             deobmatch('init_fake_world', s);
+                        } else if (s !== 'create_images' && deobfunc.orig.match(/ICON_LEADER/)) { // v15 1 match
+                            window.draw_player = s;
+                            deobmatch('draw_player', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
