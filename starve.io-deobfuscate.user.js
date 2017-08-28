@@ -174,6 +174,12 @@
                             ) {
                                 window.old_timestamp = s;
                                 deobmatch('old_timestamp', s);
+                        } else if (typeof window.draw_life === 'function' &&
+                            deobfuscate_func(draw.toString()).orig.split(s).length >= 4 &&
+                            deobfuscate_func(draw_life.toString()).orig.match(new RegExp('\\*' + s + '\\*600\\*scale'))
+                            ) {
+                            window.delta = s;
+                            deobmatch('delta', s);
                         }
                     }
                 } else if (typeof window[s] === 'object') { // v15 206-208 matches
