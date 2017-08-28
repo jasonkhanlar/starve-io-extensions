@@ -71,6 +71,9 @@
                         } else if (s !== 'create_images' && deobfunc.orig.match(/ICON_LEADER/)) { // v15 1 match
                             window.draw_player = s;
                             deobmatch('draw_player', s);
+                        } else if (s !== 'create_images' && deobfunc.orig.match(/[a-z]\+game\.minimap\.marker\.y\*scale/)) { // v15 1 match
+                            window.draw_minimap = s;
+                            deobmatch('draw_minimap', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
