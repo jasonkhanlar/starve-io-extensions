@@ -96,6 +96,7 @@
                     }
                 } else if (typeof window[s] === 'number') { // v15 50-52 matches
                     if (window[s] === window.innerHeight && s !== 'innerHeight') { // v15 1 match
+                        // Not detected if resizing window while loading
                         if (s !== 'canh') {
                             if (deobfuscate_func(resize_canvas.toString()).orig.indexOf(',' + s + '=can.height,') > -1) {
                                 window.canh = s;
@@ -103,12 +104,14 @@
                             }
                         }
                     } else if (window[s] === window.innerHeight / 2) { // v15 1 match
-                            if (deobfuscate_func(resize_canvas.toString()).orig.indexOf(',' + s + '=can.height/2)') > -1) {
-                                window.canh2 = s;
-                                deobmatch('canh2', s);
-                            }
+                        // Not detected if resizing window while loading
+                        if (deobfuscate_func(resize_canvas.toString()).orig.indexOf(',' + s + '=can.height/2)') > -1) {
+                            window.canh2 = s;
+                            deobmatch('canh2', s);
+                        }
                     }
                     if (window[s] === window.innerWidth && s !== 'innerWidth') { // v15 1 match
+                        // Not detected if resizing window while loading
                         if (s !== 'canw') {
                             if (deobfuscate_func(resize_canvas.toString()).orig.indexOf('innerWidth,' + s + '=can.width,') > -1) {
                                 window.canw = s;
@@ -116,10 +119,11 @@
                             }
                         }
                     } else if (window[s] === window.innerWidth / 2) { // v15 1 match
-                            if (deobfuscate_func(resize_canvas.toString()).orig.indexOf(',' + s + '=can.width/2)') > -1) {
-                                window.canw2 = s;
-                                deobmatch('canw2', s);
-                            }
+                        // Not detected if resizing window while loading
+                        if (deobfuscate_func(resize_canvas.toString()).orig.indexOf(',' + s + '=can.width/2)') > -1) {
+                            window.canw2 = s;
+                            deobmatch('canw2', s);
+                        }
                     }
 
                     // Detecting or validating these may require more evaluation
