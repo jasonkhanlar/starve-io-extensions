@@ -378,7 +378,7 @@
                     var c = world[fast_units][user.uid];
                     var g = Utils.get_std_angle(mouse.pos, c ? {x: user.cam.x + c.x, y: user.cam.y + c.y} : canm);
                     window[client][send_attack](g);
-                } else {
+                } else if (this.attack !== 0) {
                     this.attack = 0;
                     window[client][stop_attack]();
                 }
