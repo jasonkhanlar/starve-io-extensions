@@ -1566,6 +1566,8 @@
             deobfunc = deobfunc.replace(/(\[?)((?:[A-Za-z$_][A-Za-z0-9$_]*)*O_O[0-9]{3,6}0_0[A-Za-z0-9$_]*)(\]?)/g, function() {
                 if (window.hasOwnProperty(arguments[2]) && typeof window[arguments[2]] === 'string') {
                     return '.' + window[arguments[2]];
+                } else if (window.hasOwnProperty(arguments[2]) && window[arguments[2]] === window) {
+                    return 'window';
                 } else if (deoblist.d2o.hasOwnProperty(arguments[2])) {
                     return arguments[1] + deoblist.d2o[arguments[2]] + arguments[3];
                 }
