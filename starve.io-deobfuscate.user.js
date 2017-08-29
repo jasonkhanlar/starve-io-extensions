@@ -1201,7 +1201,11 @@
                         } else if (deobfunc.abbr.match(/this\.chest_lockpick\.info\.translate\.y/)) {
                             window.update_inv_buttons = s;
                             deobmatch('update_inv_buttons', s);
+                        } else if (deobfunc.abbr.match(/82===[a-z]\.keyCode/)) {
+                            window.trigger_keyup = s;
+                            deobmatch('trigger_keyup', s);
                         }
+                        //O_O156960_0
                     } else if (typeof window.game[s] === 'number') {
                     } else if (typeof window.game[s] === 'object') {
                         if (window.game[s] === null) {
