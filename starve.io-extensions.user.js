@@ -442,6 +442,9 @@
 
     function main() {
         // All code depending on deobfuscated names may begin from here
+        SPRITE.ACTIVE_FEED = find_unique_index();
+        SPRITE.OLD_AUTO_FEED = SPRITE.AUTO_FEED;
+        sprite[SPRITE.ACTIVE_FEED] = create_text(1, 'Active-Feed', 25, '#FFF', void 0, void 0, '#000', 5, 180);
         SPRITE.AUTO_BOOK = find_unique_index();
         sprite[SPRITE.AUTO_BOOK] = create_text(1, 'Auto-Book', 25, '#FFF', void 0, void 0, '#000', 5, 140);
         SPRITE.AUTO_COOK = find_unique_index();
@@ -466,6 +469,9 @@
                     }
                 }
             }
+        };
+        user.active_feed = {
+            enabled: false
         };
         user.auto_attack = {
             enabled: false,
@@ -551,6 +557,26 @@
             user.auto_cook.translate.y = user.auto_book.translate.y + sprite[SPRITE.AUTO_BOOK].height + 5;
             user.ext_help.translate.x = can.width / 2 - sprite[SPRITE.EXT_HELP].width / 2;
             user.ext_help.translate.y = can.height / 2 - sprite[SPRITE.EXT_HELP].height / 2;
+        };
+
+        window.old_game_trigger_keyup = game[trigger_keyup];
+        game[trigger_keyup] = function(c) {
+            old_game_trigger_keyup.apply(this, arguments);
+            if (c.keyCode === 82) {
+                document.getElementById('auto_feed_ing').firstChild.nodeValue = 'Auto Feed';
+                if (!user.auto_feed.enabled && !user.active_feed.enabled) {
+                    // Switch to active feed
+                    user.auto_feed.invert();
+                    user.active_feed.enabled = true;
+                    SPRITE.AUTO_FEED = SPRITE.ACTIVE_FEED;
+                    document.getElementById('auto_feed_ing').firstChild.nodeValue = 'Active Feed';
+                } else if (!user.auto_feed.enabled && user.active_feed.enabled) {
+                    // Switch to default off
+                    user.active_feed.enabled = false;
+                    SPRITE.AUTO_FEED = SPRITE.OLD_AUTO_FEED;
+                }
+                user.auto_feed.translate.x = game.leaderboard.translate.x - sprite[SPRITE.AUTO_FEED].width - 85;
+            }
         };
 
         var my_trigger_key_up = function(c) {
@@ -669,6 +695,34 @@
                     this.attack = 0;
                     window[client][stop_attack]();
                 }
+            }
+        };
+
+        window.old_user_auto_feed_update = user.auto_feed.update;
+        user.auto_feed.update = function() {
+            if (!user.active_feed.enabled) old_user_auto_feed_update.apply(this);
+            else {
+                this.delay += delta;
+                if (2 >= this.delay) return;
+                this.delay = 0;
+                var eatPLANT = false, eatBREAD = false, eatMEAT = false, eatFISH = false, eatCOOKIE = false, eatSANDWICH = false, eatCAKE = false,
+                drinkBOTTLE = false;
+                if (user.gauges.h < 0.9) { eatPLANT = true; }
+                if (user.gauges.h < 0.65) { eatBREAD = true; eatMEAT = true; eatFISH = true; }
+                if (user.gauges.h < 0.5) { eatCOOKIE = true; }
+                if (user.gauges.h < 0.4) { eatSANDWICH = true; eatCAKE = true; }
+
+                if (user.inv.n[INV.PLANT] && eatPLANT) window[client][select_inv](INV.PLANT, user.inv.find_item(INV.PLANT))
+                else if (user.inv.n[INV.BREAD] && eatBREAD) window[client][select_inv](INV.BREAD, user.inv.find_item(INV.BREAD))
+                else if (user.inv.n[INV.COOKED_MEAT] && eatMEAT) window[client][select_inv](INV.COOKED_MEAT, user.inv.find_item(INV.COOKED_MEAT))
+                else if (user.inv.n[INV.FOODFISH_COOKED] && eatFISH) window[client][select_inv](INV.FOODFISH_COOKED, user.inv.find_item(INV.FOODFISH_COOKED))
+                else if (user.inv.n[INV.COOKIE] && eatCOOKIE) window[client][select_inv](INV.COOKIE, user.inv.find_item(INV.COOKIE))
+                else if (user.inv.n[INV.SANDWICH] && eatSANDWICH) window[client][select_inv](INV.SANDWICH, user.inv.find_item(INV.SANDWICH))
+                else if (user.inv.n[INV.CAKE] && eatCAKE) window[client][select_inv](INV.CAKE, user.inv.find_item(INV.CAKE))
+
+                if (user.gauges.t < 0.5) { drinkBOTTLE = true; }
+
+                if (user.inv.n[INV.BOTTLE_FULL] && drinkBOTTLE) window[client][select_inv](INV.BOTTLE_FULL, user.inv.find_item(INV.BOTTLE_FULL))
             }
         };
     }
