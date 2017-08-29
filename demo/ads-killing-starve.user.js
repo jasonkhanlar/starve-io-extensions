@@ -307,7 +307,7 @@
         if (Math.floor(Math.random() * 2) === 0) draw_picture.apply(this, arguments);
         else draw_video.apply(this, arguments);
     };
-    
+
     window.draw_picture = function(c, g) {
         ext_video.muted = false;
         ctx.save();
