@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io extensions
 // @namespace    http://tampermonkey.net/
-// @version      0.15.20
+// @version      0.15.21
 // @description  (1) On screen chat buffer (2) On screen help (3) Auto attack (4) Auto book (5) Auto cook
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -158,6 +158,215 @@
 
         return temp_canv;
     };
+
+    function ext_update_settings_menu() {
+        var ext_settings_auto_book_ing = document.createElement('div'),
+        ext_settings_auto_cook_ing = document.createElement('div'),
+        ext_settings_server_info_ing = document.createElement('div'),
+        ext_settings_auto_attack_ing = document.createElement('div'),
+        ext_settings_chat_buffer_ing = document.createElement('div'),
+        ext_settings_auto_book_case_agree_opt = document.createElement('div'),
+        ext_settings_auto_cook_case_agree_opt = document.createElement('div'),
+        ext_settings_server_info_case_agree_opt = document.createElement('div'),
+        ext_settings_auto_attack_case_agree_opt = document.createElement('div'),
+        ext_settings_chat_buffer_case_agree_opt = document.createElement('div'),
+        ext_settings_auto_book_agree_ing = document.createElement('img'),
+        ext_settings_auto_cook_agree_ing = document.createElement('img'),
+        ext_settings_server_info_agree_ing = document.createElement('img'),
+        ext_settings_auto_attack_agree_ing = document.createElement('img'),
+        ext_settings_chat_buffer_agree_ing = document.createElement('img');
+
+        ext_settings_auto_book_ing.id = 'auto_book_ing';
+        ext_settings_auto_cook_ing.id = 'auto_cook_ing';
+        ext_settings_server_info_ing.id = 'server_info_ing';
+        ext_settings_auto_attack_ing.id = 'auto_attack_ing';
+        ext_settings_chat_buffer_ing.id = 'chat_buffer_ing';
+
+        ext_settings_auto_book_ing.innerText = 'Auto Book';
+        ext_settings_auto_cook_ing.innerText = 'Auto Cook';
+        ext_settings_server_info_ing.innerText = 'Server Info';
+        ext_settings_auto_attack_ing.innerText = 'Auto Attack';
+        ext_settings_chat_buffer_ing.innerText = 'Chat Buffer';
+
+        ext_settings_auto_attack_ing.style.display = 'inline-block';
+        ext_settings_chat_buffer_ing.style.display = 'inline-block';
+
+        ext_settings_auto_attack_ing.style.float = 'left';
+        ext_settings_chat_buffer_ing.style.float = 'left';
+
+        ext_settings_auto_book_ing.style.left = '250px';
+        ext_settings_auto_cook_ing.style.left = '250px';
+        ext_settings_server_info_ing.style.left = '250px';
+
+        ext_settings_auto_book_ing.style.position = 'absolute';
+        ext_settings_auto_cook_ing.style.position = 'absolute';
+        ext_settings_server_info_ing.style.position = 'absolute';
+
+        ext_settings_auto_attack_ing.style.marginLeft = '18px';
+        ext_settings_chat_buffer_ing.style.marginLeft = '18px';
+
+        ext_settings_auto_attack_ing.style.marginRight = '150px';
+        ext_settings_chat_buffer_ing.style.marginRight = '150px';
+
+        ext_settings_auto_attack_ing.style.marginTop = '15px';
+        ext_settings_chat_buffer_ing.style.marginTop = '15px';
+
+        ext_settings_auto_attack_ing.style.outline = 'none';
+        ext_settings_chat_buffer_ing.style.outline = 'none';
+
+        ext_settings_auto_book_ing.style.top = '250px';
+        ext_settings_auto_cook_ing.style.top = '300px';
+        ext_settings_server_info_ing.style.top = '350px';
+
+        ext_settings_auto_book_case_agree_opt.id = 'auto_book_case_agree_opt';
+        ext_settings_auto_cook_case_agree_opt.id = 'auto_cook_case_agree_opt';
+        ext_settings_server_info_case_agree_opt.id = 'server_info_case_agree_opt';
+        ext_settings_auto_attack_case_agree_opt.id = 'auto_attack_case_agree_opt';
+        ext_settings_chat_buffer_case_agree_opt.id = 'chat_buffer_case_agree_opt';
+
+        ext_settings_auto_book_case_agree_opt.style.border = 'solid 2px #755219';
+        ext_settings_auto_cook_case_agree_opt.style.border = 'solid 2px #755219';
+        ext_settings_server_info_case_agree_opt.style.border = 'solid 2px #755219';
+        ext_settings_auto_attack_case_agree_opt.style.border = 'solid 2px #755219';
+        ext_settings_chat_buffer_case_agree_opt.style.border = 'solid 2px #755219';
+
+        ext_settings_auto_book_case_agree_opt.style.borderRadius = '7px';
+        ext_settings_auto_cook_case_agree_opt.style.borderRadius = '7px';
+        ext_settings_server_info_case_agree_opt.style.borderRadius = '7px';
+        ext_settings_auto_attack_case_agree_opt.style.borderRadius = '7px';
+        ext_settings_chat_buffer_case_agree_opt.style.borderRadius = '7px';
+
+        ext_settings_auto_book_case_agree_opt.style.boxShadow = '0px 5px #302009';
+        ext_settings_auto_cook_case_agree_opt.style.boxShadow = '0px 5px #302009';
+        ext_settings_server_info_case_agree_opt.style.boxShadow = '0px 5px #302009';
+        ext_settings_auto_attack_case_agree_opt.style.boxShadow = '0px 5px #302009';
+        ext_settings_chat_buffer_case_agree_opt.style.boxShadow = '0px 5px #302009';
+
+        ext_settings_auto_book_case_agree_opt.style.cursor = 'pointer';
+        ext_settings_auto_cook_case_agree_opt.style.cursor = 'pointer';
+        ext_settings_server_info_case_agree_opt.style.cursor = 'pointer';
+        ext_settings_auto_attack_case_agree_opt.style.cursor = 'pointer';
+        ext_settings_chat_buffer_case_agree_opt.style.cursor = 'pointer';
+
+        ext_settings_auto_book_case_agree_opt.style.display = 'inline-block';
+        ext_settings_auto_cook_case_agree_opt.style.display = 'inline-block';
+        ext_settings_server_info_case_agree_opt.style.display = 'inline-block';
+        ext_settings_auto_attack_case_agree_opt.style.display = 'inline-block';
+        ext_settings_chat_buffer_case_agree_opt.style.display = 'inline-block';
+
+        ext_settings_auto_book_case_agree_opt.style.float = 'left';
+        ext_settings_auto_cook_case_agree_opt.style.float = 'left';
+        ext_settings_server_info_case_agree_opt.style.float = 'left';
+        ext_settings_auto_attack_case_agree_opt.style.float = 'left';
+        ext_settings_chat_buffer_case_agree_opt.style.float = 'left';
+
+        ext_settings_auto_book_case_agree_opt.style.height = '35px';
+        ext_settings_auto_cook_case_agree_opt.style.height = '35px';
+        ext_settings_server_info_case_agree_opt.style.height = '35px';
+        ext_settings_auto_attack_case_agree_opt.style.height = '35px';
+        ext_settings_chat_buffer_case_agree_opt.style.height = '35px';
+
+        ext_settings_auto_book_case_agree_opt.style.left = '125px';
+        ext_settings_auto_cook_case_agree_opt.style.left = '125px';
+        ext_settings_server_info_case_agree_opt.style.left = '125px';
+        ext_settings_auto_attack_case_agree_opt.style.left = '160px';
+        ext_settings_chat_buffer_case_agree_opt.style.left = '160px';
+
+        ext_settings_auto_book_case_agree_opt.style.outline = 'none';
+        ext_settings_auto_cook_case_agree_opt.style.outline = 'none';
+        ext_settings_server_info_case_agree_opt.style.outline = 'none';
+        ext_settings_auto_attack_case_agree_opt.style.outline = 'none';
+        ext_settings_chat_buffer_case_agree_opt.style.outline = 'none';
+
+        ext_settings_auto_book_case_agree_opt.style.position = 'absolute';
+        ext_settings_auto_cook_case_agree_opt.style.position = 'absolute';
+        ext_settings_server_info_case_agree_opt.style.position = 'absolute';
+        ext_settings_auto_attack_case_agree_opt.style.position = 'absolute';
+        ext_settings_chat_buffer_case_agree_opt.style.position = 'absolute';
+
+        ext_settings_auto_book_case_agree_opt.style.textAlign = 'center';
+        ext_settings_auto_cook_case_agree_opt.style.textAlign = 'center';
+        ext_settings_server_info_case_agree_opt.style.textAlign = 'center';
+        ext_settings_auto_attack_case_agree_opt.style.textAlign = 'center';
+        ext_settings_chat_buffer_case_agree_opt.style.textAlign = 'center';
+
+        ext_settings_auto_book_case_agree_opt.style.top = '0px';
+        ext_settings_auto_cook_case_agree_opt.style.top = '0px';
+        ext_settings_server_info_case_agree_opt.style.top = '0px';
+        ext_settings_auto_attack_case_agree_opt.style.top = '300px';
+        ext_settings_chat_buffer_case_agree_opt.style.top = '350px';
+
+        ext_settings_auto_book_case_agree_opt.style.width = '35px';
+        ext_settings_auto_cook_case_agree_opt.style.width = '35px';
+        ext_settings_server_info_case_agree_opt.style.width = '35px';
+        ext_settings_auto_attack_case_agree_opt.style.width = '35px';
+        ext_settings_chat_buffer_case_agree_opt.style.width = '35px';
+
+        ext_settings_auto_book_agree_ing.id = 'auto_book_agree_ing';
+        ext_settings_auto_cook_agree_ing.id = 'auto_cook_agree_ing';
+        ext_settings_server_info_agree_ing.id = 'server_info_agree_ing';
+        ext_settings_auto_attack_agree_ing.id = 'auto_attack_agree_ing';
+        ext_settings_chat_buffer_agree_ing.id = 'chat_buffer_agree_ing';
+
+        ext_settings_auto_book_agree_ing.src = './img/agree.png';
+        ext_settings_auto_cook_agree_ing.src = './img/agree.png';
+        ext_settings_server_info_agree_ing.src = './img/agree.png';
+        ext_settings_auto_attack_agree_ing.src = './img/agree.png';
+        ext_settings_chat_buffer_agree_ing.src = './img/agree.png';
+
+        // Adjust css display property in main()
+
+        ext_settings_auto_book_agree_ing.style.marginLeft = '-5px';
+        ext_settings_auto_cook_agree_ing.style.marginLeft = '-5px';
+        ext_settings_server_info_agree_ing.style.marginLeft = '-5px';
+        ext_settings_auto_attack_agree_ing.style.marginLeft = '-5px';
+        ext_settings_chat_buffer_agree_ing.style.marginLeft = '-5px';
+
+        ext_settings_auto_book_agree_ing.style.marginTop = '-10px';
+        ext_settings_auto_cook_agree_ing.style.marginTop = '-10px';
+        ext_settings_server_info_agree_ing.style.marginTop = '-10px';
+        ext_settings_auto_attack_agree_ing.style.marginTop = '-10px';
+        ext_settings_chat_buffer_agree_ing.style.marginTop = '-10px';
+
+        ext_settings_auto_book_agree_ing.style.outline = 'none';
+        ext_settings_auto_cook_agree_ing.style.outline = 'none';
+        ext_settings_server_info_agree_ing.style.outline = 'none';
+        ext_settings_auto_attack_agree_ing.style.outline = 'none';
+        ext_settings_chat_buffer_agree_ing.style.outline = 'none';
+
+        ext_settings_auto_book_agree_ing.style.width = '50px';
+        ext_settings_auto_cook_agree_ing.style.width = '50px';
+        ext_settings_server_info_agree_ing.style.width = '50px';
+        ext_settings_auto_attack_agree_ing.style.width = '50px';
+        ext_settings_chat_buffer_agree_ing.style.width = '50px';
+
+        ext_settings_auto_book_case_agree_opt.appendChild(ext_settings_auto_book_agree_ing);
+        ext_settings_auto_cook_case_agree_opt.appendChild(ext_settings_auto_cook_agree_ing);
+        ext_settings_server_info_case_agree_opt.appendChild(ext_settings_server_info_agree_ing);
+        ext_settings_auto_attack_case_agree_opt.appendChild(ext_settings_auto_attack_agree_ing);
+        ext_settings_chat_buffer_case_agree_opt.appendChild(ext_settings_chat_buffer_agree_ing);
+
+        ext_settings_auto_book_ing.appendChild(ext_settings_auto_book_case_agree_opt);
+        ext_settings_auto_cook_ing.appendChild(ext_settings_auto_cook_case_agree_opt);
+        ext_settings_server_info_ing.appendChild(ext_settings_server_info_case_agree_opt);
+        ext_settings_auto_attack_ing.appendChild(ext_settings_auto_attack_case_agree_opt);
+        ext_settings_chat_buffer_ing.appendChild(ext_settings_chat_buffer_case_agree_opt);
+
+        document.getElementById('option_in_game').insertBefore(ext_settings_auto_book_ing, document.getElementById('quest_alert_ing'));
+        document.getElementById('option_in_game').insertBefore(ext_settings_auto_cook_ing, document.getElementById('quest_alert_ing'));
+        document.getElementById('option_in_game').insertBefore(ext_settings_server_info_ing, document.getElementById('quest_alert_ing'));
+        document.getElementById('option_in_game').insertBefore(ext_settings_auto_attack_ing, document.getElementById('quit_opt'));
+        document.getElementById('option_in_game').insertBefore(ext_settings_chat_buffer_ing, document.getElementById('quit_opt'));
+
+        // Fix a few poorly positioned elements also
+        document.getElementById('delete_alert_ing').style.marginTop = '110px';
+        document.getElementById('cancel_delete_alert_ing').style.marginTop = '15px';
+        document.getElementById('quest_alert_ing').style.marginTop = '15px';
+        document.getElementById('case_agree_opt').style.top = '150px';
+        document.getElementById('cancel_case_agree_opt').style.top = '200px';
+        document.getElementById('quest_case_agree_opt').style.top = '250px';
+    }
+    ext_update_settings_menu();
 
     function alert_ext_auto_attack() {
         var msg = ' Auto Attack: ' + (user.auto_attack.enabled ? 'ON' : 'OFF');
@@ -318,6 +527,12 @@
         user.ext_help = { enabled: false, translate: { x: 0, y: 0 } };
         user.keycodes_to_mapped_keycodes = {}; // contains things like: { 68: 96 }
 
+        if (!user.auto_book.enabled) document.getElementById('auto_book_agree_ing').style.display = 'none';
+        if (!user.auto_cook.enabled) document.getElementById('auto_cook_agree_ing').style.display = 'none';
+        if (!user.server_info.enabled) document.getElementById('server_info_agree_ing').style.display = 'none';
+        if (!user.auto_attack.enabled) document.getElementById('auto_attack_agree_ing').style.display = 'none';
+        if (document.getElementById('chat_log').style.display == 'none') document.getElementById('chat_buffer_agree_ing').style.display = 'none';
+
         window.old_game_draw_UI = game[draw_UI];
         game[draw_UI] = function() {
             old_game_draw_UI.apply(this, arguments);
@@ -345,14 +560,32 @@
             }
 
             if (!user.chat.open)  {
-                if (keycode == 84) { user.auto_book.enabled = !user.auto_book.enabled; }
-                else if (keycode == 69) { user.auto_attack.enabled = !user.auto_attack.enabled; alert_ext_auto_attack(); }
-                else if (keycode == 72) { user.ext_help.enabled = !user.ext_help.enabled; }
-                else if (keycode == 76) { user.server_info.enabled = !user.server_info.enabled; }
-                else if (keycode == 67) { user.auto_cook.enabled = !user.auto_cook.enabled; user.auto_cook.cook(); }
-                else if (keycode == 192) { document.getElementById('chat_log').style.display = document.getElementById('chat_log').style.display == 'none' ? '' : 'none'; }
+                if (keycode == 84) {
+                    user.auto_book.enabled = !user.auto_book.enabled;
+                    document.getElementById('auto_book_agree_ing').style.display = user.auto_book.enabled ? 'inline-block' : 'none';
+                } else if (keycode == 69) {
+                    user.auto_attack.enabled = !user.auto_attack.enabled; alert_ext_auto_attack();
+                    document.getElementById('auto_attack_agree_ing').style.display = user.auto_attack.enabled ? 'inline-block' : 'none';
+                } else if (keycode == 72) {
+                    user.ext_help.enabled = !user.ext_help.enabled;
+                } else if (keycode == 76) {
+                    user.server_info.enabled = !user.server_info.enabled;
+                    document.getElementById('server_info_agree_ing').style.display = user.server_info.enabled ? 'inline-block' : 'none';
+                } else if (keycode == 67) {
+                    user.auto_cook.enabled = !user.auto_cook.enabled; user.auto_cook.cook();
+                    document.getElementById('auto_cook_agree_ing').style.display = user.auto_cook.enabled ? 'inline-block' : 'none';
+                } else if (keycode == 192) {
+                    document.getElementById('chat_log').style.display = document.getElementById('chat_log').style.display == 'none' ? '' : 'none';
+                    document.getElementById('chat_buffer_agree_ing').style.display = document.getElementById('chat_log').style.display == 'none' ? 'none' : 'inline-block';
+                }
             }
         };
+
+        document.getElementById('auto_book_case_agree_opt').addEventListener('mouseup', function() { my_trigger_key_up({keyCode: 84}) });
+        document.getElementById('auto_cook_case_agree_opt').addEventListener('mouseup', function() { my_trigger_key_up({keyCode: 67}) });
+        document.getElementById('server_info_case_agree_opt').addEventListener('mouseup', function() { my_trigger_key_up({keyCode: 76}) });
+        document.getElementById('auto_attack_case_agree_opt').addEventListener('mouseup', function() { my_trigger_key_up({keyCode: 69}) });
+        document.getElementById('chat_buffer_case_agree_opt').addEventListener('mouseup', function() { my_trigger_key_up({keyCode: 192}) });
 
         window.addEventListener('keyup', my_trigger_key_up, false);
 
