@@ -65,6 +65,12 @@ TO USE / INSTALL
   * Bread
   * Sandwich
 
-(6) Server name
+(6) Active Feed
+---------------
+* Toggle with R 3-way
+
+* Provides more efficient eating and drinking
+
+(7) Server name
 ---------------
 * Toggle with L
