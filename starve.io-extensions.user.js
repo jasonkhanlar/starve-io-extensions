@@ -677,7 +677,7 @@
         window.old_user_shop_draw = user.shop.draw;
         user.shop.draw = function() {
             old_user_shop_draw.apply(this);
-            if (!user.spectator && 60 > this.time && this.time > 0) draw_shop_timer();
+            if (!user.spectator && 60 > this.time && this.time > 0 && game.shop.id.style.display !== 'none') draw_shop_timer();
         };
 
         window.old_user_control_update = user.control.update;
