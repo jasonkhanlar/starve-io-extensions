@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io extensions
 // @namespace    http://tampermonkey.net/
-// @version      0.15.23
+// @version      0.15.24
 // @description  (1) On screen chat buffer (2) On screen help (3) Auto attack (4) Auto book (5) Auto cook
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -710,7 +710,7 @@
                 if (user.gauges.h < 0.9) { eatPLANT = true; }
                 if (user.gauges.h < 0.65) { eatBREAD = true; eatMEAT = true; eatFISH = true; }
                 if (user.gauges.h < 0.5) { eatCOOKIE = true; }
-                if (user.gauges.h < 0.4) { eatSANDWICH = true; eatCAKE = true; }
+                if (user.gauges.h < 0.04) { eatSANDWICH = true; eatCAKE = true; }
 
                 if (user.inv.n[INV.PLANT] && eatPLANT) window[client][select_inv](INV.PLANT, user.inv.find_item(INV.PLANT))
                 else if (user.inv.n[INV.BREAD] && eatBREAD) window[client][select_inv](INV.BREAD, user.inv.find_item(INV.BREAD))
