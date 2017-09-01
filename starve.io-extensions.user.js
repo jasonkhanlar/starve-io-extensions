@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io extensions
 // @namespace    http://tampermonkey.net/
-// @version      0.15.25
+// @version      0.15.26
 // @description  (1) On screen chat buffer (2) On screen help (3) Auto attack (4) Auto book (5) Auto cook
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -58,6 +58,18 @@
             chat_log.style.maxHeight = (can.height - _top - 100) +'px';
         }
     }, 50);
+
+    function find_recipe(ingredients) {
+        for (var recipeID = 0; recipeID < RECIPES.length; recipeID++) {
+            if (RECIPES[recipeID].r.length === ingredients.length) {
+                var match = true;
+                for (var ingrID = 0; ingrID < ingredients.length; ingrID++) {
+                    if (JSON.stringify(RECIPES[recipeID].r).indexOf(JSON.stringify(ingredients[ingrID])) === -1) match = false;
+                }
+                if (match) return recipeID;
+            }
+        }
+    }
 
     var unique_index_counter = 500;
     function find_unique_index() {
@@ -483,23 +495,23 @@
             cook: function() {
                 if (this.enabled) {
                     if (user.craft.fire && user.inv.n[INV.PLANT] >= 2 && user.inv.n[INV.FLOUR] >= 5 && user.inv.n[INV.ICE] >= 2) {
-                        // Cake recipe (id 35) :: 2 berries (id 4), 5 flour (id 77), 2 ice (id 91)
-                        window[client][select_craft](35);
+                        // Cake recipe :: 2 berries (id 4), 5 flour (id 77), 2 ice (id 91)
+                        window[client][select_craft](find_recipe([[INV.PLANT, 2], [INV.FLOUR, 5], [INV.ICE, 2]]));
                     } else if (user.craft.fire && user.inv.n[INV.PLANT] >= 1 && user.inv.n[INV.FLOUR] >= 3) {
-                        // Cookies recipe (id 34) :: 1 berry (id 4), 3 flour (id 77)
-                        window[client][select_craft](34);
+                        // Cookies recipe :: 1 berry (id 4), 3 flour (id 77)
+                        window[client][select_craft](find_recipe([[INV.PLANT, 1], [INV.FLOUR, 3]]));
                     } else if (user.craft.fire && user.inv.n[INV.FOODFISH] >= 1) {
-                        // Cooked Fish recipe (id 32) :: 1 fish (id 86)
-                        window[client][select_craft](32);
+                        // Cooked Fish recipe :: 1 fish (id 86)
+                        window[client][select_craft](find_recipe([[INV.FOODFISH, 1]]));
                     } else if (user.craft.fire && user.inv.n[INV.MEAT] >= 1) {
-                        // Cooked Meat recipe (id 31) :: 1 meat (id 18)
-                        window[client][select_craft](31);
+                        // Cooked Meat recipe :: 1 meat (id 18)
+                        window[client][select_craft](find_recipe([[INV.MEAT, 1]]));
                     } else if (user.craft.fire && user.inv.n[INV.FLOUR] >= 3) {
-                        // Bread recipe (id 33) :: 3 flour (id 77)
-                        window[client][select_craft](33);
+                        // Bread recipe :: 3 flour (id 77)
+                        window[client][select_craft](find_recipe([[INV.FLOUR, 3]]));
                     } else if (user.inv.n[INV.BREAD] >= 1 && user.inv.n[INV.COOKED_MEAT] >= 1) {
-                        // Sandwich recipe (id 78) :: 1 bread (id 92), 1 cooked meat (id 19)
-                        window[client][select_craft](78);
+                        // Sandwich recipe :: 1 bread (id 92), 1 cooked meat (id 19)
+                        window[client][select_craft](find_recipe([[INV.BREAD, 1], [INV.COOKED_MEAT, 1]]));
                     }
                 }
             }
