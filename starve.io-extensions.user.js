@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io extensions
 // @namespace    http://tampermonkey.net/
-// @version      0.15.24
+// @version      0.15.25
 // @description  (1) On screen chat buffer (2) On screen help (3) Auto attack (4) Auto book (5) Auto cook
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -712,17 +712,17 @@
                 if (user.gauges.h < 0.5) { eatCOOKIE = true; }
                 if (user.gauges.h < 0.04) { eatSANDWICH = true; eatCAKE = true; }
 
-                if (user.inv.n[INV.PLANT] && eatPLANT) window[client][select_inv](INV.PLANT, user.inv.find_item(INV.PLANT))
-                else if (user.inv.n[INV.BREAD] && eatBREAD) window[client][select_inv](INV.BREAD, user.inv.find_item(INV.BREAD))
-                else if (user.inv.n[INV.COOKED_MEAT] && eatMEAT) window[client][select_inv](INV.COOKED_MEAT, user.inv.find_item(INV.COOKED_MEAT))
-                else if (user.inv.n[INV.FOODFISH_COOKED] && eatFISH) window[client][select_inv](INV.FOODFISH_COOKED, user.inv.find_item(INV.FOODFISH_COOKED))
-                else if (user.inv.n[INV.COOKIE] && eatCOOKIE) window[client][select_inv](INV.COOKIE, user.inv.find_item(INV.COOKIE))
-                else if (user.inv.n[INV.SANDWICH] && eatSANDWICH) window[client][select_inv](INV.SANDWICH, user.inv.find_item(INV.SANDWICH))
-                else if (user.inv.n[INV.CAKE] && eatCAKE) window[client][select_inv](INV.CAKE, user.inv.find_item(INV.CAKE))
+                if (user.inv.n[INV.PLANT] && eatPLANT) { user.gauges.h += 0.1; window[client][select_inv](INV.PLANT, user.inv.find_item(INV.PLANT)); }
+                else if (user.inv.n[INV.BREAD] && eatBREAD) { user.gauges.h += 0.35; window[client][select_inv](INV.BREAD, user.inv.find_item(INV.BREAD)); }
+                else if (user.inv.n[INV.COOKED_MEAT] && eatMEAT) { user.gauges.h += 0.35; window[client][select_inv](INV.COOKED_MEAT, user.inv.find_item(INV.COOKED_MEAT)); }
+                else if (user.inv.n[INV.FOODFISH_COOKED] && eatFISH) { user.gauges.h += 0.35; window[client][select_inv](INV.FOODFISH_COOKED, user.inv.find_item(INV.FOODFISH_COOKED)); }
+                else if (user.inv.n[INV.COOKIE] && eatCOOKIE) { user.gauges.h += 0.5; window[client][select_inv](INV.COOKIE, user.inv.find_item(INV.COOKIE)); }
+                else if (user.inv.n[INV.SANDWICH] && eatSANDWICH) { user.gauges.h += 1; window[client][select_inv](INV.SANDWICH, user.inv.find_item(INV.SANDWICH)); }
+                else if (user.inv.n[INV.CAKE] && eatCAKE) { user.gauges.h += 1; window[client][select_inv](INV.CAKE, user.inv.find_item(INV.CAKE)); }
 
                 if (user.gauges.t < 0.5) { drinkBOTTLE = true; }
 
-                if (user.inv.n[INV.BOTTLE_FULL] && drinkBOTTLE) window[client][select_inv](INV.BOTTLE_FULL, user.inv.find_item(INV.BOTTLE_FULL))
+                if (user.inv.n[INV.BOTTLE_FULL] && drinkBOTTLE) { user.gauges.t += 0.5; window[client][select_inv](INV.BOTTLE_FULL, user.inv.find_item(INV.BOTTLE_FULL)); }
             }
         };
     }
