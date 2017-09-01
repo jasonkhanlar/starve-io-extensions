@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io extensions
 // @namespace    http://tampermonkey.net/
-// @version      0.15.22
+// @version      0.15.23
 // @description  (1) On screen chat buffer (2) On screen help (3) Auto attack (4) Auto book (5) Auto cook
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -562,7 +562,7 @@
         window.old_game_trigger_keyup = game[trigger_keyup];
         game[trigger_keyup] = function(c) {
             old_game_trigger_keyup.apply(this, arguments);
-            if (c.keyCode === 82) {
+            if (!user.chat.open && c.keyCode === 82) {
                 document.getElementById('auto_feed_ing').firstChild.nodeValue = 'Auto Feed';
                 if (!user.auto_feed.enabled && !user.active_feed.enabled) {
                     // Switch to active feed
