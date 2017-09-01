@@ -608,7 +608,6 @@
                     }
                     user.auto_feed.translate.x = game.leaderboard.translate.x - sprite[SPRITE.AUTO_FEED].width - 85;
                 }
-                console.log(c);
             }
         };
 
