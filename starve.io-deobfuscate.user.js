@@ -99,6 +99,10 @@
                     } else if (window[s].length === 4) { // v15 13 matches
                     } else if (window[s].length === 5) { // v15 3 matches
                     } else if (window[s].length === 6) { // v15 3 matches
+                        if (deobfunc.orig.match(/for\(;[a-z]<=[a-z];[a-z]\+\+\)/)) {
+                            window.draw_map_object = s;
+                            deobmatch('draw_map_object', s);
+                        }
                     } else if (window[s].length === 7) { // v15 6 matches
                     } else if (window[s].length === 8) {
                         if (deobfunc.orig.match(/for\([a-z]=void/) && deobfunc.orig.match(/breath/)) {
