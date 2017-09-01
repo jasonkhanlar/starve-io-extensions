@@ -2,7 +2,7 @@
 // ==UserScript==
 // @name         Starve.io Deobfuscated Auto
 // @namespace    http://tampermonkey.net/
-// @version      0.15.20
+// @version      0.15.26
 // @description  Auto deobfuscation includes at least bare minimum for scripts to function normally
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -80,6 +80,9 @@
                         } else if (s !== 'create_images' && deobfunc.orig.match(/DRAGON_GROUND/)) { // v15 1 match
                             window.draw_world = s;
                             deobmatch('draw_world', s);
+                        } else if (deobfunc.orig.match(/game\.leaderboard/)) { // v15 1 match
+                            window.draw_leaderboard = s;
+                            deobmatch('draw_leaderboard', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
