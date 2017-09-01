@@ -720,6 +720,8 @@
                 else if (user.inv.n[INV.SANDWICH] && eatSANDWICH) { user.gauges.h += 1; window[client][select_inv](INV.SANDWICH, user.inv.find_item(INV.SANDWICH)); }
                 else if (user.inv.n[INV.CAKE] && eatCAKE) { user.gauges.h += 1; window[client][select_inv](INV.CAKE, user.inv.find_item(INV.CAKE)); }
 
+                if (user.gauges.h > 1) user.gauges.h = 1;
+
                 if (user.gauges.t < 0.5) { drinkBOTTLE = true; }
 
                 if (user.inv.n[INV.BOTTLE_FULL] && drinkBOTTLE) { user.gauges.t += 0.5; window[client][select_inv](INV.BOTTLE_FULL, user.inv.find_item(INV.BOTTLE_FULL)); }
