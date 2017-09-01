@@ -100,6 +100,11 @@
                     } else if (window[s].length === 5) { // v15 3 matches
                     } else if (window[s].length === 6) { // v15 3 matches
                     } else if (window[s].length === 7) { // v15 6 matches
+                    } else if (window[s].length === 8) {
+                        if (deobfunc.orig.match(/for\([a-z]=void/) && deobfunc.orig.match(/breath/)) {
+                            window.draw_map_2_objects = s;
+                            deobmatch('draw_map_2_objects', s);
+                        }
                     } else if (window[s].length === 9) { // v15 1 match
                     } else if (window[s].length === 11) { // v15 2 matches
                     }
