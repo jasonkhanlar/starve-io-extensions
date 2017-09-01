@@ -88,8 +88,7 @@
     }
     //reset_inventory_indexes();
 
-    var create_help = function() {
-        var title = 'HELP MENU';
+    var create_help = function(title, help_messages) {
         var title_font = 'bold 40px Baloo Paaji';
         var letter_font = 'bold 35px Baloo Paaji';
         var msg_font = '30px Baloo Paaji';
@@ -97,18 +96,6 @@
         var title_font_height = 40 * 1.1;
         var letter_font_height = 35 * 1.1;
         var msg_font_height = 30 * 1.1;
-
-        var help_messages = [
-         [ 'H', 'Open Help - open this help menu' ],
-         [ 'Y', 'Open Map - open the larger map' ],
-         [ 'R', 'Auto Feed - auto consume food/drink when low' ],
-         [ 'T', 'Auto Book - auto equip book on craft' ],
-         [ 'P', 'Show Spectators - only in hunger games' ],
-         [ 'C', 'Auto Cook - auto cook meals when possible' ],
-         [ 'E', 'Auto Attack - auto attack' ],
-         [ 'L', 'Show Server Info - shows server name' ],
-         [ '`', 'Chat Buffer - hide/show chat messages' ]
-        ];
 
         var edge_padding_x = 5;
         var top_edge_padding_y = 15;
@@ -397,6 +384,7 @@
 
     function draw_ext_help() {
         if (user.ext_help.enabled) { ctx.drawImage(sprite[SPRITE.EXT_HELP], user.ext_help.translate.x, user.ext_help.translate.y); }
+        if (user.ext_help_gui.enabled) { ctx.drawImage(sprite[SPRITE.EXT_HELP_GUI], user.ext_help_gui.translate.x, user.ext_help_gui.translate.y); }
     }
 
     function draw_ext_server_info() {
@@ -462,7 +450,26 @@
         SPRITE.AUTO_COOK = find_unique_index();
         sprite[SPRITE.AUTO_COOK] = create_text(1, 'Auto-Cook', 25, '#FFF', void 0, void 0, '#000', 5, 140);
         SPRITE.EXT_HELP = find_unique_index();
-        sprite[SPRITE.EXT_HELP] = CTI(create_help());
+        sprite[SPRITE.EXT_HELP] = CTI(create_help('HELP MENU', [
+         [ 'H', 'Open Help - open this help menu' ],
+         [ '⇧H', 'Open GUI Help - open GUI help menu' ],
+         [ 'Y', 'Open Map - open the larger map' ],
+         [ 'R', 'Auto Feed - auto consume food/drink when low' ],
+         [ 'T', 'Auto Book - auto equip book on craft' ],
+         [ 'P', 'Show Spectators - only in hunger games' ],
+         [ 'C', 'Auto Cook - auto cook meals when possible' ],
+         [ 'E', 'Auto Attack - auto attack' ],
+         [ 'L', 'Show Server Info - shows server name' ],
+         [ '`', 'Chat Buffer - hide/show chat messages' ]
+        ]));
+        SPRITE.EXT_HELP_GUI = find_unique_index();
+        sprite[SPRITE.EXT_HELP_GUI] = CTI(create_help('GUI HELP MENU', [
+         [ '⇧H', 'Open Help - open this help menu' ],
+         [ '⇧E', 'Environment - toggle world environment visibility' ],
+         [ '⇧G', 'Ground - toggle ground visibility' ],
+         [ '⇧O', 'Map Objects - toggle map object visibility' ],
+         [ '⇧U', 'UI - toggle UI visibility' ],
+        ]));
         SPRITE.SLOT_NUMBERS_MAPPED = find_unique_index();
         sprite[SPRITE.SLOT_NUMBERS_MAPPED] = {};
         sprite[SPRITE.SLOT_NUMBERS_MAPPED][9] = create_text(1, '0', 12, '#FFF');
@@ -543,6 +550,13 @@
             user.auto_cook.cook();
         };
         user.ext_help = { enabled: false, translate: { x: 0, y: 0 } };
+        user.ext_help_gui = { enabled: false, translate: { x: 0, y: 0 } };
+        user.ext_gui = {
+            environment: true,
+            ground: true,
+            map_objects: true,
+            UI: true
+        };
         user.keycodes_to_mapped_keycodes = {}; // contains things like: { 68: 96 }
 
         if (!user.auto_book.enabled) document.getElementById('auto_book_agree_ing').style.display = 'none';
@@ -553,11 +567,13 @@
 
         window.old_game_draw_UI = game[draw_UI];
         game[draw_UI] = function() {
-            old_game_draw_UI.apply(this, arguments);
-            draw_ext_auto_book();
-            draw_ext_auto_cook();
-            draw_ext_help();
-            draw_ext_server_info();
+            if (user.ext_gui.UI) {
+                old_game_draw_UI.apply(this, arguments);
+                draw_ext_auto_book();
+                draw_ext_auto_cook();
+                draw_ext_help();
+                draw_ext_server_info();
+            }
         };
 
         window.old_game_update = game.update;
@@ -569,25 +585,30 @@
             user.auto_cook.translate.y = user.auto_book.translate.y + sprite[SPRITE.AUTO_BOOK].height + 5;
             user.ext_help.translate.x = can.width / 2 - sprite[SPRITE.EXT_HELP].width / 2;
             user.ext_help.translate.y = can.height / 2 - sprite[SPRITE.EXT_HELP].height / 2;
+            user.ext_help_gui.translate.x = can.width / 2 - sprite[SPRITE.EXT_HELP_GUI].width / 2;
+            user.ext_help_gui.translate.y = can.height / 2 - sprite[SPRITE.EXT_HELP_GUI].height / 2;
         };
 
         window.old_game_trigger_keyup = game[trigger_keyup];
         game[trigger_keyup] = function(c) {
             old_game_trigger_keyup.apply(this, arguments);
-            if (!user.chat.open && c.keyCode === 82) {
-                document.getElementById('auto_feed_ing').firstChild.nodeValue = 'Auto Feed';
-                if (!user.auto_feed.enabled && !user.active_feed.enabled) {
-                    // Switch to active feed
-                    user.auto_feed.invert();
-                    user.active_feed.enabled = true;
-                    SPRITE.AUTO_FEED = SPRITE.ACTIVE_FEED;
-                    document.getElementById('auto_feed_ing').firstChild.nodeValue = 'Active Feed';
-                } else if (!user.auto_feed.enabled && user.active_feed.enabled) {
-                    // Switch to default off
-                    user.active_feed.enabled = false;
-                    SPRITE.AUTO_FEED = SPRITE.OLD_AUTO_FEED;
+            if (!user.chat.open) {
+                if (c.keyCode === 82) {
+                    document.getElementById('auto_feed_ing').firstChild.nodeValue = 'Auto Feed';
+                    if (!user.auto_feed.enabled && !user.active_feed.enabled) {
+                        // Switch to active feed
+                        user.auto_feed.invert();
+                        user.active_feed.enabled = true;
+                        SPRITE.AUTO_FEED = SPRITE.ACTIVE_FEED;
+                        document.getElementById('auto_feed_ing').firstChild.nodeValue = 'Active Feed';
+                    } else if (!user.auto_feed.enabled && user.active_feed.enabled) {
+                        // Switch to default off
+                        user.active_feed.enabled = false;
+                        SPRITE.AUTO_FEED = SPRITE.OLD_AUTO_FEED;
+                    }
+                    user.auto_feed.translate.x = game.leaderboard.translate.x - sprite[SPRITE.AUTO_FEED].width - 85;
                 }
-                user.auto_feed.translate.x = game.leaderboard.translate.x - sprite[SPRITE.AUTO_FEED].width - 85;
+                console.log(c);
             }
         };
 
@@ -598,23 +619,31 @@
             }
 
             if (!user.chat.open)  {
-                if (keycode == 84) {
-                    user.auto_book.enabled = !user.auto_book.enabled;
-                    document.getElementById('auto_book_agree_ing').style.display = user.auto_book.enabled ? 'inline-block' : 'none';
-                } else if (keycode == 69) {
-                    user.auto_attack.enabled = !user.auto_attack.enabled; alert_ext_auto_attack();
-                    document.getElementById('auto_attack_agree_ing').style.display = user.auto_attack.enabled ? 'inline-block' : 'none';
-                } else if (keycode == 72) {
-                    user.ext_help.enabled = !user.ext_help.enabled;
-                } else if (keycode == 76) {
-                    user.server_info.enabled = !user.server_info.enabled;
-                    document.getElementById('server_info_agree_ing').style.display = user.server_info.enabled ? 'inline-block' : 'none';
-                } else if (keycode == 67) {
-                    user.auto_cook.enabled = !user.auto_cook.enabled; user.auto_cook.cook();
-                    document.getElementById('auto_cook_agree_ing').style.display = user.auto_cook.enabled ? 'inline-block' : 'none';
-                } else if (keycode == 192) {
-                    document.getElementById('chat_log').style.display = document.getElementById('chat_log').style.display == 'none' ? '' : 'none';
-                    document.getElementById('chat_buffer_agree_ing').style.display = document.getElementById('chat_log').style.display == 'none' ? 'none' : 'inline-block';
+                if (!c.altKey && !c.ctrlKey && !c.shiftKey) {
+                    if (keycode == 84) {
+                        user.auto_book.enabled = !user.auto_book.enabled;
+                        document.getElementById('auto_book_agree_ing').style.display = user.auto_book.enabled ? 'inline-block' : 'none';
+                    } else if (keycode == 69) {
+                        user.auto_attack.enabled = !user.auto_attack.enabled; alert_ext_auto_attack();
+                        document.getElementById('auto_attack_agree_ing').style.display = user.auto_attack.enabled ? 'inline-block' : 'none';
+                    } else if (keycode == 72) {
+                        user.ext_help.enabled = !user.ext_help.enabled;
+                    } else if (keycode == 76) {
+                        user.server_info.enabled = !user.server_info.enabled;
+                        document.getElementById('server_info_agree_ing').style.display = user.server_info.enabled ? 'inline-block' : 'none';
+                    } else if (keycode == 67) {
+                        user.auto_cook.enabled = !user.auto_cook.enabled; user.auto_cook.cook();
+                        document.getElementById('auto_cook_agree_ing').style.display = user.auto_cook.enabled ? 'inline-block' : 'none';
+                    } else if (keycode == 192) {
+                        document.getElementById('chat_log').style.display = document.getElementById('chat_log').style.display == 'none' ? '' : 'none';
+                        document.getElementById('chat_buffer_agree_ing').style.display = document.getElementById('chat_log').style.display == 'none' ? 'none' : 'inline-block';
+                    }
+                } else if (c.shiftKey) {
+                    if (keycode == 69) { user.ext_gui.environment = !user.ext_gui.environment; }
+                    else if (keycode == 71) { user.ext_gui.ground = !user.ext_gui.ground; }
+                    else if (keycode == 72) { user.ext_help_gui.enabled = !user.ext_help_gui.enabled; }
+                    else if (keycode == 79) { user.ext_gui.map_objects = !user.ext_gui.map_objects; }
+                    else if (keycode == 85) { user.ext_gui.UI = !user.ext_gui.UI; }
                 }
             }
         };
@@ -737,6 +766,25 @@
                 if (user.gauges.t < 0.5) { drinkBOTTLE = true; }
 
                 if (user.inv.n[INV.BOTTLE_FULL] && drinkBOTTLE) { user.gauges.t += 0.5; window[client][select_inv](INV.BOTTLE_FULL, user.inv.find_item(INV.BOTTLE_FULL)); }
+            }
+        };
+
+        window.old_draw_ground = window[draw_ground];
+        window[draw_ground] = function() {
+            if (user.ext_gui.ground) {
+                old_draw_ground.apply(this);
+            }
+        };
+        window.old_draw_world = window[draw_world];
+        window[draw_world] = function() {
+            if (user.ext_gui.environment) {
+                old_draw_world.apply(this);
+            }
+        };
+        window.old_draw_map_objects = window[draw_map_objects];
+        window[draw_map_objects] = function() {
+            if (user.ext_gui.map_objects) {
+                old_draw_map_objects.apply(this, arguments);
             }
         };
     }

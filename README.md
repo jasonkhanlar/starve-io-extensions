@@ -38,7 +38,8 @@ TO USE / INSTALL
 
 (2) On screen help
 ------------------
-* Toggle with H
+* Toggle with H for Help Menu
+* Toggle with SHIFT+H for GUI Help Menu
 
 * Duplication of TimothyM's (Tjstretchalot's) [implementation](https://github.com/Tjstretchalot/starve-io-extensions)
 
