@@ -77,6 +77,9 @@
                         } else if (deobfunc.orig.match(/\.SAND_MIN_X/) && deobfunc.orig.match(/\.BEACH_WINTER_MIN_X/)) { // v15 1 match
                             window.draw_ground = s;
                             deobmatch('draw_ground', s);
+                        } else if (s !== 'create_images' && deobfunc.orig.match(/DRAGON_GROUND/)) { // v15 1 match
+                            window.draw_world = s;
+                            deobmatch('draw_world', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
