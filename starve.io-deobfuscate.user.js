@@ -60,11 +60,11 @@
                             window.Client = s;
                             deobmatch('Client', s);
                         } else if (deobfunc.abbr === 'function @(){SAVE;TUPT;this.text&&(@.globalAlpha=this.chat.o?1-this.chat.v:1,this.label||(this.label=create_message(scale,this.text)),@.drawImage(this.label,-this.label.width/2,-this.label.height/2-110*scale),this.chat.update()&&0==this.chat.o&&(this.text="",this.label=null));RESTORE}') {
-                                window.draw_chat = s;
-                                deobmatch('draw_chat', s);
+                            window.draw_chat = s;
+                            deobmatch('draw_chat', s);
                         } else if (deobfunc.abbr.match(/[a-z]=sprite\[@\.DRAGON\]\[@\.time\];/)) {
-                                window.draw_dragon = s;
-                                deobmatch('draw_dragon', s);
+                            window.draw_dragon = s;
+                            deobmatch('draw_dragon', s);
                         } else if (deobfunc.abbr.match(/IFWBGC/) && deobfunc.abbr.match(/@\.items\.push/)) { // v15 1 match
                             window.init_fake_world = s;
                             deobmatch('init_fake_world', s);
@@ -83,20 +83,19 @@
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
-                                window.draw_door = s;
-                                deobmatch('draw_door', s);
+                            window.draw_door = s;
+                            deobmatch('draw_door', s);
                         }
                     } else if (window[s].length === 2) { // v15 85 matches
                         if (deobfunc.abbr.match(/function @\([a-z],[a-z]\){var [a-z]=[a-z]\.getBoundingClientRect\(\);return{x:[a-z]\.clientX-[a-z]\.left,y:[a-z]\.clientY-[a-z]\.top}}/)) { // v15 1 match
                             window.get_mouse_pos = s;
                             deobmatch('get_mouse_pos', s);
                         } else if (deobfunc.abbr.match(/[a-z]=sprite\[[a-z]\]\[@\.time\];[a-z]=-[a-z]\.width\*this\.breath\.v/)) {
-                                window.draw_simple_mobs = s;
-                                deobmatch('draw_simple_mobs', s);
+                            window.draw_simple_mobs = s;
+                            deobmatch('draw_simple_mobs', s);
                         } else if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/@\.drawImage\([a-z],-[a-z]\/2,-[a-z]\/2,[a-z],[a-z]\)/)) {
-                                window.draw_simple_mobs_2 = s;
-                                deobmatch('draw_simple_mobs_2', s);
-                        } else {
+                            window.draw_simple_mobs_2 = s;
+                            deobmatch('draw_simple_mobs_2', s);
                         }
                     } else if (window[s].length === 3) { // v15 125 matches
                     } else if (window[s].length === 4) { // v15 13 matches
@@ -1171,8 +1170,8 @@
                                 (typeof window[client].kick !== 'undefined' && deobfuscate_func(window[client].lost.toString()).orig.toString().indexOf('this.' + s + '==this.') > -1) ||
                                 (typeof window[client].kick !== 'undefined' && deobfuscate_func(window[client].killed.toString()).orig.toString().indexOf('this.' + s + '==this.') > -1)
                                 ) {
-                                window._current_id = s;
-                                deobmatch('_current_id', s);
+                                    window._current_id = s;
+                                    deobmatch('_current_id', s);
                             }
                         }
                     } else if (typeof window[client][s] === 'object') {
@@ -1386,20 +1385,20 @@
                                 game.trigger_mouseup = game[s];
                             }
                         } else if (deobfunc.abbr.match(/^function \([a-z]\){@\(this\.can,[a-z]\);[a-z]\.style\.cursor=.auto.}$/)) {
-                                window.ui.trigger_mousemove = ui[s];
-                                deobmatch('trigger_mousemove', s);
-                                // Populate duplicates
-                                game.trigger_mousemove = game[s];
+                            window.ui.trigger_mousemove = ui[s];
+                            deobmatch('trigger_mousemove', s);
+                            // Populate duplicates
+                            game.trigger_mousemove = game[s];
                         } else if (deobfunc.abbr.match(/window\.addEventListener/)) {
-                                window.ui.add_event_listener = ui[s];
-                                deobmatch('add_event_listener', s);
-                                // Populate duplicates
-                                game.add_event_listener = game[s];
+                            window.ui.add_event_listener = ui[s];
+                            deobmatch('add_event_listener', s);
+                            // Populate duplicates
+                            game.add_event_listener = game[s];
                         } else if (deobfunc.abbr.match(/window\.removeEventListener/)) {
-                                window.ui.remove_event_listener = ui[s];
-                                deobmatch('remove_event_listener', s);
-                                // Populate duplicates
-                                game.remove_event_listener = game[s];
+                            window.ui.remove_event_listener = ui[s];
+                            deobmatch('remove_event_listener', s);
+                            // Populate duplicates
+                            game.remove_event_listener = game[s];
                         }
                     } else if (typeof window.ui[s] === 'number') {
                     } else if (typeof window.ui[s] === 'object') {
