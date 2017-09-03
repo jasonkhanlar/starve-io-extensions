@@ -189,6 +189,9 @@
                         } else if (deobfunc.orig.match(/==BUTTON_CLICK&&/)) {
                             window.draw_amount = s;
                             deobmatch('draw_amount', s);
+                        } else if (deobfunc.orig.match(/this\.text&&\(@\.globalAlpha=this\.timeout\.o/)) {
+                            window.draw_alert = s;
+                            deobmatch('draw_alert', s);
                         }
                     } else if (window[s].length === 3) { // v15 125 matches
                         if (deobfunc.orig.match(/BUTTON_CLICK\|\|/)) {
