@@ -104,6 +104,10 @@
                             deobmatch('draw_simple_mobs_2', s);
                         }
                     } else if (window[s].length === 3) { // v15 125 matches
+                        if (deobfunc.orig.match(/BUTTON_CLICK\|\|/)) {
+                            window.draw_slot_number = s;
+                            deobmatch('draw_slot_number', s);
+                        }
                     } else if (window[s].length === 4) { // v15 13 matches
                     } else if (window[s].length === 5) { // v15 3 matches
                     } else if (window[s].length === 6) { // v15 3 matches
