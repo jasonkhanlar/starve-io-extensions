@@ -64,8 +64,3 @@ TO USE / INSTALL
 (7) Server name
 ---------------
 * Toggle with L
-
-## starve.io-deobfuscate.user.js
-
-* Provides deobfuscated code as a library for other scripts to use
-* This is **REQUIRED** for starve.io-extensions.user.js and other scripts to work
