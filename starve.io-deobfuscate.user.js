@@ -110,6 +110,9 @@
                         } else if (deobfunc.abbr.match(/DELAY_TEAM/) && deobfunc.abbr.match(/WEAPON_LOADING/)) {) { // v15 1 match
                             window.draw_totem_switch_delay = s;
                             deobmatch('draw_totem_switch_delay', s);
+                        } else if (deobfunc.abbr.match(/[a-z]=user\.weapon/) && deobfunc.abbr.match(/WEAPON_LOADING/)) { // v15 1 match
+                            window.draw_weapon_switch_delay = s;
+                            deobmatch('draw_weapon_switch_delay', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
