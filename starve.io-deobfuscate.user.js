@@ -86,6 +86,9 @@
                         } else if (s !== 'Item' && deobfunc.orig.match(/fruits\[4/)) { // v15 1 match
                             window.draw_fake_world = s;
                             deobmatch('draw_fake_world', s);
+                        } else if (deobfunc.orig.match(/DIST_BREAD_OVEN/)) { // v15 1 match
+                            window.draw_breadoven_inventory = s;
+                            deobmatch('draw_breadoven_inventory', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
