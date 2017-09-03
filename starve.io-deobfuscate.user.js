@@ -146,6 +146,9 @@
                         } else if (s !== 'create_images' && deobfunc.orig.match(/BREAD_OVEN_ON/)) { // v15 1 match
                             window.draw_breadoven = s;
                             deobmatch('draw_breadoven', s);
+                        } else if (s !== 'create_images' && deobfunc.orig.match(/RESURRECTION_HOLE/)) { // v15 1 match
+                            window.draw_resurrection = s;
+                            deobmatch('draw_resurrection', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
