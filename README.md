@@ -35,7 +35,8 @@
 
 * Attempts to automatically craft food recipes if required items exist
 
- **Priority:**
+  **Priority:**
+
   * Cake
   * Cookies
   * Cooked Fish
