@@ -116,6 +116,9 @@
                         } else if (deobfunc.abbr.match(/^function @\(\){var [a-z]=user\.craft/)) { // v15 1 match
                             window.draw_ui_crafting = s;
                             deobmatch('draw_ui_crafting', s);
+                        } else if (deobfunc.abbr.match(/var [a-z]=user\.inv,/)) { // v15 1 match
+                            window.draw_ui_inventory = s;
+                            deobmatch('draw_ui_inventory', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
