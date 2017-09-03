@@ -137,6 +137,9 @@
                         } else if (deobfunc.abbr.match(/GROUND_FIRE/) && deobfunc.abbr.match(/@\.globalAlpha=1;RESTORE\}$/)) { // v15 1 match
                             window.draw_furnace_ground = s;
                             deobmatch('draw_furnace_ground', s);
+                        } else if (deobfunc.abbr.match(/SMOG_PUSH/)) { // v15 1 match
+                            window.draw_breadoven_smog = s;
+                            deobmatch('draw_breadoven_smog', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
