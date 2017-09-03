@@ -101,6 +101,9 @@
                         } else if (s !== 'create_images' && deobfunc.orig.match(/RECONNECT/)) { // v15 1 match
                             window.draw_reconnect = s;
                             deobmatch('draw_reconnect', s);
+                        } else if (deobfunc.orig.match(/user\.auto_feed\.translate\.x,user\.auto_feed\.translate\.y/)) { // v15 1 match
+                            window.draw_auto_feed = s;
+                            deobmatch('draw_auto_feed', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
