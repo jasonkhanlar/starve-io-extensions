@@ -5,9 +5,9 @@
 TO USE / INSTALL
 ----------------
 1. [Install Tampermonkey](https://tampermonkey.net)
-2. [Install script 1](https://github.com/jasonkhanlar/starve-io-extensions/raw/master/starve.io-deobfuscate.user.js)
-3. [Install script 2](https://github.com/jasonkhanlar/starve-io-extensions/raw/master/starve.io-extensions.user.js)
-4. Enjoy [Starve.io](http://starve.io)
+2. [Install deobfuscate library userscript](https://github.com/jasonkhanlar/starve-io-extensions/raw/master/starve.io-deobfuscate.user.js)
+3. [Install extensions userscript](https://github.com/jasonkhanlar/starve-io-extensions/raw/master/starve.io-extensions.user.js)
+4. Refresh or load new instance of [Starve.io](http://starve.io)
 
 ---------------
 
