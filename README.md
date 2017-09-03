@@ -11,12 +11,7 @@ TO USE / INSTALL
 
 ---------------
 
-[YouTube Video](https://youtu.be/IpvEiCeQVAs)
-* Help @ 1m20s
-* On screen chat buffer @ 1m50s
-* Auto cook @ 9m:20s
-
-[YouTube Video](https://youtu.be/LveuRqidKhY) by [AskingTheNeos](https://www.youtube.com/channel/UCDjgEaRWYbqowT8E3U9R_7Q)
+# FEATURES
 
 (1) On screen chat buffer
 -------------------------
@@ -64,3 +59,7 @@ TO USE / INSTALL
 (7) Server name
 ---------------
 * Toggle with L
+
+# VIDEOS
+
+[YouTube Video](https://youtu.be/LveuRqidKhY) by [AskingTheNeos](https://www.youtube.com/channel/UCDjgEaRWYbqowT8E3U9R_7Q)
