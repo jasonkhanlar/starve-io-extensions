@@ -198,6 +198,9 @@
                         } else if (deobfunc.orig.match(/draw_fg\([a-z]\)/)) {
                             window.draw_fg_transition = s;
                             deobmatch('draw_fg_transition', s);
+                        } else if (deobfunc.orig.match(/!==@\.SAND_STEP/)) {
+                            window.draw_foot = s;
+                            deobmatch('draw_foot', s);
                         }
                     } else if (window[s].length === 3) { // v15 125 matches
                         if (deobfunc.orig.match(/BUTTON_CLICK\|\|/)) {
