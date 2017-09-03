@@ -13,8 +13,7 @@ TO USE / INSTALL
 
 # FEATURES
 
-(1) On screen chat buffer
--------------------------
+#(1) On screen chat buffer
 * Toggle with ` ([BACKTICK](https://en.wikipedia.org/wiki/Grave_accent#Use_in_programming))
 
 * In addition to existing in-game chat visibility,
@@ -62,4 +61,4 @@ TO USE / INSTALL
 
 # VIDEOS
 
-[YouTube Video](https://youtu.be/LveuRqidKhY) by [AskingTheNeos](https://www.youtube.com/channel/UCDjgEaRWYbqowT8E3U9R_7Q)
+[Starve.io AUTO-COOKER + SCREEN CHAT HISTORY EXTENSION](https://youtu.be/LveuRqidKhY) by [AskingTheNeos](https://www.youtube.com/channel/UCDjgEaRWYbqowT8E3U9R_7Q)
