@@ -192,6 +192,9 @@
                         } else if (deobfunc.orig.match(/this\.text&&\(@\.globalAlpha=this\.timeout\.o/)) {
                             window.draw_alert = s;
                             deobmatch('draw_alert', s);
+                        } else if (deobfunc.orig.match(/draw_bg\([a-z]\)/)) {
+                            window.draw_bg_transition = s;
+                            deobmatch('draw_bg_transition', s);
                         }
                     } else if (window[s].length === 3) { // v15 125 matches
                         if (deobfunc.orig.match(/BUTTON_CLICK\|\|/)) {
