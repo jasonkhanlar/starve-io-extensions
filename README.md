@@ -4,9 +4,9 @@
 [![Starve.io Extensions Reddit](http://i.imgur.com/ccMEPJK.png "Starve.io Extensions Reddit")](https://www.reddit.com/r/starveio/comments/6xiaec/starveio_extensions_github_compliments_to/)
 
 # TO USE / INSTALL
-1. [Install Tampermonkey](https://tampermonkey.net)
-2. [Install Starve.io deobfuscate library userscript](https://github.com/jasonkhanlar/starve-io-extensions/raw/master/starve.io-deobfuscate.user.js)
-3. [Install Starve.io extensions userscript](https://github.com/jasonkhanlar/starve-io-extensions/raw/master/starve.io-extensions.user.js)
+1. Install [Tampermonkey](https://tampermonkey.net)
+2. Install [Starve.io deobfuscate library userscript](https://github.com/jasonkhanlar/starve-io-extensions/raw/master/starve.io-deobfuscate.user.js)
+3. Install [Starve.io extensions userscript](https://github.com/jasonkhanlar/starve-io-extensions/raw/master/starve.io-extensions.user.js)
 4. Refresh or load new instance of [Starve.io](http://starve.io)
 
 # FEATURES
