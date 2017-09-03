@@ -98,6 +98,9 @@
                         } else if (s !== 'create_images' && deobfunc.orig.match(/BIGMAP/)) { // v15 1 match
                             window.draw_bigmap = s;
                             deobmatch('draw_bigmap', s);
+                        } else if (s !== 'create_images' && deobfunc.orig.match(/RECONNECT/)) { // v15 1 match
+                            window.draw_reconnect = s;
+                            deobmatch('draw_reconnect', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
