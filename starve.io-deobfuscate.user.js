@@ -102,6 +102,9 @@
                         } else if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/@\.drawImage\([a-z],-[a-z]\/2,-[a-z]\/2,[a-z],[a-z]\)/)) {
                             window.draw_simple_mobs_2 = s;
                             deobmatch('draw_simple_mobs_2', s);
+                        } else if (deobfunc.orig.match(/==BUTTON_CLICK&&/)) {
+                            window.draw_amount = s;
+                            deobmatch('draw_amount', s);
                         }
                     } else if (window[s].length === 3) { // v15 125 matches
                         if (deobfunc.orig.match(/BUTTON_CLICK\|\|/)) {
