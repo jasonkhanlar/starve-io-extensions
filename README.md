@@ -1,7 +1,7 @@
 ![Logo](http://i.imgur.com/7QRIFun.png)
 
-[![Starve.io Extensions Discord](http://i.imgur.com/BJHVTHJ.png "Starve.io Extensions Discord")](https://discord.gg/xeRgqUr)
-[![Starve.io Extensions Reddit](http://i.imgur.com/oftFHtD.png "Starve.io Extensions Reddit")](https://www.reddit.com/r/starveio/comments/6xiaec/starveio_extensions_github_compliments_to/)
+[![Starve.io Extensions Discord](http://i.imgur.com/5uSNxbg.png "Starve.io Extensions Discord")](https://discord.gg/xeRgqUr)
+[![Starve.io Extensions Reddit](http://i.imgur.com/ccMEPJK.png "Starve.io Extensions Reddit")](https://www.reddit.com/r/starveio/comments/6xiaec/starveio_extensions_github_compliments_to/)
 
 # TO USE / INSTALL
 1. [Install Tampermonkey](https://tampermonkey.net)
