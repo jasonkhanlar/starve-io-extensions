@@ -125,6 +125,9 @@
                         } else if (deobfunc.abbr.match(/img=sprite\[@\.LOCK\]/)) { // v15 1 match
                             window.draw_chest = s;
                             deobmatch('draw_chest', s);
+                        } else if (deobfunc.abbr.match(/^function @\(\){if\(!\(10>this\.info\)\)/)) { // v15 1 match
+                            window.draw_seed = s;
+                            deobmatch('draw_seed', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
