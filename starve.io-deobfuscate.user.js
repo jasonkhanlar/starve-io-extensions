@@ -203,6 +203,9 @@
                         if (deobfunc.orig.match(/BUTTON_CLICK\|\|/)) {
                             window.draw_slot_number = s;
                             deobmatch('draw_slot_number', s);
+                        } else if (deobfunc.abbr.match(/^function @\([a-z],[a-z],[a-z]\){@\.transition/) && deobfunc.abbr.match(/drawImage/)) { // v15 1 match
+                            window.draw_image_transition = s;
+                            deobmatch('draw_image_transition', s);
                         }
                     } else if (window[s].length === 4) { // v15 13 matches
                     } else if (window[s].length === 5) { // v15 3 matches
