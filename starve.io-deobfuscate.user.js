@@ -133,6 +133,9 @@
                         } else if (deobfunc.abbr.match(/^function @\([a-z]\){SAVE;TUPT;ROTATE;if\(this\.hit\.update\){/) && deobfunc.abbr.match(/img/)) {
                             window.draw_simple_item = s;
                             deobmatch('draw_simple_item', s);
+                        } else if (deobfunc.abbr.match(/this\.breath\.update\(\);img=sprite/)) {
+                            window.draw_breath = s;
+                            deobmatch('draw_breath', s);
                         }
                     } else if (window[s].length === 2) { // v15 85 matches
                         if (deobfunc.abbr.match(/function @\([a-z],[a-z]\){var [a-z]=[a-z]\.getBoundingClientRect\(\);return{x:[a-z]\.clientX-[a-z]\.left,y:[a-z]\.clientY-[a-z]\.top}}/)) { // v15 1 match
