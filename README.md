@@ -2,20 +2,14 @@
 
 [Discord Community](https://discord.gg/xeRgqUr)
 
-## starve.io-deobfuscate.user.js
-
-* Provides deobfuscated code as a library for other scripts to use
-* This is **REQUIRED** for starve.io-extensions.user.js and other scripts to work
-
 TO USE / INSTALL
 ----------------
-* Load starve.io-deobfuscate.js with Greasemonkey, Tampermonkey, or similar userscript manager depending on web browser
+1. [Install Tampermonkey.](https://tampermonkey.net)
+2. [Install script 1](https://github.com/jasonkhanlar/starve-io-extensions/raw/master/starve.io-deobfuscate.user.js)
+3. [Install script 2](https://github.com/jasonkhanlar/starve-io-extensions/raw/master/starve.io-extensions.user.js)
+4. Enjoy [Starve.io](http://starve.io)
 
- &nbsp;
- &nbsp;
- &nbsp;
-
-## starve.io-extensions.user.js
+---------------
 
 [YouTube Video](https://youtu.be/IpvEiCeQVAs)
 * Help @ 1m20s
@@ -23,11 +17,6 @@ TO USE / INSTALL
 * Auto cook @ 9m:20s
 
 [YouTube Video](https://youtu.be/LveuRqidKhY) by [AskingTheNeos](https://www.youtube.com/channel/UCDjgEaRWYbqowT8E3U9R_7Q)
-
-TO USE / INSTALL
-----------------
-* Load starve.io-extensions.user.js with Greasemonkey, Tampermonkey, or similar userscript manager depending on web browser
-* Deobfuscate userscript (see above) is **REQUIRED** for this script to work
 
 (1) On screen chat buffer
 -------------------------
@@ -75,3 +64,8 @@ TO USE / INSTALL
 (7) Server name
 ---------------
 * Toggle with L
+
+## starve.io-deobfuscate.user.js
+
+* Provides deobfuscated code as a library for other scripts to use
+* This is **REQUIRED** for starve.io-extensions.user.js and other scripts to work
