@@ -169,6 +169,9 @@
                         } else if (deobfunc.abbr.match(/this\.breath\.update\(\);img=sprite/)) {
                             window.draw_breath = s;
                             deobmatch('draw_breath', s);
+                        } else if (deobfunc.abbr.match(/case @\.WATERING_CAN_FULL:SAVE/)) {
+                            window.draw_player_right_stuff = s;
+                            deobmatch('draw_player_right_stuff', s);
                         }
                     } else if (window[s].length === 2) { // v15 85 matches
                         if (deobfunc.abbr.match(/function @\([a-z],[a-z]\){var [a-z]=[a-z]\.getBoundingClientRect\(\);return{x:[a-z]\.clientX-[a-z]\.left,y:[a-z]\.clientY-[a-z]\.top}}/)) { // v15 1 match
