@@ -92,6 +92,9 @@
                         } else if (deobfunc.orig.match(/DIST_FURNACE/)) { // v15 1 match
                             window.draw_furnace_inventory = s;
                             deobmatch('draw_furnace_inventory', s);
+                        } else if (deobfunc.orig.match(/DIST_CHEST/)) { // v15 1 match
+                            window.draw_chest_inventory = s;
+                            deobmatch('draw_chest_inventory', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
