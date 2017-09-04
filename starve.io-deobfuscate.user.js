@@ -1738,6 +1738,108 @@
                     }
                 }
             }
+
+            for (var s in CLIENT) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    //console.log(['missing in CLIENT',s,CLIENT[s]]);
+                }
+            }
+
+            for (var s in window[client]) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    console.log(['missing in client',s,window[client][s]]); // v15 nothing missing
+                }
+            }
+
+            for (var s in CRAFT) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    //console.log(['missing in CRAFT',s,CRAFT[s]]);
+                }
+            }
+
+            for (var s in game) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    //console.log(['missing in game',s,game[s]]);
+                }
+            }
+
+            for (var s in INV) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    //console.log(['missing in INV',s,INV[s]]);
+                }
+            }
+
+            for (var s in ITEMS) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    //console.log(['missing in ITEMS',s,ITEMS[s]]);
+                }
+            }
+
+            for (var s in keyboard) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    //console.log(['missing in keyboard',s,keyboard[s]]);
+                }
+            }
+
+            for (var s in loader) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    console.log(['missing in loader',s,loader[s]]); // v15 nothing missing
+                }
+            }
+
+            for (var s in RECIPE_CATEGORIES) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    //console.log(['missing in RECIPE_CATEGORIES',s,RECIPE_CATEGORIES[s]]);
+                }
+            }
+
+            for (var s in scoreboard) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    console.log(['missing in scoreboard',s,scoreboard[s]]); // v15 nothing missing
+                }
+            }
+
+            for (var s in SPRITE) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    //console.log(['missing in SPRITE',s,SPRITE[s]]);
+                }
+            }
+
+            for (var s in STATE) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    console.log(['missing in STATE',s,STATE[s]]); // v15 nothing missing
+                }
+            }
+
+            for (var s in ui) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    console.log(['missing in ui',s,ui[s]]); // v15 nothing missing
+                }
+            }
+
+            for (var s in user) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    //console.log(['missing in user',s,user[s]]);
+                }
+            }
+
+            for (var s in Utils) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    console.log(['missing in Utils',s,Utils[s]]); // v15 nothing missing
+                }
+            }
+
+            for (var s in WORLD) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    //console.log(['missing in WORLD',s,WORLD[s]]);
+                }
+            }
+
+            for (var s in world) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    //console.log(['missing in world',s,world[s]]);
+                }
+            }
         }
     }
 
