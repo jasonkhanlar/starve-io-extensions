@@ -278,6 +278,10 @@
                             deobmatch('draw_map_transition', s);
                         }
                     } else if (window[s].length === 11) { // v15 2 matches
+                        if (deobfunc.abbr.match(/AMBIENCE\.sound\.playing/)) { // v15 1 match
+                            window.sound_track = s;
+                            deobmatch('sound_track', s);
+                        }
                     }
                 } else if (typeof window[s] === 'number') { // v15 50-52 matches
                     if (window[s] === window.innerHeight && s !== 'innerHeight') { // v15 1 match
