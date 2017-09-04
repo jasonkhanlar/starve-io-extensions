@@ -173,6 +173,9 @@
                         } else if (deobfunc.abbr.match(/SOUND_PLAYER\.FACTOR\)/)) { // v15 1 match
                             window.GameAudio = s;
                             deobmatch('GameAudio', s);
+                        } else if (s != 'UI' && deobfunc.abbr.match(/sadblock/)) { // v15 1 match
+                            window.sadblock = s;
+                            deobmatch('sadblock', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
