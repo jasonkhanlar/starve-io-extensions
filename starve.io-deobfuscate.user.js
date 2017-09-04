@@ -193,6 +193,9 @@
                         } else if (deobfunc.abbr.match(/GROUND_FIRE/) && deobfunc.abbr.match(/@\.globalAlpha=1;this\.hit\.update/)) { // v15 1 match
                             window.draw_fire_ground = s;
                             deobmatch('draw_fire_ground', s);
+                        } else if (deobfunc.abbr.match(/CROWN_GREEN:case/) && deobfunc.abbr.match(/[a-z]\.width\/2,/)) { // v15 1 match
+                            window.draw_player_clothe = s;
+                            deobmatch('draw_player_clothe', s);
                         }
                     } else if (window[s].length === 2) { // v15 85 matches
                         if (deobfunc.abbr.match(/function @\([a-z],[a-z]\){var [a-z]=[a-z]\.getBoundingClientRect\(\);return{x:[a-z]\.clientX-[a-z]\.left,y:[a-z]\.clientY-[a-z]\.top}}/)) { // v15 1 match
