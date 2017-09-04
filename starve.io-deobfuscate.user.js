@@ -233,6 +233,9 @@
                         } else if (deobfunc.abbr.match(/^function @\([a-z],[a-z],[a-z]\){@\.transition/) && deobfunc.abbr.match(/drawImage/)) { // v15 1 match
                             window.draw_image_transition = s;
                             deobmatch('draw_image_transition', s);
+                        } else if (deobfunc.abbr.match(/^function @\([a-z],[a-z],[a-z]\){@\.transition\?/) && deobfunc.abbr.match(/\.draw\(/)) { // v15 1 match
+                            window.draw_transition = s;
+                            deobmatch('draw_transition', s);
                         } else if (deobfunc.orig.match(/[a-z]\.width=440\*[a-z];[a-z]\.height=388\*[a-z];/) && deobfunc.orig.length < 1000) {
                             window.create_breadoven_off = s;
                             deobmatch('create_breadoven_off', s);
