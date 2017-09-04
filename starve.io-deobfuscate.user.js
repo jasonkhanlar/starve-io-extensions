@@ -1734,7 +1734,7 @@
                     else {
                         // Useful for seeing what's missing
                         // Still missing variables, will add later
-                        //console.log(['missing',s,window[s]]);
+                        console.log(['missing',s,window[s]]); // v15 nothing missing
                     }
                 }
             }
