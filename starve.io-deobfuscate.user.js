@@ -267,6 +267,10 @@
                             deobmatch('draw_map_objects', s);
                         }
                     } else if (window[s].length === 9) { // v15 1 match
+                        if (deobfunc.abbr.match(/@\.shade\.v,[a-z]\(/)) { // v15 1 match
+                            window.draw_map_transition = s;
+                            deobmatch('draw_map_transition', s);
+                        }
                     } else if (window[s].length === 11) { // v15 2 matches
                     }
                 } else if (typeof window[s] === 'number') { // v15 50-52 matches
