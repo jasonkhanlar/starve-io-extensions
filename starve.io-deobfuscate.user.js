@@ -140,9 +140,6 @@
                         } else if (deobfunc.abbr.match(/SMOG_PUSH/)) { // v15 1 match
                             window.draw_breadoven_smog = s;
                             deobmatch('draw_breadoven_smog', s);
-                        } else if (deobfunc.abbr.match(/GROUND_FIRE/) && deobfunc.abbr.match(/@\.globalAlpha=1;this\.hit\.update/)) { // v15 1 match
-                            window.draw_fire_ground = s;
-                            deobmatch('draw_fire_ground', s);
                         } else if (s !== 'create_images' && deobfunc.orig.match(/BREAD_OVEN_ON/)) { // v15 1 match
                             window.draw_breadoven = s;
                             deobmatch('draw_breadoven', s);
@@ -193,6 +190,9 @@
                         } else if (deobfunc.abbr.match(/=600\*[a-z]/)) { // v15 1 match
                             window.create_old_gauges = s;
                             deobmatch('create_old_gauges', s);
+                        } else if (deobfunc.abbr.match(/GROUND_FIRE/) && deobfunc.abbr.match(/@\.globalAlpha=1;this\.hit\.update/)) { // v15 1 match
+                            window.draw_fire_ground = s;
+                            deobmatch('draw_fire_ground', s);
                         }
                     } else if (window[s].length === 2) { // v15 85 matches
                         if (deobfunc.abbr.match(/function @\([a-z],[a-z]\){var [a-z]=[a-z]\.getBoundingClientRect\(\);return{x:[a-z]\.clientX-[a-z]\.left,y:[a-z]\.clientY-[a-z]\.top}}/)) { // v15 1 match
