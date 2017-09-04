@@ -175,6 +175,9 @@
                         } else if (deobfunc.abbr.match(/case @\.WATERING_CAN_FULL:SAVE/)) {
                             window.draw_player_right_stuff = s;
                             deobmatch('draw_player_right_stuff', s);
+                        } else if (deobfunc.abbr.match(/2147483648/)) {
+                            window.randS32 = s;
+                            deobmatch('randS32', s);
                         }
                     } else if (window[s].length === 2) { // v15 85 matches
                         if (deobfunc.abbr.match(/function @\([a-z],[a-z]\){var [a-z]=[a-z]\.getBoundingClientRect\(\);return{x:[a-z]\.clientX-[a-z]\.left,y:[a-z]\.clientY-[a-z]\.top}}/)) { // v15 1 match
