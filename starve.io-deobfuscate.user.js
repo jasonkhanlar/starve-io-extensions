@@ -164,6 +164,9 @@
                         } else if (deobfunc.orig.match(/DIST_RESURRECTION/)) { // v15 1 match
                             window.draw_resurrection_inventory = s;
                             deobmatch('draw_resurrection_inventory', s);
+                        } else if (s != 'create_images' && s != 'Game' && deobfunc.orig.match(/SHOW_SPECTATORS/)) { // v15 1 match
+                            window.draw_show_spectators = s;
+                            deobmatch('draw_show_spectators', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
