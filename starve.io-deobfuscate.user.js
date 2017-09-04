@@ -151,16 +151,16 @@
                             deobmatch('draw_resurrection', s);
                         } else if (s !== 'create_images' && deobfunc.orig.match(/RESURRECTION_GROUND/)) { // v15 1 match
                             window.draw_resurrection_halo = s;
-                            deobmatch('draw_resurrection_halo ', s);
+                            deobmatch('draw_resurrection_halo', s);
                         } else if (s !== 'create_images' && deobfunc.orig.match(/HALO_FIRE/) && deobfunc.orig.match(/ROTATE;this\.halo\.update\(\)/)) { // v15 1 match
                             window.draw_furnace_halo = s;
-                            deobmatch('draw_furnace_halo ', s);
+                            deobmatch('draw_furnace_halo', s);
                         } else if (s !== 'create_images' && deobfunc.orig.match(/HALO_FIRE/) && !deobfunc.orig.match(/ROTATE;this\.halo\.update\(\)/)) { // v15 1 match
                             window.draw_fire_halo = s;
-                            deobmatch('draw_fire_halo ', s);
+                            deobmatch('draw_fire_halo', s);
                         } else if (deobfunc.orig.match(/1E3\/1E3/)) { // v15 1 match
                             window.draw_alert_ghost = s;
-                            deobmatch('draw_alert_ghost ', s);
+                            deobmatch('draw_alert_ghost', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
