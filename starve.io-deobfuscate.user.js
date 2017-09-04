@@ -212,6 +212,10 @@
                         }
                     } else if (window[s].length === 4) { // v15 13 matches
                     } else if (window[s].length === 5) { // v15 3 matches
+                        if (deobfunc.abbr.match(/@\.transition&&/) && deobfunc.abbr.match(/@\.time=@\.time/)) { // v15 1 match
+                            window.draw_imgs_transition = s;
+                            deobmatch('draw_imgs_transition', s);
+                        }
                     } else if (window[s].length === 6) { // v15 3 matches
                         if (deobfunc.orig.match(/for\(;[a-z]<=[a-z];[a-z]\+\+\)/)) {
                             window.draw_map_object = s;
