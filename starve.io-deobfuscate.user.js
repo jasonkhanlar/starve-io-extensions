@@ -176,8 +176,8 @@
                             window.draw_breath = s;
                             deobmatch('draw_breath', s);
                         } else if (deobfunc.abbr.match(/case @\.WATERING_CAN_FULL:SAVE/)) {
-                            window.draw_player_right_stuff = s;
-                            deobmatch('draw_player_right_stuff', s);
+                            window.draw_player_effect = s;
+                            deobmatch('draw_player_effect', s);
                         } else if (deobfunc.abbr.match(/2147483648/)) {
                             window.randS32 = s;
                             deobmatch('randS32', s);
