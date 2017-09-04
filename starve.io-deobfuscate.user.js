@@ -161,6 +161,9 @@
                         } else if (deobfunc.orig.match(/1E3\/1E3/)) { // v15 1 match
                             window.draw_alert_ghost = s;
                             deobmatch('draw_alert_ghost', s);
+                        } else if (deobfunc.orig.match(/DIST_RESURRECTION/)) { // v15 1 match
+                            window.draw_resurrection_inventory = s;
+                            deobmatch('draw_resurrection_inventory', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
