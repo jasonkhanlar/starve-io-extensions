@@ -167,6 +167,9 @@
                         } else if (deobfunc.abbr.match(/@\.FLAKES,/)) { // v15 1 match
                             window.draw_winter= s;
                             deobmatch('draw_winter', s);
+                        } else if (deobfunc.abbr.match(/function @\(\){if\(@\.transition\)var [a-z]=@\.shade\.update\(\);/)) { // v15 1 match
+                            window.draw_world_with_effect = s;
+                            deobmatch('draw_world_with_effect', s);
                         }
                     } else if (window[s].length === 1) { // v15 51 matches
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
