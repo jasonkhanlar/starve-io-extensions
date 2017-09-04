@@ -218,6 +218,9 @@
                         } else if (deobfunc.orig.match(/[a-z]\.width=440\*[a-z];[a-z]\.height=388\*[a-z];/) && deobfunc.orig.length < 1000) {
                             window.create_breadoven_off = s;
                             deobmatch('create_breadoven_off', s);
+                        } else if (deobfunc.orig.match(/[a-z]\.width=440\*[a-z];[a-z]\.height=388\*[a-z];/) && deobfunc.orig.length > 1000) {
+                            window.create_breadoven = s;
+                            deobmatch('create_breadoven', s);
                         }
                     } else if (window[s].length === 4) { // v15 13 matches
                     } else if (window[s].length === 5) { // v15 3 matches
