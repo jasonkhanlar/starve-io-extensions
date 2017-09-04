@@ -104,7 +104,7 @@
                         } else if (deobfunc.orig.match(/user\.auto_feed\.translate\.x,user\.auto_feed\.translate\.y/)) { // v15 1 match
                             window.draw_auto_feed = s;
                             deobmatch('draw_auto_feed', s);
-                        } else if (deobfunc.orig.match(/sprite\[@\.SHOW_SPECTATORS\],/)) { // v15 1 match
+                        } else if (deobfunc.abbr.match(/sprite\[@\.SHOW_SPECTATORS\],/)) { // v15 1 match
                             window.draw_show_spectators = s;
                             deobmatch('draw_show_spectators', s);
                         } else if (deobfunc.abbr.match(/DELAY_TEAM/) && deobfunc.abbr.match(/WEAPON_LOADING/)) { // v15 1 match
@@ -210,7 +210,7 @@
                         } else if (deobfunc.orig.match(/==BUTTON_CLICK&&/)) {
                             window.draw_amount = s;
                             deobmatch('draw_amount', s);
-                        } else if (deobfunc.orig.match(/this\.text&&\(@\.globalAlpha=this\.timeout\.o/)) {
+                        } else if (deobfunc.abbr.match(/this\.text&&\(@\.globalAlpha=this\.timeout\.o/)) {
                             window.draw_alert = s;
                             deobmatch('draw_alert', s);
                         } else if (deobfunc.orig.match(/draw_bg\([a-z]\)/)) {
@@ -219,7 +219,7 @@
                         } else if (deobfunc.orig.match(/draw_fg\([a-z]\)/)) {
                             window.draw_fg_transition = s;
                             deobmatch('draw_fg_transition', s);
-                        } else if (deobfunc.orig.match(/!==@\.SAND_STEP/)) {
+                        } else if (deobfunc.abbr.match(/!==@\.SAND_STEP/)) {
                             window.draw_foot = s;
                             deobmatch('draw_foot', s);
                         } else if (deobfunc.orig.match(/[a-z]\.width=149\*[a-z];[a-z]\.height=356\*[a-z];/)) {
