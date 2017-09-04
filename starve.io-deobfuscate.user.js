@@ -184,6 +184,9 @@
                         } else if (deobfunc.abbr.match(/[a-z]\.width=335\*[a-z];[a-z]\.height=120\*[a-z];/)) { // v15 1 match
                             window.create_gauges_mobile = s;
                             deobmatch('create_gauges_mobile', s);
+                        } else if (deobfunc.abbr.match(/=600\*[a-z]/)) { // v15 1 match
+                            window.create_old_gauges = s;
+                            deobmatch('create_old_gauges', s);
                         }
                     } else if (window[s].length === 2) { // v15 85 matches
                         if (deobfunc.abbr.match(/function @\([a-z],[a-z]\){var [a-z]=[a-z]\.getBoundingClientRect\(\);return{x:[a-z]\.clientX-[a-z]\.left,y:[a-z]\.clientY-[a-z]\.top}}/)) { // v15 1 match
