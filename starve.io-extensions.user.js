@@ -502,22 +502,22 @@
             cook: function() {
                 if (this.enabled) {
                     if (user.craft.fire && user.inv.n[INV.PLANT] >= 2 && user.inv.n[INV.FLOUR] >= 5 && user.inv.n[INV.ICE] >= 2) {
-                        // Cake recipe :: 2 berries (id 4), 5 flour (id 77), 2 ice (id 91)
+                        // Cake recipe :: 2 berries, 5 flour, 2 ice
                         window[client][select_craft](find_recipe([[INV.PLANT, 2], [INV.FLOUR, 5], [INV.ICE, 2]]));
                     } else if (user.craft.fire && user.inv.n[INV.PLANT] >= 1 && user.inv.n[INV.FLOUR] >= 3) {
-                        // Cookies recipe :: 1 berry (id 4), 3 flour (id 77)
+                        // Cookies recipe :: 1 berry, 3 flour
                         window[client][select_craft](find_recipe([[INV.PLANT, 1], [INV.FLOUR, 3]]));
                     } else if (user.craft.fire && user.inv.n[INV.FOODFISH] >= 1) {
-                        // Cooked Fish recipe :: 1 fish (id 86)
+                        // Cooked Fish recipe :: 1 fish
                         window[client][select_craft](find_recipe([[INV.FOODFISH, 1]]));
                     } else if (user.craft.fire && user.inv.n[INV.MEAT] >= 1) {
-                        // Cooked Meat recipe :: 1 meat (id 18)
+                        // Cooked Meat recipe :: 1 meat
                         window[client][select_craft](find_recipe([[INV.MEAT, 1]]));
                     } else if (user.craft.fire && user.inv.n[INV.FLOUR] >= 3) {
-                        // Bread recipe :: 3 flour (id 77)
+                        // Bread recipe :: 3 flour
                         window[client][select_craft](find_recipe([[INV.FLOUR, 3]]));
                     } else if (user.inv.n[INV.BREAD] >= 1 && user.inv.n[INV.COOKED_MEAT] >= 1) {
-                        // Sandwich recipe :: 1 bread (id 92), 1 cooked meat (id 19)
+                        // Sandwich recipe :: 1 bread, 1 cooked meat
                         window[client][select_craft](find_recipe([[INV.BREAD, 1], [INV.COOKED_MEAT, 1]]));
                     }
                 }
