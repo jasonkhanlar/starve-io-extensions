@@ -382,6 +382,10 @@
         if (user.auto_cook.enabled) { ctx.drawImage(sprite[SPRITE.AUTO_COOK], user.auto_cook.translate.x, user.auto_cook.translate.y); }
     }
 
+    function draw_ext_copy_craft() {
+        if (user.copy_craft.enabled) { ctx.drawImage(sprite[SPRITE.COPY_CRAFT], user.copy_craft.translate.x, user.copy_craft.translate.y); }
+    }
+
     function draw_ext_help() {
         if (user.ext_help.enabled) { ctx.drawImage(sprite[SPRITE.EXT_HELP], user.ext_help.translate.x, user.ext_help.translate.y); }
         if (user.ext_help_gui.enabled) { ctx.drawImage(sprite[SPRITE.EXT_HELP_GUI], user.ext_help_gui.translate.x, user.ext_help_gui.translate.y); }
@@ -449,6 +453,8 @@
         sprite[SPRITE.AUTO_BOOK] = create_text(1, 'Auto-Book', 25, '#FFF', void 0, void 0, '#000', 5, 140);
         SPRITE.AUTO_COOK = find_unique_index();
         sprite[SPRITE.AUTO_COOK] = create_text(1, 'Auto-Cook', 25, '#FFF', void 0, void 0, '#000', 5, 140);
+        SPRITE.COPY_CRAFT = find_unique_index();
+        sprite[SPRITE.COPY_CRAFT] = create_text(1, 'Copy-Craft', 25, '#FFF', void 0, void 0, '#000', 5, 140);
         SPRITE.EXT_HELP = find_unique_index();
         sprite[SPRITE.EXT_HELP] = CTI(create_help('HELP MENU', [
          [ 'H', 'Open Help - open this help menu' ],
@@ -458,6 +464,7 @@
          [ 'T', 'Auto Book - auto equip book on craft' ],
          [ 'P', 'Show Spectators - only in hunger games' ],
          [ 'C', 'Auto Cook - auto cook meals when possible' ],
+         [ 'M', 'Copy Craft - mimic crafting when possible' ],
          [ 'E', 'Auto Attack - auto attack' ],
          [ 'L', 'Show Server Info - shows server name' ],
          [ '`', 'Chat Buffer - hide/show chat messages' ]
@@ -523,6 +530,15 @@
                 }
             }
         };
+        user.copy_craft = {
+            enabled: false,
+            last_recipe: false,
+            translate: { x: 0, y: 0 },
+            craft: function() {
+                if (this.enabled && this.last_recipe !== false) {
+                }
+            }
+        };
         user.server_info = {
             enabled: true,
             translate: { x: 0, y: 0 }
@@ -536,6 +552,7 @@
             } else {
                 this.timeout.max_speed = recipe.time;
             }
+            if (user.copy_craft.enabled) { user.copy_craft.last_recipe = recipeID; }
             this.id2 = recipe.id2;
             for (var counter = 0; counter < recipe.r.length; counter++) {
                 var resource = recipe.r[counter];
@@ -547,6 +564,7 @@
         user.craft.update = function() {
             old_user_craft_update.apply(this);
             user.auto_cook.cook();
+            user.copy_craft.craft();
         };
         user.ext_help = { enabled: false, translate: { x: 0, y: 0 } };
         user.ext_help_gui = { enabled: false, translate: { x: 0, y: 0 } };
@@ -570,6 +588,7 @@
                 old_game_draw_UI.apply(this, arguments);
                 draw_ext_auto_book();
                 draw_ext_auto_cook();
+                draw_ext_copy_craft();
                 draw_ext_help();
                 draw_ext_server_info();
             }
@@ -582,6 +601,8 @@
             user.auto_book.translate.y = user[spectators].translate.y + sprite[SPRITE.SHOW_SPECTATORS].height + 5;
             user.auto_cook.translate.x = user.auto_feed.translate.x;
             user.auto_cook.translate.y = user.auto_book.translate.y + sprite[SPRITE.AUTO_BOOK].height + 5;
+            user.copy_craft.translate.x = user.auto_feed.translate.x;
+            user.copy_craft.translate.y = user.auto_cook.translate.y + sprite[SPRITE.AUTO_COOK].height + 5;
             user.ext_help.translate.x = can.width / 2 - sprite[SPRITE.EXT_HELP].width / 2;
             user.ext_help.translate.y = can.height / 2 - sprite[SPRITE.EXT_HELP].height / 2;
             user.ext_help_gui.translate.x = can.width / 2 - sprite[SPRITE.EXT_HELP_GUI].width / 2;
@@ -632,6 +653,9 @@
                     } else if (keycode == 67) {
                         user.auto_cook.enabled = !user.auto_cook.enabled; user.auto_cook.cook();
                         document.getElementById('auto_cook_agree_ing').style.display = user.auto_cook.enabled ? 'inline-block' : 'none';
+                    } else if (keycode == 77) {
+                        user.copy_craft.enabled = !user.copy_craft.enabled;
+                        if (!user.copy_craft.enabled) { user.copy_craft.last_recipe = false; }
                     } else if (keycode == 192) {
                         document.getElementById('chat_log').style.display = document.getElementById('chat_log').style.display == 'none' ? '' : 'none';
                         document.getElementById('chat_buffer_agree_ing').style.display = document.getElementById('chat_log').style.display == 'none' ? 'none' : 'inline-block';
@@ -654,11 +678,19 @@
 
         window.addEventListener('keyup', my_trigger_key_up, false);
 
+        window.old_client_build_stop = window[client][build_stop];
+        window[client][build_stop] = function(c) {
+            old_client_build_stop.apply(this, arguments);
+            if (user.copy_craft.enabled && user.copy_craft.last_recipe !== false) {
+                window[client][select_craft](user.copy_craft.last_recipe);
+            }
+        };
+
         window.old_client_connect = window[client].connect;
         window[client].connect = function() {
             old_client_connect.apply(this);
             get_ext_server_name();
-        }
+        };
 
         window.old_client_select_craft = window[client][select_craft];
         window[client][select_craft] = function(c) {
