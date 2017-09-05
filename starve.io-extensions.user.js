@@ -670,11 +670,11 @@
             }
         };
 
-        document.getElementById('auto_book_case_agree_opt').addEventListener('mouseup', function() { my_trigger_key_up({keyCode: 84}) });
-        document.getElementById('auto_cook_case_agree_opt').addEventListener('mouseup', function() { my_trigger_key_up({keyCode: 67}) });
-        document.getElementById('server_info_case_agree_opt').addEventListener('mouseup', function() { my_trigger_key_up({keyCode: 76}) });
-        document.getElementById('auto_attack_case_agree_opt').addEventListener('mouseup', function() { my_trigger_key_up({keyCode: 69}) });
-        document.getElementById('chat_buffer_case_agree_opt').addEventListener('mouseup', function() { my_trigger_key_up({keyCode: 192}) });
+        document.getElementById('auto_book_case_agree_opt').addEventListener('mouseup', function() { my_trigger_key_up({keyCode: 84}); });
+        document.getElementById('auto_cook_case_agree_opt').addEventListener('mouseup', function() { my_trigger_key_up({keyCode: 67}); });
+        document.getElementById('server_info_case_agree_opt').addEventListener('mouseup', function() { my_trigger_key_up({keyCode: 76}); });
+        document.getElementById('auto_attack_case_agree_opt').addEventListener('mouseup', function() { my_trigger_key_up({keyCode: 69}); });
+        document.getElementById('chat_buffer_case_agree_opt').addEventListener('mouseup', function() { my_trigger_key_up({keyCode: 192}); });
 
         window.addEventListener('keyup', my_trigger_key_up, false);
 
