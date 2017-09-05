@@ -531,8 +531,7 @@
             var recipe = RECIPES[recipeID];
             this.id = recipeID;
             this.crafting = true;
-            if ((user.auto_book.enabled && user.inv.n[INV.BOOK]) ||
-            world[fast_units][user.uid].right == INV.BOOK) {
+            if ((user.auto_book.enabled && user.inv.n[INV.BOOK]) || world[fast_units][user.uid].right == INV.BOOK) {
                 this.timeout.max_speed = recipe.time * 3;
             } else {
                 this.timeout.max_speed = recipe.time;
