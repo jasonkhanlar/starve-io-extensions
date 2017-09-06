@@ -1819,7 +1819,17 @@
 
             for (var s in user) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
-                    //console.log(['missing in user',s,user[s]]);
+                    if (user[s].hasOwnProperty('amount_bread') ||
+                        user[s].hasOwnProperty('amount_flour') ||
+                        user[s].hasOwnProperty('amount_wood') ||
+                        user[s].hasOwnProperty('iid') ||
+                        user[s].hasOwnProperty('open') ||
+                        user[s].hasOwnProperty('pid')) {
+                            window.breadoven = s;
+                            deobmatch('breadoven', s);
+                    } else {
+                        console.log(['missing in user',s,user[s]]); // v15 nothing missing
+                    }
                 }
             }
 
