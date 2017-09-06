@@ -58,6 +58,8 @@
 ## (8) Server name
 * Toggle with L
 
+## (9) Gauge values (life, hunger, cold, thirst)
+
 # VIDEOS
 
 [Starve.io AUTO-COOKER + SCREEN CHAT HISTORY EXTENSION](https://youtu.be/LveuRqidKhY) by [AskingTheNeos](https://www.youtube.com/channel/UCDjgEaRWYbqowT8E3U9R_7Q)
