@@ -1823,6 +1823,34 @@
                 }
             }
 
+            for (var s in user.gauges) {
+                if (typeof user.gauges[s] === 'object') {
+                    if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                        if (deobfuscate_func(user.gauges.update.toString()).orig.indexOf('this.warn_hunger.update();this.' + s + '.update();') > -1) {
+                            window.warn_thirst = s;
+                            deobmatch('warn_thirst', s);
+                        } else if (deobfuscate_func(user.gauges.update.toString()).orig.indexOf('this.' + s + '.update();this.cold.ease(this.c);') > -1) {
+                            window.warn_old = s;
+                            deobmatch('warn_old', s);
+                        } else if (deobfuscate_func(user.gauges.update.toString()).orig.indexOf('this.' + s + '.ease(this.t)') > -1) {
+                            window.thirst = s;
+                            deobmatch('thirst', s);
+                        } else if (deobfuscate_func(user.gauges.update.toString()).orig.indexOf('this.' + s + '.ease(this.o)') > -1) {
+                            window.old = s;
+                            deobmatch('old', s);
+                        } else {
+                            //console.log(['missing in user.gauges',s,user.gauges[s]]);
+                        }
+                    }
+                }
+            }
+
+            for (var s in user.ldb) {
+                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    //console.log(['missing in user.ldb',s,user.ldb[s]]);
+                }
+            }
+
             for (var s in Utils) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     console.log(['missing in Utils',s,Utils[s]]); // v15 nothing missing
