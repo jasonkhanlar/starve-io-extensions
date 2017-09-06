@@ -599,7 +599,16 @@
         game.gauges.draw = function() {
             old_game_gauges_draw.apply(this);
             ctx.save();
-            ctx.translate((canw - 950 * scale) / 2, 0 < user.inv.can_select.length ? -80 : -10);
+            var gX = (canw - 950 * scale) / 2;
+            var gY = 0 < user.inv.can_select.length ? -80 : -10;
+            if (user.chest.open ||
+                user.furnace.open && -1 != user.inv.find_item(INV.WOOD) ||
+                user.windmill.open && -1 != user.inv.find_item(INV.WILD_WHEAT) ||
+                user.well.open && -1 != user.inv.find_item(INV.BUCKET_FULL) ||
+                user[breadoven].open && ( -1 != user.inv.find_item(INV.WOOD) || -1 != user.inv.find_item(INV.FLOUR))
+            ) { gY -= 50 * scale; }
+
+            ctx.translate(gX, gY);
 
             var gCold = Math.round(user.gauges.cold.x * 100);
             var gHunger = Math.round(user.gauges.hunger.x * 100);
