@@ -45,12 +45,12 @@
   * Bread
   * Sandwich
 
-## (6) Copy Craft
+## (6) Copy craft
 * Toggle with M
 
 * Attempts to mimic crafting the same recipe when you craft a recipe
 
-## (7) Active Feed
+## (7) Active feed
 * Toggle with R 3-way
 
 * Provides more efficient eating and drinking
