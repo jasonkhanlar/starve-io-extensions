@@ -1839,7 +1839,7 @@
                             window.old = s;
                             deobmatch('old', s);
                         } else {
-                            //console.log(['missing in user.gauges',s,user.gauges[s]]);
+                            console.log(['missing in user.gauges',s,user.gauges[s]]); // v15 nothing missing
                         }
                     }
                 }
