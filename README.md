@@ -21,7 +21,7 @@
 * Toggle with H for Help Menu
 * Toggle with SHIFT+H for GUI Help Menu
 
-* Duplication of TimothyM's (Tjstretchalot's) [implementation](https://github.com/Tjstretchalot/starve-io-extensions)
+* Duplication of Timothy Moore's (Tjstretchalot's) [implementation](https://github.com/Tjstretchalot/starve-io-extensions)
 
 ## (3) Auto attack
 * Toggle with E
@@ -29,7 +29,7 @@
 ## (4) Auto book
 * Toggle with T
 
-* Duplication of TimothyM's (Tjstretchalot's) [implementation](https://github.com/Tjstretchalot/starve-io-extensions)
+* Duplication of Timothy Moore's (Tjstretchalot's) [implementation](https://github.com/Tjstretchalot/starve-io-extensions)
 
 ## (5) Auto cook
 * Toggle with C
