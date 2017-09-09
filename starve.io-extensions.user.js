@@ -441,8 +441,8 @@
             } else {
                 user.server_info.translate.x = canw - user.server_info.label_active.width;
             }
-            if (user.inv.can_select.length > 0) user.server_info.translate.y = game.minimap.translate.y - user.server_info.label_active.height - 110;
-            else user.server_info.translate.y = game.minimap.translate.y - user.server_info.label_active.height - 40;
+            user.server_info.translate.y = game.minimap.translate.y - user.server_info.label_active.height - 40;
+            if (user.inv.can_select.length > 0) user.server_info.translate.y -= 70;
             ctx.drawImage(user.server_info.label_active, user.server_info.translate.x, user.server_info.translate.y);
             ctx.globalAlpha = 1;
         }
