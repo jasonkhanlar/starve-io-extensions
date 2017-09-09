@@ -45,22 +45,27 @@
   * Bread
   * Sandwich
 
-## (6) Copy craft
+## (6) Auto follow
+* Toggle with F
+
+* Attempts to automatically follow closest player if anyone is near
+
+## (7) Copy craft
 * Toggle with M
 
 * Attempts to mimic crafting the same recipe when you craft a recipe
 
-## (7) Active feed
+## (8) Active feed
 * Toggle with R 3-way
 
 * Provides more efficient eating and drinking
 
-## (8) Server name
+## (9) Server name
 * Toggle with L
 
-## (9) Gauge values (life, hunger, cold, thirst)
+## (10) Gauge values (life, hunger, cold, thirst)
 
-## (10) GPS (game positioning system)
+## (11) GPS (game positioning system)
 * Toggle with G
 
 # VIDEOS

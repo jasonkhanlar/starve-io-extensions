@@ -462,6 +462,32 @@
         }
     }
 
+    function auto_follow() {
+        if (!user.auto_follow.enabled) {
+            var dist = Math.pow(MAP.w, 2) + Math.pow(MAP.h, 2), uid = -1;
+            for (var x = 0; x < world[fast_units].length; x++) {
+                if (typeof world[fast_units][x] === 'undefined') continue;
+                else if (world[fast_units][x] === null) continue;
+                else if (x === user.uid) continue;
+                else if (!world[fast_units][x].hasOwnProperty('player')) continue;
+
+                var tdist = Math.pow(Math.abs(world[fast_units][user.uid].x - world[fast_units][x].x), 2) +
+                    Math.pow(Math.abs(world[fast_units][user.uid].y - world[fast_units][x].y), 2);
+
+                if (tdist < dist) {
+                    dist = tdist;
+                    user.auto_follow.uid = x;
+                    user.auto_follow.enabled = true;
+
+                    var msg = 'Auto Following ' + world[fast_units][x].player.nickname;
+                    if (!user.alert.text) { user.alert.text = msg; }
+                    else if (user.alert.text.match(/Auto Following/)) { user.alert.text = msg; user.alert.timeout.v = 1; user.alert.label = null; }
+                    else { user.alert.list.push(msg); }
+                }
+            }
+        } else { user.auto_follow.enabled = false; }
+    }
+
     function checkDependencies() {
         if ((typeof deobauto === 'undefined' || deobauto !== true) &&
             (typeof deobcomplete === 'undefined' || deobcomplete !== true) &&
@@ -496,6 +522,7 @@
          [ 'C', 'Auto Cook - auto cook meals when possible' ],
          [ 'M', 'Copy Craft - mimic crafting when possible' ],
          [ 'E', 'Auto Attack - auto attack' ],
+         [ 'F', 'Auto Follow - auto follow closest player' ],
          [ 'L', 'Show Server Info - shows server name' ],
          [ 'G', 'GPS  - shows your x,y coordinate position' ],
          [ '`', 'Chat Buffer - hide/show chat messages' ]
@@ -560,6 +587,12 @@
                     }
                 }
             }
+        };
+        user.auto_follow = {
+            enabled: false,
+            preva: 0,
+            prevm: 0,
+            uid: -1
         };
         user.copy_craft = {
             enabled: false,
@@ -739,6 +772,8 @@
                     } else if (keycode == 69) {
                         user.auto_attack.enabled = !user.auto_attack.enabled; alert_ext_auto_attack();
                         document.getElementById('auto_attack_agree_ing').style.display = user.auto_attack.enabled ? 'inline-block' : 'none';
+                    } else if (keycode == 70) {
+                        auto_follow();
                     } else if (keycode == 71) {
                         user.gps.enabled = !user.gps.enabled;
                     } else if (keycode == 72) {
@@ -850,6 +885,7 @@
         window.old_user_control_update = user.control.update;
         user.control.update = function() {
             old_user_control_update.apply(this);
+            // auto attack
             var elapsed_time = ((new Date()).getTime() - world.clock.init) / 1000;
             if (mouse.state !== 0 && elapsed_time >= user.auto_attack.last_attack + CLIENT[deoblist.o2d.ATTACK] * 2.5) {
                 if (user.auto_attack.enabled) {
@@ -861,6 +897,25 @@
                 } else if (this.attack !== 0) {
                     this.attack = 0;
                     window[client][stop_attack]();
+                }
+            }
+            // auto follow
+            if (user.auto_follow.enabled && world[fast_units][user.auto_follow.uid] !== null) {
+                var c = 0,
+                stalkeeA = world[fast_units][user.auto_follow.uid].angle,
+                stalkeeX = Math.round(world[fast_units][user.auto_follow.uid].x / 40),
+                stalkeeY = Math.round(world[fast_units][user.auto_follow.uid].y / 40),
+                stalkerX = Math.round(world[fast_units][user.uid].x / 40),
+                stalkerY = Math.round(world[fast_units][user.uid].y / 40);
+                if (stalkeeX < stalkerX) c |= 1;
+                else if (stalkeeX > stalkerX) c |= 2;
+
+                if (stalkeeY > stalkerY) c |= 4;
+                else if (stalkeeY < stalkerY) c |= 8;
+
+                if (user.auto_follow.prevm !== c) {
+                    user.auto_follow.prevm = c;
+                    window[client][send_move](c);
                 }
             }
         };
