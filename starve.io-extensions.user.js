@@ -695,7 +695,7 @@
                 keycode = user.keycodes_to_mapped_keycodes[keycode];
             }
 
-            if (!user.chat.open)  {
+            if (!user.chat.open && document.activeElement.id !== 'nickname_input')  {
                 if (!c.altKey && !c.ctrlKey && !c.shiftKey) {
                     if (keycode == 84) {
                         user.auto_book.enabled = !user.auto_book.enabled;
