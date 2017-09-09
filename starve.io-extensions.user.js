@@ -386,6 +386,36 @@
         if (user.copy_craft.enabled) { ctx.drawImage(sprite[SPRITE.COPY_CRAFT], user.copy_craft.translate.x, user.copy_craft.translate.y); }
     }
 
+    function draw_ext_gps() {
+        if (user.gps.enabled) {
+            var gpsX = Math.round(world[fast_units][user.uid].x / 100);
+            var gpsY = Math.round(world[fast_units][user.uid].y / 100);
+            if (world[fast_units][user.uid].y <= SPRITE.WINTER_BIOME_Y) {
+                if (!user.gps.label_winter || user.gps.coords !== gpsX + ',' + gpsY) {
+                    user.gps.coords = gpsX + ',' + gpsY;
+                    user.gps.label_winter = create_text(scale, user.gps.coords, 22, "#187484", '#000', 2, null, null, 100 * scale);
+                }
+                user.gps.label_active = user.gps.label_winter;
+            }
+            else {
+                if (!user.gps.label || user.gps.coords !== gpsX + ',' + gpsY) {
+                    user.gps.coords = gpsX + ',' + gpsY;
+                    user.gps.label = create_text(scale, user.gps.coords, 22, "#FFF", "#000", 2, null, null, 100 * scale);
+                }
+                user.gps.label_active = user.gps.label;
+            }
+            if (world.day == SPRITE.NIGHT) ctx.globalAlpha = 0.5;
+            ctx.save();
+            ctx.translate(user.cam.x + world[fast_units][user.uid].x, user.cam.y + world[fast_units][user.uid].y);
+            ctx.drawImage(
+                user.gps.label_active,
+                user.gps.label_active.width / -2,
+                user.gps.label_active.height / -2 - 70 * scale - world[fast_units][user.uid].player.label.height
+            );
+            ctx.restore();
+        }
+    }
+
     function draw_ext_help() {
         if (user.ext_help.enabled) { ctx.drawImage(sprite[SPRITE.EXT_HELP], user.ext_help.translate.x, user.ext_help.translate.y); }
         if (user.ext_help_gui.enabled) { ctx.drawImage(sprite[SPRITE.EXT_HELP_GUI], user.ext_help_gui.translate.x, user.ext_help_gui.translate.y); }
@@ -467,6 +497,7 @@
          [ 'M', 'Copy Craft - mimic crafting when possible' ],
          [ 'E', 'Auto Attack - auto attack' ],
          [ 'L', 'Show Server Info - shows server name' ],
+         [ 'G', 'GPS  - shows your x,y coordinate position' ],
          [ '`', 'Chat Buffer - hide/show chat messages' ]
         ]));
         SPRITE.EXT_HELP_GUI = find_unique_index();
@@ -539,6 +570,10 @@
                 }
             }
         };
+        user.gps = {
+            coords: '',
+            enabled: false
+        };
         user.server_info = {
             enabled: true,
             translate: { x: 0, y: 0 }
@@ -590,6 +625,7 @@
                 draw_ext_auto_book();
                 draw_ext_auto_cook();
                 draw_ext_copy_craft();
+                draw_ext_gps();
                 draw_ext_help();
                 draw_ext_server_info();
             }
@@ -703,6 +739,8 @@
                     } else if (keycode == 69) {
                         user.auto_attack.enabled = !user.auto_attack.enabled; alert_ext_auto_attack();
                         document.getElementById('auto_attack_agree_ing').style.display = user.auto_attack.enabled ? 'inline-block' : 'none';
+                    } else if (keycode == 71) {
+                        user.gps.enabled = !user.gps.enabled;
                     } else if (keycode == 72) {
                         user.ext_help.enabled = !user.ext_help.enabled;
                     } else if (keycode == 76) {

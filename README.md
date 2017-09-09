@@ -60,6 +60,9 @@
 
 ## (9) Gauge values (life, hunger, cold, thirst)
 
+## (10) GPS (game positioning system)
+* Toggle with G
+
 # VIDEOS
 
 2017.09.01 [Starve.io Extensions code history](https://youtu.be/Dr7uVPEZCAw) by [Jason Khanlar](https://www.youtube.com/channel/UC8RYoBv1UQ-AwypZwq7BDOA)
