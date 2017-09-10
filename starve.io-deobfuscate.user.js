@@ -324,14 +324,6 @@
                         }
                     }
 
-                    // Detecting or validating these may require more evaluation
-                    if (window[s] === 92) { // v15 1 match
-                        if (SPRITE.hasOwnProperty(s)) { // Validate with SPRITE.COUNTER, does SPRITE[s] exist?
-                            window.COUNTER = s;
-                            deobmatch('COUNTER', s);
-                        }
-                    }
-
                     // Detecting these requires more evaluation
                     if (window[s] === 0) {
                         if (typeof window['create_leaderboard_'+s] === 'function' || // v15 1 match
@@ -1136,6 +1128,22 @@
                 }
             });
         } else if (stage === 2) {
+            // Then detect some properties that require reference to other properties for identification
+
+            // Detecting or validating these may require more evaluation
+            Object.keys(window).forEach(function(s) { // v15 680-690 matches
+                if (s === 'webkitStorageInfo') { } // deprecated
+                else if (s.match(/^[0-9]/)) { } // avoid cross-origin objects
+                else if (typeof window[s] === 'number') { // v15 50-52 matches
+                    if (window[s] === 92) { // v15 1 match
+                        if (SPRITE.hasOwnProperty(s)) { // Validate with SPRITE.COUNTER, does SPRITE[s] exist?
+                            window.COUNTER = s;
+                            deobmatch('COUNTER', s);
+                        }
+                    }
+                }
+            });
+
             // Then detect most properties of global variables to reference in next stage
 
             if (typeof CLIENT === 'object') {
@@ -1908,6 +1916,7 @@
         autodetect(0);
         // Then detect all global variables, constants and functions
         autodetect(1);
+        // Then detect some properties that require reference to other properties for identification
         // Then detect most properties of global variables to reference in next stage
         autodetect(2);
         // Then detect remaining properties of global variables
