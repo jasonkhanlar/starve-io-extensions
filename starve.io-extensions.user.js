@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io extensions
 // @namespace    http://tampermonkey.net/
-// @version      0.15.50
+// @version      0.15.51
 // @description  (1) On screen chat buffer (2) On screen help (3) Auto attack (4) Auto book (5) Auto cook (6) Auto follow (7) Copy craft (8) Active feed (9) Server name (10) Gauge values (11) GPS
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -843,8 +843,8 @@
         window[draw_chat] = function() {
             old_draw_chat.apply(this);
             // Show only unique chat messages per player, even if someone repeats themselves
-            if (this.text && (!chat_log_last.hasOwnProperty(this.player.nickname) || chat_log_last[this.player.nickname] !== this.text) && this.text !== this.player.nickname) {
-                chat_log_last[this.player.nickname] = this.text;
+            if (this.text && (!chat_log_last.hasOwnProperty(this.pid) || chat_log_last[this.pid] !== this.text) && this.text !== this.player.nickname) {
+                chat_log_last[this.pid] = this.text;
                 var chat_log_tr = document.createElement('tr');
                 var chat_log_msg = document.createElement('td');
                 var chat_log_nick = document.createElement('td');
