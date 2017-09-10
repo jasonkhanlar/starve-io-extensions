@@ -14,6 +14,8 @@
 (function() {
     'use strict';
 
+    var required_deobfuscate_version = '0.15.50';
+
     // Server select menu looks ugly, fix it
     var style = document.createElement('style');
     style.appendChild(document.createTextNode(''));
@@ -489,11 +491,11 @@
     }
 
     function checkDependencies() {
-        if ((typeof deobauto === 'undefined' || deobauto !== true) &&
-            (typeof deobcomplete === 'undefined' || deobcomplete !== true) &&
-            (typeof deobmicro === 'undefined' || deobmicro !== true)) {
+        if (typeof deobauto === 'undefined') {
             // 'Starve.io Deobfuscated' is required as a dependency
             setTimeout(checkDependencies, 50);
+        } else if (deobauto === true || deobauto < required_deobfuscate_version) {
+            alert('deobfuscate userscript v' + required_deobfuscate_version + ' or higher is required.');
         } else {
             // Dependency satisfied
             main();
