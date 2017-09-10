@@ -592,7 +592,9 @@
             enabled: false,
             preva: 0,
             prevm: 0,
-            uid: -1
+            uid: -1,
+            x: -1,
+            y: -1
         };
         user.copy_craft = {
             enabled: false,
@@ -907,20 +909,32 @@
                 stalkeeY = Math.round(world[fast_units][user.auto_follow.uid].y / 40),
                 stalkerX = Math.round(world[fast_units][user.uid].x / 40),
                 stalkerY = Math.round(world[fast_units][user.uid].y / 40);
-                if (stalkeeX < stalkerX) c |= 1;
-                else if (stalkeeX > stalkerX) c |= 2;
 
-                if (stalkeeY > stalkerY) c |= 4;
-                else if (stalkeeY < stalkerY) c |= 8;
+                if (!(
+                    Math.abs(stalkeeX - stalkerX) <= 1 &&
+                    Math.abs(stalkeeY - stalkerY) <= 1 &&
+                    user.auto_follow.x === world[fast_units][user.auto_follow.uid].x &&
+                    user.auto_follow.y === world[fast_units][user.auto_follow.uid].y
+                )) {
+                    if (stalkeeX < stalkerX) c |= 1;
+                    else if (stalkeeX > stalkerX) c |= 2;
+
+                    if (stalkeeY > stalkerY) c |= 4;
+                    else if (stalkeeY < stalkerY) c |= 8;
+                }
 
                 if (user.auto_follow.preva !== stalkeeA) {
                     world[fast_units][user.uid].angle = stalkeeA;
                     window[client][send_angle](stalkeeA);
                 }
+
                 if (user.auto_follow.prevm !== c) {
                     user.auto_follow.prevm = c;
                     window[client][send_move](c);
                 }
+
+                user.auto_follow.x = world[fast_units][user.auto_follow.uid].x;
+                user.auto_follow.y = world[fast_units][user.auto_follow.uid].y;
             }
         };
 
