@@ -923,8 +923,9 @@
                     else if (stalkeeY < stalkerY) c |= 8;
                 }
 
-                if (user.auto_follow.preva !== stalkeeA) {
+                if (world[fast_units][user.uid].angle !== stalkeeA) {
                     world[fast_units][user.uid].angle = stalkeeA;
+                    world[fast_units][user.uid].nangle = stalkeeA;
                     window[client][send_angle](stalkeeA);
                 }
 
