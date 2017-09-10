@@ -27,11 +27,11 @@
     function autodetect(stage) {
         if (stage === 0) {
             // First detect OBFUSCATOR_ARR and OBFUSCATOR_FN to reference in next stage
-            for (var s in window) {
-                if (s === 'webkitStorageInfo') continue; // deprecated
-                if (typeof window[s] === 'function') {
+            Object.keys(window).forEach(function(s) {
+                if (s === 'webkitStorageInfo') { } // deprecated
+                else if (typeof window[s] === 'function') {
                     if (window[s].length === 2) {
-                        if (window[s].toString().match(/^function \([a-z],[a-z]\){return _0x[a-z0-9]{4}\[[a-z]-0\]}$/)) {
+                        if (window[s].toString().match(/^function ?\([a-z],[a-z]\){return _0x[a-z0-9]{4}\[[a-z]-0\]}$/)) {
                             window.OBFUSCATOR_FN = window[s];
                             deobmatch('OBFUSCATOR_FN', s);
                         }
@@ -46,247 +46,250 @@
                         }
                     }
                 }
-            }
+            });
         } else if (stage === 1) {
             // Then detect all global variables, constants and functions
-            for (var s in window) { // v15 680-690 matches
-                if (s === 'webkitStorageInfo') continue; // deprecated
-                if (typeof window[s] === 'boolean') { // v15 6 matches
-                } else if (typeof window[s] === 'function') { // v15 376 matches
-                    if ((/\{\s*\[native code\]\s*\}/).test('' + window[s])) { continue; } // ignore native functions
-                    var deobfunc = deobfuscate_func(window[s].toString());
-                    if (window[s].length === 0) { // v15 83 matches
-                        if (window[s].toString().match(/new XMLHttpRequest/)) { // v15 1 match
-                            window.Client = s;
-                            deobmatch('Client', s);
-                        } else if (deobfunc.abbr === 'function @(){SAVE;TUPT;this.text&&(@.globalAlpha=this.chat.o?1-this.chat.v:1,this.label||(this.label=create_message(scale,this.text)),@.drawImage(this.label,-this.label.width/2,-this.label.height/2-110*scale),this.chat.update()&&0==this.chat.o&&(this.text="",this.label=null));RESTORE}') {
-                            window.draw_chat = s;
-                            deobmatch('draw_chat', s);
-                        } else if (deobfunc.abbr.match(/[a-z]=sprite\[@\.DRAGON\]\[@\.time\];/)) {
-                            window.draw_dragon = s;
-                            deobmatch('draw_dragon', s);
-                        } else if (deobfunc.abbr.match(/IFWBGC/) && deobfunc.abbr.match(/@\.items\.push/)) { // v15 1 match
-                            window.init_fake_world = s;
-                            deobmatch('init_fake_world', s);
-                        } else if (s !== 'create_images' && deobfunc.orig.match(/ICON_LEADER/)) { // v15 1 match
-                            window.draw_player = s;
-                            deobmatch('draw_player', s);
-                        } else if (s !== 'create_images' && deobfunc.orig.match(/[a-z]\+game\.minimap\.marker\.y\*scale/)) { // v15 1 match
-                            window.draw_minimap = s;
-                            deobmatch('draw_minimap', s);
-                        } else if (deobfunc.orig.match(/\.SAND_MIN_X/) && deobfunc.orig.match(/\.BEACH_WINTER_MIN_X/)) { // v15 1 match
-                            window.draw_ground = s;
-                            deobmatch('draw_ground', s);
-                        } else if (s !== 'create_images' && deobfunc.orig.match(/DRAGON_GROUND/)) { // v15 1 match
-                            window.draw_world = s;
-                            deobmatch('draw_world', s);
-                        } else if (deobfunc.orig.match(/game\.leaderboard/)) { // v15 1 match
-                            window.draw_leaderboard = s;
-                            deobmatch('draw_leaderboard', s);
-                        } else if (s !== 'Item' && deobfunc.orig.match(/fruits\[4/)) { // v15 1 match
-                            window.draw_fake_world = s;
-                            deobmatch('draw_fake_world', s);
-                        } else if (deobfunc.orig.match(/DIST_BREAD_OVEN/)) { // v15 1 match
-                            window.draw_breadoven_inventory = s;
-                            deobmatch('draw_breadoven_inventory', s);
-                        } else if (deobfunc.orig.match(/DIST_FURNACE/)) { // v15 1 match
-                            window.draw_furnace_inventory = s;
-                            deobmatch('draw_furnace_inventory', s);
-                        } else if (deobfunc.orig.match(/DIST_CHEST/)) { // v15 1 match
-                            window.draw_chest_inventory = s;
-                            deobmatch('draw_chest_inventory', s);
-                        } else if (s !== 'create_images' && deobfunc.orig.match(/BIGMAP/)) { // v15 1 match
-                            window.draw_bigmap = s;
-                            deobmatch('draw_bigmap', s);
-                        } else if (s !== 'create_images' && deobfunc.orig.match(/RECONNECT/)) { // v15 1 match
-                            window.draw_reconnect = s;
-                            deobmatch('draw_reconnect', s);
-                        } else if (deobfunc.orig.match(/user\.auto_feed\.translate\.x,user\.auto_feed\.translate\.y/)) { // v15 1 match
-                            window.draw_auto_feed = s;
-                            deobmatch('draw_auto_feed', s);
-                        } else if (deobfunc.abbr.match(/sprite\[@\.SHOW_SPECTATORS\],/)) { // v15 1 match
-                            window.draw_show_spectators = s;
-                            deobmatch('draw_show_spectators', s);
-                        } else if (deobfunc.abbr.match(/DELAY_TEAM/) && deobfunc.abbr.match(/WEAPON_LOADING/)) { // v15 1 match
-                            window.draw_totem_switch_delay = s;
-                            deobmatch('draw_totem_switch_delay', s);
-                        } else if (deobfunc.abbr.match(/[a-z]=user\.weapon/) && deobfunc.abbr.match(/WEAPON_LOADING/)) { // v15 1 match
-                            window.draw_weapon_switch_delay = s;
-                            deobmatch('draw_weapon_switch_delay', s);
-                        } else if (deobfunc.abbr.match(/^function @\(\){var [a-z]=user\.craft/)) { // v15 1 match
-                            window.draw_ui_crafting = s;
-                            deobmatch('draw_ui_crafting', s);
-                        } else if (deobfunc.abbr.match(/var [a-z]=user\.inv,/)) { // v15 1 match
-                            window.draw_ui_inventory = s;
-                            deobmatch('draw_ui_inventory', s);
-                        } else if (deobfunc.abbr.match(/user\.gauges\.warn_life/)) { // v15 1 match
-                            window.draw_gauges = s;
-                            deobmatch('draw_gauges', s);
-                        } else if (deobfunc.abbr.match(/img=sprite\[@\.LOCK\]/)) { // v15 1 match
-                            window.draw_chest = s;
-                            deobmatch('draw_chest', s);
-                        } else if (deobfunc.abbr.match(/^function @\(\){if\(!\(10>this\.info\)\)/)) { // v15 1 match
-                            window.draw_seed = s;
-                            deobmatch('draw_seed', s);
-                        } else if (s !== 'create_images' && deobfunc.orig.match(/DRIED_PLANT/)) { // v15 1 match
-                            window.draw_plant = s;
-                            deobmatch('draw_plant', s);
-                        } else if (s !== 'create_images' && deobfunc.orig.match(/FURNACE_ON/)) { // v15 1 match
-                            window.draw_furnace = s;
-                            deobmatch('draw_furnace', s);
-                        } else if (deobfunc.abbr.match(/GROUND_FIRE/) && deobfunc.abbr.match(/@\.globalAlpha=1;RESTORE\}$/)) { // v15 1 match
-                            window.draw_furnace_ground = s;
-                            deobmatch('draw_furnace_ground', s);
-                        } else if (deobfunc.abbr.match(/SMOG_PUSH/)) { // v15 1 match
-                            window.draw_breadoven_smog = s;
-                            deobmatch('draw_breadoven_smog', s);
-                        } else if (s !== 'create_images' && deobfunc.orig.match(/BREAD_OVEN_ON/)) { // v15 1 match
-                            window.draw_breadoven = s;
-                            deobmatch('draw_breadoven', s);
-                        } else if (s !== 'create_images' && deobfunc.orig.match(/RESURRECTION_HOLE/)) { // v15 1 match
-                            window.draw_resurrection = s;
-                            deobmatch('draw_resurrection', s);
-                        } else if (s !== 'create_images' && deobfunc.orig.match(/RESURRECTION_GROUND/)) { // v15 1 match
-                            window.draw_resurrection_halo = s;
-                            deobmatch('draw_resurrection_halo', s);
-                        } else if (s !== 'create_images' && deobfunc.orig.match(/HALO_FIRE/) && deobfunc.orig.match(/ROTATE;this\.halo\.update\(\)/)) { // v15 1 match
-                            window.draw_furnace_halo = s;
-                            deobmatch('draw_furnace_halo', s);
-                        } else if (s !== 'create_images' && deobfunc.orig.match(/HALO_FIRE/) && !deobfunc.orig.match(/ROTATE;this\.halo\.update\(\)/)) { // v15 1 match
-                            window.draw_fire_halo = s;
-                            deobmatch('draw_fire_halo', s);
-                        } else if (deobfunc.orig.match(/1E3\/1E3/)) { // v15 1 match
-                            window.draw_alert_ghost = s;
-                            deobmatch('draw_alert_ghost', s);
-                        } else if (deobfunc.orig.match(/DIST_RESURRECTION/)) { // v15 1 match
-                            window.draw_resurrection_inventory = s;
-                            deobmatch('draw_resurrection_inventory', s);
-                        } else if (s != 'create_images' && s != 'Game' && deobfunc.orig.match(/SHOW_SPECTATORS/)) { // v15 1 match
-                            window.draw_show_spectators = s;
-                            deobmatch('draw_show_spectators', s);
-                        } else if (deobfunc.abbr.match(/@\.FLAKES,/)) { // v15 1 match
-                            window.draw_winter= s;
-                            deobmatch('draw_winter', s);
-                        } else if (deobfunc.abbr.match(/function @\(\){if\(@\.transition\)var [a-z]=@\.shade\.update\(\);/)) { // v15 1 match
-                            window.draw_world_with_effect = s;
-                            deobmatch('draw_world_with_effect', s);
-                        } else if (deobfunc.abbr.match(/SOUND_PLAYER\.FACTOR\)/)) { // v15 1 match
-                            window.GameAudio = s;
-                            deobmatch('GameAudio', s);
-                        } else if (s != 'UI' && deobfunc.abbr.match(/sadblock/)) { // v15 1 match
-                            window.sadblock = s;
-                            deobmatch('sadblock', s);
-                        }
-                    } else if (window[s].length === 1) { // v15 51 matches
-                        if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
-                            window.draw_door = s;
-                            deobmatch('draw_door', s);
-                        } else if (deobfunc.abbr.match(/^function @\([a-z]\){SAVE;TUPT;ROTATE;if\(this\.hit\.update\){/) && deobfunc.abbr.match(/img/)) {
-                            window.draw_simple_item = s;
-                            deobmatch('draw_simple_item', s);
-                        } else if (deobfunc.abbr.match(/this\.breath\.update\(\);img=sprite/)) {
-                            window.draw_breath = s;
-                            deobmatch('draw_breath', s);
-                        } else if (deobfunc.abbr.match(/case @\.WATERING_CAN_FULL:SAVE/)) {
-                            window.draw_player_effect = s;
-                            deobmatch('draw_player_effect', s);
-                        } else if (deobfunc.abbr.match(/2147483648/)) {
-                            window.randS32 = s;
-                            deobmatch('randS32', s);
-                        } else if (deobfunc.abbr.match(/"Leaderboard"/)) { // v15 1 match
-                            window.create_leaderboard_mobile = s;
-                            deobmatch('create_leaderboard_mobile', s);
-                        } else if (deobfunc.abbr.match(/[a-z]\.width=335\*[a-z];[a-z]\.height=120\*[a-z];/)) { // v15 1 match
-                            window.create_gauges_mobile = s;
-                            deobmatch('create_gauges_mobile', s);
-                        } else if (deobfunc.abbr.match(/=600\*[a-z]/)) { // v15 1 match
-                            window.create_old_gauges = s;
-                            deobmatch('create_old_gauges', s);
-                        } else if (deobfunc.abbr.match(/GROUND_FIRE/) && deobfunc.abbr.match(/@\.globalAlpha=1;this\.hit\.update/)) { // v15 1 match
-                            window.draw_fire_ground = s;
-                            deobmatch('draw_fire_ground', s);
-                        } else if (deobfunc.abbr.match(/CROWN_GREEN:case/) && deobfunc.abbr.match(/[a-z]\.width\/2,/)) { // v15 1 match
-                            window.draw_player_clothe = s;
-                            deobmatch('draw_player_clothe', s);
-                        }
-                    } else if (window[s].length === 2) { // v15 85 matches
-                        if (deobfunc.abbr.match(/function @\([a-z],[a-z]\){var [a-z]=[a-z]\.getBoundingClientRect\(\);return{x:[a-z]\.clientX-[a-z]\.left,y:[a-z]\.clientY-[a-z]\.top}}/)) { // v15 1 match
-                            window.get_mouse_pos = s;
-                            deobmatch('get_mouse_pos', s);
-                        } else if (deobfunc.abbr.match(/[a-z]=sprite\[[a-z]\]\[@\.time\];[a-z]=-[a-z]\.width\*this\.breath\.v/)) {
-                            window.draw_simple_mobs = s;
-                            deobmatch('draw_simple_mobs', s);
-                        } else if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/@\.drawImage\([a-z],-[a-z]\/2,-[a-z]\/2,[a-z],[a-z]\)/)) {
-                            window.draw_simple_mobs_2 = s;
-                            deobmatch('draw_simple_mobs_2', s);
-                        } else if (deobfunc.orig.match(/==BUTTON_CLICK&&/)) {
-                            window.draw_amount = s;
-                            deobmatch('draw_amount', s);
-                        } else if (deobfunc.abbr.match(/this\.text&&\(@\.globalAlpha=this\.timeout\.o/)) {
-                            window.draw_alert = s;
-                            deobmatch('draw_alert', s);
-                        } else if (deobfunc.orig.match(/draw_bg\([a-z]\)/)) {
-                            window.draw_bg_transition = s;
-                            deobmatch('draw_bg_transition', s);
-                        } else if (deobfunc.orig.match(/draw_fg\([a-z]\)/)) {
-                            window.draw_fg_transition = s;
-                            deobmatch('draw_fg_transition', s);
-                        } else if (deobfunc.abbr.match(/!==@\.SAND_STEP/)) {
-                            window.draw_foot = s;
-                            deobmatch('draw_foot', s);
-                        } else if (deobfunc.orig.match(/[a-z]\.width=149\*[a-z];[a-z]\.height=356\*[a-z];/)) {
-                            window.create_breadoven_ui = s;
-                            deobmatch('create_breadoven_ui', s);
-                        }
-                    } else if (window[s].length === 3) { // v15 125 matches
-                        if (deobfunc.orig.match(/BUTTON_CLICK\|\|/)) {
-                            window.draw_slot_number = s;
-                            deobmatch('draw_slot_number', s);
-                        } else if (deobfunc.abbr.match(/^function @\([a-z],[a-z],[a-z]\){@\.transition/) && deobfunc.abbr.match(/drawImage/)) { // v15 1 match
-                            window.draw_image_transition = s;
-                            deobmatch('draw_image_transition', s);
-                        } else if (deobfunc.abbr.match(/^function @\([a-z],[a-z],[a-z]\){@\.transition\?/) && deobfunc.abbr.match(/\.draw\(/)) { // v15 1 match
-                            window.draw_transition = s;
-                            deobmatch('draw_transition', s);
-                        } else if (deobfunc.orig.match(/[a-z]\.width=440\*[a-z];[a-z]\.height=388\*[a-z];/) && deobfunc.orig.length < 1000) {
-                            window.create_breadoven_off = s;
-                            deobmatch('create_breadoven_off', s);
-                        } else if (deobfunc.orig.match(/[a-z]\.width=440\*[a-z];[a-z]\.height=388\*[a-z];/) && deobfunc.orig.length > 1000) {
-                            window.create_breadoven = s;
-                            deobmatch('create_breadoven', s);
-                        } else if (deobfunc.abbr.match(/switch\(img=sprite\[[a-z]\]\[@\.time\],[a-z]\)/)) {
-                            window.draw_player_right_stuff = s;
-                            deobmatch('draw_player_right_stuff', s);
-                        }
-                    } else if (window[s].length === 4) { // v15 13 matches
-                    } else if (window[s].length === 5) { // v15 3 matches
-                        if (deobfunc.abbr.match(/@\.transition&&/) && deobfunc.abbr.match(/@\.time=@\.time/)) { // v15 1 match
-                            window.draw_imgs_transition = s;
-                            deobmatch('draw_imgs_transition', s);
-                        }
-                    } else if (window[s].length === 6) { // v15 3 matches
-                        if (deobfunc.orig.match(/for\(;[a-z]<=[a-z];[a-z]\+\+\)/)) {
-                            window.draw_map_object = s;
-                            deobmatch('draw_map_object', s);
-                        }
-                    } else if (window[s].length === 7) { // v15 6 matches
-                    } else if (window[s].length === 8) {
-                        if (deobfunc.orig.match(/for\([a-z]=void/) && deobfunc.orig.match(/breath/)) {
-                            window.draw_map_2_objects = s;
-                            deobmatch('draw_map_2_objects', s);
-                        } else if (deobfunc.orig.match(/for\([a-z]=void/) && !deobfunc.orig.match(/breath/)) {
-                            window.draw_map_objects = s;
-                            deobmatch('draw_map_objects', s);
-                        }
-                    } else if (window[s].length === 9) { // v15 1 match
-                        if (deobfunc.abbr.match(/@\.shade\.v,[a-z]\(/)) { // v15 1 match
-                            window.draw_map_transition = s;
-                            deobmatch('draw_map_transition', s);
-                        }
-                    } else if (window[s].length === 11) { // v15 2 matches
-                        if (deobfunc.abbr.match(/AMBIENCE\.sound\.playing/)) { // v15 1 match
-                            window.sound_track = s;
-                            deobmatch('sound_track', s);
+            Object.keys(window).forEach(function(s) { // v15 680-690 matches
+                if (s === 'webkitStorageInfo') { } // deprecated
+                else if (s.match(/^[0-9]/)) { } // avoid cross-origin objects
+                else if (typeof window[s] === 'boolean') { } // v15 6 matches
+                else if (typeof window[s] === 'function') { // v15 376 matches
+                    if ((/\{\s*\[native code\]\s*\}/).test('' + window[s])) { } // ignore native functions
+                    else {
+                        var deobfunc = deobfuscate_func(window[s].toString());
+                        if (window[s].length === 0) { // v15 83 matches
+                            if (window[s].toString().match(/new XMLHttpRequest/)) { // v15 1 match
+                                window.Client = s;
+                                deobmatch('Client', s);
+                            } else if (deobfunc.abbr === 'function @(){SAVE;TUPT;this.text&&(@.globalAlpha=this.chat.o?1-this.chat.v:1,this.label||(this.label=create_message(scale,this.text)),@.drawImage(this.label,-this.label.width/2,-this.label.height/2-110*scale),this.chat.update()&&0==this.chat.o&&(this.text="",this.label=null));RESTORE}') {
+                                window.draw_chat = s;
+                                deobmatch('draw_chat', s);
+                            } else if (deobfunc.abbr.match(/[a-z]=sprite\[@\.DRAGON\]\[@\.time\];/)) {
+                                window.draw_dragon = s;
+                                deobmatch('draw_dragon', s);
+                            } else if (deobfunc.abbr.match(/IFWBGC/) && deobfunc.abbr.match(/@\.items\.push/)) { // v15 1 match
+                                window.init_fake_world = s;
+                                deobmatch('init_fake_world', s);
+                            } else if (s !== 'create_images' && deobfunc.orig.match(/ICON_LEADER/)) { // v15 1 match
+                                window.draw_player = s;
+                                deobmatch('draw_player', s);
+                            } else if (s !== 'create_images' && deobfunc.orig.match(/[a-z]\+game\.minimap\.marker\.y\*scale/)) { // v15 1 match
+                                window.draw_minimap = s;
+                                deobmatch('draw_minimap', s);
+                            } else if (deobfunc.orig.match(/\.SAND_MIN_X/) && deobfunc.orig.match(/\.BEACH_WINTER_MIN_X/)) { // v15 1 match
+                                window.draw_ground = s;
+                                deobmatch('draw_ground', s);
+                            } else if (s !== 'create_images' && deobfunc.orig.match(/DRAGON_GROUND/)) { // v15 1 match
+                                window.draw_world = s;
+                                deobmatch('draw_world', s);
+                            } else if (deobfunc.orig.match(/game\.leaderboard/)) { // v15 1 match
+                                window.draw_leaderboard = s;
+                                deobmatch('draw_leaderboard', s);
+                            } else if (s !== 'Item' && deobfunc.orig.match(/fruits\[4/)) { // v15 1 match
+                                window.draw_fake_world = s;
+                                deobmatch('draw_fake_world', s);
+                            } else if (deobfunc.orig.match(/DIST_BREAD_OVEN/)) { // v15 1 match
+                                window.draw_breadoven_inventory = s;
+                                deobmatch('draw_breadoven_inventory', s);
+                            } else if (deobfunc.orig.match(/DIST_FURNACE/)) { // v15 1 match
+                                window.draw_furnace_inventory = s;
+                                deobmatch('draw_furnace_inventory', s);
+                            } else if (deobfunc.orig.match(/DIST_CHEST/)) { // v15 1 match
+                                window.draw_chest_inventory = s;
+                                deobmatch('draw_chest_inventory', s);
+                            } else if (s !== 'create_images' && deobfunc.orig.match(/BIGMAP/)) { // v15 1 match
+                                window.draw_bigmap = s;
+                                deobmatch('draw_bigmap', s);
+                            } else if (s !== 'create_images' && deobfunc.orig.match(/RECONNECT/)) { // v15 1 match
+                                window.draw_reconnect = s;
+                                deobmatch('draw_reconnect', s);
+                            } else if (deobfunc.orig.match(/user\.auto_feed\.translate\.x,user\.auto_feed\.translate\.y/)) { // v15 1 match
+                                window.draw_auto_feed = s;
+                                deobmatch('draw_auto_feed', s);
+                            } else if (deobfunc.abbr.match(/sprite\[@\.SHOW_SPECTATORS\],/)) { // v15 1 match
+                                window.draw_show_spectators = s;
+                                deobmatch('draw_show_spectators', s);
+                            } else if (deobfunc.abbr.match(/DELAY_TEAM/) && deobfunc.abbr.match(/WEAPON_LOADING/)) { // v15 1 match
+                                window.draw_totem_switch_delay = s;
+                                deobmatch('draw_totem_switch_delay', s);
+                            } else if (deobfunc.abbr.match(/[a-z]=user\.weapon/) && deobfunc.abbr.match(/WEAPON_LOADING/)) { // v15 1 match
+                                window.draw_weapon_switch_delay = s;
+                                deobmatch('draw_weapon_switch_delay', s);
+                            } else if (deobfunc.abbr.match(/^function @\(\){var [a-z]=user\.craft/)) { // v15 1 match
+                                window.draw_ui_crafting = s;
+                                deobmatch('draw_ui_crafting', s);
+                            } else if (deobfunc.abbr.match(/var [a-z]=user\.inv,/)) { // v15 1 match
+                                window.draw_ui_inventory = s;
+                                deobmatch('draw_ui_inventory', s);
+                            } else if (deobfunc.abbr.match(/user\.gauges\.warn_life/)) { // v15 1 match
+                                window.draw_gauges = s;
+                                deobmatch('draw_gauges', s);
+                            } else if (deobfunc.abbr.match(/img=sprite\[@\.LOCK\]/)) { // v15 1 match
+                                window.draw_chest = s;
+                                deobmatch('draw_chest', s);
+                            } else if (deobfunc.abbr.match(/^function @\(\){if\(!\(10>this\.info\)\)/)) { // v15 1 match
+                                window.draw_seed = s;
+                                deobmatch('draw_seed', s);
+                            } else if (s !== 'create_images' && deobfunc.orig.match(/DRIED_PLANT/)) { // v15 1 match
+                                window.draw_plant = s;
+                                deobmatch('draw_plant', s);
+                            } else if (s !== 'create_images' && deobfunc.orig.match(/FURNACE_ON/)) { // v15 1 match
+                                window.draw_furnace = s;
+                                deobmatch('draw_furnace', s);
+                            } else if (deobfunc.abbr.match(/GROUND_FIRE/) && deobfunc.abbr.match(/@\.globalAlpha=1;RESTORE\}$/)) { // v15 1 match
+                                window.draw_furnace_ground = s;
+                                deobmatch('draw_furnace_ground', s);
+                            } else if (deobfunc.abbr.match(/SMOG_PUSH/)) { // v15 1 match
+                                window.draw_breadoven_smog = s;
+                                deobmatch('draw_breadoven_smog', s);
+                            } else if (s !== 'create_images' && deobfunc.orig.match(/BREAD_OVEN_ON/)) { // v15 1 match
+                                window.draw_breadoven = s;
+                                deobmatch('draw_breadoven', s);
+                            } else if (s !== 'create_images' && deobfunc.orig.match(/RESURRECTION_HOLE/)) { // v15 1 match
+                                window.draw_resurrection = s;
+                                deobmatch('draw_resurrection', s);
+                            } else if (s !== 'create_images' && deobfunc.orig.match(/RESURRECTION_GROUND/)) { // v15 1 match
+                                window.draw_resurrection_halo = s;
+                                deobmatch('draw_resurrection_halo', s);
+                            } else if (s !== 'create_images' && deobfunc.orig.match(/HALO_FIRE/) && deobfunc.orig.match(/ROTATE;this\.halo\.update\(\)/)) { // v15 1 match
+                                window.draw_furnace_halo = s;
+                                deobmatch('draw_furnace_halo', s);
+                            } else if (s !== 'create_images' && deobfunc.orig.match(/HALO_FIRE/) && !deobfunc.orig.match(/ROTATE;this\.halo\.update\(\)/)) { // v15 1 match
+                                window.draw_fire_halo = s;
+                                deobmatch('draw_fire_halo', s);
+                            } else if (deobfunc.orig.match(/1E3\/1E3/)) { // v15 1 match
+                                window.draw_alert_ghost = s;
+                                deobmatch('draw_alert_ghost', s);
+                            } else if (deobfunc.orig.match(/DIST_RESURRECTION/)) { // v15 1 match
+                                window.draw_resurrection_inventory = s;
+                                deobmatch('draw_resurrection_inventory', s);
+                            } else if (s != 'create_images' && s != 'Game' && deobfunc.orig.match(/SHOW_SPECTATORS/)) { // v15 1 match
+                                window.draw_show_spectators = s;
+                                deobmatch('draw_show_spectators', s);
+                            } else if (deobfunc.abbr.match(/@\.FLAKES,/)) { // v15 1 match
+                                window.draw_winter= s;
+                                deobmatch('draw_winter', s);
+                            } else if (deobfunc.abbr.match(/function @\(\){if\(@\.transition\)var [a-z]=@\.shade\.update\(\);/)) { // v15 1 match
+                                window.draw_world_with_effect = s;
+                                deobmatch('draw_world_with_effect', s);
+                            } else if (deobfunc.abbr.match(/SOUND_PLAYER\.FACTOR\)/)) { // v15 1 match
+                                window.GameAudio = s;
+                                deobmatch('GameAudio', s);
+                            } else if (s != 'UI' && deobfunc.abbr.match(/sadblock/)) { // v15 1 match
+                                window.sadblock = s;
+                                deobmatch('sadblock', s);
+                            }
+                        } else if (window[s].length === 1) { // v15 51 matches
+                            if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
+                                window.draw_door = s;
+                                deobmatch('draw_door', s);
+                            } else if (deobfunc.abbr.match(/^function @\([a-z]\){SAVE;TUPT;ROTATE;if\(this\.hit\.update\){/) && deobfunc.abbr.match(/img/)) {
+                                window.draw_simple_item = s;
+                                deobmatch('draw_simple_item', s);
+                            } else if (deobfunc.abbr.match(/this\.breath\.update\(\);img=sprite/)) {
+                                window.draw_breath = s;
+                                deobmatch('draw_breath', s);
+                            } else if (deobfunc.abbr.match(/case @\.WATERING_CAN_FULL:SAVE/)) {
+                                window.draw_player_effect = s;
+                                deobmatch('draw_player_effect', s);
+                            } else if (deobfunc.abbr.match(/2147483648/)) {
+                                window.randS32 = s;
+                                deobmatch('randS32', s);
+                            } else if (deobfunc.abbr.match(/"Leaderboard"/)) { // v15 1 match
+                                window.create_leaderboard_mobile = s;
+                                deobmatch('create_leaderboard_mobile', s);
+                            } else if (deobfunc.abbr.match(/[a-z]\.width=335\*[a-z];[a-z]\.height=120\*[a-z];/)) { // v15 1 match
+                                window.create_gauges_mobile = s;
+                                deobmatch('create_gauges_mobile', s);
+                            } else if (deobfunc.abbr.match(/=600\*[a-z]/)) { // v15 1 match
+                                window.create_old_gauges = s;
+                                deobmatch('create_old_gauges', s);
+                            } else if (deobfunc.abbr.match(/GROUND_FIRE/) && deobfunc.abbr.match(/@\.globalAlpha=1;this\.hit\.update/)) { // v15 1 match
+                                window.draw_fire_ground = s;
+                                deobmatch('draw_fire_ground', s);
+                            } else if (deobfunc.abbr.match(/CROWN_GREEN:case/) && deobfunc.abbr.match(/[a-z]\.width\/2,/)) { // v15 1 match
+                                window.draw_player_clothe = s;
+                                deobmatch('draw_player_clothe', s);
+                            }
+                        } else if (window[s].length === 2) { // v15 85 matches
+                            if (deobfunc.abbr.match(/function @\([a-z],[a-z]\){var [a-z]=[a-z]\.getBoundingClientRect\(\);return{x:[a-z]\.clientX-[a-z]\.left,y:[a-z]\.clientY-[a-z]\.top}}/)) { // v15 1 match
+                                window.get_mouse_pos = s;
+                                deobmatch('get_mouse_pos', s);
+                            } else if (deobfunc.abbr.match(/[a-z]=sprite\[[a-z]\]\[@\.time\];[a-z]=-[a-z]\.width\*this\.breath\.v/)) {
+                                window.draw_simple_mobs = s;
+                                deobmatch('draw_simple_mobs', s);
+                            } else if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/@\.drawImage\([a-z],-[a-z]\/2,-[a-z]\/2,[a-z],[a-z]\)/)) {
+                                window.draw_simple_mobs_2 = s;
+                                deobmatch('draw_simple_mobs_2', s);
+                            } else if (deobfunc.orig.match(/==BUTTON_CLICK&&/)) {
+                                window.draw_amount = s;
+                                deobmatch('draw_amount', s);
+                            } else if (deobfunc.abbr.match(/this\.text&&\(@\.globalAlpha=this\.timeout\.o/)) {
+                                window.draw_alert = s;
+                                deobmatch('draw_alert', s);
+                            } else if (deobfunc.orig.match(/draw_bg\([a-z]\)/)) {
+                                window.draw_bg_transition = s;
+                                deobmatch('draw_bg_transition', s);
+                            } else if (deobfunc.orig.match(/draw_fg\([a-z]\)/)) {
+                                window.draw_fg_transition = s;
+                                deobmatch('draw_fg_transition', s);
+                            } else if (deobfunc.abbr.match(/!==@\.SAND_STEP/)) {
+                                window.draw_foot = s;
+                                deobmatch('draw_foot', s);
+                            } else if (deobfunc.orig.match(/[a-z]\.width=149\*[a-z];[a-z]\.height=356\*[a-z];/)) {
+                                window.create_breadoven_ui = s;
+                                deobmatch('create_breadoven_ui', s);
+                            }
+                        } else if (window[s].length === 3) { // v15 125 matches
+                            if (deobfunc.orig.match(/BUTTON_CLICK\|\|/)) {
+                                window.draw_slot_number = s;
+                                deobmatch('draw_slot_number', s);
+                            } else if (deobfunc.abbr.match(/^function @\([a-z],[a-z],[a-z]\){@\.transition/) && deobfunc.abbr.match(/drawImage/)) { // v15 1 match
+                                window.draw_image_transition = s;
+                                deobmatch('draw_image_transition', s);
+                            } else if (deobfunc.abbr.match(/^function @\([a-z],[a-z],[a-z]\){@\.transition\?/) && deobfunc.abbr.match(/\.draw\(/)) { // v15 1 match
+                                window.draw_transition = s;
+                                deobmatch('draw_transition', s);
+                            } else if (deobfunc.orig.match(/[a-z]\.width=440\*[a-z];[a-z]\.height=388\*[a-z];/) && deobfunc.orig.length < 1000) {
+                                window.create_breadoven_off = s;
+                                deobmatch('create_breadoven_off', s);
+                            } else if (deobfunc.orig.match(/[a-z]\.width=440\*[a-z];[a-z]\.height=388\*[a-z];/) && deobfunc.orig.length > 1000) {
+                                window.create_breadoven = s;
+                                deobmatch('create_breadoven', s);
+                            } else if (deobfunc.abbr.match(/switch\(img=sprite\[[a-z]\]\[@\.time\],[a-z]\)/)) {
+                                window.draw_player_right_stuff = s;
+                                deobmatch('draw_player_right_stuff', s);
+                            }
+                        } else if (window[s].length === 4) { // v15 13 matches
+                        } else if (window[s].length === 5) { // v15 3 matches
+                            if (deobfunc.abbr.match(/@\.transition&&/) && deobfunc.abbr.match(/@\.time=@\.time/)) { // v15 1 match
+                                window.draw_imgs_transition = s;
+                                deobmatch('draw_imgs_transition', s);
+                            }
+                        } else if (window[s].length === 6) { // v15 3 matches
+                            if (deobfunc.orig.match(/for\(;[a-z]<=[a-z];[a-z]\+\+\)/)) {
+                                window.draw_map_object = s;
+                                deobmatch('draw_map_object', s);
+                            }
+                        } else if (window[s].length === 7) { // v15 6 matches
+                        } else if (window[s].length === 8) {
+                            if (deobfunc.orig.match(/for\([a-z]=void/) && deobfunc.orig.match(/breath/)) {
+                                window.draw_map_2_objects = s;
+                                deobmatch('draw_map_2_objects', s);
+                            } else if (deobfunc.orig.match(/for\([a-z]=void/) && !deobfunc.orig.match(/breath/)) {
+                                window.draw_map_objects = s;
+                                deobmatch('draw_map_objects', s);
+                            }
+                        } else if (window[s].length === 9) { // v15 1 match
+                            if (deobfunc.abbr.match(/@\.shade\.v,[a-z]\(/)) { // v15 1 match
+                                window.draw_map_transition = s;
+                                deobmatch('draw_map_transition', s);
+                            }
+                        } else if (window[s].length === 11) { // v15 2 matches
+                            if (deobfunc.abbr.match(/AMBIENCE\.sound\.playing/)) { // v15 1 match
+                                window.sound_track = s;
+                                deobmatch('sound_track', s);
+                            }
                         }
                     }
                 } else if (typeof window[s] === 'number') { // v15 50-52 matches
@@ -1131,209 +1134,211 @@
                 } else if (typeof window[s] === 'string') { // v15 41 matches
                 } else if (typeof window[s] === 'undefined') { // v15 4 matches
                 }
-            }
+            });
         } else if (stage === 2) {
             // Then detect most properties of global variables to reference in next stage
 
             if (typeof CLIENT === 'object') {
-                for (var s in window.CLIENT) {
+                Object.keys(window.CLIENT).forEach(function(s) {
                     if (typeof window.CLIENT[s] === 'number') {
                     }
-                }
+                });
             }
 
             if (typeof client === 'string' && typeof window[client] === 'object') {
-                for (var s in window[client]) {
+                Object.keys(window[client]).forEach(function(s) {
                     if (typeof window[client][s] === 'boolean') {
                     } else if (typeof window[client][s] === 'function') {
-                        if ((/\{\s*\[native code\]\s*\}/).test('' + window[client][s])) { continue; } // ignore native functions
-                        var deobfunc = deobfuscate_func(window[client][s].toString());
-                        if (window[client][s].length === 0) {
-                            if (deobfunc.abbr.match(/this\.@=JSON\.parse\(this\.xhttp\.responseText\)/)) {
-                                window.store_server_list = s;
-                                deobmatch('store_server_list', s);
-                            } else if (deobfunc.abbr.match(/function \(\){for\(var [a-z]=0,[a-z]=0;[a-z]<@\.@\.length;[a-z]\+\+\)[a-z]\+=@\.@\[[a-z]\]\.nu;/)) {
-                                window.update_server_list = s;
-                                deobmatch('update_server_list', s);
-                            } else if (deobfunc.abbr.match(/You have an old version/)) {
-                                window.old_version = s;
-                                deobmatch('old_version', s);
-                            } else if (deobfunc.abbr.match(/user\.reconnect\.enabled=!1;user\.alive=!1;/)) {
-                                window.fail_restore = s;
-                                deobmatch('fail_restore', s);
-                            } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[11\]\)\)}/)) {
-                                window.get_focus = s;
-                                deobmatch('get_focus', s);
-                            } else if (deobfunc.abbr.match(/Resource is empty/)) {
-                                window.empty_res = s;
-                                deobmatch('empty_res', s);
-                            } else if (deobfunc.abbr.match(/Inventory is full/)) {
-                                window.inv_full = s;
-                                deobmatch('inv_full', s);
-                            } else if (deobfunc.abbr.match(/IFWBGC/)) {
-                                window.change_ground = s;
-                                deobmatch('change_ground', s);
-                            } else if (deobfunc.abbr.match(/^function \(\){user\.craft\.restart\(\)}$/)) {
-                                window.cancel_craft = s;
-                                deobmatch('cancel_craft', s);
-                            } else if (deobfunc.abbr.match(/\.stringify\(\[10\]\)\)}$/)) {
-                                window.cancel_crafting = s;
-                                deobmatch('cancel_crafting', s);
-                            } else if (deobfunc.abbr.match(/\.stringify\(\[5,user\.craft\.preview\]\)\)}$/)) {
-                                window.send_build = s;
-                                deobmatch('send_build', s);
-                            } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[14\]\)\)}/)) {
-                                window.stop_attack = s;
-                                deobmatch('stop_attack', s);
-                            } else if (deobfunc.abbr.match(/^function \(\){if\(@-this\.@>@\.@\){this\.@=@;var [a-z]=user\.cam,[a-z]=Math.floor\([a-z]\.x\/100\),[a-z]=Math\.floor\([a-z]\.y\/100\);/)) {
-                                window.update_cam = s;
-                                deobmatch('update_cam', s);
-                            } else if (deobfunc.abbr.match(/^function \(\){@-this\.@>@\.PING_DELAY&&\(this\.@=@,this\.ping\(\)\)}$/)) {
-                                window.try_ping = s;
-                                deobmatch('try_ping', s);
-                            } else if (deobfunc.abbr.match(/Your team was destroyed/)) {
-                                window.team_destroyed = s;
-                                deobmatch('team_destroyed', s);
-                            } else if (deobfunc.abbr.match(/^function \(\){3==this\.@\.readyState&&\(this\.timeout_server-=@\.TIMEOUT_SERVER\)}$/)) {
-                                window.check_state = s;
-                                deobmatch('check_state', s);
-                            } else if (deobfunc.abbr.match(/@-this\.timeout_server>@\.TIMEOUT_SERVER&&\(this\.timeout_server=@,this\.lost\(\)\)}$/)) {
-                                window.check_pong = s;
-                                deobmatch('check_pong', s);
-                            } else if (deobfunc.abbr.match(/^function \(\){var [a-z]=ui\.@\.id\.selectedIndex/)) {
-                                window.connect_timeout = s;
-                                deobmatch('connect_timeout', s);
+                        if ((/\{\s*\[native code\]\s*\}/).test('' + window[client][s])) { } // ignore native functions
+                        else {
+                            var deobfunc = deobfuscate_func(window[client][s].toString());
+                            if (window[client][s].length === 0) {
+                                if (deobfunc.abbr.match(/this\.@=JSON\.parse\(this\.xhttp\.responseText\)/)) {
+                                    window.store_server_list = s;
+                                    deobmatch('store_server_list', s);
+                                } else if (deobfunc.abbr.match(/function ?\(\){for\(var [a-z]=0,[a-z]=0;[a-z]<@\.@\.length;[a-z]\+\+\)[a-z]\+=@\.@\[[a-z]\]\.nu;/)) {
+                                    window.update_server_list = s;
+                                    deobmatch('update_server_list', s);
+                                } else if (deobfunc.abbr.match(/You have an old version/)) {
+                                    window.old_version = s;
+                                    deobmatch('old_version', s);
+                                } else if (deobfunc.abbr.match(/user\.reconnect\.enabled=!1;user\.alive=!1;/)) {
+                                    window.fail_restore = s;
+                                    deobmatch('fail_restore', s);
+                                } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[11\]\)\)}/)) {
+                                    window.get_focus = s;
+                                    deobmatch('get_focus', s);
+                                } else if (deobfunc.abbr.match(/Resource is empty/)) {
+                                    window.empty_res = s;
+                                    deobmatch('empty_res', s);
+                                } else if (deobfunc.abbr.match(/Inventory is full/)) {
+                                    window.inv_full = s;
+                                    deobmatch('inv_full', s);
+                                } else if (deobfunc.abbr.match(/IFWBGC/)) {
+                                    window.change_ground = s;
+                                    deobmatch('change_ground', s);
+                                } else if (deobfunc.abbr.match(/^function ?\(\){user\.craft\.restart\(\)}$/)) {
+                                    window.cancel_craft = s;
+                                    deobmatch('cancel_craft', s);
+                                } else if (deobfunc.abbr.match(/\.stringify\(\[10\]\)\)}$/)) {
+                                    window.cancel_crafting = s;
+                                    deobmatch('cancel_crafting', s);
+                                } else if (deobfunc.abbr.match(/\.stringify\(\[5,user\.craft\.preview\]\)\)}$/)) {
+                                    window.send_build = s;
+                                    deobmatch('send_build', s);
+                                } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[14\]\)\)}/)) {
+                                    window.stop_attack = s;
+                                    deobmatch('stop_attack', s);
+                                } else if (deobfunc.abbr.match(/^function ?\(\){if\(@-this\.@>@\.@\){this\.@=@;var [a-z]=user\.cam,[a-z]=Math.floor\([a-z]\.x\/100\),[a-z]=Math\.floor\([a-z]\.y\/100\);/)) {
+                                    window.update_cam = s;
+                                    deobmatch('update_cam', s);
+                                } else if (deobfunc.abbr.match(/^function ?\(\){@-this\.@>@\.PING_DELAY&&\(this\.@=@,this\.ping\(\)\)}$/)) {
+                                    window.try_ping = s;
+                                    deobmatch('try_ping', s);
+                                } else if (deobfunc.abbr.match(/Your team was destroyed/)) {
+                                    window.team_destroyed = s;
+                                    deobmatch('team_destroyed', s);
+                                } else if (deobfunc.abbr.match(/^function ?\(\){3==this\.@\.readyState&&\(this\.timeout_server-=@\.TIMEOUT_SERVER\)}$/)) {
+                                    window.check_state = s;
+                                    deobmatch('check_state', s);
+                                } else if (deobfunc.abbr.match(/@-this\.timeout_server>@\.TIMEOUT_SERVER&&\(this\.timeout_server=@,this\.lost\(\)\)}$/)) {
+                                    window.check_pong = s;
+                                    deobmatch('check_pong', s);
+                                } else if (deobfunc.abbr.match(/^function ?\(\){var [a-z]=ui\.@\.id\.selectedIndex/)) {
+                                    window.connect_timeout = s;
+                                    deobmatch('connect_timeout', s);
+                                }
+                            } else if (window[client][s].length === 1) {
+                                if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
+                                    window.select_craft = s;
+                                    deobmatch('select_craft', s);
+                                } else if (deobfunc.abbr.match(/^function ?\([a-z]\){@\.@\[user\.uid\]\.text=[a-z];this\.@\[@\]\(@\[@\]\.stringify\(\[0,[a-z]\]\)\)}$/)) {
+                                    window.send_chat = s;
+                                    deobmatch('send_chat', s);
+                                } else if (deobfunc.abbr.match(/function ?\([a-z]\){[a-z]==INV\.BAG\?/)) {
+                                    window.build_stop = s;
+                                    deobmatch('build_stop', s);
+                                } else if (deobfunc.abbr.match(/user\.craft\.do_craft\([a-z]\)/)) {
+                                    window.build_ok = s;
+                                    deobmatch('build_ok', s);
+                                } else if (deobfunc.abbr.match(/{var [a-z]=[a-z]\[1\],[a-z]=@\.@;[a-z]\[[a-z]\]\.nickname=[a-z]\[2\];/)) {
+                                    window.new_player = s;
+                                    deobmatch('new_player', s);
+                                } else if (deobfunc.abbr.match(/this\.@\[@\]\(@\[@\]\.stringify\(\[21,[a-z]\]\)\);user\.shop\.open/)) {
+                                    window.send_survivalkit = s;
+                                    deobmatch('send_survivalkit', s);
+                                } else if (deobfunc.abbr.match(/user\.inv\.max>user\.inv\.can_select\.length;[a-z]\+\+/)) {
+                                    window.survival_kit = s;
+                                    deobmatch('survival_kit', s);
+                                } else if (deobfunc.abbr.match(/{game\.quests\.modify\([a-z],2\)}$/)) {
+                                    window.succeed_quest = s;
+                                    deobmatch('succeed_quest', s);
+                                } else if (deobfunc.abbr.match(/{game\.quests\.modify\([a-z],0\)}$/)) {
+                                    window.quest_update = s;
+                                    deobmatch('quest_update', s);
+                                } else if (deobfunc.abbr.match(/^function ?\([a-z]\){user\.gauges\.l=[a-z]\/100}$/)) {
+                                    window.gauge_life = s;
+                                    deobmatch('gauge_life', s);
+                                } else if (deobfunc.abbr.match(/^function ?\([a-z]\){user\.gauges\.t=[a-z]\/100}$/)) {
+                                    window.gauge_thirst = s;
+                                    deobmatch('gauge_thirst', s);
+                                } else if (deobfunc.abbr.match(/^function ?\([a-z]\){user\.gauges\.h=[a-z]\/100}$/)) {
+                                    window.gauge_hunger = s;
+                                    deobmatch('gauge_hunger', s);
+                                } else if (deobfunc.abbr.match(/{@\.time=[a-z];@\.transition=!0;audio\.transition=1}/)) {
+                                    window.get_time = s;
+                                    deobmatch('get_time', s);
+                                } else if (deobfunc.abbr.match(/@\.mode==@\.MODE_HUNGER_GAMES&&'spectator'!==@\.@\[[a-z]\]\.nickname/)) {
+                                    window.kill_player = s;
+                                    deobmatch('kill_player', s);
+                                } else if (deobfunc.abbr.match(/function ?\([a-z]\){[a-z]=new Uint16Array\([a-z]\);player\.cam\.change/)) {
+                                    window.set_cam = s;
+                                    deobmatch('set_cam', s);
+                                } else if (deobfunc.abbr.match(/new Uint16Array\([a-z]\);user\.cam\.change/)) {
+                                    window.recover_focus = s;
+                                    deobmatch('recover_focus', s);
+                                } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[23,[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
+                                    window.take_flour = s;
+                                    deobmatch('take_flour', s);
+                                } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[9,[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
+                                    window.take_chest = s;
+                                    deobmatch('take_chest', s);
+                                } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[15,[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
+                                    window.unlock_chest= s;
+                                    deobmatch('unlock_chest', s);
+                                } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[16,[a-z]\.iid\]\)\)}/)) {
+                                    window.lock_chest= s;
+                                    deobmatch('lock_chest', s);
+                                } else if (deobfunc.abbr.match(/This is not the right tool/)) {
+                                    window.dont_harvest = s;
+                                    deobmatch('dont_harvest', s);
+                                } else if (deobfunc.abbr.match(/^function ?\([a-z]\){user\.craft\.preview=-1;/)) {
+                                    window.accept_build = s;
+                                    deobmatch('accept_build', s);
+                                } else if (deobfunc.abbr.match(/this\.@\[@\]\(@\[@\]\.stringify\(\[4,Math\.floor/)) {
+                                    window.send_attack = s;
+                                    deobmatch('send_attack', s);
+                                } else if (deobfunc.abbr.match(/this\.@\[@\]\(@\[@\]\.stringify\(\[3,Math\.floor/)) {
+                                    window.send_angle = s;
+                                    deobmatch('send_angle', s);
+                                } else if (deobfunc.abbr.match(/this\.@\[@\]\(@\[@\]\.stringify\(\[2,[a-z]\]\)\)}$/)) {
+                                    window.send_move = s;
+                                    deobmatch('send_move', s);
+                                } else if (deobfunc.abbr.match(/function ?\([a-z]\){var [a-z]=player\.select\.units;if\(0!=[a-z]\.length\){var [a-z]=\[2\],[a-z]=\[\];/)) {
+                                    window.move_units = s;
+                                    deobmatch('move_units', s);
+                                } else if (deobfunc.abbr.match(/You joined a team/)) {
+                                    window.join_team = s;
+                                    deobmatch('join_team', s);
+                                } else if (deobfunc.abbr.match(/ joined the team/)) {
+                                    window.joined_team = s;
+                                    deobmatch('joined_team', s);
+                                } else if (deobfunc.abbr.match(/You left the team/)) {
+                                    window.left_team = s;
+                                    deobmatch('left_team', s);
+                                } else if (deobfunc.abbr.match(/Someone stole your token/)) {
+                                    window.steal_token = s;
+                                    deobmatch('steal_token', s);
+                                } else if (deobfunc.abbr.match(/function ?\([a-z]\){___adsvid\+\+;clearTimeout\(this\.@\);/)) {
+                                    window.handshake = s;
+                                    deobmatch('handshake', s);
+                                } else if (deobfunc.abbr.match(/\.stringify\(\[27,[a-z]\]\)\)/)) {
+                                    // What is this for?
+                                    window.unknown = s;
+                                    deobmatch('unknown', s);
+                                }
+                            } else if (window[client][s].length === 2) {
+                                if (deobfunc.abbr.split('case INV').length > 80) {
+                                    window.select_inv = s;
+                                    deobmatch('select_inv', s);
+                                } else if (deobfunc.abbr.match(/{for\(var [a-z]=new Uint16Array\([a-z]\),[a-z]=\([a-z]\.length-2\)\/4,[a-z]=0;/)) {
+                                    window.hitten_other = s;
+                                    deobmatch('hitten_other', s);
+                                } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[22,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
+                                    window.resurrection2 = s;
+                                    deobmatch('resurrection2', s);
+                                } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[12,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
+                                    window.give_wood = s;
+                                    deobmatch('give_wood', s);
+                                } else if (deobfunc.abbr.match(/user\.inv\.decrease\([a-z],[a-z],user\.inv\.find_item\([a-z]\)\);user\.craft\.update\(\)/)) {
+                                    window.decrease_item = s;
+                                    deobmatch('decrease_item', s);
+                                } else if (deobfunc.abbr.match(/user\.inv\.delete_item\([a-z],[a-z]\)/)) {
+                                    window.delete_inv = s;
+                                    deobmatch('delete_inv', s);
+                                }
+                            } else if (window[client][s].length === 3) {
+                                if (deobfunc.abbr.match(/\.stringify\(\[25,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\);/)) {
+                                    window.give_breadoven = s;
+                                    deobmatch('give_breadoven', s);
+                                } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[8,[a-z],[a-z],[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
+                                    window.give_item = s;
+                                    deobmatch('give_item', s);
+                                }
+                            } else if (window[client][s].length === 4) {
+                            } else if (window[client][s].length === 5) {
+                            } else {
                             }
-                        } else if (window[client][s].length === 1) {
-                            if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
-                                window.select_craft = s;
-                                deobmatch('select_craft', s);
-                            } else if (deobfunc.abbr.match(/^function \([a-z]\){@\.@\[user\.uid\]\.text=[a-z];this\.@\[@\]\(@\[@\]\.stringify\(\[0,[a-z]\]\)\)}$/)) {
-                                window.send_chat = s;
-                                deobmatch('send_chat', s);
-                            } else if (deobfunc.abbr.match(/function \([a-z]\){[a-z]==INV\.BAG\?/)) {
-                                window.build_stop = s;
-                                deobmatch('build_stop', s);
-                            } else if (deobfunc.abbr.match(/user\.craft\.do_craft\([a-z]\)/)) {
-                                window.build_ok = s;
-                                deobmatch('build_ok', s);
-                            } else if (deobfunc.abbr.match(/{var [a-z]=[a-z]\[1\],[a-z]=@\.@;[a-z]\[[a-z]\]\.nickname=[a-z]\[2\];/)) {
-                                window.new_player = s;
-                                deobmatch('new_player', s);
-                            } else if (deobfunc.abbr.match(/this\.@\[@\]\(@\[@\]\.stringify\(\[21,[a-z]\]\)\);user\.shop\.open/)) {
-                                window.send_survivalkit = s;
-                                deobmatch('send_survivalkit', s);
-                            } else if (deobfunc.abbr.match(/user\.inv\.max>user\.inv\.can_select\.length;[a-z]\+\+/)) {
-                                window.survival_kit = s;
-                                deobmatch('survival_kit', s);
-                            } else if (deobfunc.abbr.match(/{game\.quests\.modify\([a-z],2\)}$/)) {
-                                window.succeed_quest = s;
-                                deobmatch('succeed_quest', s);
-                            } else if (deobfunc.abbr.match(/{game\.quests\.modify\([a-z],0\)}$/)) {
-                                window.quest_update = s;
-                                deobmatch('quest_update', s);
-                            } else if (deobfunc.abbr.match(/^function \([a-z]\){user\.gauges\.l=[a-z]\/100}$/)) {
-                                window.gauge_life = s;
-                                deobmatch('gauge_life', s);
-                            } else if (deobfunc.abbr.match(/^function \([a-z]\){user\.gauges\.t=[a-z]\/100}$/)) {
-                                window.gauge_thirst = s;
-                                deobmatch('gauge_thirst', s);
-                            } else if (deobfunc.abbr.match(/^function \([a-z]\){user\.gauges\.h=[a-z]\/100}$/)) {
-                                window.gauge_hunger = s;
-                                deobmatch('gauge_hunger', s);
-                            } else if (deobfunc.abbr.match(/{@\.time=[a-z];@\.transition=!0;audio\.transition=1}/)) {
-                                window.get_time = s;
-                                deobmatch('get_time', s);
-                            } else if (deobfunc.abbr.match(/@\.mode==@\.MODE_HUNGER_GAMES&&'spectator'!==@\.@\[[a-z]\]\.nickname/)) {
-                                window.kill_player = s;
-                                deobmatch('kill_player', s);
-                            } else if (deobfunc.abbr.match(/function \([a-z]\){[a-z]=new Uint16Array\([a-z]\);player\.cam\.change/)) {
-                                window.set_cam = s;
-                                deobmatch('set_cam', s);
-                            } else if (deobfunc.abbr.match(/new Uint16Array\([a-z]\);user\.cam\.change/)) {
-                                window.recover_focus = s;
-                                deobmatch('recover_focus', s);
-                            } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[23,[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
-                                window.take_flour = s;
-                                deobmatch('take_flour', s);
-                            } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[9,[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
-                                window.take_chest = s;
-                                deobmatch('take_chest', s);
-                            } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[15,[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
-                                window.unlock_chest= s;
-                                deobmatch('unlock_chest', s);
-                            } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[16,[a-z]\.iid\]\)\)}/)) {
-                                window.lock_chest= s;
-                                deobmatch('lock_chest', s);
-                            } else if (deobfunc.abbr.match(/This is not the right tool/)) {
-                                window.dont_harvest = s;
-                                deobmatch('dont_harvest', s);
-                            } else if (deobfunc.abbr.match(/^function \([a-z]\){user\.craft\.preview=-1;/)) {
-                                window.accept_build = s;
-                                deobmatch('accept_build', s);
-                            } else if (deobfunc.abbr.match(/this\.@\[@\]\(@\[@\]\.stringify\(\[4,Math\.floor/)) {
-                                window.send_attack = s;
-                                deobmatch('send_attack', s);
-                            } else if (deobfunc.abbr.match(/this\.@\[@\]\(@\[@\]\.stringify\(\[3,Math\.floor/)) {
-                                window.send_angle = s;
-                                deobmatch('send_angle', s);
-                            } else if (deobfunc.abbr.match(/this\.@\[@\]\(@\[@\]\.stringify\(\[2,[a-z]\]\)\)}$/)) {
-                                window.send_move = s;
-                                deobmatch('send_move', s);
-                            } else if (deobfunc.abbr.match(/function \([a-z]\){var [a-z]=player\.select\.units;if\(0!=[a-z]\.length\){var [a-z]=\[2\],[a-z]=\[\];/)) {
-                                window.move_units = s;
-                                deobmatch('move_units', s);
-                            } else if (deobfunc.abbr.match(/You joined a team/)) {
-                                window.join_team = s;
-                                deobmatch('join_team', s);
-                            } else if (deobfunc.abbr.match(/ joined the team/)) {
-                                window.joined_team = s;
-                                deobmatch('joined_team', s);
-                            } else if (deobfunc.abbr.match(/You left the team/)) {
-                                window.left_team = s;
-                                deobmatch('left_team', s);
-                            } else if (deobfunc.abbr.match(/Someone stole your token/)) {
-                                window.steal_token = s;
-                                deobmatch('steal_token', s);
-                            } else if (deobfunc.abbr.match(/function \([a-z]\){___adsvid\+\+;clearTimeout\(this\.@\);/)) {
-                                window.handshake = s;
-                                deobmatch('handshake', s);
-                            } else if (deobfunc.abbr.match(/\.stringify\(\[27,[a-z]\]\)\)/)) {
-                                // What is this for?
-                                window.unknown = s;
-                                deobmatch('unknown', s);
-                            }
-                        } else if (window[client][s].length === 2) {
-                            if (deobfunc.abbr.split('case INV').length > 80) {
-                                window.select_inv = s;
-                                deobmatch('select_inv', s);
-                            } else if (deobfunc.abbr.match(/{for\(var [a-z]=new Uint16Array\([a-z]\),[a-z]=\([a-z]\.length-2\)\/4,[a-z]=0;/)) {
-                                window.hitten_other = s;
-                                deobmatch('hitten_other', s);
-                            } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[22,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
-                                window.resurrection2 = s;
-                                deobmatch('resurrection2', s);
-                            } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[12,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
-                                window.give_wood = s;
-                                deobmatch('give_wood', s);
-                            } else if (deobfunc.abbr.match(/user\.inv\.decrease\([a-z],[a-z],user\.inv\.find_item\([a-z]\)\);user\.craft\.update\(\)/)) {
-                                window.decrease_item = s;
-                                deobmatch('decrease_item', s);
-                            } else if (deobfunc.abbr.match(/user\.inv\.delete_item\([a-z],[a-z]\)/)) {
-                                window.delete_inv = s;
-                                deobmatch('delete_inv', s);
-                            }
-                        } else if (window[client][s].length === 3) {
-                            if (deobfunc.abbr.match(/\.stringify\(\[25,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\);/)) {
-                                window.give_breadoven = s;
-                                deobmatch('give_breadoven', s);
-                            } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[8,[a-z],[a-z],[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
-                                window.give_item = s;
-                                deobmatch('give_item', s);
-                            }
-                        } else if (window[client][s].length === 4) {
-                        } else if (window[client][s].length === 5) {
-                        } else {
                         }
                     } else if (typeof window[client][s] === 'number') {
                         if (window[client][s] === 0) {
@@ -1368,33 +1373,34 @@
                     } else if (typeof window[client][s] === 'string') {
                     } else if (typeof window[client][s] === 'undefined') {
                     }
-                }
+                });
             }
 
             if (typeof CRAFT === 'object') {
-                for (var s in window.CRAFT) {
+                Object.keys(window.CRAFT).forEach(function(s) {
                     if (typeof window.CRAFT[s] === 'number') {
                     }
-                }
+                });
             }
 
             if (typeof game === 'object') {
-                for (var s in window.game) {
+                Object.keys(window.game).forEach(function(s) {
                     if (typeof window.game[s] === 'boolean') {
                     } else if (typeof window.game[s] === 'function') {
-                        if ((/\{\s*\[native code\]\s*\}/).test('' + window.game[s])) { continue; } // ignore native functions
-                        var deobfunc = deobfuscate_func(window.game[s].toString());
-                        if (deobfunc.abbr.match(/draw_ui_gear/)) {
-                            window.draw_UI = s;
-                            deobmatch('draw_UI', s);
-                        } else if (deobfunc.abbr.match(/this\.chest_lockpick\.info\.translate\.y/)) {
-                            window.update_inv_buttons = s;
-                            deobmatch('update_inv_buttons', s);
-                        } else if (deobfunc.abbr.match(/82===[a-z]\.keyCode/)) {
-                            window.trigger_keyup = s;
-                            deobmatch('trigger_keyup', s);
+                        if ((/\{\s*\[native code\]\s*\}/).test('' + window.game[s])) { } // ignore native functions
+                        else {
+                            var deobfunc = deobfuscate_func(window.game[s].toString());
+                            if (deobfunc.abbr.match(/draw_ui_gear/)) {
+                                window.draw_UI = s;
+                                deobmatch('draw_UI', s);
+                            } else if (deobfunc.abbr.match(/this\.chest_lockpick\.info\.translate\.y/)) {
+                                window.update_inv_buttons = s;
+                                deobmatch('update_inv_buttons', s);
+                            } else if (deobfunc.abbr.match(/82===[a-z]\.keyCode/)) {
+                                window.trigger_keyup = s;
+                                deobmatch('trigger_keyup', s);
+                            }
                         }
-                        //O_O156960_0
                     } else if (typeof window.game[s] === 'number') {
                     } else if (typeof window.game[s] === 'object') {
                         if (window.game[s] === null) {
@@ -1411,25 +1417,25 @@
                     } else if (typeof window.game[s] === 'string') {
                     } else if (typeof window.game[s] === 'undefined') {
                     }
-                }
+                });
             }
 
             if (typeof INV === 'object') {
-                for (var s in window.INV) {
+                Object.keys(window.INV).forEach(function(s) {
                     if (typeof window.INV[s] === 'number') {
                     }
-                }
+                });
             }
 
             if (typeof ITEMS === 'object') {
-                for (var s in window.ITEMS) {
+                Object.keys(window.ITEMS).forEach(function(s) {
                     if (typeof window.ITEMS[s] === 'number') {
                     }
-                }
+                });
             }
 
             if (typeof keyboard === 'object') {
-                for (var s in window.keyboard) {
+                Object.keys(window.keyboard).forEach(function(s) {
                     if (typeof window.keyboard[s] === 'boolean') {
                     } else if (typeof window.keyboard[s] === 'function') {
                     } else if (typeof window.keyboard[s] === 'number') {
@@ -1448,11 +1454,11 @@
                     } else if (typeof window.keyboard[s] === 'string') {
                     } else if (typeof window.keyboard[s] === 'undefined') {
                     }
-                }
+                });
             }
 
             if (typeof loader === 'object') {
-                for (var s in window.loader) {
+                Object.keys(window.loader).forEach(function(s) {
                     if (typeof window.loader[s] === 'boolean') {
                     } else if (typeof window.loader[s] === 'function') {
                     } else if (typeof window.loader[s] === 'number') {
@@ -1471,18 +1477,18 @@
                     } else if (typeof window.loader[s] === 'string') {
                     } else if (typeof window.loader[s] === 'undefined') {
                     }
-                }
+                });
             }
 
             if (typeof RECIPE_CATEGORIES === 'object') {
-                for (var s in window.RECIPE_CATEGORIES) {
+                Object.keys(window.RECIPE_CATEGORIES).forEach(function(s) {
                     if (typeof window.RECIPE_CATEGORIES[s] === 'number') {
                     }
-                }
+                });
             }
 
             if (typeof scoreboard === 'object') {
-                for (var s in window.scoreboard) {
+                Object.keys(window.scoreboard).forEach(function(s) {
                     if (typeof window.scoreboard[s] === 'boolean') {
                     } else if (typeof window.scoreboard[s] === 'function') {
                     } else if (typeof window.scoreboard[s] === 'number') {
@@ -1501,11 +1507,11 @@
                     } else if (typeof window.scoreboard[s] === 'string') {
                     } else if (typeof window.scoreboard[s] === 'undefined') {
                     }
-                }
+                });
             }
 
             if (typeof SPRITE === 'object') {
-                for (var s in window.SPRITE) {
+                Object.keys(window.SPRITE).forEach(function(s) {
                     if (typeof window.SPRITE[s] === 'object') {
                         if (Array.isArray(window.SPRITE[s])) {
                             if (window.SPRITE[s].every(function(i) { return typeof i === "string" })) {
@@ -1515,11 +1521,11 @@
                         }
                     } else if (typeof window.SPRITE[s] === 'number') {
                     }
-                }
+                });
             }
 
             if (typeof STATE === 'object') {
-                for (var s in window.STATE) {
+                Object.keys(window.STATE).forEach(function(s) {
                     if (typeof window.STATE[s] === 'number') {
                         if (window.STATE[s] === 16) {
                             STATE.ATTACK = STATE[s];
@@ -1529,48 +1535,50 @@
                             WORLD.SPEED_ATTACK = WORLD['SPEED_'+s];
                         }
                     }
-                }
+                });
             }
 
             if (typeof ui === 'object') {
-                for (var s in window.ui) {
+                Object.keys(window.ui).forEach(function(s) {
                     if (typeof window.ui[s] === 'boolean') {
                     } else if (typeof window.ui[s] === 'function') {
-                        if ((/\{\s*\[native code\]\s*\}/).test('' + window.ui[s])) { continue; } // ignore native functions
-                        var deobfunc = deobfuscate_func(window.ui[s].toString());
-                        if (deobfunc.abbr.match(/Cookies\.set\(.starve_mapping.,.azerty.\)/)) {
-                            window.ui.set_azerty = ui[s];
-                            deobmatch('set_azerty', s);
-                        } else if (deobfunc.abbr.match(/Cookies\.set\(.starve_mapping.,.qwerty.\)/)) {
-                            window.ui.set_qwerty = ui[s];
-                            deobmatch('set_qwerty', s);
-                        } else if (deobfunc.abbr.match(/^function \([a-z]\){@\(this\.can,[a-z]\)}$/)) { // v15 2 matches
-                            if (deobfuscate_func(window.UI.toString()).orig.split(new RegExp('EventListener\\(\'mousedown\',this\.' + s)).length > 1) {
-                                window.ui.trigger_mousedown = ui[s];
-                                deobmatch('trigger_mousedown', s);
+                        if ((/\{\s*\[native code\]\s*\}/).test('' + window.ui[s])) { } // ignore native functions
+                        else {
+                            var deobfunc = deobfuscate_func(window.ui[s].toString());
+                            if (deobfunc.abbr.match(/Cookies\.set\(.starve_mapping.,.azerty.\)/)) {
+                                window.ui.set_azerty = ui[s];
+                                deobmatch('set_azerty', s);
+                            } else if (deobfunc.abbr.match(/Cookies\.set\(.starve_mapping.,.qwerty.\)/)) {
+                                window.ui.set_qwerty = ui[s];
+                                deobmatch('set_qwerty', s);
+                            } else if (deobfunc.abbr.match(/^function ?\([a-z]\){@\(this\.can,[a-z]\)}$/)) { // v15 2 matches
+                                if (deobfuscate_func(window.UI.toString()).orig.split(new RegExp('EventListener\\(\'mousedown\',this\.' + s)).length > 1) {
+                                    window.ui.trigger_mousedown = ui[s];
+                                    deobmatch('trigger_mousedown', s);
+                                    // Populate duplicates
+                                    game.trigger_mousedown = game[s];
+                                } else if (deobfuscate_func(window.UI.toString()).orig.split(new RegExp('EventListener\\(\'mouseup\',this\.' + s)).length > 1) {
+                                    window.ui.trigger_mouseup = ui[s];
+                                    deobmatch('trigger_mouseup', s);
+                                    // Populate duplicates
+                                    game.trigger_mouseup = game[s];
+                                }
+                            } else if (deobfunc.abbr.match(/^function ?\([a-z]\){@\(this\.can,[a-z]\);[a-z]\.style\.cursor=.auto.}$/)) {
+                                window.ui.trigger_mousemove = ui[s];
+                                deobmatch('trigger_mousemove', s);
                                 // Populate duplicates
-                                game.trigger_mousedown = game[s];
-                            } else if (deobfuscate_func(window.UI.toString()).orig.split(new RegExp('EventListener\\(\'mouseup\',this\.' + s)).length > 1) {
-                                window.ui.trigger_mouseup = ui[s];
-                                deobmatch('trigger_mouseup', s);
+                                game.trigger_mousemove = game[s];
+                            } else if (deobfunc.abbr.match(/window\.addEventListener/)) {
+                                window.ui.add_event_listener = ui[s];
+                                deobmatch('add_event_listener', s);
                                 // Populate duplicates
-                                game.trigger_mouseup = game[s];
+                                game.add_event_listener = game[s];
+                            } else if (deobfunc.abbr.match(/window\.removeEventListener/)) {
+                                window.ui.remove_event_listener = ui[s];
+                                deobmatch('remove_event_listener', s);
+                                // Populate duplicates
+                                game.remove_event_listener = game[s];
                             }
-                        } else if (deobfunc.abbr.match(/^function \([a-z]\){@\(this\.can,[a-z]\);[a-z]\.style\.cursor=.auto.}$/)) {
-                            window.ui.trigger_mousemove = ui[s];
-                            deobmatch('trigger_mousemove', s);
-                            // Populate duplicates
-                            game.trigger_mousemove = game[s];
-                        } else if (deobfunc.abbr.match(/window\.addEventListener/)) {
-                            window.ui.add_event_listener = ui[s];
-                            deobmatch('add_event_listener', s);
-                            // Populate duplicates
-                            game.add_event_listener = game[s];
-                        } else if (deobfunc.abbr.match(/window\.removeEventListener/)) {
-                            window.ui.remove_event_listener = ui[s];
-                            deobmatch('remove_event_listener', s);
-                            // Populate duplicates
-                            game.remove_event_listener = game[s];
                         }
                     } else if (typeof window.ui[s] === 'number') {
                     } else if (typeof window.ui[s] === 'object') {
@@ -1588,11 +1596,11 @@
                     } else if (typeof window.ui[s] === 'string') {
                     } else if (typeof window.ui[s] === 'undefined') {
                     }
-                }
+                });
             }
 
             if (typeof user === 'object') {
-                for (var s in window.user) {
+                Object.keys(window.user).forEach(function(s) {
                     if (typeof window.user[s] === 'boolean') {
                     } else if (typeof window.user[s] === 'function') {
                     } else if (typeof window.user[s] === 'number') {
@@ -1620,70 +1628,72 @@
                     } else if (typeof window.user[s] === 'string') {
                     } else if (typeof window.user[s] === 'undefined') {
                     }
-                }
+                });
             }
 
             if (typeof Utils === 'object') {
-                for (var s in window.Utils) {
+                Object.keys(window.Utils).forEach(function(s) {
                     if (typeof window.Utils[s] === 'function') {
-                        if ((/\{\s*\[native code\]\s*\}/).test('' + window.Utils[s])) { continue; } // ignore native functions
-                        var deobfunc = deobfuscate_func(window.Utils[s].toString());
-                        if (deobfunc.abbr.match(/^function \([a-z]\){window\.open\([a-z],'_blank'\)\.focus\(\)}$/)) {
-                            window.Utils.open_in_new_tab = Utils[s];
-                            deobmatch('open_in_new_tab', s);
-                        } else if (deobfunc.abbr.match(/^function \([a-z],[a-z]\){return{x:[a-z]\.x-[a-z]\.x,y:[a-z]\.y-[a-z]\.y}}$/)) {
-                            window.Utils.get_vector = Utils[s];
-                            deobmatch('get_vector', s);
-                        } else if (deobfunc.abbr.match(/^function \([a-z],[a-z]\){return [a-z]\.x\*[a-z]\.x\+[a-z]\.y\*[a-z]\.y}$/)) {
-                            window.Utils.scalar_product = Utils[s];
-                            deobmatch('scalar_product', s);
-                        } else if (deobfunc.abbr.match(/^function \([a-z],[a-z]\){return [a-z]\.x\*[a-z]\.y-[a-z]\.y\*[a-z]\.x}$/)) {
-                            window.Utils.cross_product = Utils[s];
-                            deobmatch('cross_product', s);
-                        } else if (deobfunc.abbr.match(/^function \([a-z],[a-z]\){return Math\.acos/)) {
-                            window.Utils.get_angle = Utils[s];
-                            deobmatch('get_angle', s);
-                        } else if (deobfunc.abbr.match(/^function \([a-z],[a-z]\){return this\.@\({x:1,y:0\},this\.@\([a-z],[a-z]\)\)}$/)) {
-                            window.Utils.get_std_angle = Utils[s];
-                            deobmatch('get_std_angle', s);
-                        } else if (deobfunc.abbr.match(/^function \([a-z],[a-z],[a-z]\){[a-z]\.x\+=[a-z];[a-z]\.y\+=[a-z]}$/)) {
-                            window.Utils.translate_vector = Utils[s];
-                            deobmatch('translate_vector', s);
-                        } else if (deobfunc.abbr.match(/^function \(\){return\.5<Math\.random\(\)\?1:-1}$/)) {
-                            window.Utils.rand_sign = Utils[s];
-                            deobmatch('rand_sign', s);
-                        } else if (deobfunc.abbr.match(/2E4/)) {
-                            window.Utils.restore_number = Utils[s];
-                            deobmatch('restore_number', s);
-                        } else if (deobfunc.abbr.match(/^function \([a-z]\){if\(1E4<=/)) {
-                            window.Utils.simplify_number= Utils[s];
-                            deobmatch('simplify number', s);
-                        } else if (deobfunc.abbr.match(/^function \([a-z]\){return [a-z]\*\(2-[a-z]\)}$/)) {
-                            window.Utils.ease_out_quad= Utils[s];
-                            deobmatch('ease_out_quad', s);
-                        } else if (deobfunc.abbr.match(/^function \([a-z],[a-z],[a-z],[a-z],[a-z],[a-z]\){this\.o=/)) {
-                            window.Utils.LinearAnimation= Utils[s];
-                            deobmatch('LinearAnimation', s);
-                        } else if (deobfunc.abbr.match(/fromCharCode/)) {
-                            window.Utils.rand_string = Utils[s];
-                            deobmatch('rand_string', s);
-                        } else if (deobfunc.abbr.match(/^function \([a-z],[a-z]\){return [a-z]\.x>=[a-z]\.x&&[a-z]\.x<=[a-z]\.x\+[a-z]\.w/)) {
-                            window.Utils.contains = Utils[s];
-                            deobmatch('contains', s);
+                        if ((/\{\s*\[native code\]\s*\}/).test('' + window.Utils[s])) { } // ignore native functions
+                        else {
+                            var deobfunc = deobfuscate_func(window.Utils[s].toString());
+                            if (deobfunc.abbr.match(/^function ?\([a-z]\){window\.open\([a-z],'_blank'\)\.focus\(\)}$/)) {
+                                window.Utils.open_in_new_tab = Utils[s];
+                                deobmatch('open_in_new_tab', s);
+                            } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z]\){return{x:[a-z]\.x-[a-z]\.x,y:[a-z]\.y-[a-z]\.y}}$/)) {
+                                window.Utils.get_vector = Utils[s];
+                                deobmatch('get_vector', s);
+                            } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z]\){return [a-z]\.x\*[a-z]\.x\+[a-z]\.y\*[a-z]\.y}$/)) {
+                                window.Utils.scalar_product = Utils[s];
+                                deobmatch('scalar_product', s);
+                            } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z]\){return [a-z]\.x\*[a-z]\.y-[a-z]\.y\*[a-z]\.x}$/)) {
+                                window.Utils.cross_product = Utils[s];
+                                deobmatch('cross_product', s);
+                            } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z]\){return Math\.acos/)) {
+                                window.Utils.get_angle = Utils[s];
+                                deobmatch('get_angle', s);
+                            } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z]\){return this\.@\({x:1,y:0\},this\.@\([a-z],[a-z]\)\)}$/)) {
+                                window.Utils.get_std_angle = Utils[s];
+                                deobmatch('get_std_angle', s);
+                            } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z],[a-z]\){[a-z]\.x\+=[a-z];[a-z]\.y\+=[a-z]}$/)) {
+                                window.Utils.translate_vector = Utils[s];
+                                deobmatch('translate_vector', s);
+                            } else if (deobfunc.abbr.match(/^function ?\(\){return\.5<Math\.random\(\)\?1:-1}$/)) {
+                                window.Utils.rand_sign = Utils[s];
+                                deobmatch('rand_sign', s);
+                            } else if (deobfunc.abbr.match(/2E4/)) {
+                                window.Utils.restore_number = Utils[s];
+                                deobmatch('restore_number', s);
+                            } else if (deobfunc.abbr.match(/^function ?\([a-z]\){if\(1E4<=/)) {
+                                window.Utils.simplify_number= Utils[s];
+                                deobmatch('simplify number', s);
+                            } else if (deobfunc.abbr.match(/^function ?\([a-z]\){return [a-z]\*\(2-[a-z]\)}$/)) {
+                                window.Utils.ease_out_quad= Utils[s];
+                                deobmatch('ease_out_quad', s);
+                            } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z],[a-z],[a-z],[a-z],[a-z]\){this\.o=/)) {
+                                window.Utils.LinearAnimation= Utils[s];
+                                deobmatch('LinearAnimation', s);
+                            } else if (deobfunc.abbr.match(/fromCharCode/)) {
+                                window.Utils.rand_string = Utils[s];
+                                deobmatch('rand_string', s);
+                            } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z]\){return [a-z]\.x>=[a-z]\.x&&[a-z]\.x<=[a-z]\.x\+[a-z]\.w/)) {
+                                window.Utils.contains = Utils[s];
+                                deobmatch('contains', s);
+                            }
                         }
                     }
-                }
+                });
             }
 
             if (typeof WORLD === 'object') {
-                for (var s in window.WORLD) {
+                Object.keys(window.WORLD).forEach(function(s) {
                     if (typeof window.WORLD[s] === 'number') {
                     }
-                }
+                });
             }
 
             if (typeof world === 'object') {
-                for (var s in window.world) {
+                Object.keys(window.world).forEach(function(s) {
                     if (typeof window.world[s] === 'boolean') {
                     } else if (typeof window.world[s] === 'function') {
                     } else if (typeof window.world[s] === 'number') {
@@ -1703,13 +1713,13 @@
                     } else if (typeof window.world[s] === 'string') {
                     } else if (typeof window.world[s] === 'undefined') {
                     }
-                }
+                });
             }
         } else if (stage === 3) {
             // Then detect remaining properties of global variables
 
             if (typeof client === 'string' && typeof window[client] === 'object') {
-                for (var s in window[client]) {
+                Object.keys(window[client]).forEach(function(s) {
                     if (typeof window[client][s] === 'number') {
                         if (window[client][s] === 0) {
                             if ((typeof window.update_cam !== 'undefined' && deobfuscate_func(window[client][update_cam].toString()).orig.toString().indexOf(s) > -1)) {
@@ -1721,12 +1731,12 @@
                             }
                         }
                     }
-                }
+                });
             }
         } else if (stage === 4) {
             // Then check if anything was missed
 
-            for (var s in window) {
+            Object.keys(window).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     if (window[s] === window) {} // ignore
                     else if (window[s] === 10000) {} // ignore
@@ -1737,87 +1747,87 @@
                         console.log(['missing',s,window[s]]); // v15 nothing missing
                     }
                 }
-            }
+            });
 
-            for (var s in CLIENT) {
+            Object.keys(CLIENT).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in CLIENT',s,CLIENT[s]]);
                 }
-            }
+            });
 
-            for (var s in window[client]) {
+            Object.keys(window[client]).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     console.log(['missing in client',s,window[client][s]]); // v15 nothing missing
                 }
-            }
+            });
 
-            for (var s in CRAFT) {
+            Object.keys(CRAFT).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in CRAFT',s,CRAFT[s]]);
                 }
-            }
+            });
 
-            for (var s in game) {
+            Object.keys(game).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in game',s,game[s]]);
                 }
-            }
+            });
 
-            for (var s in INV) {
+            Object.keys(INV).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in INV',s,INV[s]]);
                 }
-            }
+            });
 
-            for (var s in ITEMS) {
+            Object.keys(ITEMS).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in ITEMS',s,ITEMS[s]]);
                 }
-            }
+            });
 
-            for (var s in keyboard) {
+            Object.keys(keyboard).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in keyboard',s,keyboard[s]]);
                 }
-            }
+            });
 
-            for (var s in loader) {
+            Object.keys(loader).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     console.log(['missing in loader',s,loader[s]]); // v15 nothing missing
                 }
-            }
+            });
 
-            for (var s in RECIPE_CATEGORIES) {
+            Object.keys(RECIPE_CATEGORIES).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in RECIPE_CATEGORIES',s,RECIPE_CATEGORIES[s]]);
                 }
-            }
+            });
 
-            for (var s in scoreboard) {
+            Object.keys(scoreboard).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     console.log(['missing in scoreboard',s,scoreboard[s]]); // v15 nothing missing
                 }
-            }
+            });
 
-            for (var s in SPRITE) {
+            Object.keys(SPRITE).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in SPRITE',s,SPRITE[s]]);
                 }
-            }
+            });
 
-            for (var s in STATE) {
+            Object.keys(STATE).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     console.log(['missing in STATE',s,STATE[s]]); // v15 nothing missing
                 }
-            }
+            });
 
-            for (var s in ui) {
+            Object.keys(ui).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     console.log(['missing in ui',s,ui[s]]); // v15 nothing missing
                 }
-            }
+            });
 
-            for (var s in user) {
+            Object.keys(user).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     if (user[s].hasOwnProperty('amount_bread') ||
                         user[s].hasOwnProperty('amount_flour') ||
@@ -1831,9 +1841,9 @@
                         console.log(['missing in user',s,user[s]]); // v15 nothing missing
                     }
                 }
-            }
+            });
 
-            for (var s in user.gauges) {
+            Object.keys(user.gauges).forEach(function(s) {
                 if (typeof user.gauges[s] === 'object') {
                     if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                         if (deobfuscate_func(user.gauges.update.toString()).orig.indexOf('this.warn_hunger.update();this.' + s + '.update();') > -1) {
@@ -1853,37 +1863,41 @@
                         }
                     }
                 }
-            }
+            });
 
-            for (var s in user.ldb) {
+            Object.keys(user.ldb).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in user.ldb',s,user.ldb[s]]);
                 }
-            }
+            });
 
-            for (var s in Utils) {
+            Object.keys(Utils).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     console.log(['missing in Utils',s,Utils[s]]); // v15 nothing missing
                 }
-            }
+            });
 
-            for (var s in WORLD) {
+            Object.keys(WORLD).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in WORLD',s,WORLD[s]]);
                 }
-            }
+            });
 
-            for (var s in world) {
+            Object.keys(world).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in world',s,world[s]]);
                 }
-            }
+            });
         }
     }
 
     function checkDependencies() {
-        if (typeof game !== 'undefined' && typeof ui !== 'undefined' && typeof user !== 'undefined') {
-            deobfuscate();
+        if (typeof ui !== 'undefined' && typeof old_ui_run === 'undefined') {
+            window.old_ui_run = window.ui.run;
+            window.ui.run = function() {
+                old_ui_run.apply(this);
+                deobfuscate();
+            };
         } else {
             setTimeout(checkDependencies, 50);
         }
