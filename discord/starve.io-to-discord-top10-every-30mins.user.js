@@ -22,9 +22,7 @@
     }
 
     function checkDependencies() {
-        if ((typeof deobauto === 'undefined' || deobauto !== true) &&
-            (typeof deobcomplete === 'undefined' || deobcomplete !== true) &&
-            (typeof deobmicro === 'undefined' || deobmicro !== true)) {
+        if (typeof deobauto === 'undefined') {
             // 'Starve.io Deobfuscated' is required as a dependency
             setTimeout(checkDependencies, 50);
         } else {
