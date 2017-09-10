@@ -31,7 +31,7 @@
                 if (s === 'webkitStorageInfo') continue; // deprecated
                 if (typeof window[s] === 'function') {
                     if (window[s].length === 2) {
-                        if (window[s].toString().match(/^function \([a-z],[a-z]\){return _0x[a-z0-9]{4}\[[a-z]-0\]}$/)) {
+                        if (window[s].toString().match(/function\(([a-z]),[a-z]\){return _0x[a-z0-9]{4}\[\1-0\]}/)) {
                             window.OBFUSCATOR_FN = window[s];
                             deobmatch('OBFUSCATOR_FN', s);
                         }
