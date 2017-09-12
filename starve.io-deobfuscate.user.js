@@ -31,7 +31,7 @@
                 if (s === 'webkitStorageInfo') { } // deprecated
                 else if (typeof window[s] === 'function') {
                     if (window[s].length === 2) {
-                        if (window[s].toString().match(/^function ?\([a-z],[a-z]\){return _0x[a-z0-9]{4}\[[a-z]-0\]}$/)) {
+                        if (window[s].toString().match(/function\s?\([a-z],[a-z]\){return _0x[a-z0-9]{4}\[[a-z]-0\]}/)) {
                             window.OBFUSCATOR_FN = window[s];
                             deobmatch('OBFUSCATOR_FN', s);
                         }
@@ -1185,7 +1185,7 @@
                                 } else if (deobfunc.abbr.match(/IFWBGC/)) {
                                     window.change_ground = s;
                                     deobmatch('change_ground', s);
-                                } else if (deobfunc.abbr.match(/^function ?\(\){user\.craft\.restart\(\)}$/)) {
+                                } else if (deobfunc.abbr.match(/function\s?\(\){user\.craft\.restart\(\)}/)) {
                                     window.cancel_craft = s;
                                     deobmatch('cancel_craft', s);
                                 } else if (deobfunc.abbr.match(/\.stringify\(\[10\]\)\)}$/)) {
@@ -1200,13 +1200,13 @@
                                 } else if (deobfunc.abbr.match(/^function ?\(\){if\(@-this\.@>@\.@\){this\.@=@;var [a-z]=user\.cam,[a-z]=Math.floor\([a-z]\.x\/100\),[a-z]=Math\.floor\([a-z]\.y\/100\);/)) {
                                     window.update_cam = s;
                                     deobmatch('update_cam', s);
-                                } else if (deobfunc.abbr.match(/^function ?\(\){@-this\.@>@\.PING_DELAY&&\(this\.@=@,this\.ping\(\)\)}$/)) {
+                                } else if (deobfunc.abbr.match(/function\s?\(\){@-this\.@>@\.PING_DELAY&&\(this\.@=@,this\.ping\(\)\)}/)) {
                                     window.try_ping = s;
                                     deobmatch('try_ping', s);
                                 } else if (deobfunc.abbr.match(/Your team was destroyed/)) {
                                     window.team_destroyed = s;
                                     deobmatch('team_destroyed', s);
-                                } else if (deobfunc.abbr.match(/^function ?\(\){3==this\.@\.readyState&&\(this\.timeout_server-=@\.TIMEOUT_SERVER\)}$/)) {
+                                } else if (deobfunc.abbr.match(/function\s?\(\){3==this\.@\.readyState&&\(this\.timeout_server-=@\.TIMEOUT_SERVER\)}/)) {
                                     window.check_state = s;
                                     deobmatch('check_state', s);
                                 } else if (deobfunc.abbr.match(/@-this\.timeout_server>@\.TIMEOUT_SERVER&&\(this\.timeout_server=@,this\.lost\(\)\)}$/)) {
@@ -1220,7 +1220,7 @@
                                 if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
                                     window.select_craft = s;
                                     deobmatch('select_craft', s);
-                                } else if (deobfunc.abbr.match(/^function ?\([a-z]\){@\.@\[user\.uid\]\.text=[a-z];this\.@\[@\]\(@\[@\]\.stringify\(\[0,[a-z]\]\)\)}$/)) {
+                                } else if (deobfunc.abbr.match(/function\s?\([a-z]\){@\.@\[user\.uid\]\.text=[a-z];this\.@\[@\]\(@\[@\]\.stringify\(\[0,[a-z]\]\)\)}/)) {
                                     window.send_chat = s;
                                     deobmatch('send_chat', s);
                                 } else if (deobfunc.abbr.match(/function ?\([a-z]\){[a-z]==INV\.BAG\?/)) {
@@ -1244,13 +1244,13 @@
                                 } else if (deobfunc.abbr.match(/{game\.quests\.modify\([a-z],0\)}$/)) {
                                     window.quest_update = s;
                                     deobmatch('quest_update', s);
-                                } else if (deobfunc.abbr.match(/^function ?\([a-z]\){user\.gauges\.l=[a-z]\/100}$/)) {
+                                } else if (deobfunc.abbr.match(/function\s?\([a-z]\){user\.gauges\.l=[a-z]\/100}/)) {
                                     window.gauge_life = s;
                                     deobmatch('gauge_life', s);
-                                } else if (deobfunc.abbr.match(/^function ?\([a-z]\){user\.gauges\.t=[a-z]\/100}$/)) {
+                                } else if (deobfunc.abbr.match(/function\s?\([a-z]\){user\.gauges\.t=[a-z]\/100}/)) {
                                     window.gauge_thirst = s;
                                     deobmatch('gauge_thirst', s);
-                                } else if (deobfunc.abbr.match(/^function ?\([a-z]\){user\.gauges\.h=[a-z]\/100}$/)) {
+                                } else if (deobfunc.abbr.match(/function\s?\([a-z]\){user\.gauges\.h=[a-z]\/100}/)) {
                                     window.gauge_hunger = s;
                                     deobmatch('gauge_hunger', s);
                                 } else if (deobfunc.abbr.match(/{@\.time=[a-z];@\.transition=!0;audio\.transition=1}/)) {
@@ -1559,7 +1559,7 @@
                             } else if (deobfunc.abbr.match(/Cookies\.set\(.starve_mapping.,.qwerty.\)/)) {
                                 window.ui.set_qwerty = ui[s];
                                 deobmatch('set_qwerty', s);
-                            } else if (deobfunc.abbr.match(/^function ?\([a-z]\){@\(this\.can,[a-z]\)}$/)) { // v15 2 matches
+                            } else if (deobfunc.abbr.match(/function\s?\([a-z]\){@\(this\.can,[a-z]\)}/)) { // v15 2 matches
                                 if (deobfuscate_func(window.UI.toString()).orig.split(new RegExp('EventListener\\(\'mousedown\',this\.' + s)).length > 1) {
                                     window.ui.trigger_mousedown = ui[s];
                                     deobmatch('trigger_mousedown', s);
@@ -1571,7 +1571,7 @@
                                     // Populate duplicates
                                     game.trigger_mouseup = game[s];
                                 }
-                            } else if (deobfunc.abbr.match(/^function ?\([a-z]\){@\(this\.can,[a-z]\);[a-z]\.style\.cursor=.auto.}$/)) {
+                            } else if (deobfunc.abbr.match(/function\s?\([a-z]\){@\(this\.can,[a-z]\);[a-z]\.style\.cursor=.auto.}/)) {
                                 window.ui.trigger_mousemove = ui[s];
                                 deobmatch('trigger_mousemove', s);
                                 // Populate duplicates
@@ -1645,28 +1645,28 @@
                         if ((/\{\s*\[native code\]\s*\}/).test('' + window.Utils[s])) { } // ignore native functions
                         else {
                             var deobfunc = deobfuscate_func(window.Utils[s].toString());
-                            if (deobfunc.abbr.match(/^function ?\([a-z]\){window\.open\([a-z],'_blank'\)\.focus\(\)}$/)) {
+                            if (deobfunc.abbr.match(/function\s?\([a-z]\){window\.open\([a-z],'_blank'\)\.focus\(\)}/)) {
                                 window.Utils.open_in_new_tab = Utils[s];
                                 deobmatch('open_in_new_tab', s);
-                            } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z]\){return{x:[a-z]\.x-[a-z]\.x,y:[a-z]\.y-[a-z]\.y}}$/)) {
+                            } else if (deobfunc.abbr.match(/function\s?\([a-z],[a-z]\){return{x:[a-z]\.x-[a-z]\.x,y:[a-z]\.y-[a-z]\.y}}/)) {
                                 window.Utils.get_vector = Utils[s];
                                 deobmatch('get_vector', s);
-                            } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z]\){return [a-z]\.x\*[a-z]\.x\+[a-z]\.y\*[a-z]\.y}$/)) {
+                            } else if (deobfunc.abbr.match(/function\s?\([a-z],[a-z]\){return [a-z]\.x\*[a-z]\.x\+[a-z]\.y\*[a-z]\.y}/)) {
                                 window.Utils.scalar_product = Utils[s];
                                 deobmatch('scalar_product', s);
-                            } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z]\){return [a-z]\.x\*[a-z]\.y-[a-z]\.y\*[a-z]\.x}$/)) {
+                            } else if (deobfunc.abbr.match(/function\s?\([a-z],[a-z]\){return [a-z]\.x\*[a-z]\.y-[a-z]\.y\*[a-z]\.x}/)) {
                                 window.Utils.cross_product = Utils[s];
                                 deobmatch('cross_product', s);
                             } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z]\){return Math\.acos/)) {
                                 window.Utils.get_angle = Utils[s];
                                 deobmatch('get_angle', s);
-                            } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z]\){return this\.@\({x:1,y:0\},this\.@\([a-z],[a-z]\)\)}$/)) {
+                            } else if (deobfunc.abbr.match(/function\s?\([a-z],[a-z]\){return this\.@\({x:1,y:0\},this\.@\([a-z],[a-z]\)\)}/)) {
                                 window.Utils.get_std_angle = Utils[s];
                                 deobmatch('get_std_angle', s);
-                            } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z],[a-z]\){[a-z]\.x\+=[a-z];[a-z]\.y\+=[a-z]}$/)) {
+                            } else if (deobfunc.abbr.match(/function\s?\([a-z],[a-z],[a-z]\){[a-z]\.x\+=[a-z];[a-z]\.y\+=[a-z]}/)) {
                                 window.Utils.translate_vector = Utils[s];
                                 deobmatch('translate_vector', s);
-                            } else if (deobfunc.abbr.match(/^function ?\(\){return\.5<Math\.random\(\)\?1:-1}$/)) {
+                            } else if (deobfunc.abbr.match(/function\s?\(\){return\.5<Math\.random\(\)\?1:-1}/)) {
                                 window.Utils.rand_sign = Utils[s];
                                 deobmatch('rand_sign', s);
                             } else if (deobfunc.abbr.match(/2E4/)) {
@@ -1675,7 +1675,7 @@
                             } else if (deobfunc.abbr.match(/^function ?\([a-z]\){if\(1E4<=/)) {
                                 window.Utils.simplify_number= Utils[s];
                                 deobmatch('simplify number', s);
-                            } else if (deobfunc.abbr.match(/^function ?\([a-z]\){return [a-z]\*\(2-[a-z]\)}$/)) {
+                            } else if (deobfunc.abbr.match(/function\s?\([a-z]\){return [a-z]\*\(2-[a-z]\)}/)) {
                                 window.Utils.ease_out_quad= Utils[s];
                                 deobmatch('ease_out_quad', s);
                             } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z],[a-z],[a-z],[a-z],[a-z]\){this\.o=/)) {
@@ -1900,12 +1900,8 @@
     }
 
     function checkDependencies() {
-        if (typeof ui !== 'undefined' && typeof old_ui_run === 'undefined') {
-            window.old_ui_run = window.ui.run;
-            window.ui.run = function() {
-                old_ui_run.apply(this);
-                deobfuscate();
-            };
+        if (typeof game !== 'undefined' && typeof ui !== 'undefined' && typeof user !== 'undefined') {
+             deobfuscate();
         } else {
             setTimeout(checkDependencies, 50);
         }
