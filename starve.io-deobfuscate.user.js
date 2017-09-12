@@ -1904,7 +1904,8 @@
             window.old_ui_run = window.ui.run;
             window.ui.run = function() {
                 old_ui_run.apply(this);
-                deobfuscate();
+                // Deobfuscate only first time user interface is run
+                if (typeof deobauto === 'undefined') deobfuscate();
             };
         } else {
             setTimeout(checkDependencies, 50);
