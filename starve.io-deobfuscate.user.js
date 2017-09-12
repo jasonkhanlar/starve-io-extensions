@@ -1900,12 +1900,8 @@
     }
 
     function checkDependencies() {
-        if (typeof ui !== 'undefined' && typeof old_ui_run === 'undefined') {
-            window.old_ui_run = window.ui.run;
-            window.ui.run = function() {
-                old_ui_run.apply(this);
-                deobfuscate();
-            };
+        if (typeof game !== 'undefined' && typeof ui !== 'undefined' && typeof user !== 'undefined') {
+             deobfuscate();
         } else {
             setTimeout(checkDependencies, 50);
         }
