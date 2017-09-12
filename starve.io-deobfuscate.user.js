@@ -2,7 +2,7 @@
 // ==UserScript==
 // @name         Starve.io Deobfuscated Auto
 // @namespace    http://tampermonkey.net/
-// @version      0.15.30
+// @version      0.15.50
 // @description  Auto deobfuscation includes at least bare minimum for scripts to function normally
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -31,7 +31,7 @@
                 if (s === 'webkitStorageInfo') continue; // deprecated
                 if (typeof window[s] === 'function') {
                     if (window[s].length === 2) {
-                        if (window[s].toString().match(/function\(([a-z]),[a-z]\){return _0x[a-z0-9]{4}\[\1-0\]}/)) {
+                        if (window[s].toString().match(/function\s?\((\w),\w\){return _0x[\w\d]{4}\[\1-0\]}/)) {
                             window.OBFUSCATOR_FN = window[s];
                             deobmatch('OBFUSCATOR_FN', s);
                         }
@@ -59,7 +59,7 @@
                         if (window[s].toString().match(/new XMLHttpRequest/)) { // v15 1 match
                             window.Client = s;
                             deobmatch('Client', s);
-                        } else if (deobfunc.abbr === 'function @(){SAVE;TUPT;this.text&&(@.globalAlpha=this.chat.o?1-this.chat.v:1,this.label||(this.label=create_message(scale,this.text)),@.drawImage(this.label,-this.label.width/2,-this.label.height/2-110*scale),this.chat.update()&&0==this.chat.o&&(this.text="",this.label=null));RESTORE}') {
+                        } else if (deobfunc.abbr === 'function\s?@(){SAVE;TUPT;this.text&&(@.globalAlpha=this.chat.o?1-this.chat.v:1,this.label||(this.label=create_message(scale,this.text)),@.drawImage(this.label,-this.label.width/2,-this.label.height/2-110*scale),this.chat.update()&&0==this.chat.o&&(this.text="",this.label=null));RESTORE}') {
                             window.draw_chat = s;
                             deobmatch('draw_chat', s);
                         } else if (deobfunc.abbr.match(/[a-z]=sprite\[@\.DRAGON\]\[@\.time\];/)) {
@@ -113,7 +113,7 @@
                         } else if (deobfunc.abbr.match(/[a-z]=user\.weapon/) && deobfunc.abbr.match(/WEAPON_LOADING/)) { // v15 1 match
                             window.draw_weapon_switch_delay = s;
                             deobmatch('draw_weapon_switch_delay', s);
-                        } else if (deobfunc.abbr.match(/^function @\(\){var [a-z]=user\.craft/)) { // v15 1 match
+                        } else if (deobfunc.abbr.match(/^function\s?@\(\){var [a-z]=user\.craft/)) { // v15 1 match
                             window.draw_ui_crafting = s;
                             deobmatch('draw_ui_crafting', s);
                         } else if (deobfunc.abbr.match(/var [a-z]=user\.inv,/)) { // v15 1 match
@@ -125,7 +125,7 @@
                         } else if (deobfunc.abbr.match(/img=sprite\[@\.LOCK\]/)) { // v15 1 match
                             window.draw_chest = s;
                             deobmatch('draw_chest', s);
-                        } else if (deobfunc.abbr.match(/^function @\(\){if\(!\(10>this\.info\)\)/)) { // v15 1 match
+                        } else if (deobfunc.abbr.match(/^function\s?@\(\){if\(!\(10>this\.info\)\)/)) { // v15 1 match
                             window.draw_seed = s;
                             deobmatch('draw_seed', s);
                         } else if (s !== 'create_images' && deobfunc.orig.match(/DRIED_PLANT/)) { // v15 1 match
@@ -167,7 +167,7 @@
                         } else if (deobfunc.abbr.match(/@\.FLAKES,/)) { // v15 1 match
                             window.draw_winter= s;
                             deobmatch('draw_winter', s);
-                        } else if (deobfunc.abbr.match(/function @\(\){if\(@\.transition\)var [a-z]=@\.shade\.update\(\);/)) { // v15 1 match
+                        } else if (deobfunc.abbr.match(/function\s?@\(\){if\(@\.transition\)var [a-z]=@\.shade\.update\(\);/)) { // v15 1 match
                             window.draw_world_with_effect = s;
                             deobmatch('draw_world_with_effect', s);
                         } else if (deobfunc.abbr.match(/SOUND_PLAYER\.FACTOR\)/)) { // v15 1 match
@@ -181,7 +181,7 @@
                         if (deobfunc.abbr.match(/[a-z]=-[a-z]\.width;/) && deobfunc.abbr.match(/ROTATE;if\(this\.hit\.update\)/)) {
                             window.draw_door = s;
                             deobmatch('draw_door', s);
-                        } else if (deobfunc.abbr.match(/^function @\([a-z]\){SAVE;TUPT;ROTATE;if\(this\.hit\.update\){/) && deobfunc.abbr.match(/img/)) {
+                        } else if (deobfunc.abbr.match(/^function\s?@\([a-z]\){SAVE;TUPT;ROTATE;if\(this\.hit\.update\){/) && deobfunc.abbr.match(/img/)) {
                             window.draw_simple_item = s;
                             deobmatch('draw_simple_item', s);
                         } else if (deobfunc.abbr.match(/this\.breath\.update\(\);img=sprite/)) {
@@ -210,7 +210,7 @@
                             deobmatch('draw_player_clothe', s);
                         }
                     } else if (window[s].length === 2) { // v15 85 matches
-                        if (deobfunc.abbr.match(/function @\([a-z],[a-z]\){var [a-z]=[a-z]\.getBoundingClientRect\(\);return{x:[a-z]\.clientX-[a-z]\.left,y:[a-z]\.clientY-[a-z]\.top}}/)) { // v15 1 match
+                        if (deobfunc.abbr.match(/function\s?@\([a-z],[a-z]\){var [a-z]=[a-z]\.getBoundingClientRect\(\);return{x:[a-z]\.clientX-[a-z]\.left,y:[a-z]\.clientY-[a-z]\.top}}/)) { // v15 1 match
                             window.get_mouse_pos = s;
                             deobmatch('get_mouse_pos', s);
                         } else if (deobfunc.abbr.match(/[a-z]=sprite\[[a-z]\]\[@\.time\];[a-z]=-[a-z]\.width\*this\.breath\.v/)) {
@@ -242,10 +242,10 @@
                         if (deobfunc.orig.match(/BUTTON_CLICK\|\|/)) {
                             window.draw_slot_number = s;
                             deobmatch('draw_slot_number', s);
-                        } else if (deobfunc.abbr.match(/^function @\([a-z],[a-z],[a-z]\){@\.transition/) && deobfunc.abbr.match(/drawImage/)) { // v15 1 match
+                        } else if (deobfunc.abbr.match(/^function\s?@\([a-z],[a-z],[a-z]\){@\.transition/) && deobfunc.abbr.match(/drawImage/)) { // v15 1 match
                             window.draw_image_transition = s;
                             deobmatch('draw_image_transition', s);
-                        } else if (deobfunc.abbr.match(/^function @\([a-z],[a-z],[a-z]\){@\.transition\?/) && deobfunc.abbr.match(/\.draw\(/)) { // v15 1 match
+                        } else if (deobfunc.abbr.match(/^function\s?@\([a-z],[a-z],[a-z]\){@\.transition\?/) && deobfunc.abbr.match(/\.draw\(/)) { // v15 1 match
                             window.draw_transition = s;
                             deobmatch('draw_transition', s);
                         } else if (deobfunc.orig.match(/[a-z]\.width=440\*[a-z];[a-z]\.height=388\*[a-z];/) && deobfunc.orig.length < 1000) {
