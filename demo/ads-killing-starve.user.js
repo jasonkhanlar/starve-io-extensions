@@ -14,7 +14,7 @@
     'use strict';
 
     function checkDependencies() {
-        if ((typeof deobauto === 'undefined' || deobauto !== true)) {
+        if (typeof deobauto === 'undefined') {
             // 'Starve.io Deobfuscated' is required as a dependency
             setTimeout(checkDependencies, 50);
         } else {

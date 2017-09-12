@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io extensions
 // @namespace    http://tampermonkey.net/
-// @version      0.15.40
+// @version      0.15.51
 // @description  (1) On screen chat buffer (2) On screen help (3) Auto attack (4) Auto book (5) Auto cook (6) Auto follow (7) Copy craft (8) Active feed (9) Server name (10) Gauge values (11) GPS
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -13,6 +13,8 @@
 
 (function() {
     'use strict';
+
+    var required_deobfuscate_version = '0.15.50';
 
     // Server select menu looks ugly, fix it
     var style = document.createElement('style');
@@ -489,11 +491,11 @@
     }
 
     function checkDependencies() {
-        if ((typeof deobauto === 'undefined' || deobauto !== true) &&
-            (typeof deobcomplete === 'undefined' || deobcomplete !== true) &&
-            (typeof deobmicro === 'undefined' || deobmicro !== true)) {
+        if (typeof deobauto === 'undefined') {
             // 'Starve.io Deobfuscated' is required as a dependency
             setTimeout(checkDependencies, 50);
+        } else if (deobauto === true || deobauto < required_deobfuscate_version) {
+            alert('deobfuscate userscript v' + required_deobfuscate_version + ' or higher is required.');
         } else {
             // Dependency satisfied
             main();
@@ -592,7 +594,9 @@
             enabled: false,
             preva: 0,
             prevm: 0,
-            uid: -1
+            uid: -1,
+            x: -1,
+            y: -1
         };
         user.copy_craft = {
             enabled: false,
@@ -839,8 +843,8 @@
         window[draw_chat] = function() {
             old_draw_chat.apply(this);
             // Show only unique chat messages per player, even if someone repeats themselves
-            if (this.text && (!chat_log_last.hasOwnProperty(this.player.nickname) || chat_log_last[this.player.nickname] !== this.text) && this.text !== this.player.nickname) {
-                chat_log_last[this.player.nickname] = this.text;
+            if (this.text && (!chat_log_last.hasOwnProperty(this.pid) || chat_log_last[this.pid] !== this.text) && this.text !== this.player.nickname) {
+                chat_log_last[this.pid] = this.text;
                 var chat_log_tr = document.createElement('tr');
                 var chat_log_msg = document.createElement('td');
                 var chat_log_nick = document.createElement('td');
@@ -907,16 +911,33 @@
                 stalkeeY = Math.round(world[fast_units][user.auto_follow.uid].y / 40),
                 stalkerX = Math.round(world[fast_units][user.uid].x / 40),
                 stalkerY = Math.round(world[fast_units][user.uid].y / 40);
-                if (stalkeeX < stalkerX) c |= 1;
-                else if (stalkeeX > stalkerX) c |= 2;
 
-                if (stalkeeY > stalkerY) c |= 4;
-                else if (stalkeeY < stalkerY) c |= 8;
+                if (!(
+                    Math.abs(stalkeeX - stalkerX) <= 1 &&
+                    Math.abs(stalkeeY - stalkerY) <= 1 &&
+                    user.auto_follow.x === world[fast_units][user.auto_follow.uid].x &&
+                    user.auto_follow.y === world[fast_units][user.auto_follow.uid].y
+                )) {
+                    if (stalkeeX < stalkerX) c |= 1;
+                    else if (stalkeeX > stalkerX) c |= 2;
+
+                    if (stalkeeY > stalkerY) c |= 4;
+                    else if (stalkeeY < stalkerY) c |= 8;
+                }
+
+                if (world[fast_units][user.uid].angle !== stalkeeA) {
+                    world[fast_units][user.uid].angle = stalkeeA;
+                    world[fast_units][user.uid].nangle = stalkeeA;
+                    window[client][send_angle](stalkeeA);
+                }
 
                 if (user.auto_follow.prevm !== c) {
                     user.auto_follow.prevm = c;
                     window[client][send_move](c);
                 }
+
+                user.auto_follow.x = world[fast_units][user.auto_follow.uid].x;
+                user.auto_follow.y = world[fast_units][user.auto_follow.uid].y;
             }
         };
 
