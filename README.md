@@ -5,6 +5,11 @@
 
 # TO USE / INSTALL
 1. Install [Tampermonkey](https://tampermonkey.net)
+   - direct link for [Apple Safari](https://safari.tampermonkey.net/tampermonkey.safariextz)
+   - direct link for [Google Chrome/Chromium](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+   - direct link for [Microsoft Edge](https://www.microsoft.com/en-us/store/p/tampermonkey/9nblggh5162s?rtc=1)
+   - direct link for [Mozilla Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
+   - direct link for [Opera](https://addons.opera.com/en/extensions/details/tampermonkey-beta/)
 2. Install [Starve.io deobfuscate library userscript](https://github.com/jasonkhanlar/starve-io-extensions/raw/master/starve.io-deobfuscate.user.js)
 3. Install [Starve.io extensions userscript](https://github.com/jasonkhanlar/starve-io-extensions/raw/master/starve.io-extensions.user.js)
 4. Refresh or load new instance of [Starve.io](http://starve.io)
