@@ -45,7 +45,8 @@
     chat_log_table.style.textShadow = '#000000 1px 1px 1px';
     chat_log_table.appendChild(chat_log_tbody);
     chat_log.appendChild(chat_log_table);
-    document.body.appendChild(chat_log);
+    document.body.insertBefore(chat_log, can.nextSibling);
+
 
     setInterval(function() {
         if (typeof user !== 'undefined' && typeof user.craft !== 'undefined') {
