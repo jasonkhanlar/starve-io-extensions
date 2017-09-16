@@ -2,7 +2,7 @@
 // ==UserScript==
 // @name         Starve.io Deobfuscated Auto
 // @namespace    http://tampermonkey.net/
-// @version      0.15.51
+// @version      0.15.52
 // @description  Auto deobfuscation includes at least bare minimum for scripts to function normally
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -51,7 +51,6 @@
             // Then detect all global variables, constants and functions
             Object.keys(window).forEach(function(s) { // v15 680-690 matches
                 if (s === 'webkitStorageInfo') { } // deprecated
-                else if (s.match(/^[0-9]/)) { } // avoid cross-origin objects
                 else if (typeof window[s] === 'boolean') { } // v15 6 matches
                 else if (typeof window[s] === 'function') { // v15 376 matches
                     if ((/\{\s*\[native code\]\s*\}/).test('' + window[s])) { } // ignore native functions
@@ -380,6 +379,7 @@
                 } else if (typeof window[s] === 'object') { // v15 206-208 matches
                     if (window[s] === window) { } // ignore
                     else if (window[s] === null) { } // ignore
+                    else if (typeof window[s].window !== 'undefined') { } // ignore potential cross-origin objects
                     else if (Array.isArray(window[s])) { // v15 14-17 matches
                         if (window[s].every(function(i) { return typeof i === "string" })) {
                         } else if (!window[s].some(isNaN)) { // v15 6 matches
@@ -1133,7 +1133,6 @@
             // Detecting or validating these may require more evaluation
             Object.keys(window).forEach(function(s) { // v15 680-690 matches
                 if (s === 'webkitStorageInfo') { } // deprecated
-                else if (s.match(/^[0-9]/)) { } // avoid cross-origin objects
                 else if (typeof window[s] === 'number') { // v15 50-52 matches
                     if (window[s] === 92) { // v15 1 match
                         if (SPRITE.hasOwnProperty(s)) { // Validate with SPRITE.COUNTER, does SPRITE[s] exist?
