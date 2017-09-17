@@ -945,7 +945,7 @@
         user.auto_feed.update = function() {
             if (!user.active_feed.enabled) old_user_auto_feed_update.apply(this);
             else {
-                this.delay += delta;
+                this.delay += window[delta];
                 if (2 >= this.delay) return;
                 this.delay = 0;
                 var eatPLANT = false, eatBREAD = false, eatMEAT = false, eatFISH = false, eatCOOKIE = false, eatSANDWICH = false, eatCAKE = false,
