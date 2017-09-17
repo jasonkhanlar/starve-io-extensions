@@ -161,6 +161,10 @@
         return temp_canv;
     };
 
+    function ext_reset_variables() {
+        user.auto_attack.last_attack = 0;
+    }
+
     function ext_update_settings_menu() {
         var ext_settings_auto_book_ing = document.createElement('div'),
         ext_settings_auto_cook_ing = document.createElement('div'),
@@ -989,6 +993,12 @@
             if (user.ext_gui.map_objects) {
                 old_draw_map_objects.apply(this, arguments);
             }
+        };
+
+        window.hook_ui_run_ext = window.ui.run;
+        window.ui.run = function() {
+            hook_ui_run_ext.apply(this);
+            ext_reset_variables();
         };
     }
 
