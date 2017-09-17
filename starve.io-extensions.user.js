@@ -606,11 +606,7 @@
         user.copy_craft = {
             enabled: false,
             last_recipe: false,
-            translate: { x: 0, y: 0 },
-            craft: function() {
-                if (this.enabled && this.last_recipe !== false) {
-                }
-            }
+            translate: { x: 0, y: 0 }
         };
         user.gps = {
             coords: '',
@@ -641,7 +637,6 @@
         user.craft.update = function() {
             old_user_craft_update.apply(this);
             user.auto_cook.cook();
-            user.copy_craft.craft();
         };
         user.ext_help = { enabled: false, translate: { x: 0, y: 0 } };
         user.ext_help_gui = { enabled: false, translate: { x: 0, y: 0 } };
