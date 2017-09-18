@@ -817,6 +817,13 @@
         window[client][build_stop] = function(c) {
             old_client_build_stop.apply(this, arguments);
             if (user.copy_craft.enabled && user.copy_craft.last_recipe !== false) {
+                // First prioritize auto feeding to prevent auto starving
+                // Standard Feed timer is ignored when Copy Craft is enabled (can't eat while crafting)
+                if (user.auto_feed.enabled) {
+                    user.auto_feed.delay = 3;
+                    user.auto_feed.update('copy_craft');
+                }
+
                 window[client][select_craft](user.copy_craft.last_recipe);
             }
         };
@@ -943,6 +950,8 @@
 
         window.old_user_auto_feed_update = user.auto_feed.update;
         user.auto_feed.update = function() {
+            // If (1) Copy Craft is enabled and in use and (2) currently crafting, (3) ignore normal feed timer (can't feed while crafting)
+            if (user.copy_craft.enabled && user.craft.id !== -1 && user.auto_feed.delay !== 3) return;
             if (!user.active_feed.enabled) old_user_auto_feed_update.apply(this);
             else {
                 this.delay += window[delta];
