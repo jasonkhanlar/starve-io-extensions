@@ -1956,8 +1956,11 @@
 
     window.deobfuscate_func = function(deobfunc) {
         // https://mathiasbynens.be/demo/javascript-identifier-regex
-        deobfunc = deobfunc.replace(/\n/g, '').replace(/(\[?)_0x[0-9a-fA-F]{4}\("(0x[0-9a-fA-F]+)"\)(\]?)/g, function() {
-            return (arguments[1] === '[' ? '.' : '\'') + OBFUSCATOR_FN(arguments[2]) + (arguments[3] === ']' ? '' : '\'');
+        deobfunc = deobfunc.replace(/\n/g, '').replace(/([,:]?)(\[?)_0x[0-9a-fA-F]{4}\("(0x[0-9a-fA-F]+)"\)([,\]]?)/g, function() {
+            if (arguments[1].match(/[,:]/) || arguments[4] === ',' || (arguments[1] === '' && arguments[2] === '')) {
+                return arguments[1] + arguments[2] + '\'' + OBFUSCATOR_FN(arguments[3]) + '\'' + arguments[4];
+            }
+            return (arguments[2] === '[' ? '.' : '\'') + OBFUSCATOR_FN(arguments[3]) + (arguments[4] === ']' ? '' : '\'');
         });
         if (typeof deobauto !== 'undefined') { // Slow, only use manually
             deobfunc = deobfunc.replace(/([[.]?)((?:[A-Za-z$_][A-Za-z0-9$_]*)*O_O[0-9]{3,6}0_0[A-Za-z0-9$_]*)(\]?)/g, function() {
