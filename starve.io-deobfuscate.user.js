@@ -1550,6 +1550,10 @@
                                 SPRITE.PLANT_SEED = s;
                                 deobmatch('PLANT_SEED', s);
                             }
+                        } else if (deobfuscate_func(draw_wheat.toString()).orig.match(new RegExp('var [a-z]=this\\.info&16\\?sprite\\[[^[]*\\.' + s + '\\]\\[[^.]*\.time\\]:'))) {
+                                SPRITE.WHEAT_SEED_DRIED = s;
+                                deobmatch('WHEAT_SEED_DRIED', s);
+                            }
                         }
                     }
                 });
