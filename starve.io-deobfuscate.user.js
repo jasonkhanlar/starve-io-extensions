@@ -1542,6 +1542,10 @@
                                 SPRITE.WINTER_HOOD = s;
                                 deobmatch('WINTER_HOOD', s);
                             }
+                        } else if (deobfuscate_func(window[draw_gauges].toString()).orig.match(new RegExp(s + '\\],[a-z],[a-z]\\)\\)}$'))) {
+                                SPRITE.OLD_GAUGES = s;
+                                deobmatch('OLD_GAUGES', s);
+                            }
                         }
                     }
                 });
