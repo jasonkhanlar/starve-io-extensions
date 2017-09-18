@@ -1589,7 +1589,7 @@
                         } else if (deobfuscate_func(draw_wheat.toString()).orig.match(new RegExp('var [a-z]=this\\.info&16\\?sprite\\[[^[]*\\.' + s + '\\]\\[[^.]*\.time\\]:'))) {
                             SPRITE.WHEAT_SEED_DRIED = SPRITE[s];
                             deobmatch('WHEAT_SEED_DRIED', s);
-                        } else if (deobfuscate_func(window[draw_resurrection].toString()).orig.match(new RegExp('rotate1\\)img=sprite\\[[^.]*.' + s + '\\]\\[[^.]*\.time\\];'))) {
+                        } else if (deobfuscate_func(window[draw_resurrection].toString()).orig.match(new RegExp('rotate1\\);img=sprite\\[[^.]*.' + s + '\\]\\[[^.]*\.time\\];'))) {
                             SPRITE.RESURRECTION_ROTATE = SPRITE[s];
                             deobmatch('RESURRECTION_ROTATE', s);
                         } else if (deobfuscate_func(world[move_units].toString()).orig.match(new RegExp('b\.y<[^.]*.' + s + '&&b\.x'))) {
