@@ -1021,6 +1021,9 @@
                             ) {
                                 window.ITEMS = window[s];
                                 deobmatch('ITEMS', s);
+                                // Also fill in for SPRITE.SPECIAL_ITEMS
+                                window.SPECIAL_ITEMS = window['SPECIAL_' + s];
+                                deobmatch('SPECIAL_ITEMS', 'SPECIAL_' + s);
                         } else if (window[s].hasOwnProperty('add_vector') || // v15 1 match
                             window[s].hasOwnProperty('Box') || // v15 1 match
                             window[s].hasOwnProperty('build_vector') || // v15 1 match
