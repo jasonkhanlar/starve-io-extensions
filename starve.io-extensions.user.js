@@ -916,7 +916,10 @@
                 }
             }
             // auto follow
-            if (user.auto_follow.enabled && world[fast_units][user.auto_follow.uid] !== null) {
+            if (user.auto_follow.enabled &&
+                world[fast_units][user.auto_follow.uid] !== null &&
+                world[fast_units][user.auto_follow.uid].hasOwnProperty('player')
+            ) {
                 var c = 0,
                 stalkeeA = world[fast_units][user.auto_follow.uid].angle,
                 stalkeeX = Math.round(world[fast_units][user.auto_follow.uid].x / 40),
