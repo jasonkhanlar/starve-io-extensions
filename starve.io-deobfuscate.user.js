@@ -1535,6 +1535,9 @@
                             } else if (INV_INFO[INV[s]].name === 'Hood') {
                                 SPRITE.HOOD = s;
                                 deobmatch('HOOD', s);
+                            } else if (INV_INFO[INV[s]].name === 'Wheat') {
+                                SPRITE.WHEAT_SEED = s;
+                                deobmatch('WHEAT_SEED', s);
                             } else if (INV_INFO[INV[s]].name === 'Winter hood') {
                                 SPRITE.WINTER_HOOD = s;
                                 deobmatch('WINTER_HOOD', s);
