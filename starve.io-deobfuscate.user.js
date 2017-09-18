@@ -1991,7 +1991,7 @@
                 // simplify init_fake_world
                 .replace(/document\.getElementById\('game_body'\)\.style\.backgroundColor=@.GROUND\[@\.time\]/, 'IFWBGC') // v15 2 matches in all functions
         }
-    }
+    };
 
     function deobmatch(name, deob) {
         if (deoblist.o2d.hasOwnProperty(deob)) {
