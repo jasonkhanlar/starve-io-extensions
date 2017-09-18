@@ -1825,7 +1825,6 @@
                     else if (typeof window[s] === 'string' && window[s].match(/^[0-9a-zA-Z_-]*$/)) { } // ignore
                     else {
                         // Useful for seeing what's missing
-                        // Still missing variables, will add later
                         console.log(['missing',s,window[s]]); // v15 nothing missing
                     }
                 }
