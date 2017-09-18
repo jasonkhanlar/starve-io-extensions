@@ -1545,6 +1545,13 @@
                                 deobmatch('CRAFT_SEED', 'CRAFT_' + s);
                                 SPRITE.INV_SEED = SPRITE['INV_' + s];
                                 deobmatch('INV_SEED', 'INV_' + s);
+                                // Also fill in for SPRITE.CHEST_WHEAT_SEED, SPRITE.CRAFT_WHEAT_SEED, and SPRITE.INV_WHEAT_SEED
+                                SPRITE.CHEST_WHEAT_SEED = SPRITE['CHEST_WHEAT_' + s];
+                                deobmatch('CHEST_WHEAT_SEED', 'CHEST_WHEAT_' + s);
+                                SPRITE.CRAFT_WHEAT_SEED = SPRITE['CRAFT_WHEAT_' + s];
+                                deobmatch('CRAFT_WHEAT_SEED', 'CRAFT_WHEAT_' + s);
+                                SPRITE.INV_WHEAT_SEED = SPRITE['INV_WHEAT_' + s];
+                                deobmatch('INV_WHEAT_SEED', 'INV_WHEAT_' + s);
                             } else if (INV_INFO[INV[s]].name === 'Hood') {
                                 SPRITE.HOOD = SPRITE[s];
                                 deobmatch('HOOD', s);
