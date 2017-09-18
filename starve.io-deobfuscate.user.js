@@ -1530,29 +1530,29 @@
                     } else if (typeof window.SPRITE[s] === 'number') {
                         if (INV.hasOwnProperty(s) && INV_INFO.hasOwnProperty(INV[s])) {
                             if (INV_INFO[INV[s]].name === 'Berries bush') {
-                                SPRITE.SEED = s;
+                                SPRITE.SEED = SPRITE[s];
                                 deobmatch('SEED', s);
                                 // Also fill in for SPRITE.WINDMILL_WHEAT_SEED : Too expensive to identify separately
                                 SPRITE.WINDMILL_WHEAT_SEED = SPRITE['WINDMILL_WHEAT_' + s];
                                 deobmatch('WINDMILL_WHEAT_SEED', 'WINDMILL_WHEAT_' + s);
                             } else if (INV_INFO[INV[s]].name === 'Hood') {
-                                SPRITE.HOOD = s;
+                                SPRITE.HOOD = SPRITE[s];
                                 deobmatch('HOOD', s);
                             } else if (INV_INFO[INV[s]].name === 'Wheat') {
-                                SPRITE.WHEAT_SEED = s;
+                                SPRITE.WHEAT_SEED = SPRITE[s];
                                 deobmatch('WHEAT_SEED', s);
                             } else if (INV_INFO[INV[s]].name === 'Winter hood') {
-                                SPRITE.WINTER_HOOD = s;
+                                SPRITE.WINTER_HOOD = SPRITE[s];
                                 deobmatch('WINTER_HOOD', s);
                             }
                         } else if (deobfuscate_func(window[draw_gauges].toString()).orig.match(new RegExp(s + '\\],[a-z],[a-z]\\)\\)}$'))) {
-                            SPRITE.OLD_GAUGES = s;
+                            SPRITE.OLD_GAUGES = SPRITE[s];
                             deobmatch('OLD_GAUGES', s);
                         } else if (deobfuscate_func(window[draw_seed].toString()).orig.match(new RegExp('\\.' + s + '\\]\\['))) {
-                            SPRITE.PLANT_SEED = s;
+                            SPRITE.PLANT_SEED = SPRITE[s];
                             deobmatch('PLANT_SEED', s);
                         } else if (deobfuscate_func(draw_wheat.toString()).orig.match(new RegExp('var [a-z]=this\\.info&16\\?sprite\\[[^[]*\\.' + s + '\\]\\[[^.]*\.time\\]:'))) {
-                            SPRITE.WHEAT_SEED_DRIED = s;
+                            SPRITE.WHEAT_SEED_DRIED = SPRITE[s];
                             deobmatch('WHEAT_SEED_DRIED', s);
                         }
                     }
