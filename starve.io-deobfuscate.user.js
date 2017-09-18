@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io Deobfuscated Auto
 // @namespace    http://tampermonkey.net/
-// @version      0.15.52
+// @version      0.15.60
 // @description  Auto deobfuscation includes at least bare minimum for scripts to function normally
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -2000,7 +2000,7 @@
 
         window.OBFUSCATOR_FN_INV = function(n) { for (var x=0; x<OBFUSCATED_ARR.length; x++) { if (OBFUSCATOR_FN(x) === n) return '0x'+x.toString(16); } };
 
-        window.deobauto = '0.15.50';
+        window.deobauto = '0.15.60';
     }
 
     window.deobfuscate_func = function(deobfunc) {
