@@ -1582,6 +1582,9 @@
                         } else if (deobfuscate_func(window[draw_resurrection].toString()).orig.match(new RegExp('rotate1\\)img=sprite\\[[^.]*.' + s + '\\]\\[[^.]*\.time\\];'))) {
                             SPRITE.RESURRECTION_ROTATE = SPRITE[s];
                             deobmatch('RESURRECTION_ROTATE', s);
+                        } else if (deobfuscate_func(world[move_units].toString()).orig.match(new RegExp('b\.y<[^.]*.' + s + '&&b\.x'))) {
+                            SPRITE.CAVE_MAX_Y = SPRITE[s];
+                            deobmatch('CAVE_MAX_Y', s);
                         }
                     }
                 });
