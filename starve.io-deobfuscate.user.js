@@ -1585,6 +1585,9 @@
                         } else if (deobfuscate_func(world[move_units].toString()).orig.match(new RegExp('b\.y<[^.]*.' + s + '&&b\.x'))) {
                             SPRITE.CAVE_MAX_Y = SPRITE[s];
                             deobmatch('CAVE_MAX_Y', s);
+                        } else if (deobfuscate_func(world[move_units].toString()).orig.match(new RegExp('b\\.x>[^.]*\\.' + s + '\\?[a-zA-Z]='))) {
+                            SPRITE.CAVE_MIN_X = SPRITE[s];
+                            deobmatch('CAVE_MIN_X', s);
                         }
                     }
                 });
