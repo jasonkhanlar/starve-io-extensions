@@ -1546,6 +1546,10 @@
                                 SPRITE.OLD_GAUGES = s;
                                 deobmatch('OLD_GAUGES', s);
                             }
+                        } else if (deobfuscate_func(window[draw_seed].toString()).orig.match(new RegExp('\\.' + s + '\\]\\['))) {
+                                SPRITE.PLANT_SEED = s;
+                                deobmatch('PLANT_SEED', s);
+                            }
                         }
                     }
                 });
