@@ -1544,6 +1544,15 @@
                             } else if (INV_INFO[INV[s]].name === 'Winter hood') {
                                 SPRITE.WINTER_HOOD = SPRITE[s];
                                 deobmatch('WINTER_HOOD', s);
+                                // Also fill in for SPRITE.CHEST_WINTER_HOOD, SPRITE.CRAFT_WINTER_HOOD, SPRITE.GLOVES_WINTER_HOOD, and SPRITE.INV_WINTER_HOOD
+                                SPRITE.CHEST_WINTER_HOOD = SPRITE['CHEST_' + s];
+                                deobmatch('CHEST_WINTER_HOOD', 'CHEST_' + s);
+                                SPRITE.CRAFT_WINTER_HOOD = SPRITE['CRAFT_' + s];
+                                deobmatch('CRAFT_WINTER_HOOD', 'CRAFT_' + s);
+                                SPRITE.GLOVES_WINTER_HOOD = SPRITE['GLOVES_' + s];
+                                deobmatch('GLOVES_WINTER_HOOD', 'GLOVES_' + s);
+                                SPRITE.INV_WINTER_HOOD = SPRITE['INV_' + s];
+                                deobmatch('INV_WINTER_HOOD', 'INV_' + s);
                             }
                         } else if (deobfuscate_func(window[draw_gauges].toString()).orig.match(new RegExp(s + '\\],[a-z],[a-z]\\)\\)}$'))) {
                             SPRITE.OLD_GAUGES = SPRITE[s];
