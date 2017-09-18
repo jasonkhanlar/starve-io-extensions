@@ -999,6 +999,14 @@
             }
         };
 
+        // Uncomment this to run multiple instances of Starve.io in same browser environment (separate tabs/windows)
+        //window.old_client_handshake = window[client][handshake];
+        //window[client][handshake] = function(c) {
+        //    old_client_handshake.apply(this, arguments);
+        //    Cookies.remove('starve_token');
+        //    Cookies.remove('starve_token_id');
+        //};
+
         window.hook_ui_run_ext = window.ui.run;
         window.ui.run = function() {
             hook_ui_run_ext.apply(this);
