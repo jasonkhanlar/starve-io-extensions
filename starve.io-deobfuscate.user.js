@@ -1,5 +1,4 @@
 // ==UserScript==
-// ==UserScript==
 // @name         Starve.io Deobfuscated Auto
 // @namespace    http://tampermonkey.net/
 // @version      0.15.52
@@ -1138,6 +1137,8 @@
                         if (SPRITE.hasOwnProperty(s)) { // Validate with SPRITE.COUNTER, does SPRITE[s] exist?
                             window.COUNTER = s;
                             deobmatch('COUNTER', s);
+                            // Also fill in for SPRITE.COUNTER
+                            SPRITE.COUNTER = SPRITE[s];
                         }
                     }
                 }
