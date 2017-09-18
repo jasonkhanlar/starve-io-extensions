@@ -378,7 +378,12 @@
         var msg = 'Auto Attack: ' + (user.auto_attack.enabled ? 'ON' : 'OFF');
         if (!user.alert.text) { user.alert.text = msg; }
         else if (user.alert.text.match(/Auto Attack:/)) { user.alert.text = msg; user.alert.timeout.v = 1; user.alert.label = null; }
-        else { user.alert.list.push(msg); }
+        else {
+            // If alert message list already contains an entry, replace it
+            var i = user.alert.list.findIndex(function(e) { return e.match(/Auto Attack: O(N|FF)/); });
+            if (i === -1) user.alert.list.push(msg);
+            else user.alert.list[i] = msg;
+        }
     }
 
     function draw_ext_auto_book() {
