@@ -1588,6 +1588,9 @@
                         } else if (deobfuscate_func(world[move_units].toString()).orig.match(new RegExp('b\\.x>[^.]*\\.' + s + '\\?[a-zA-Z]='))) {
                             SPRITE.CAVE_MIN_X = SPRITE[s];
                             deobmatch('CAVE_MIN_X', s);
+                        } else if (deobfuscate_func(world[move_units].toString()).orig.match(new RegExp(s + '\\|\\|MAP\\.tiles'))) {
+                            SPRITE.BEACH_MIN_X = SPRITE[s];
+                            deobmatch('BEACH_MIN_X', s);
                         }
                     }
                 });
