@@ -1532,6 +1532,9 @@
                             if (INV_INFO[INV[s]].name === 'Berries bush') {
                                 SPRITE.SEED = s;
                                 deobmatch('SEED', s);
+                                // Also fill in for SPRITE.WINDMILL_WHEAT_SEED : Too expensive to identify separately
+                                SPRITE.WINDMILL_WHEAT_SEED = SPRITE['WINDMILL_WHEAT_' + s];
+                                deobmatch('WINDMILL_WHEAT_SEED', 'WINDMILL_WHEAT_' + s);
                             } else if (INV_INFO[INV[s]].name === 'Hood') {
                                 SPRITE.HOOD = s;
                                 deobmatch('HOOD', s);
