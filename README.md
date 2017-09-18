@@ -82,3 +82,8 @@
 # AS DISCOVERED AND USED IN LIVESTREAMS
 
 [どら どら](https://www.youtube.com/channel/UCQvBqtOI4Q8aciNL6l-9Txw/videos)
+
+## SCREENSHOTS 
+
+[![Starve.io Extensions Help Menu](https://i.imgur.com/qLl7foD.png "Starve.io Extensions Help Menu")](https://i.imgur.com/qLl7foD.png)
+[![Starve.io Extensions GUI Help Menu](https://i.imgur.com/QgBzHzS.png "Starve.io Extensions GUI Help Menu")](https://i.imgur.com/QgBzHzS.png)
