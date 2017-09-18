@@ -1529,7 +1529,10 @@
                         }
                     } else if (typeof window.SPRITE[s] === 'number') {
                         if (INV.hasOwnProperty(s) && INV_INFO.hasOwnProperty(INV[s])) {
-                            if (INV_INFO[INV[s]].name === 'Winter hood') {
+                            if (INV_INFO[INV[s]].name === 'Hood') {
+                                SPRITE.HOOD = s;
+                                deobmatch('HOOD', s);
+                            } else if (INV_INFO[INV[s]].name === 'Winter hood') {
                                 SPRITE.WINTER_HOOD = s;
                                 deobmatch('WINTER_HOOD', s);
                             }
