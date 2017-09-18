@@ -375,7 +375,7 @@
     ext_update_settings_menu();
 
     function alert_ext_auto_attack() {
-        var msg = ' Auto Attack: ' + (user.auto_attack.enabled ? 'ON' : 'OFF');
+        var msg = 'Auto Attack: ' + (user.auto_attack.enabled ? 'ON' : 'OFF');
         if (!user.alert.text) { user.alert.text = msg; }
         else if (user.alert.text.match(/Auto Attack:/)) { user.alert.text = msg; user.alert.timeout.v = 1; user.alert.label = null; }
         else { user.alert.list.push(msg); }
