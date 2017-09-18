@@ -1543,17 +1543,14 @@
                                 deobmatch('WINTER_HOOD', s);
                             }
                         } else if (deobfuscate_func(window[draw_gauges].toString()).orig.match(new RegExp(s + '\\],[a-z],[a-z]\\)\\)}$'))) {
-                                SPRITE.OLD_GAUGES = s;
-                                deobmatch('OLD_GAUGES', s);
-                            }
+                            SPRITE.OLD_GAUGES = s;
+                            deobmatch('OLD_GAUGES', s);
                         } else if (deobfuscate_func(window[draw_seed].toString()).orig.match(new RegExp('\\.' + s + '\\]\\['))) {
-                                SPRITE.PLANT_SEED = s;
-                                deobmatch('PLANT_SEED', s);
-                            }
+                            SPRITE.PLANT_SEED = s;
+                            deobmatch('PLANT_SEED', s);
                         } else if (deobfuscate_func(draw_wheat.toString()).orig.match(new RegExp('var [a-z]=this\\.info&16\\?sprite\\[[^[]*\\.' + s + '\\]\\[[^.]*\.time\\]:'))) {
-                                SPRITE.WHEAT_SEED_DRIED = s;
-                                deobmatch('WHEAT_SEED_DRIED', s);
-                            }
+                            SPRITE.WHEAT_SEED_DRIED = s;
+                            deobmatch('WHEAT_SEED_DRIED', s);
                         }
                     }
                 });
