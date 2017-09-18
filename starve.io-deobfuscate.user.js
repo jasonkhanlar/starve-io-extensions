@@ -1893,7 +1893,7 @@
 
             Object.keys(SPRITE).forEach(function(s) {
                 if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
-                    //console.log(['missing in SPRITE',s,SPRITE[s]]);
+                    console.log(['missing in SPRITE',s,SPRITE[s]]); // v15 nothing missing
                 }
             });
 
