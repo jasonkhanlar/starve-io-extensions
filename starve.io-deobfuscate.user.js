@@ -1538,6 +1538,15 @@
                             } else if (INV_INFO[INV[s]].name === 'Hood') {
                                 SPRITE.HOOD = SPRITE[s];
                                 deobmatch('HOOD', s);
+                                // Also fill in for SPRITE.CHEST_HOOD, SPRITE.CRAFT_HOOD, SPRITE.GLOVES_HOOD, and SPRITE.INV_HOOD
+                                SPRITE.CHEST_HOOD = SPRITE['CHEST_' + s];
+                                deobmatch('CHEST_WINTER_HOOD', 'CHEST_' + s);
+                                SPRITE.CRAFT_HOOD = SPRITE['CRAFT_' + s];
+                                deobmatch('CRAFT_HOOD', 'CRAFT_' + s);
+                                SPRITE.GLOVES_HOOD = SPRITE['GLOVES_' + s];
+                                deobmatch('GLOVES_HOOD', 'GLOVES_' + s);
+                                SPRITE.INV_HOOD = SPRITE['INV_' + s];
+                                deobmatch('INV_HOOD', 'INV_' + s);
                             } else if (INV_INFO[INV[s]].name === 'Wheat') {
                                 SPRITE.WHEAT_SEED = SPRITE[s];
                                 deobmatch('WHEAT_SEED', s);
