@@ -47,6 +47,8 @@
         if (typeof deobauto === 'undefined') {
             // 'Starve.io Deobfuscated' is required as a dependency
             setTimeout(checkDependencies, 50);
+        } else if (deobauto === true || deobauto < required_deobfuscate_version) {
+            alert('deobfuscate userscript v' + required_deobfuscate_version + ' or higher is required.');
         } else {
             // Dependency satisfied
             main();
