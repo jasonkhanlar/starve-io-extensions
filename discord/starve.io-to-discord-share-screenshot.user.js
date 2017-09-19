@@ -56,7 +56,7 @@
 
     function main() {
         var server_name = '', server_url = '', server_url_ip = '', server_url_port = 0,
-        webhook = document.cookie.replace(/(?:(?:^|.*;\s*)dwhss\s*\=\s*([^;]*).*$)|^.*$/, '$1');
+        webhook = document.cookie.replace(/(?:(?:^|.*;\s*)dwhshsc\s*\=\s*([^;]*).*$)|^.*$/, '$1');
 
         if (webhook === '') {
             var webhook_prompt = 'Starve.io to Discord : Share screenshot\n\nInput Discord Webhook URL here\n\nExample: "https://discordapp.com/api/webhooks/012345678901234567/A-aBbC0cDdE1eF-fGg2HhIi3JjKkL4lMm_N5nOoPp6Qq_Rr7SsTtU8uVv-W9wXxY_yZz"';
@@ -69,7 +69,7 @@
                     // Expire every 24 hours
                     var date = new Date();
                     date.setTime(date.getTime()+(24*60*60*1000));
-                    document.cookie = 'dwhss='+webhook+'; expires='+date.toGMTString();
+                    document.cookie = 'dwhshsc='+webhook+'; expires='+date.toGMTString();
                 }
             }
         }
