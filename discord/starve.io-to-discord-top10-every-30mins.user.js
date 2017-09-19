@@ -46,7 +46,6 @@
                     // Expire every 24 hours
                     var date = new Date();
                     date.setTime(date.getTime()+(24*60*60*1000));
-                    webhook += '/slack';
                     document.cookie = 'dwht10e30m='+webhook+'; expires='+date.toGMTString();
                 }
             }
@@ -90,7 +89,7 @@
                 }
                 output = '**Top 10 Scores @ ' + server_name + '**\n```\n' + scores_text.trimRight() + '```';
 
-                post(webhook, { 'username': world[fast_units][user.uid].player.nickname, 'text': output });
+                post(webhook, { 'username': world[fast_units][user.uid].player.nickname, 'content': output });
             }
         };
     }
