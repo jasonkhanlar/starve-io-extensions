@@ -29,8 +29,7 @@
         };
     }
     function post_mp(url, data) {
-        //var boundary = 'Starve.io is excellent!',
-        var boundary = 'ohaiimaboundary',
+        var boundary = 'Starve.io is excellent!',
         xhr_mp = new XMLHttpRequest();
         xhr_mp.open('POST', url, true);
         xhr_mp.setRequestHeader('Content-type', 'multipart/form-data; boundary=' + boundary + '; filename="canvas.png"');
