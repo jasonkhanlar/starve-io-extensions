@@ -1839,7 +1839,7 @@
             // Then check if anything was missed
 
             Object.keys(unsafeWindow).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     if (unsafeWindow[s] === unsafeWindow) {} // ignore
                     else if (unsafeWindow[s] === 10000) {} // ignore
                     else if (typeof unsafeWindow[s] === 'string' && unsafeWindow[s].match(/^[0-9a-zA-Z_-]*$/)) { } // ignore
@@ -1851,85 +1851,85 @@
             });
 
             Object.keys(CLIENT).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in CLIENT',s,CLIENT[s]]);
                 }
             });
 
             Object.keys(unsafeWindow[client]).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     console.log(['missing in client',s,unsafeWindow[client][s]]); // v15 nothing missing
                 }
             });
 
             Object.keys(CRAFT).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in CRAFT',s,CRAFT[s]]);
                 }
             });
 
             Object.keys(game).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in game',s,game[s]]);
                 }
             });
 
             Object.keys(INV).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in INV',s,INV[s]]);
                 }
             });
 
             Object.keys(ITEMS).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in ITEMS',s,ITEMS[s]]);
                 }
             });
 
             Object.keys(keyboard).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in keyboard',s,keyboard[s]]);
                 }
             });
 
             Object.keys(loader).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     console.log(['missing in loader',s,loader[s]]); // v15 nothing missing
                 }
             });
 
             Object.keys(RECIPE_CATEGORIES).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in RECIPE_CATEGORIES',s,RECIPE_CATEGORIES[s]]);
                 }
             });
 
             Object.keys(scoreboard).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     console.log(['missing in scoreboard',s,scoreboard[s]]); // v15 nothing missing
                 }
             });
 
             Object.keys(SPRITE).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     console.log(['missing in SPRITE',s,SPRITE[s]]); // v15 nothing missing
                 }
             });
 
             Object.keys(STATE).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     console.log(['missing in STATE',s,STATE[s]]); // v15 nothing missing
                 }
             });
 
             Object.keys(ui).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     console.log(['missing in ui',s,ui[s]]); // v15 nothing missing
                 }
             });
 
             Object.keys(user).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     if (user[s].hasOwnProperty('amount_bread') ||
                         user[s].hasOwnProperty('amount_flour') ||
                         user[s].hasOwnProperty('amount_wood') ||
@@ -1946,7 +1946,7 @@
 
             Object.keys(user.gauges).forEach(function(s) {
                 if (typeof user.gauges[s] === 'object') {
-                    if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                    if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                         if (deobfuscate_func(user.gauges.update.toString()).orig.indexOf('this.warn_hunger.update();this.' + s + '.update();') > -1) {
                             unsafeWindow.warn_thirst = s;
                             deobmatch('warn_thirst', s);
@@ -1967,25 +1967,25 @@
             });
 
             Object.keys(user.ldb).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in user.ldb',s,user.ldb[s]]);
                 }
             });
 
             Object.keys(Utils).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     console.log(['missing in Utils',s,Utils[s]]); // v15 nothing missing
                 }
             });
 
             Object.keys(WORLD).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in WORLD',s,WORLD[s]]);
                 }
             });
 
             Object.keys(world).forEach(function(s) {
-                if (s.match(/.*O_O[0-9]{3,6}0_0.*/) && !deoblist.d2o.hasOwnProperty(s)) {
+                if (s.match(/.*ceilio[0-9]{3,6}.*/) && !deoblist.d2o.hasOwnProperty(s)) {
                     //console.log(['missing in world',s,world[s]]);
                 }
             });
@@ -2041,7 +2041,7 @@
             return (arguments[2] === '[' ? '.' : '\'') + OBFUSCATOR_FN(arguments[3]) + (arguments[4] === ']' ? '' : '\'');
         });
         if (typeof deobauto !== 'undefined') { // Slow, only use manually
-            deobfunc = deobfunc.replace(/([[.]?)((?:[A-Za-z$_][A-Za-z0-9$_]*)*O_O[0-9]{3,6}0_0[A-Za-z0-9$_]*)(\]?)/g, function() {
+            deobfunc = deobfunc.replace(/([[.]?)((?:[A-Za-z$_][A-Za-z0-9$_]*)*ceilio[0-9]{3,6}[A-Za-z0-9$_]*)(\]?)/g, function() {
                 if (unsafeWindow.hasOwnProperty(arguments[2]) && typeof unsafeWindow[arguments[2]] === 'string') {
                     return '.' + unsafeWindow[arguments[2]];
                 } else if (unsafeWindow.hasOwnProperty(arguments[2]) && unsafeWindow[arguments[2]] === unsafeWindow) {
@@ -2062,6 +2062,7 @@
                 .replace(/[A-Za-z0-9_]*yolo[0-9]{3,}[A-Za-z0-9_]*/g, '@')
                 .replace(/[A-Za-z0-9_]*Lapa[0-9]{3,}Mauve[A-Za-z0-9_]*/g, '@')
                 .replace(/[A-Za-z0-9_]*O_O[0-9]{3,}0_0[A-Za-z0-9_]*/g, '@')
+                .replace(/[A-Za-z0-9_]*ceilio[0-9]{3,}[A-Za-z0-9_]*/g, '@')
                 .replace(/[a-z@]\.restore\(\)/g, 'RESTORE') // v15 104 matches in all functions
                 .replace(/[a-z@]\.rotate\([a-z]*.angle\)/g, 'ROTATE') // v15 26 matches in all functions
                 .replace(/[a-z@]\.save\(\)/g, 'SAVE') // v15 104 matches in all functions
