@@ -1365,6 +1365,9 @@
                                 } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[8,[a-z],[a-z],[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
                                     unsafeWindow.give_item = s;
                                     deobmatch('give_item', s);
+                                } else if (deobfunc.abbr.match(/game\.market\.open&&game\.market\.update_breads/)) {
+                                    unsafeWindow.decrease_item2 = s;
+                                    deobmatch('decrease_item2', s);
                                 }
                             } else if (unsafeWindow[client][s].length === 4) {
                             } else if (unsafeWindow[client][s].length === 5) {
