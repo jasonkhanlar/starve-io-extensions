@@ -1345,7 +1345,7 @@
                                 } else if (deobfunc.abbr.match(/{for\(var [a-z]=new Uint16Array\([a-z]\),[a-z]=\([a-z]\.length-2\)\/4,[a-z]=0;/)) {
                                     unsafeWindow.hitten_other = s;
                                     deobmatch('hitten_other', s);
-                                } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[22,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
+                                } else if (deobfunc.abbr.match(/\.stringify\(\[22,/)) {
                                     unsafeWindow.resurrection2 = s;
                                     deobmatch('resurrection2', s);
                                 } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[12,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
