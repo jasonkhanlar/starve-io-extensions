@@ -27,14 +27,14 @@
             var script = document.createElement('script');
             unsafeWindow.document.body.appendChild(script);
             script.text = this.responseText.replace(/[\r\n]/g, ' ').replace(/ +/g, ' ').replace(/^\(function \(\) {(.*)}\)\(\)$/g, '$1');
+            // Restore console.{debug,error,info,log,trace,warn}
+            unsafeWindow.console = console;
         }
     };
     // Add ? to avoid cancelling the HTTP request again
     xhr.open('GET', 'http://starve.io/js/client.min.js?', true);
     xhr.send();
 
-    // Restore console.{debug,error,info,log,trace,warn}
-    unsafeWindow.console = console;
     unsafeWindow.deoblist = { o2d: [], d2o: [] };
 
     // Performance tests
