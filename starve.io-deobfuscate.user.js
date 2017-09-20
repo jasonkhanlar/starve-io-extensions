@@ -1333,7 +1333,7 @@
                                 } else if (deobfunc.abbr.match(/function ?\([a-z]\){___adsvid\+\+;clearTimeout\(this\.@\);/)) {
                                     unsafeWindow.handshake = s;
                                     deobmatch('handshake', s);
-                                } else if (deobfunc.abbr.match(/\.stringify\(\[27,[a-z]\]\)\)/)) {
+                                } else if (deobfunc.abbr.match(/\.stringify\(\[27,/)) {
                                     // What is this for?
                                     unsafeWindow.unknown = s;
                                     deobmatch('unknown', s);
