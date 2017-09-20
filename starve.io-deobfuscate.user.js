@@ -1214,7 +1214,7 @@
                                 } else if (deobfunc.abbr.match(/\.stringify\(\[31\]\)\)}$/)) {
                                     unsafeWindow.cancel_crafting = s;
                                     deobmatch('cancel_crafting', s);
-                                } else if (deobfunc.abbr.match(/\.stringify\(\[5,user\.craft\.preview\]\)\)}$/)) {
+                                } else if (deobfunc.abbr.match(/\.stringify\(\[10,user\.craft\.preview/)) {
                                     unsafeWindow.send_build = s;
                                     deobmatch('send_build', s);
                                 } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[14\]\)\)}/)) {
