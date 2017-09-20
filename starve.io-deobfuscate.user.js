@@ -1240,7 +1240,7 @@
                                     deobmatch('connect_timeout', s);
                                 }
                             } else if (unsafeWindow[client][s].length === 1) {
-                                if (deobfunc.abbr.match(/user\.inv\.max==user\.inv\.can_select\.length/)) {
+                                if (deobfunc.abbr.match(/\.stringify\(\[7,/)) {
                                     unsafeWindow.select_craft = s;
                                     deobmatch('select_craft', s);
                                 } else if (deobfunc.abbr.match(/^function ?\([a-z]\){@\.@\[user\.uid\]\.text=[a-z];this\.@\[@\]\(@\[@\]\.stringify\(\[0,[a-z]\]\)\)}$/)) {
