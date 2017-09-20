@@ -2063,10 +2063,10 @@
                 .replace(/[A-Za-z0-9_]*Lapa[0-9]{3,}Mauve[A-Za-z0-9_]*/g, '@')
                 .replace(/[A-Za-z0-9_]*O_O[0-9]{3,}0_0[A-Za-z0-9_]*/g, '@')
                 .replace(/[A-Za-z0-9_]*ceilio[0-9]{3,}[A-Za-z0-9_]*/g, '@')
-                .replace(/[a-z@]\.restore\(\)/g, 'RESTORE') // v15 104 matches in all functions
-                .replace(/[a-z@]\.rotate\([a-z]*.angle\)/g, 'ROTATE') // v15 26 matches in all functions
-                .replace(/[a-z@]\.save\(\)/g, 'SAVE') // v15 104 matches in all functions
-                .replace(/@.translate\(user\.cam\.x\+this\.x,user\.cam.y\+this\.y\)/g, 'TUPT') // v15 21 matches in all functions
+                .replace(/(ctx|[a-z@])\.restore\(\)/g, 'RESTORE') // v15 104 matches in all functions
+                .replace(/(ctx|[a-z@])\.rotate\([a-z]*.angle\)/g, 'ROTATE') // v15 26 matches in all functions
+                .replace(/(ctx|[a-z@])\.save\(\)/g, 'SAVE') // v15 104 matches in all functions
+                .replace(/(ctx|@).translate\(user\.cam\.x\+this\.x,user\.cam.y\+this\.y\)/g, 'TUPT') // v15 21 matches in all functions
                 // simplify init_fake_world
                 .replace(/document\.getElementById\('game_body'\)\.style\.backgroundColor=@.GROUND\[@\.time\]/, 'IFWBGC') // v15 2 matches in all functions
         }
