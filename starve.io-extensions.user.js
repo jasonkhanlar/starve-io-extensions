@@ -944,7 +944,7 @@
                     world[fast_units][user.uid].angle = ang;
                     world[fast_units][user.uid].nangle = ang;
                     window[client][send_angle](ang);
-
+                }
                 if (user.auto_follow.prevm !== c) {
                     user.auto_follow.prevm = c;
                     window[client][send_move](c);
