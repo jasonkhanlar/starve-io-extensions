@@ -79,7 +79,7 @@
                             if (unsafeWindow[s].toString().match(/new XMLHttpRequest/)) { // v15 1 match
                                 unsafeWindow.Client = s;
                                 deobmatch('Client', s);
-                            } else if (deobfunc.abbr === 'function @(){SAVE;TUPT;this.text&&(@.globalAlpha=this.chat.o?1-this.chat.v:1,this.label||(this.label=create_message(scale,this.text)),@.drawImage(this.label,-this.label.width/2,-this.label.height/2-110*scale),this.chat.update()&&0==this.chat.o&&(this.text="",this.label=null));RESTORE}') {
+                            } else if (deobfunc.abbr.match(/SAVE;TUPT;this\.text/)) {
                                 unsafeWindow.draw_chat = s;
                                 deobmatch('draw_chat', s);
                             } else if (deobfunc.abbr.match(/[a-z]=sprite\[@\.DRAGON\]\[@\.time\];/)) {
