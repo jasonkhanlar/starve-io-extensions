@@ -1288,7 +1288,7 @@
                                 } else if (deobfunc.abbr.match(/new Uint16Array\([a-z]\);user\.cam\.change/)) {
                                     unsafeWindow.recover_focus = s;
                                     deobmatch('recover_focus', s);
-                                } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[23,[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
+                                } else if (deobfunc.abbr.match(/\.stringify\(\[23,/)) {
                                     unsafeWindow.take_flour = s;
                                     deobmatch('take_flour', s);
                                 } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[9,[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
