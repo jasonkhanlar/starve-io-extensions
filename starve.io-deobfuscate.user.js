@@ -26,7 +26,7 @@
         if (xhr.status === 200 && xhr.readyState === 4) {
             var script = document.createElement('script');
             unsafeWindow.document.body.appendChild(script);
-            script.text = this.responseText.replace(/[\r\n]/g, ' ').replace(/ +/g, ' ').replace(/^\(function \(\) {(.*)}\)\(\)$/g, '$1');
+            script.text = this.responseText.trim().replace(/[\r\n]/g, ' ').replace(/ +/g, ' ').replace(/^\(function \(\) {(.*)}\)\(\)$/g, '$1');
             // Restore console.{debug,error,info,log,trace,warn}
             unsafeWindow.console = console;
         }
