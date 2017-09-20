@@ -1,17 +1,38 @@
 // ==UserScript==
 // @name         Starve.io Deobfuscated Auto
 // @namespace    http://tampermonkey.net/
-// @version      0.15.60
+// @version      0.16.0
 // @description  Auto deobfuscation includes at least bare minimum for scripts to function normally
 // @author       Jason Khanlar
 // @match        http://starve.io/
-// @grant        none
+// @grant        GM_webRequest
+// @webRequest   [{"selector":"http://starve.io/js/client.min.js","action":"cancel"}]
+// @run-at       document-start
 // ==/UserScript==
+
+// Tampermonkey Beta v4.5.5553 or higher required!
+// see https://github.com/Tampermonkey/tampermonkey/issues/397
+// also see https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Intercept_HTTP_requests
 
 // Compatible with version 15 of Starve.io client
 
 (function() {
     'use strict';
+
+    // Since HTTP request to http://starve.io/js/client.min.js was cancelled, download now and strip IIFE header and footer
+    // see http://benalman.com/news/2010/11/immediately-invoked-function-expression/
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.status === 200 && xhr.readyState === 4) {
+            var script = document.createElement('script');
+            document.body.appendChild(script);
+            script.text = this.responseText.replace(/[\r\n]/g, ' ').replace(/ +/g, ' ').replace(/^\(function \(\) {(.*)}\)\(\)$/g, '$1');
+            console.log([script.text]);
+        }
+    };
+    // Add ? to avoid cancelling the HTTP request again
+    xhr.open('GET', 'http://starve.io/js/client.min.js?', true);
+    xhr.send();
 
     // Restore console.{debug,error,info,log,trace,warn}
     window.console = console;
@@ -1973,6 +1994,15 @@
     }
 
     function checkDependencies() {
+        if (typeof GM_info !== 'undefined') {
+            if (GM_info.hasOwnProperty('scriptHandler') && GM_info.scriptHandler === 'Tampermonkey') {
+                if (GM_info.version < '4.5.5553') {
+                    alert('Tampermonkey Beta v4.5.5553 or higher is required.');
+                    return false;
+                }
+            }
+        }
+
         if (typeof ui !== 'undefined' && typeof old_ui_run === 'undefined') {
             window.old_ui_run = window.ui.run;
             window.ui.run = function() {
