@@ -75,6 +75,8 @@
 
 # VIDEOS
 
+2017.09.19 [Starve.io new extensions (Auto book) (Auto mine)](https://youtu.be/Il-p3x1jK1w) by [zook plays](https://www.youtube.com/channel/UCvO2QpPjGkwR54KB26Uv0_A)
+
 2017.09.01 [Starve.io Extensions code history](https://youtu.be/Dr7uVPEZCAw) by [Jason Khanlar](https://www.youtube.com/channel/UC8RYoBv1UQ-AwypZwq7BDOA)
 
 2017.08.15 [Starve.io AUTO-COOKER + SCREEN CHAT HISTORY EXTENSION](https://youtu.be/LveuRqidKhY) by [AskingTheNeos](https://www.youtube.com/channel/UCDjgEaRWYbqowT8E3U9R_7Q)
