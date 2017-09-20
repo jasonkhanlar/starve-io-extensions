@@ -213,7 +213,7 @@
                             } else if (deobfunc.abbr.match(/2147483648/)) {
                                 unsafeWindow.randS32 = s;
                                 deobmatch('randS32', s);
-                            } else if (deobfunc.abbr.match(/"Leaderboard"/)) { // v15 1 match
+                            } else if (deobfunc.abbr.match(/Leaderboard/)) { // v15 1 match
                                 unsafeWindow.create_leaderboard_mobile = s;
                                 deobmatch('create_leaderboard_mobile', s);
                             } else if (deobfunc.abbr.match(/[a-z]\.width=335\*[a-z];[a-z]\.height=120\*[a-z];/)) { // v15 1 match
