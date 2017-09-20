@@ -1211,7 +1211,7 @@
                                 } else if (deobfunc.abbr.match(/^function ?\(\){user\.craft\.restart\(\)}$/)) {
                                     unsafeWindow.cancel_craft = s;
                                     deobmatch('cancel_craft', s);
-                                } else if (deobfunc.abbr.match(/\.stringify\(\[10\]\)\)}$/)) {
+                                } else if (deobfunc.abbr.match(/\.stringify\(\[31\]\)\)}$/)) {
                                     unsafeWindow.cancel_crafting = s;
                                     deobmatch('cancel_crafting', s);
                                 } else if (deobfunc.abbr.match(/\.stringify\(\[5,user\.craft\.preview\]\)\)}$/)) {
