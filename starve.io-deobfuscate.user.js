@@ -346,35 +346,35 @@
                     if (unsafeWindow[s] === 0) {
                         if (typeof unsafeWindow['create_leaderboard_'+s] === 'function' || // v15 1 match
                             typeof unsafeWindow['create_gauges_'+s] === 'function' ||
-                            (typeof unsafeWindow.create_images === 'function' && unsafeWindow.create_images.toString().indexOf(s + '?(sprite') > -1) ||
-                            (typeof unsafeWindow.create_images === 'function' && unsafeWindow.create_images.toString().indexOf(s + '?CTI(') > -1) ||
+                            (typeof unsafeWindow.create_images === 'function' && deobfuscate_func(unsafeWindow.create_images.toString()).orig.indexOf(s + '?(sprite') > -1) ||
+                            (typeof unsafeWindow.create_images === 'function' && deobfuscate_func(unsafeWindow.create_images.toString()).orig.indexOf(s + '?CTI(') > -1) ||
                             OBFUSCATED_ARR.indexOf(s+'AutoEnable') > -1 || // v15 1 match
                             OBFUSCATED_ARR.indexOf('_'+s+'Enabled') > -1 || // v15 1 match
                             OBFUSCATED_ARR.indexOf('_'+s+'Unloaded') > -1 // v15 1 match
                             ) {
                                 unsafeWindow.mobile = s;
                                 deobmatch('mobile', s);
-                        } else if ((typeof unsafeWindow.gui_create_button === 'function' && unsafeWindow.gui_create_button.toString().indexOf('==' + s + '&&') > -1) || // v15 1 match
-                            (typeof unsafeWindow.Game === 'function' && unsafeWindow.Game.toString().indexOf(',' + s + ')&&game') > -1) // v15 1 match
+                        } else if ((typeof unsafeWindow.gui_create_button === 'function' && deobfuscate_func(unsafeWindow.gui_create_button.toString()).orig.indexOf('==' + s + '&&') > -1) || // v15 1 match
+                            (typeof unsafeWindow.Game === 'function' && deobfuscate_func(unsafeWindow.Game.toString()).orig.indexOf(',' + s + ')&&game') > -1) // v15 1 match
                             ) {
                             unsafeWindow.MOUSE_MOVE = s;
                             deobmatch('MOUSE_MOVE', s);
                         }
                     } else if (unsafeWindow[s] === 1) {
-                        if ((typeof unsafeWindow.Game === 'function' && unsafeWindow.Game.toString().indexOf(',' + s + ')));') > -1) || // v15 1 match
-                            (typeof unsafeWindow.Game === 'function' && unsafeWindow.Game.toString().indexOf(',mouse.pos,' + s + '));user') > -1) || // v15 1 match
-                            (typeof unsafeWindow.Game === 'function' && unsafeWindow.Game.toString().indexOf(',' + s + '));if(-1!=') > -1) || // v15 1 match
-                            (typeof unsafeWindow.Game === 'function' && unsafeWindow.Game.toString().indexOf(',' + s + '))var ') > -1) // v15 1 match
+                        if ((typeof unsafeWindow.Game === 'function' && deobfuscate_func(unsafeWindow.Game.toString()).orig.indexOf(',' + s + ')));') > -1) || // v15 1 match
+                            (typeof unsafeWindow.Game === 'function' && deobfuscate_func(unsafeWindow.Game.toString()).orig.indexOf(',mouse.pos,' + s + '));user') > -1) || // v15 1 match
+                            (typeof unsafeWindow.Game === 'function' && deobfuscate_func(unsafeWindow.Game.toString()).orig.indexOf(',' + s + '));if(-1!=') > -1) || // v15 1 match
+                            (typeof unsafeWindow.Game === 'function' && deobfuscate_func(unsafeWindow.Game.toString()).orig.indexOf(',' + s + '))var ') > -1) // v15 1 match
                         ) {
                             unsafeWindow.MOUSE_DOWN = s;
                             deobmatch('MOUSE_DOWN', s);
                         }
                     } else if (unsafeWindow[s] === 2) {
-                        if ((typeof unsafeWindow.Game === 'function' && unsafeWindow.Game.toString().indexOf(',' + s + ')?1!=') > -1) || // v15 1 match
-                            (typeof unsafeWindow.Game === 'function' && unsafeWindow.Game.toString().indexOf(',mouse.pos,' + s + ')&&0>user') > -1) || // v15 1 match
-                            (typeof unsafeWindow.Game === 'function' && unsafeWindow.Game.toString().indexOf(',' + s + ')&&(ret=') > -1) || // v15 1 match
-                            (typeof unsafeWindow.Game === 'function' && unsafeWindow.Game.toString().indexOf(',' + s + ')&&(audio') > -1) || // v15 1 match
-                            (typeof unsafeWindow.Game === 'function' && unsafeWindow.Game.toString().indexOf('.can,mouse.pos,' + s + ')&& ') > -1) // v15 1 match
+                        if ((typeof unsafeWindow.Game === 'function' && deobfuscate_func(unsafeWindow.Game.toString()).orig.indexOf(',' + s + ')?1!=') > -1) || // v15 1 match
+                            (typeof unsafeWindow.Game === 'function' && deobfuscate_func(unsafeWindow.Game.toString()).orig.indexOf(',mouse.pos,' + s + ')&&0>user') > -1) || // v15 1 match
+                            (typeof unsafeWindow.Game === 'function' && deobfuscate_func(unsafeWindow.Game.toString()).orig.indexOf(',' + s + ')&&(ret=') > -1) || // v15 1 match
+                            (typeof unsafeWindow.Game === 'function' && deobfuscate_func(unsafeWindow.Game.toString()).orig.indexOf(',' + s + ')&&(audio') > -1) || // v15 1 match
+                            (typeof unsafeWindow.Game === 'function' && deobfuscate_func(unsafeWindow.Game.toString()).orig.indexOf('.can,mouse.pos,' + s + ')&& ') > -1) // v15 1 match
                             ) {
                                 unsafeWindow.MOUSE_UP = s;
                                 deobmatch('MOUSE_UP', s);
@@ -382,8 +382,8 @@
                     }
                     // variable value
                     if (typeof unsafeWindow.draw === 'function') {
-                        if (unsafeWindow.draw.toString().indexOf('-' + s + ')/1E3;') > -1 || // v15 1 match
-                            unsafeWindow.draw.toString().indexOf(')/1E3;' + s + '=') > -1 // v15 1 match
+                        if (deobfuscate_func(unsafeWindow.draw.toString()).orig.indexOf('-' + s + ')/1E3;') > -1 || // v15 1 match
+                            deobfuscate_func(unsafeWindow.draw.toString()).orig.indexOf(')/1E3;' + s + '=') > -1 // v15 1 match
                             ) {
                                 unsafeWindow.old_timestamp = s;
                                 deobmatch('old_timestamp', s);
@@ -1130,7 +1130,7 @@
                             ) {
                                 unsafeWindow.CONST_AUDIO = unsafeWindow[s];
                                 deobmatch('CONST_AUDIO', s);
-                        } else if (typeof unsafeWindow.Game === 'function' && unsafeWindow.Game.toString().indexOf('.select(' + s) > -1) { // v15 1 match
+                        } else if (typeof unsafeWindow.Game === 'function' && deobfuscate_func(unsafeWindow.Game.toString()).orig.indexOf('.select(' + s) > -1) { // v15 1 match
                             unsafeWindow.RECIPE_CATEGORIES = unsafeWindow[s];
                             deobmatch('RECIPE_CATEGORIES', s);
                         } else if (unsafeWindow[s].hasOwnProperty('DELETE') || // v15 1 match
@@ -1373,10 +1373,10 @@
                         }
                     } else if (typeof unsafeWindow[client][s] === 'number') {
                         if (unsafeWindow[client][s] === 0) {
-                            if ((typeof unsafeWindow[client].lost !== 'undefined' && deobfuscate_func(unsafeWindow[client].lost.toString()).orig.toString().indexOf('user.reconnect.enabled=!0;this.' + s + '==this.') > -1) ||
-                                (typeof unsafeWindow[client].kick !== 'undefined' && deobfuscate_func(unsafeWindow[client].kick.toString()).orig.toString().indexOf('this.' + s + '==this.') > -1) ||
-                                (typeof unsafeWindow[client].kick !== 'undefined' && deobfuscate_func(unsafeWindow[client].lost.toString()).orig.toString().indexOf('this.' + s + '==this.') > -1) ||
-                                (typeof unsafeWindow[client].kick !== 'undefined' && deobfuscate_func(unsafeWindow[client].killed.toString()).orig.toString().indexOf('this.' + s + '==this.') > -1)
+                            if ((typeof unsafeWindow[client].lost !== 'undefined' && deobfuscate_func(unsafeWindow[client].lost.toString()).orig.indexOf('user.reconnect.enabled=!0;this.' + s + '==this.') > -1) ||
+                                (typeof unsafeWindow[client].kick !== 'undefined' && deobfuscate_func(unsafeWindow[client].kick.toString()).orig.indexOf('this.' + s + '==this.') > -1) ||
+                                (typeof unsafeWindow[client].kick !== 'undefined' && deobfuscate_func(unsafeWindow[client].lost.toString()).orig.indexOf('this.' + s + '==this.') > -1) ||
+                                (typeof unsafeWindow[client].kick !== 'undefined' && deobfuscate_func(unsafeWindow[client].killed.toString()).orig.indexOf('this.' + s + '==this.') > -1)
                                 ) {
                                     unsafeWindow._current_id = s;
                                     deobmatch('_current_id', s);
@@ -1824,10 +1824,10 @@
                 Object.keys(unsafeWindow[client]).forEach(function(s) {
                     if (typeof unsafeWindow[client][s] === 'number') {
                         if (unsafeWindow[client][s] === 0) {
-                            if ((typeof unsafeWindow.update_cam !== 'undefined' && deobfuscate_func(unsafeWindow[client][update_cam].toString()).orig.toString().indexOf(s) > -1)) {
+                            if ((typeof unsafeWindow.update_cam !== 'undefined' && deobfuscate_func(unsafeWindow[client][update_cam].toString()).orig.indexOf(s) > -1)) {
                                 unsafeWindow.cam_delay = s;
                                 deobmatch('cam_delay', s);
-                            } else if ((typeof unsafeWindow.try_ping !== 'undefined' && deobfuscate_func(unsafeWindow[client][try_ping].toString()).orig.toString().indexOf(s) > -1)) {
+                            } else if ((typeof unsafeWindow.try_ping !== 'undefined' && deobfuscate_func(unsafeWindow[client][try_ping].toString()).orig.indexOf(s) > -1)) {
                                 unsafeWindow.ping_delay = s;
                                 deobmatch('ping_delay', s);
                             }
