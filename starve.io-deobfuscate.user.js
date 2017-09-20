@@ -2030,7 +2030,7 @@
 
         unsafeWindow.OBFUSCATOR_FN_INV = function(n) { for (var x=0; x<OBFUSCATED_ARR.length; x++) { if (OBFUSCATOR_FN(x) === n) return '0x'+x.toString(16); } };
 
-        unsafeWindow.deobauto = '0.15.60';
+        unsafeWindow.deobauto = '0.16.0';
     }
 
     unsafeWindow.deobfuscate_func = function(deobfunc) {
