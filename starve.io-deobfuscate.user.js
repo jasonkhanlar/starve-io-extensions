@@ -1351,7 +1351,7 @@
                                 } else if (deobfunc.abbr.match(/{this\.@\[@\]\(@\[@\]\.stringify\(\[12,[a-z],[a-z]\.pid,[a-z]\.iid\]\)\)}/)) {
                                     unsafeWindow.give_wood = s;
                                     deobmatch('give_wood', s);
-                                } else if (deobfunc.abbr.match(/user\.inv\.decrease\([a-z],[a-z],user\.inv\.find_item\([a-z]\)\);user\.craft\.update\(\)/)) {
+                                } else if (deobfunc.abbr.match(/user\.inv\.decrease\([a-z],[a-z],user\.inv\.find_item\([a-z]\)\);/)) {
                                     unsafeWindow.decrease_item = s;
                                     deobmatch('decrease_item', s);
                                 } else if (deobfunc.abbr.match(/user\.inv\.delete_item\([a-z],[a-z]\)/)) {
