@@ -1309,7 +1309,7 @@
                                 } else if (deobfunc.abbr.match(/this\.@\[@\]\(@\[@\]\.stringify\(\[4,Math\.floor/)) {
                                     unsafeWindow.send_attack = s;
                                     deobmatch('send_attack', s);
-                                } else if (deobfunc.abbr.match(/this\.@\[@\]\(@\[@\]\.stringify\(\[3,Math\.floor/)) {
+                                } else if (deobfunc.abbr.match(/\.stringify\(\[3,/)) {
                                     unsafeWindow.send_angle = s;
                                     deobmatch('send_angle', s);
                                 } else if (deobfunc.abbr.match(/this\.@\[@\]\(@\[@\]\.stringify\(\[2,[a-z]\]\)\)}$/)) {
