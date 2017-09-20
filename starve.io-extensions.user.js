@@ -488,14 +488,16 @@
 
                 if (tdist < dist) {
                     dist = tdist;
-                    user.auto_follow.uid = x;
-                    user.auto_follow.enabled = true;
-
-                    var msg = 'Auto Following ' + world[fast_units][x].player.nickname;
-                    if (!user.alert.text) { user.alert.text = msg; }
-                    else if (user.alert.text.match(/Auto Following/)) { user.alert.text = msg; user.alert.timeout.v = 1; user.alert.label = null; }
-                    else { user.alert.list.push(msg); }
+                    uid = x;
                 }
+            }
+            if (uid !== -1) {
+                user.auto_follow.uid = uid;
+                user.auto_follow.enabled = true;
+                var msg = 'Auto Following ' + world[fast_units][uid].player.nickname;
+                if (!user.alert.text) { user.alert.text = msg; }
+                else if (user.alert.text.match(/Auto Following/)) { user.alert.text = msg; user.alert.timeout.v = 1; user.alert.label = null; }
+                else { user.alert.list.push(msg); }
             }
         } else { user.auto_follow.enabled = false; }
     }
@@ -918,33 +920,30 @@
             // auto follow
             if (user.auto_follow.enabled &&
                 world[fast_units][user.auto_follow.uid] !== null &&
-                world[fast_units][user.auto_follow.uid].hasOwnProperty('player')
-            ) {
+                world[fast_units][user.auto_follow.uid].hasOwnProperty('player')){
+                
                 var c = 0,
                 stalkeeA = world[fast_units][user.auto_follow.uid].angle,
                 stalkeeX = Math.round(world[fast_units][user.auto_follow.uid].x / 40),
                 stalkeeY = Math.round(world[fast_units][user.auto_follow.uid].y / 40),
+                stalkerA = world[fast_units][user.uid].angle,
                 stalkerX = Math.round(world[fast_units][user.uid].x / 40),
                 stalkerY = Math.round(world[fast_units][user.uid].y / 40);
 
-                if (!(
-                    Math.abs(stalkeeX - stalkerX) <= 1 &&
-                    Math.abs(stalkeeY - stalkerY) <= 1 &&
+                if (!(Math.abs(stalkeeX - stalkerX) <= 1 && Math.abs(stalkeeY - stalkerY) <= 1 &&
                     user.auto_follow.x === world[fast_units][user.auto_follow.uid].x &&
-                    user.auto_follow.y === world[fast_units][user.auto_follow.uid].y
-                )) {
+                    user.auto_follow.y === world[fast_units][user.auto_follow.uid].y)) {
                     if (stalkeeX < stalkerX) c |= 1;
                     else if (stalkeeX > stalkerX) c |= 2;
 
                     if (stalkeeY > stalkerY) c |= 4;
                     else if (stalkeeY < stalkerY) c |= 8;
                 }
-
-                if (world[fast_units][user.uid].angle !== stalkeeA) {
-                    world[fast_units][user.uid].angle = stalkeeA;
-                    world[fast_units][user.uid].nangle = stalkeeA;
-                    window[client][send_angle](stalkeeA);
-                }
+                if (stalkerA !== stalkeeA) {
+                    var ang = Math.atan2(stalkeeY - stalkerY, stalkeeX - stalkerX);
+                    world[fast_units][user.uid].angle = ang;
+                    world[fast_units][user.uid].nangle = ang;
+                    window[client][send_angle](ang);
 
                 if (user.auto_follow.prevm !== c) {
                     user.auto_follow.prevm = c;
