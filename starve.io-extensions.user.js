@@ -463,6 +463,8 @@
         user.server_info.server_url = window[client][socket].url;
         user.server_info.server_ip = user.server_info.server_url.match(/ws:\/\/([^:]*):([^/]*)\//)[1];
         user.server_info.server_port = user.server_info.server_url.match(/ws:\/\/([^:]*):([^/]*)\//)[2];
+        user.server_info.label = undefined;
+        user.server_info.label_winter = undefined;
 
         for (var x = 0; x < window[client][server_list].length; x++) {
             if (window[client][server_list][x].i === user.server_info.server_ip && window[client][server_list][x].p === parseInt(user.server_info.server_port)) {
