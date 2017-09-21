@@ -1578,6 +1578,8 @@
                             } else if (INV_INFO[INV[s]].name === 'Hood') {
                                 SPRITE.HOOD = SPRITE[s];
                                 deobmatch('HOOD', s);
+                                // Also fill in for INV.HOOD
+                                INV.HOOD = INV[s];
                                 // Also fill in for SPRITE.CHEST_HOOD, SPRITE.CRAFT_HOOD, SPRITE.GLOVES_HOOD, and SPRITE.INV_HOOD
                                 SPRITE.CHEST_HOOD = SPRITE['CHEST_' + s];
                                 deobmatch('CHEST_WINTER_HOOD', 'CHEST_' + s);
