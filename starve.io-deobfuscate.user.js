@@ -1673,12 +1673,12 @@
                                 deobmatch('trigger_mousemove', s);
                                 // Populate duplicates
                                 game.trigger_mousemove = game[s];
-                            } else if (deobfunc.abbr.match(/unsafeWindow\.addEventListener/)) {
+                            } else if (deobfunc.abbr.match(/window\.addEventListener/)) {
                                 unsafeWindow.ui.add_event_listener = ui[s];
                                 deobmatch('add_event_listener', s);
                                 // Populate duplicates
                                 game.add_event_listener = game[s];
-                            } else if (deobfunc.abbr.match(/unsafeWindow\.removeEventListener/)) {
+                            } else if (deobfunc.abbr.match(/window\.removeEventListener/)) {
                                 unsafeWindow.ui.remove_event_listener = ui[s];
                                 deobmatch('remove_event_listener', s);
                                 // Populate duplicates
