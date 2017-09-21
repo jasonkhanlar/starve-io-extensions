@@ -1656,7 +1656,7 @@
                             } else if (deobfunc.abbr.match(/Cookies\.set\(.starve_mapping.,.qwerty.\)/)) {
                                 unsafeWindow.ui.set_qwerty = ui[s];
                                 deobmatch('set_qwerty', s);
-                            } else if (deobfunc.abbr.match(/^function ?\([a-z]\){@\(this\.can,[a-z]\)}$/)) { // v15 2 matches
+                            } else if (deobfunc.abbr.match(/^function ?\([a-z]\){@\((this|[a-z])\.can,[a-z]\)}$/)) { // v15 2 matches
                                 if (deobfuscate_func(unsafeWindow.UI.toString()).orig.split(new RegExp('EventListener\\(\'mousedown\',this\.' + s)).length > 1) {
                                     unsafeWindow.ui.trigger_mousedown = ui[s];
                                     deobmatch('trigger_mousedown', s);
