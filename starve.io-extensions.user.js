@@ -533,7 +533,12 @@
                 var msg = 'Auto Following ' + world[fast_units][uid].player.nickname;
                 if (!user.alert.text) { user.alert.text = msg; }
                 else if (user.alert.text.match(/Auto Following/)) { user.alert.text = msg; user.alert.timeout.v = 1; user.alert.label = null; }
-                else { user.alert.list.push(msg); }
+                else {
+                    // If alert message list already contains an entry, replace it
+                    var i = user.alert.list.findIndex(function(e) { return e.match(/Auto Following /); });
+                    if (i === -1) user.alert.list.push(msg);
+                    else user.alert.list[i] = msg;
+                }
             }
         } else { user.auto_follow.enabled = false; }
     }
@@ -884,8 +889,14 @@
         window[client][select_craft] = function(c) {
             if (user.weapon.timeout.v !== 0 && user.inv.n[INV.BOOK]) {
                 var alertMsg = 'You can\'t equip your book right now.';
-                if (user.alert.text) user.alert.list.push(alertMsg);
-                else user.alert.text = alertMsg;
+                if (user.alert.text === alertMsg) { }
+                else if (!user.alert.text) { user.alert.text = alertMsg; }
+                else {
+                    // If alert message list already contains an entry, replace it
+                    var i = user.alert.list.findIndex(function(e) { return e.match(/Auto Following /); });
+                    if (i === -1) user.alert.list.push(alertMsg);
+                    else user.alert.list[i] = alertMgs;
+                }
                 return;
             }
             user.auto_book.equip_book();
