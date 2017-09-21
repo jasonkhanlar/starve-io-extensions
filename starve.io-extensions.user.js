@@ -472,13 +472,51 @@
     }
 
     function auto_follow() {
-        if (!user.auto_follow.enabled) {
+        if (arguments.length > 0 && arguments[0] === 'switch') {
+            if (user.auto_follow.mode === 'mimic' && user.auto_follow.target === 'players') {
+                user.auto_follow.mode = 'face';
+            } else if (user.auto_follow.mode === 'face' && user.auto_follow.target === 'players') {
+                user.auto_follow.mode = 'mirror';
+            } else if (user.auto_follow.mode === 'mirror' && user.auto_follow.target === 'players') {
+                user.auto_follow.mode = 'mimic';
+                user.auto_follow.target = 'enemies';
+            } else if (user.auto_follow.mode === 'mimic' && user.auto_follow.target === 'enemies') {
+                user.auto_follow.mode = 'face';
+            } else if (user.auto_follow.mode === 'face' && user.auto_follow.target === 'enemies') {
+                user.auto_follow.mode = 'mirror';
+            } else if (user.auto_follow.mode === 'mirror' && user.auto_follow.target === 'enemies') {
+                user.auto_follow.mode = 'mimic';
+                user.auto_follow.target = 'all';
+            } else if (user.auto_follow.mode === 'mimic' && user.auto_follow.target === 'all') {
+                user.auto_follow.mode = 'face';
+            } else if (user.auto_follow.mode === 'face' && user.auto_follow.target === 'all') {
+                user.auto_follow.mode = 'mirror';
+            } else if (user.auto_follow.mode === 'mirror' && user.auto_follow.target === 'all') {
+                user.auto_follow.mode = 'mimic';
+                user.auto_follow.target = 'players';
+            }
+            var msg = 'Auto Follow Mode: ' + user.auto_follow.mode + ' ' + user.auto_follow.target;
+            if (!user.alert.text) { user.alert.text = msg; }
+            else if (user.alert.text.match(/Auto Follow Mode:/)) { user.alert.text = msg; user.alert.timeout.v = 1; user.alert.label = null; }
+            else {
+                // If alert message list already contains an entry, replace it
+                var i = user.alert.list.findIndex(function(e) { return e.match(/Auto Follow Mode:/); });
+                if (i === -1) user.alert.list.push(msg);
+                else user.alert.list[i] = msg;
+            }
+        } else if (!user.auto_follow.enabled) {
             var dist = Math.pow(MAP.w, 2) + Math.pow(MAP.h, 2), uid = -1;
             for (var x = 0; x < world[fast_units].length; x++) {
                 if (typeof world[fast_units][x] === 'undefined') continue;
                 else if (world[fast_units][x] === null) continue;
                 else if (x === user.uid) continue;
-                else if (!world[fast_units][x].hasOwnProperty('player')) continue;
+                else if (user.auto_follow.target === 'all' &&
+                    !world[fast_units][x].hasOwnProperty('breath') &&
+                    !world[fast_units][x].hasOwnProperty('player')) continue;
+                else if (user.auto_follow.target === 'enemies' &&
+                    !world[fast_units][x].hasOwnProperty('breath')) continue;
+                else if (user.auto_follow.target === 'players' &&
+                    !world[fast_units][x].hasOwnProperty('player')) continue;
 
                 var tdist = Math.pow(Math.abs(world[fast_units][user.uid].x - world[fast_units][x].x), 2) +
                     Math.pow(Math.abs(world[fast_units][user.uid].y - world[fast_units][x].y), 2);
@@ -491,6 +529,7 @@
             if (uid !== -1) {
                 user.auto_follow.uid = uid;
                 user.auto_follow.enabled = true;
+
                 var msg = 'Auto Following ' + world[fast_units][uid].player.nickname;
                 if (!user.alert.text) { user.alert.text = msg; }
                 else if (user.alert.text.match(/Auto Following/)) { user.alert.text = msg; user.alert.timeout.v = 1; user.alert.label = null; }
@@ -601,6 +640,8 @@
         };
         user.auto_follow = {
             enabled: false,
+            mode: 'mimic', // mimic | face | mirror
+            target: 'players', // players | enemies | all
             preva: 0,
             prevm: 0,
             uid: -1,
@@ -781,7 +822,8 @@
                         user.auto_attack.enabled = !user.auto_attack.enabled; alert_ext_auto_attack();
                         document.getElementById('auto_attack_agree_ing').style.display = user.auto_attack.enabled ? 'inline-block' : 'none';
                     } else if (keycode == 70) {
-                        auto_follow();
+                        if (c.key === 'F') auto_follow('switch');
+                        else auto_follow();
                     } else if (keycode == 71) {
                         user.gps.enabled = !user.gps.enabled;
                     } else if (keycode == 72) {
@@ -915,10 +957,16 @@
                 }
             }
             // auto follow
-            if (user.auto_follow.enabled &&
-                world[fast_units][user.auto_follow.uid] !== null &&
-                world[fast_units][user.auto_follow.uid].hasOwnProperty('player')){
-                
+            if (user.auto_follow.enabled) {
+                if (world[fast_units][user.auto_follow.uid] === null) return false;
+                else if (user.auto_follow.target === 'all' &&
+                    !world[fast_units][user.auto_follow.uid].hasOwnProperty('breath') &&
+                    !world[fast_units][user.auto_follow.uid].hasOwnProperty('player')) return false;
+                else if (user.auto_follow.target === 'enemies' &&
+                    !world[fast_units][user.auto_follow.uid].hasOwnProperty('breath')) return false;
+                else if (user.auto_follow.target === 'players' &&
+                    !world[fast_units][user.auto_follow.uid].hasOwnProperty('player')) return false;
+
                 var c = 0,
                 stalkeeA = world[fast_units][user.auto_follow.uid].angle,
                 stalkeeX = Math.round(world[fast_units][user.auto_follow.uid].x / 40),
@@ -927,21 +975,36 @@
                 stalkerX = Math.round(world[fast_units][user.uid].x / 40),
                 stalkerY = Math.round(world[fast_units][user.uid].y / 40);
 
-                if (!(Math.abs(stalkeeX - stalkerX) <= 1 && Math.abs(stalkeeY - stalkerY) <= 1 &&
+                if (!(Math.abs(stalkeeX - stalkerX) <= 1 &&
+                    Math.abs(stalkeeY - stalkerY) <= 1 &&
                     user.auto_follow.x === world[fast_units][user.auto_follow.uid].x &&
-                    user.auto_follow.y === world[fast_units][user.auto_follow.uid].y)) {
+                    user.auto_follow.y === world[fast_units][user.auto_follow.uid].y)
+                ) {
                     if (stalkeeX < stalkerX) c |= 1;
                     else if (stalkeeX > stalkerX) c |= 2;
 
                     if (stalkeeY > stalkerY) c |= 4;
                     else if (stalkeeY < stalkerY) c |= 8;
                 }
+
                 if (stalkerA !== stalkeeA) {
-                    var ang = Math.atan2(stalkeeY - stalkerY, stalkeeX - stalkerX);
-                    world[fast_units][user.uid].angle = ang;
-                    world[fast_units][user.uid].nangle = ang;
-                    window[client][send_angle](ang);
+                    var angle;
+                    if (user.auto_follow.mode === 'mimic') {
+                        if (user.auto_follow.target === 'enemies') {
+                            angle = stalkeeA + Math.PI * 0.5;
+                        } else { angle = stalkeeA; }
+                    } else if (user.auto_follow.mode === 'face') {
+                        angle = Math.atan2(stalkeeY - stalkerY, stalkeeX - stalkerX);
+                    } else if (user.auto_follow.mode === 'mirror') {
+                        if (user.auto_follow.target === 'enemies') {
+                            angle = stalkeeA - Math.PI * 0.5;
+                        } else { angle = stalkeeA + Math.PI; }
+                    }
+                    world[fast_units][user.uid].angle = angle;
+                    world[fast_units][user.uid].nangle = angle;
+                    window[client][send_angle](angle);
                 }
+
                 if (user.auto_follow.prevm !== c) {
                     user.auto_follow.prevm = c;
                     window[client][send_move](c);
