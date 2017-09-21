@@ -50,6 +50,7 @@
 * Toggle with F
 
 * Attempts to automatically follow closest player if anyone is near
+* Enable Caps Lock to switch to Auto follow mode adjust
 
 ## (7) Copy craft
 * Toggle with M
