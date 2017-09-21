@@ -1757,7 +1757,7 @@
                             } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z]\){return Math\.acos/)) {
                                 unsafeWindow.Utils.get_angle = Utils[s];
                                 deobmatch('get_angle', s);
-                            } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z]\){return this\.@\({x:1,y:0\},this\.@\([a-z],[a-z]\)\)}$/)) {
+                            } else if (deobfunc.abbr.match(/^function ?\([a-z], ?[a-z]\){return this\.@\({x:1,y:0\},this\.@\([a-z],[a-z]\)\)}$/)) {
                                 unsafeWindow.Utils.get_std_angle = Utils[s];
                                 deobmatch('get_std_angle', s);
                             } else if (deobfunc.abbr.match(/^function ?\([a-z],[a-z],[a-z]\){[a-z]\.x\+=[a-z];[a-z]\.y\+=[a-z]}$/)) {
