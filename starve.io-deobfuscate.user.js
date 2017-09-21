@@ -1668,7 +1668,7 @@
                                     // Populate duplicates
                                     game.trigger_mouseup = game[s];
                                 }
-                            } else if (deobfunc.abbr.match(/^function ?\([a-z]\){@\(this\.can,[a-z]\);[a-z]\.style\.cursor=.auto.}$/)) {
+                            } else if (deobfunc.abbr.match(/^function ?\([a-z]\){@\((this|[a-z])\.can,[a-z]\);[a-z]\.style\.cursor=.auto.}$/)) {
                                 unsafeWindow.ui.trigger_mousemove = ui[s];
                                 deobmatch('trigger_mousemove', s);
                                 // Populate duplicates
