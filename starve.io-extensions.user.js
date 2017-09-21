@@ -530,7 +530,25 @@
                 user.auto_follow.uid = uid;
                 user.auto_follow.enabled = true;
 
-                var msg = 'Auto Following ' + world[fast_units][uid].player.nickname;
+                var msg = 'Auto Following ';
+                if (world[fast_units][uid].hasOwnProperty('player')) {
+                    msg += world[fast_units][uid].player.nickname;
+                } else {
+                    var enemies = {
+                        60: 'a rabbit',
+                        61: 'a wolf',
+                        62: 'a spider',
+                        63: 'a fox',
+                        64: 'a bear',
+                        65: 'a dragon',
+                        67: 'a piranha',
+                        68: 'a kraken'
+                    },
+                    type = world[fast_units][uid].type;
+                    console.log(world[fast_units][uid]);
+                    if (typeof enemies[type] !== 'undefined') msg += enemies[type];
+                    else msg += 'a npc';
+                }
                 if (!user.alert.text) { user.alert.text = msg; }
                 else if (user.alert.text.match(/Auto Following/)) { user.alert.text = msg; user.alert.timeout.v = 1; user.alert.label = null; }
                 else {
