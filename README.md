@@ -4,12 +4,8 @@
 [![Starve.io Extensions Reddit](http://i.imgur.com/ccMEPJK.png "Starve.io Extensions Reddit")](https://www.reddit.com/r/starveio/comments/6xiaec/starveio_extensions_github_compliments_to/)
 
 # TO USE / INSTALL
-1. Install [Tampermonkey](https://tampermonkey.net)
-   - direct link for [Apple Safari](https://safari.tampermonkey.net/tampermonkey.safariextz)
-   - direct link for [Google Chrome/Chromium](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
-   - direct link for [Microsoft Edge](https://www.microsoft.com/en-us/store/p/tampermonkey/9nblggh5162s?rtc=1)
-   - direct link for [Mozilla Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
-   - direct link for [Opera](https://addons.opera.com/en/extensions/details/tampermonkey-beta/)
+1. Install [Tampermonkey Beta](https://tampermonkey.net)
+   - direct link for [Google Chrome/Chromium](https://chrome.google.com/webstore/detail/tampermonkey-beta/gcalenpjmijncebpfijmoaglllgpjagf)
 2. Install [Starve.io deobfuscate library userscript](https://github.com/jasonkhanlar/starve-io-extensions/raw/master/starve.io-deobfuscate.user.js)
 3. Install [Starve.io extensions userscript](https://github.com/jasonkhanlar/starve-io-extensions/raw/master/starve.io-extensions.user.js)
 4. Refresh or load new instance of [Starve.io](http://starve.io)
@@ -89,3 +85,4 @@
 
 [![Starve.io Extensions Help Menu](https://i.imgur.com/qLl7foD.png "Starve.io Extensions Help Menu")](https://i.imgur.com/qLl7foD.png)
 [![Starve.io Extensions GUI Help Menu](https://i.imgur.com/QgBzHzS.png "Starve.io Extensions GUI Help Menu")](https://i.imgur.com/QgBzHzS.png)
+
