@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io to Discord : Share chat
 // @namespace    http://tampermonkey.net/
-// @version      0.15.60
+// @version      0.16.0
 // @description  Shares Starve.io chat with a Discord server
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -12,6 +12,8 @@
 
 (function() {
     'use strict';
+
+    var required_deobfuscate_version = '0.16.0';
 
     function post(url, data) {
         var xhr = new XMLHttpRequest();
