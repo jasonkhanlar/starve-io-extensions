@@ -227,7 +227,7 @@
                     break;
                 case SPRITE.PEASANT:
                 case SPRITE.WINTER_PEASANT:
-                    avatar_ctx.drawImage(g, - g.width / 2, - g.height / 2 + 8 * scale)
+                    avatar_ctx.drawImage(g, - g.width / 2, - g.height / 2 + 8 * scale);
             }
         }
     }
@@ -274,7 +274,7 @@
                 avatar_ctx.drawImage(img, img.width / -2 - scale * (47 + g), img.height / -2 + scale * (f + 54));
                 break;
             case SPRITE.SPANNER:
-                avatar_ctx.drawImage(img, img.width / -2 - scale * (47 + g), img.height / -2 + scale * (f + 20))
+                avatar_ctx.drawImage(img, img.width / -2 - scale * (47 + g), img.height / -2 + scale * (f + 20));
         }
     }
 
