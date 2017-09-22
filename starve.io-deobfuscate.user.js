@@ -25,7 +25,7 @@
             Violentmonkey
 */
 
-// Compatible with version 15 of Starve.io client
+// Compatible with version 16 of Starve.io client
 
 (function() {
     'use strict';
