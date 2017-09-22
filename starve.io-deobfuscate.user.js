@@ -10,9 +10,20 @@
 // @run-at       document-start
 // ==/UserScript==
 
-// Tampermonkey Beta v4.5.5553 or higher required!
-// see https://github.com/Tampermonkey/tampermonkey/issues/397
-// also see https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Intercept_HTTP_requests
+/*
+    Userscript Manager Compatibility:
+        Tampermonkey Beta
+            Beta v4.5.5553 or higher required! See https://github.com/Tampermonkey/tampermonkey/issues/397
+        Violentmonkey
+
+    Web Browser Compatibility:
+        Chrome/Chromium
+            Tampermonkey Beta, Violentmonkey
+        Firefox
+            Violentmonkey
+        Opera
+            Violentmonkey
+*/
 
 // Compatible with version 15 of Starve.io client
 
