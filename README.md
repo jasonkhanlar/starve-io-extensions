@@ -4,8 +4,9 @@
 [![Starve.io Extensions Reddit](http://i.imgur.com/ccMEPJK.png "Starve.io Extensions Reddit")](https://www.reddit.com/r/starveio/comments/6xiaec/starveio_extensions_github_compliments_to/)
 
 # TO USE / INSTALL
-1. Install [Tampermonkey Beta](https://tampermonkey.net)
-   - direct link for [Google Chrome/Chromium](https://chrome.google.com/webstore/detail/tampermonkey-beta/gcalenpjmijncebpfijmoaglllgpjagf)
+1. Install a Userscript manager:
+   - [Tampermonkey Beta](https://tampermonkey.net) for [Chrome/Chromium](https://chrome.google.com/webstore/detail/tampermonkey-beta/gcalenpjmijncebpfijmoaglllgpjagf)
+   - [Violentmonkey](https://violentmonkey.github.io/) for [Chrome/Chromium](https://chrome.google.com/webstore/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/) or [Opera](https://addons.opera.com/en/extensions/details/violent-monkey/)
 2. Install [Starve.io deobfuscate library userscript](https://github.com/jasonkhanlar/starve-io-extensions/raw/master/starve.io-deobfuscate.user.js)
 3. Install [Starve.io extensions userscript](https://github.com/jasonkhanlar/starve-io-extensions/raw/master/starve.io-extensions.user.js)
 4. Refresh or load new instance of [Starve.io](http://starve.io)
