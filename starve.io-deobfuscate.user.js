@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Starve.io Deobfuscated Auto
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/jasonkhanlar/starve-io-extensions
 // @version      0.16.0
 // @description  Auto deobfuscation includes at least bare minimum for scripts to function normally
 // @author       Jason Khanlar

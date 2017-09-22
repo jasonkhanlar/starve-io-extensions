@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Starve.io Army
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/jasonkhanlar/starve-io-extensions
 // @version      0.16.0
 // @description  Spawn a Starve.io army to protect you!
 // @author       Jason Khanlar

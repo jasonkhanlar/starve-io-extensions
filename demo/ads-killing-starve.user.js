@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Starve.io Demo: Adblockers kill Starve.io, Disable your ad blockers and use ad enablers
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/jasonkhanlar/starve-io-extensions
 // @version      0.15.1
 // @description  Demo showing use of ad enablers
 // @author       Jason Khanlar

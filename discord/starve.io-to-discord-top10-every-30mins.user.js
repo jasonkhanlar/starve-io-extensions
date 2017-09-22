@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Starve.io to Discord : Top 10 every 30 minutes
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/jasonkhanlar/starve-io-extensions
 // @version      0.16.0
 // @description  Shares Starve.io server scores with a Discord server
 // @author       Jason Khanlar
