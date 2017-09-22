@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io Demo: YouTube videos in game world
 // @namespace    https://github.com/jasonkhanlar/starve-io-extensions
-// @version      0.15.1
+// @version      0.16.0
 // @description  Demo showing how YouTube videos can appear in Starve.io game world.  This demo replaces dead boxes with videos. The more players that die, the more videos.
 // @author       Jason Khanlar
 // @match        http://starve.io/

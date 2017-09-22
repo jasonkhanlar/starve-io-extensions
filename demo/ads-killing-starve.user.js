@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io Demo: Adblockers kill Starve.io, Disable your ad blockers and use ad enablers
 // @namespace    https://github.com/jasonkhanlar/starve-io-extensions
-// @version      0.15.1
+// @version      0.16.0
 // @description  Demo showing use of ad enablers
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -13,10 +13,14 @@
 (function() {
     'use strict';
 
+    var required_deobfuscate_version = '0.16.0';
+
     function checkDependencies() {
         if (typeof deobauto === 'undefined') {
             // 'Starve.io Deobfuscated' is required as a dependency
             setTimeout(checkDependencies, 50);
+        } else if (deobauto === true || deobauto < required_deobfuscate_version) {
+            alert('deobfuscate userscript v' + required_deobfuscate_version + ' or higher is required.');
         } else {
             // Dependency satisfied
             main();
