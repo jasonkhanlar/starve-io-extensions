@@ -36,8 +36,8 @@
     xhr.onreadystatechange = function () {
         if (xhr.status === 200 && xhr.readyState === 4) {
             var script = document.createElement('script');
-            unsafeWindow.document.body.appendChild(script);
             script.text = this.responseText.trim().replace(/[\r\n]/g, ' ').replace(/ +/g, ' ').replace(/^\(function \(\) {(.*)}\)\(\)$/g, '$1');
+            unsafeWindow.document.body.appendChild(script);
         }
     };
     // Add ? to avoid cancelling the HTTP request again
