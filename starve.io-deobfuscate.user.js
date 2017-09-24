@@ -38,12 +38,6 @@
             var script = document.createElement('script');
             unsafeWindow.document.body.appendChild(script);
             script.text = this.responseText.trim().replace(/[\r\n]/g, ' ').replace(/ +/g, ' ').replace(/^\(function \(\) {(.*)}\)\(\)$/g, '$1');
-            // Restore console.{debug,error,info,log,trace,warn}
-            var i = document.createElement('iframe');
-            i.style.display = 'none';
-            document.body.appendChild(i);
-            Object.assign(console, i.contentWindow.console);
-            Object.assign(unsafeWindow.console, i.contentWindow.console);
         }
     };
     // Add ? to avoid cancelling the HTTP request again
@@ -2029,7 +2023,11 @@
             unsafeWindow.ui.run = function() {
                 old_ui_run.apply(this);
                 // Deobfuscate only first time user interface is run
-                if (typeof deobauto === 'undefined') deobfuscate();
+                if (typeof unsafeWindow.deobauto === 'undefined') {
+                    resetconsole();
+                    unsafeWindow.deobauto = 'deobfuscating';
+                    //deobfuscate();
+                    }
             };
         } else {
             setTimeout(checkDependencies, 50);
@@ -2103,6 +2101,14 @@
             deoblist.o2d[name] = deob;
             return false;
         }
+    }
+
+    function resetconsole() {
+        var i = document.createElement('iframe');
+        i.style.display = 'none';
+        unsafeWindow.document.body.appendChild(i);
+        Object.assign(console, i.contentWindow.console);
+        Object.assign(unsafeWindow.console, i.contentWindow.console);
     }
 
     checkDependencies();
