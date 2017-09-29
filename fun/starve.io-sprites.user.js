@@ -51,7 +51,8 @@
             return true;
         } else {
             imgs.push(document.createTextNode('Duplicate of ' + img_data[hash]));
-            return imgs.length - 1;
+            //if (x === img_data[hash]) return false;
+            return img_data[hash];
         }
     }
 
@@ -63,28 +64,27 @@
         var html_table = document.createElement('table'),
         html_tbody = document.createElement('tbody'),
         html_td_linenum,
-        html_td_images,
-        is_image;
+        html_td_images;
 
         for (var x=0; x<sprite.length; x++) {
             if (typeof sprite[x] === 'undefined') continue;
 
-            var html_tr = document.createElement('tr');
+            var html_tr = document.createElement('tr'), is_unique = [];
             imgs = [];
              if (Array.isArray(sprite[x])) {
                 for (var y=0; y<sprite[x].length; y++) {
                     if (Array.isArray(sprite[x][y])) {
                         for (var z=0; z<sprite[x][y].length; z++) {
                             if (sprite[x][y][z].tagName === 'CANVAS' || sprite[x][y][z].tagName === 'IMG') {
-                                is_image = add_image(x, sprite[x][y][z]);
+                                is_unique[z] = add_image(x, sprite[x][y][z]);
                             }
                         }
                     } else if (sprite[x][y].tagName === 'CANVAS' || sprite[x][y].tagName === 'IMG') {
-                        is_image = add_image(x, sprite[x][y]);
+                        is_unique[y] = add_image(x, sprite[x][y]);
                     }
                 }
             } else if (sprite[x].tagName === 'CANVAS' || sprite[x].tagName === 'IMG') {
-                is_image = add_image(x, sprite[x]);
+                is_unique[x] = add_image(x, sprite[x]);
             }
 
             html_td_linenum = document.createElement('td');
@@ -92,8 +92,9 @@
 
             html_td_images = document.createElement('td');
 
-            for (var y=0; y<imgs.length; y++) {
-                if (is_image === true || is_image === y) {
+            for (y=0; y<imgs.length; y++) {
+                console.log(is_unique[y], x);
+                if (is_unique[0] === true && is_unique[y] !== x || is_unique[0] !== true && imgs[y].textContent !== '') {
                     html_td_images.appendChild(imgs[y]);
                 }
             }
