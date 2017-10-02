@@ -599,7 +599,7 @@
          [ 'E', 'Auto Attack - auto attack' ],
          [ 'F', 'Auto Follow - auto follow closest player' ],
          [ 'L', 'Show Server Info - shows server name' ],
-         [ 'B', 'Show Gauge Percents - shows percent numbers' ],
+         [ 'B', 'Show Gauge Values - shows percent numbers' ],
          [ 'G', 'GPS  - shows your x,y coordinate position' ],
          [ '`', 'Chat Buffer - hide/show chat messages' ]
         ]));
