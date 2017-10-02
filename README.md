@@ -67,6 +67,7 @@
 * Toggle with L
 
 ## (10) Gauge values (life, hunger, cold, thirst)
+* Toggle with B
 
 ## (11) GPS (game positioning system)
 * Toggle with G
