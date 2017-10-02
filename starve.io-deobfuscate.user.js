@@ -37,6 +37,8 @@
         if (xhr.status === 200 && xhr.readyState === 4) {
             var script = document.createElement('script');
             script.text = this.responseText.trim().replace(/[\r\n]/g, ' ').replace(/ +/g, ' ').replace(/^\(function \(\) {(.*)}\)\(\)$/g, '$1');
+            // there is no legitimate reason to alter console
+            script.text = 'var theconsoleisalie = {};' + script.text.replace(/"console"/g, '"theconsoleisalie"');
             unsafeWindow.document.body.appendChild(script);
         }
     };
@@ -2018,15 +2020,14 @@
             }
         }
 
-        if (typeof ui !== 'undefined' && typeof old_ui_run === 'undefined') {
+        if (typeof ui !== 'undefined' && typeof user !== 'undefined' && typeof old_ui_run === 'undefined') {
             unsafeWindow.old_ui_run = unsafeWindow.ui.run;
             unsafeWindow.ui.run = function() {
                 old_ui_run.apply(this);
                 // Deobfuscate only first time user interface is run
                 if (typeof unsafeWindow.deobauto === 'undefined') {
-                    resetconsole();
                     unsafeWindow.deobauto = 'deobfuscating';
-                    //deobfuscate();
+                    deobfuscate();
                     }
             };
         } else {
@@ -2060,7 +2061,7 @@
             }
             return (arguments[2] === '[' ? '.' : '\'') + OBFUSCATOR_FN(arguments[3]) + (arguments[4] === ']' ? '' : '\'');
         });
-        if (typeof deobauto !== 'undefined') { // Slow, only use manually
+        if (deobauto !== 'deobfuscating') { // Slow, only use manually
             deobfunc = deobfunc.replace(/([[.]?)((?:[A-Za-z$_][A-Za-z0-9$_]*)*ceilio[0-9]{3,6}[A-Za-z0-9$_]*)(\]?)/g, function() {
                 if (unsafeWindow.hasOwnProperty(arguments[2]) && typeof unsafeWindow[arguments[2]] === 'string') {
                     return '.' + unsafeWindow[arguments[2]];
@@ -2101,14 +2102,6 @@
             deoblist.o2d[name] = deob;
             return false;
         }
-    }
-
-    function resetconsole() {
-        var i = document.createElement('iframe');
-        i.style.display = 'none';
-        unsafeWindow.document.body.appendChild(i);
-        Object.assign(console, i.contentWindow.console);
-        Object.assign(unsafeWindow.console, i.contentWindow.console);
     }
 
     checkDependencies();
