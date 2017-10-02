@@ -599,6 +599,7 @@
          [ 'E', 'Auto Attack - auto attack' ],
          [ 'F', 'Auto Follow - auto follow closest player' ],
          [ 'L', 'Show Server Info - shows server name' ],
+         [ 'B', 'Show Gauge Percents - shows percent numbers' ],
          [ 'G', 'GPS  - shows your x,y coordinate position' ],
          [ '`', 'Chat Buffer - hide/show chat messages' ]
         ]));
@@ -717,6 +718,7 @@
             UI: true
         };
         user.gauges.labels = [];
+        user.gauges.showpercent = false;
         user.keycodes_to_mapped_keycodes = {}; // contains things like: { 68: 96 }
 
         if (!user.auto_book.enabled) document.getElementById('auto_book_agree_ing').style.display = 'none';
@@ -741,58 +743,60 @@
         window.old_game_gauges_draw = game.gauges.draw;
         game.gauges.draw = function() {
             old_game_gauges_draw.apply(this);
-            ctx.save();
-            var gX = (canw - 950 * scale) / 2;
-            var gY = 0 < user.inv.can_select.length ? -80 : -10;
-            if (user.chest.open ||
-                user.furnace.open && -1 != user.inv.find_item(INV.WOOD) ||
-                user.windmill.open && -1 != user.inv.find_item(INV.WILD_WHEAT) ||
-                user.well.open && -1 != user.inv.find_item(INV.BUCKET_FULL) ||
-                user[breadoven].open && ( -1 != user.inv.find_item(INV.WOOD) || -1 != user.inv.find_item(INV.FLOUR))
-            ) { gY -= 50 * scale; }
+            if (user.gauges.showpercents) {
+                ctx.save();
+                var gX = (canw - 950 * scale) / 2;
+                var gY = 0 < user.inv.can_select.length ? -80 : -10;
+                if (user.chest.open ||
+                    user.furnace.open && -1 != user.inv.find_item(INV.WOOD) ||
+                    user.windmill.open && -1 != user.inv.find_item(INV.WILD_WHEAT) ||
+                    user.well.open && -1 != user.inv.find_item(INV.BUCKET_FULL) ||
+                    user[breadoven].open && ( -1 != user.inv.find_item(INV.WOOD) || -1 != user.inv.find_item(INV.FLOUR))
+                ) { gY -= 50 * scale; }
 
-            ctx.translate(gX, gY);
+                ctx.translate(gX, gY);
 
-            var gCold = Math.round(user.gauges.cold.x * 100);
-            var gHunger = Math.round(user.gauges.hunger.x * 100);
-            var gLife = Math.round(user.gauges.life.x * 100);
-            var gThirst = Math.round(user.gauges[thirst].x * 100);
+                var gCold = Math.round(user.gauges.cold.x * 100);
+                var gHunger = Math.round(user.gauges.hunger.x * 100);
+                var gLife = Math.round(user.gauges.life.x * 100);
+                var gThirst = Math.round(user.gauges[thirst].x * 100);
 
-            if (!user.gauges.labels[gCold]) {
-                user.gauges.labels[gCold] = create_text(scale, gCold + '%', 22, "#FFF", "#000", 2, null, null, 100 * scale);
+                if (!user.gauges.labels[gCold]) {
+                    user.gauges.labels[gCold] = create_text(scale, gCold + '%', 22, "#FFF", "#000", 2, null, null, 100 * scale);
+                }
+                if (!user.gauges.labels[gHunger]) {
+                    user.gauges.labels[gHunger] = create_text(scale, gHunger + '%', 22, "#FFF", "#000", 2, null, null, 100 * scale);
+                }
+                if (!user.gauges.labels[gLife]) {
+                    user.gauges.labels[gLife] = create_text(scale, gLife + '%', 22, "#FFF", "#000", 2, null, null, 100 * scale);
+                }
+                if (!user.gauges.labels[gThirst]) {
+                    user.gauges.labels[gThirst] = create_text(scale, gThirst + '%', 22, "#FFF", "#000", 2, null, null, 100 * scale);
+                }
+
+                ctx.drawImage(
+                    user.gauges.labels[gCold],
+                    this.translate.x + 517 * scale + 178 / 2 * scale - user.gauges.labels[gCold].width / 2,
+                    this.translate.y + 16 * scale + 18 / 2 * scale - user.gauges.labels[gCold].height / 2 + 1
+                );
+                ctx.drawImage(
+                    user.gauges.labels[gHunger],
+                    this.translate.x + 277 * scale + 178 / 2 * scale - user.gauges.labels[gHunger].width / 2,
+                    this.translate.y + 16 * scale + 18 / 2 * scale - user.gauges.labels[gHunger].height / 2 + 1
+                );
+                ctx.drawImage(
+                    user.gauges.labels[gLife],
+                    this.translate.x + 37 * scale + 178 / 2 * scale - user.gauges.labels[gLife].width / 2,
+                    this.translate.y + 16 * scale + 18 / 2 * scale - user.gauges.labels[gLife].height / 2 + 1
+                );
+                ctx.drawImage(
+                    user.gauges.labels[gThirst],
+                    this.translate.x + 757 * scale + 178 / 2 * scale - user.gauges.labels[gThirst].width / 2,
+                    this.translate.y + 16 * scale + 18 / 2 * scale - user.gauges.labels[gThirst].height / 2 + 1
+                );
+
+                ctx.restore();
             }
-            if (!user.gauges.labels[gHunger]) {
-                user.gauges.labels[gHunger] = create_text(scale, gHunger + '%', 22, "#FFF", "#000", 2, null, null, 100 * scale);
-            }
-            if (!user.gauges.labels[gLife]) {
-                user.gauges.labels[gLife] = create_text(scale, gLife + '%', 22, "#FFF", "#000", 2, null, null, 100 * scale);
-            }
-            if (!user.gauges.labels[gThirst]) {
-                user.gauges.labels[gThirst] = create_text(scale, gThirst + '%', 22, "#FFF", "#000", 2, null, null, 100 * scale);
-            }
-
-            ctx.drawImage(
-                user.gauges.labels[gCold],
-                this.translate.x + 517 * scale + 178 / 2 * scale - user.gauges.labels[gCold].width / 2,
-                this.translate.y + 16 * scale + 18 / 2 * scale - user.gauges.labels[gCold].height / 2 + 1
-            );
-            ctx.drawImage(
-                user.gauges.labels[gHunger],
-                this.translate.x + 277 * scale + 178 / 2 * scale - user.gauges.labels[gHunger].width / 2,
-                this.translate.y + 16 * scale + 18 / 2 * scale - user.gauges.labels[gHunger].height / 2 + 1
-            );
-            ctx.drawImage(
-                user.gauges.labels[gLife],
-                this.translate.x + 37 * scale + 178 / 2 * scale - user.gauges.labels[gLife].width / 2,
-                this.translate.y + 16 * scale + 18 / 2 * scale - user.gauges.labels[gLife].height / 2 + 1
-            );
-            ctx.drawImage(
-                user.gauges.labels[gThirst],
-                this.translate.x + 757 * scale + 178 / 2 * scale - user.gauges.labels[gThirst].width / 2,
-                this.translate.y + 16 * scale + 18 / 2 * scale - user.gauges.labels[gThirst].height / 2 + 1
-            );
-
-            ctx.restore();
         };
 
         window.old_game_update = game.update;
@@ -843,6 +847,8 @@
                     if (keycode == 84) {
                         user.auto_book.enabled = !user.auto_book.enabled;
                         document.getElementById('auto_book_agree_ing').style.display = user.auto_book.enabled ? 'inline-block' : 'none';
+                    } else if (keycode == 66) {
+                        user.gauges.showpercents = !user.gauges.showpercents;
                     } else if (keycode == 69) {
                         user.auto_attack.enabled = !user.auto_attack.enabled; alert_ext_auto_attack();
                         document.getElementById('auto_attack_agree_ing').style.display = user.auto_attack.enabled ? 'inline-block' : 'none';
