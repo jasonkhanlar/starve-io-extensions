@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io Deobfuscated Auto
 // @namespace    https://github.com/jasonkhanlar/starve-io-extensions
-// @version      0.16.0
+// @version      0.16.05
 // @description  Auto deobfuscation includes at least bare minimum for scripts to function normally
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -2050,7 +2050,7 @@
 
         unsafeWindow.OBFUSCATOR_FN_INV = function(n) { for (var x=0; x<OBFUSCATED_ARR.length; x++) { if (OBFUSCATOR_FN(x) === n) return '0x'+x.toString(16); } };
 
-        unsafeWindow.deobauto = '0.16.0';
+        unsafeWindow.deobauto = '0.16.05';
     }
 
     unsafeWindow.deobfuscate_func = function(deobfunc) {

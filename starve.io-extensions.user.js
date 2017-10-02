@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io extensions
 // @namespace    https://github.com/jasonkhanlar/starve-io-extensions
-// @version      0.16.01
+// @version      0.16.05
 // @description  (1) On screen chat buffer (2) On screen help (3) Auto attack (4) Auto book (5) Auto cook (6) Auto follow (7) Copy craft (8) Active feed (9) Server name (10) Gauge values (11) GPS
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -14,7 +14,7 @@
 (function() {
     'use strict';
 
-    var required_deobfuscate_version = '0.16.0';
+    var required_deobfuscate_version = '0.16.05';
 
     // Server select menu looks ugly, fix it
     var style = document.createElement('style');
