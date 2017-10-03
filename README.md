@@ -51,7 +51,8 @@
 * Toggle with F
 
 * Attempts to automatically follow closest player if anyone is near
-* Enable Caps Lock to switch to Auto follow mode adjust
+* Enable Caps Lock to switch auto follow modes (manual | mimic | face | mirror)
+* Hold Shift to switch auto follow targets (players | enemies | all)
 
 ## (7) Copy craft
 * Toggle with M

@@ -474,27 +474,31 @@
     }
 
     function auto_follow() {
-        if (arguments.length > 0 && arguments[0] === 'switch') {
-            if (user.auto_follow.mode === 'mimic' && user.auto_follow.target === 'players') {
-                user.auto_follow.mode = 'face';
-            } else if (user.auto_follow.mode === 'face' && user.auto_follow.target === 'players') {
-                user.auto_follow.mode = 'mirror';
-            } else if (user.auto_follow.mode === 'mirror' && user.auto_follow.target === 'players') {
+        if (arguments.length > 0 && arguments[0] === 'switchmode') {
+            if (user.auto_follow.mode === 'manual') {
                 user.auto_follow.mode = 'mimic';
+            } else if (user.auto_follow.mode === 'mimic') {
+                user.auto_follow.mode = 'face';
+            } else if (user.auto_follow.mode === 'face') {
+                user.auto_follow.mode = 'mirror';
+            } else if (user.auto_follow.mode === 'mirror') {
+                user.auto_follow.mode = 'manual';
+            }
+            var msg = 'Auto Follow Mode: ' + user.auto_follow.mode + ' ' + user.auto_follow.target;
+            if (!user.alert.text) { user.alert.text = msg; }
+            else if (user.alert.text.match(/Auto Follow Mode:/)) { user.alert.text = msg; user.alert.timeout.v = 1; user.alert.label = null; }
+            else {
+                // If alert message list already contains an entry, replace it
+                var i = user.alert.list.findIndex(function(e) { return e.match(/Auto Follow Mode:/); });
+                if (i === -1) user.alert.list.push(msg);
+                else user.alert.list[i] = msg;
+            }
+        } else if (arguments.length > 0 && arguments[0] === 'switchtarget') {
+            if (user.auto_follow.target === 'players') {
                 user.auto_follow.target = 'enemies';
-            } else if (user.auto_follow.mode === 'mimic' && user.auto_follow.target === 'enemies') {
-                user.auto_follow.mode = 'face';
-            } else if (user.auto_follow.mode === 'face' && user.auto_follow.target === 'enemies') {
-                user.auto_follow.mode = 'mirror';
-            } else if (user.auto_follow.mode === 'mirror' && user.auto_follow.target === 'enemies') {
-                user.auto_follow.mode = 'mimic';
+            } else if (user.auto_follow.target === 'enemies') {
                 user.auto_follow.target = 'all';
-            } else if (user.auto_follow.mode === 'mimic' && user.auto_follow.target === 'all') {
-                user.auto_follow.mode = 'face';
-            } else if (user.auto_follow.mode === 'face' && user.auto_follow.target === 'all') {
-                user.auto_follow.mode = 'mirror';
-            } else if (user.auto_follow.mode === 'mirror' && user.auto_follow.target === 'all') {
-                user.auto_follow.mode = 'mimic';
+            } else if (user.auto_follow.target === 'all') {
                 user.auto_follow.target = 'players';
             }
             var msg = 'Auto Follow Mode: ' + user.auto_follow.mode + ' ' + user.auto_follow.target;
@@ -666,7 +670,7 @@
         };
         user.auto_follow = {
             enabled: false,
-            mode: 'mimic', // mimic | face | mirror
+            mode: 'manual', // manual | mimic | face | mirror
             target: 'players', // players | enemies | all
             preva: 0,
             prevm: 0,
@@ -853,7 +857,7 @@
                         user.auto_attack.enabled = !user.auto_attack.enabled; alert_ext_auto_attack();
                         document.getElementById('auto_attack_agree_ing').style.display = user.auto_attack.enabled ? 'inline-block' : 'none';
                     } else if (keycode == 70) {
-                        if (c.key === 'F') auto_follow('switch');
+                        if (c.key === 'F') auto_follow('switchmode');
                         else auto_follow();
                     } else if (keycode == 71) {
                         user.gps.enabled = !user.gps.enabled;
@@ -874,6 +878,7 @@
                     }
                 } else if (c.shiftKey) {
                     if (keycode == 69) { user.ext_gui.environment = !user.ext_gui.environment; }
+                    else if (keycode == 70) { auto_follow('switchtarget'); }
                     else if (keycode == 71) { user.ext_gui.ground = !user.ext_gui.ground; }
                     else if (keycode == 72) { user.ext_help_gui.enabled = !user.ext_help_gui.enabled; }
                     else if (keycode == 79) { user.ext_gui.map_objects = !user.ext_gui.map_objects; }
@@ -1024,7 +1029,7 @@
                     else if (stalkeeY < stalkerY) c |= 8;
                 }
 
-                if (stalkerA !== stalkeeA) {
+                if (user.auto_follow.mode !== 'manual' && stalkerA !== stalkeeA) {
                     var angle;
                     if (user.auto_follow.mode === 'mimic') {
                         if (user.auto_follow.target === 'enemies') {
