@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io extensions
 // @namespace    https://github.com/jasonkhanlar/starve-io-extensions
-// @version      0.16.06
+// @version      0.16.07
 // @description  (1) On screen chat buffer (2) On screen help (3) Auto attack (4) Auto book (5) Auto cook (6) Auto follow (7) Copy craft (8) Active feed (9) Server name (10) Gauge values (11) GPS
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -595,8 +595,9 @@
         if (window[mobile]) size = 0.8;
         sprite[SPRITE.MINIMAP][SPRITE.DAY] = CTI(create_minimap(size, colors_day));
         sprite[SPRITE.MINIMAP][SPRITE.NIGHT] = CTI(create_minimap(size, colors_night));
-        sprite[SPRITE.BIGMAP][SPRITE.DAY] = CTI(create_minimap(3, colors_day));
-        sprite[SPRITE.BIGMAP][SPRITE.NIGHT] = CTI(create_minimap(3, colors_night));
+        size = Math.min(Math.floor(canh / 200), Math.floor(canw / 200));
+        sprite[SPRITE.BIGMAP][SPRITE.DAY] = CTI(create_minimap(size, colors_day));
+        sprite[SPRITE.BIGMAP][SPRITE.NIGHT] = CTI(create_minimap(size, colors_night));
 
         SPRITE.ACTIVE_FEED = find_unique_index();
         SPRITE.OLD_AUTO_FEED = SPRITE.AUTO_FEED;

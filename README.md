@@ -73,7 +73,7 @@
 ## (11) GPS (game positioning system)
 * Toggle with G
 
-## (12) New Night Time Minimap/Bigmap
+## (12) Improved Minimap & Bigmap
 
 # VIDEOS
 
