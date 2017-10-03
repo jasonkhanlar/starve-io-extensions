@@ -73,6 +73,8 @@
 ## (11) GPS (game positioning system)
 * Toggle with G
 
+## (12) New Night Time Minimap/Bigmap
+
 # VIDEOS
 
 2017.09.19 [Starve.io new extensions (Auto book) (Auto mine)](https://youtu.be/Il-p3x1jK1w) by [zook plays](https://www.youtube.com/channel/UCvO2QpPjGkwR54KB26Uv0_A)

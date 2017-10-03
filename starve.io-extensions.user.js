@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io extensions
 // @namespace    https://github.com/jasonkhanlar/starve-io-extensions
-// @version      0.16.05
+// @version      0.16.06
 // @description  (1) On screen chat buffer (2) On screen help (3) Auto attack (4) Auto book (5) Auto cook (6) Auto follow (7) Copy craft (8) Active feed (9) Server name (10) Gauge values (11) GPS
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -581,6 +581,23 @@
 
     function main() {
         // All code depending on deobfuscated names may begin from here
+
+        // Use formula to calculate colors of darkness for minimap/bigmap : SQRT(color) x 4
+        var colors_day = '#0d1c16 #54318e #6e7773 #6e7773 #6e7773 #124c34 #133a2b #133a2b #133a2b #133a2b #a8962c #a8962c #a8962c #3fc9c9 #3fc9c9 #3fc9c9 #0d1c16 #e7f0f0 #a8a8a8 #c3ded4 #bad9ce #c8dbd5 #e8db65 #61ded2 #c850f2 #a8a8a8 #208daf #918d8c #ecd585 #FCEFBB'.split(' '),
+        colors_night = [], size = 1;
+        for (var x = 0; x < colors_day.length; x++) {
+            var color = '#';
+            colors_day[x].slice(1).match(/../g).forEach(function(s) {
+                color += Math.ceil(Math.sqrt(parseInt(s, 16)) * 4).toString(16).padStart(2, '0');
+            });
+            colors_night[x] = color;
+        }
+        if (window[mobile]) size = 0.8;
+        sprite[SPRITE.MINIMAP][SPRITE.DAY] = CTI(create_minimap(size, colors_day));
+        sprite[SPRITE.MINIMAP][SPRITE.NIGHT] = CTI(create_minimap(size, colors_night));
+        sprite[SPRITE.BIGMAP][SPRITE.DAY] = CTI(create_minimap(3, colors_day));
+        sprite[SPRITE.BIGMAP][SPRITE.NIGHT] = CTI(create_minimap(3, colors_night));
+
         SPRITE.ACTIVE_FEED = find_unique_index();
         SPRITE.OLD_AUTO_FEED = SPRITE.AUTO_FEED;
         sprite[SPRITE.ACTIVE_FEED] = create_text(1, 'Active-Feed', 25, '#FFF', void 0, void 0, '#000', 5, 180);
