@@ -844,11 +844,11 @@
 
             if (!user.chat.open && document.activeElement.id !== 'nickname_input')  {
                 if (!c.altKey && !c.ctrlKey && !c.shiftKey) {
-                    if (keycode == 84) {
-                        user.auto_book.enabled = !user.auto_book.enabled;
-                        document.getElementById('auto_book_agree_ing').style.display = user.auto_book.enabled ? 'inline-block' : 'none';
-                    } else if (keycode == 66) {
+                    if (keycode == 66) {
                         user.gauges.showpercents = !user.gauges.showpercents;
+                    } else if (keycode == 67) {
+                        user.auto_cook.enabled = !user.auto_cook.enabled; user.auto_cook.cook();
+                        document.getElementById('auto_cook_agree_ing').style.display = user.auto_cook.enabled ? 'inline-block' : 'none';
                     } else if (keycode == 69) {
                         user.auto_attack.enabled = !user.auto_attack.enabled; alert_ext_auto_attack();
                         document.getElementById('auto_attack_agree_ing').style.display = user.auto_attack.enabled ? 'inline-block' : 'none';
@@ -862,12 +862,12 @@
                     } else if (keycode == 76) {
                         user.server_info.enabled = !user.server_info.enabled;
                         document.getElementById('server_info_agree_ing').style.display = user.server_info.enabled ? 'inline-block' : 'none';
-                    } else if (keycode == 67) {
-                        user.auto_cook.enabled = !user.auto_cook.enabled; user.auto_cook.cook();
-                        document.getElementById('auto_cook_agree_ing').style.display = user.auto_cook.enabled ? 'inline-block' : 'none';
                     } else if (keycode == 77) {
                         user.copy_craft.enabled = !user.copy_craft.enabled;
                         if (!user.copy_craft.enabled) { user.copy_craft.last_recipe = false; }
+                    } else if (keycode == 84) {
+                        user.auto_book.enabled = !user.auto_book.enabled;
+                        document.getElementById('auto_book_agree_ing').style.display = user.auto_book.enabled ? 'inline-block' : 'none';
                     } else if (keycode == 192) {
                         document.getElementById('chat_log').style.display = document.getElementById('chat_log').style.display == 'none' ? '' : 'none';
                         document.getElementById('chat_buffer_agree_ing').style.display = document.getElementById('chat_log').style.display == 'none' ? 'none' : 'inline-block';
