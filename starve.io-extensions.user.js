@@ -595,7 +595,8 @@
         if (window[mobile]) size = 0.8;
         sprite[SPRITE.MINIMAP][SPRITE.DAY] = CTI(create_minimap(size, colors_day));
         sprite[SPRITE.MINIMAP][SPRITE.NIGHT] = CTI(create_minimap(size, colors_night));
-        size = Math.min(Math.floor(canh / 200), Math.floor(canw / 200));
+        //size = Math.min(Math.floor(canh / 200), Math.floor(canw / 200));
+        size = 3;
         sprite[SPRITE.BIGMAP][SPRITE.DAY] = CTI(create_minimap(size, colors_day));
         sprite[SPRITE.BIGMAP][SPRITE.NIGHT] = CTI(create_minimap(size, colors_night));
 
