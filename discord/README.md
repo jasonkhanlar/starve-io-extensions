@@ -22,6 +22,6 @@ Scripts here are for proof of concept and working examples
 
 TO USE / INSTALL
 ----------------
-* Load the corresponding userscript with Greasemonkey, Tampermonkey, or similar userscript manager depending on web browser
+* Load the corresponding userscript with Tampermonkey, Violentmonkey or similar userscript manager depending on web browser
 * Create or obtain a Discord Server Webhook and provide the full Webhook URL when prompted upon loading http://starve.io
 * Webhook URLs looks like "https://discordapp.com/api/webhooks/012345678901234567/A-aBbC0cDdE1eF-fGg2HhIi3JjKkL4lMm_N5nOoPp6Qq_Rr7SsTtU8uVv-W9wXxY_yZz"
