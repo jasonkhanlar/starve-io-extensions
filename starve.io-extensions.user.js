@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starve.io extensions
 // @namespace    https://github.com/jasonkhanlar/starve-io-extensions
-// @version      0.16.07
+// @version      0.17.00
 // @description  (1) On screen chat buffer (2) On screen help (3) Auto attack (4) Auto book (5) Auto cook (6) Auto follow (7) Copy craft (8) Active feed (9) Server name (10) Gauge values (11) GPS
 // @author       Jason Khanlar
 // @match        http://starve.io/
@@ -579,6 +579,47 @@
         }
     }
 
+	// It should auto detect whats being held instead of using the mode variable...
+	var mode = 0;
+	var arming_mode = function(){
+		if(mode == 0){
+			// Swords
+			window[client][select_inv](INV.DRAGON_SWORD, user.inv.find_item(INV.DRAGON_SWORD)); // Dragon
+			window[client][select_inv](INV.SWORD_AMETHYST, user.inv.find_item(INV.SWORD_AMETHYST)); // Ammy
+			window[client][select_inv](INV.SWORD_DIAMOND, user.inv.find_item(INV.SWORD_DIAMOND)); // Diamond
+			window[client][select_inv](INV.SWORD_GOLD, user.inv.find_item(INV.SWORD_GOLD)); // Gold
+			window[client][select_inv](INV.SWORD, user.inv.find_item(INV.SWORD)); // Stone
+
+			// Spears....?
+
+	/*
+			// Helmets
+			window[client][select_inv](INV.DRAGON_HELMET, user.inv.find_item(INV.DRAGON_HELMET)); // Dragon
+			window[client][select_inv](INV.AMETHYST_HELMET, user.inv.find_item(INV.AMETHYST_HELMET)); // Ammy
+			window[client][select_inv](INV.DIAMOND_HELMET, user.inv.find_item(INV.DIAMOND_HELMET)); // Diamond
+			window[client][select_inv](INV.GOLD_HELMET, user.inv.find_item(INV.GOLD_HELMET)); // Gold
+			window[client][select_inv](INV.STONE_HELMET, user.inv.find_item(INV.STONE_HELMET)); // Stone
+	*/
+			setTimeout(function(){
+				mode = 1;
+			}, 10 * 1050);
+		} else {
+			//Picks
+			window[client][select_inv](INV.PICK_WOOD, user.inv.find_item(INV.PICK_WOOD)); // Wood
+			window[client][select_inv](INV.PICK, user.inv.find_item(INV.PICK)); // Stone
+			window[client][select_inv](INV.PICK_GOLD, user.inv.find_item(INV.PICK_GOLD)); // Gold
+			window[client][select_inv](INV.PICK_DIAMOND, user.inv.find_item(INV.PICK_DIAMOND)); // Diamond
+			window[client][select_inv](INV.PICK_AMETHYST, user.inv.find_item(INV.PICK_AMETHYST)); // Stone
+	/*
+			// Hats
+			window[client][select_inv](INV.EARMUFFS, user.inv.find_item(INV.EARMUFFS)); // EARMUFFS
+			window[client][select_inv](INV.COAT, user.inv.find_item(INV.COAT)); // COAT
+			window[client][select_inv](INV.CAP_SCARF, user.inv.find_item(INV.CAP_SCARF)); // CAP_SCARF
+	*/
+			mode = 0;
+		}
+	}
+
     function main() {
         // All code depending on deobfuscated names may begin from here
 
@@ -888,7 +929,9 @@
                     } else if (keycode == 77) {
                         user.copy_craft.enabled = !user.copy_craft.enabled;
                         if (!user.copy_craft.enabled) { user.copy_craft.last_recipe = false; }
-                    } else if (keycode == 84) {
+                    } else if (keycode == 81) {
+						arming_mode();
+					} else if (keycode == 84) {
                         user.auto_book.enabled = !user.auto_book.enabled;
                         document.getElementById('auto_book_agree_ing').style.display = user.auto_book.enabled ? 'inline-block' : 'none';
                     } else if (keycode == 192) {
